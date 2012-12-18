@@ -1,0 +1,136 @@
+<?php
+	include('data.php');
+	
+	$dbc = new db;
+	$dbc->connect();
+	$result = $dbc->query('SELECT * FROM people');
+	$dbc->close();
+
+?>
+<html>
+
+ <head>
+ 
+  <title>Bluetent Resource Management</title>
+  
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+
+ <head>
+ 
+ <body>
+ 
+  <form action="insert.php" method="post" >
+  
+   <fieldset>
+   
+    <legend>Resource Request Form:</legend>
+	
+    <label for="sales_status">Sales Status: </label>
+	
+	 <select name="sales_status">
+	  <option>Select One:</option>
+	  <option value="1">Sold</option>
+	  <option value="0">Opportunity</option>
+	 </select>
+	 <br />
+	 
+    <label for="manager">Project Manager: </label> 
+	
+	<select name="manager" id="manager">
+	  <option>Select One:</option>
+	  <?php
+		foreach($result as $result){
+		 	echo '<option value=',$result['name'],'>',$result['name'],'</option>';
+		}
+	  ?>
+	</select>
+	<br />
+	
+    <label for="project_id">Project ID: </label>
+	
+	<input type="text" name="project_id" />
+	<br />
+	
+    <label for="resource">Desired Resource: </label>
+	
+	<select name="resource" id="resource">
+	  <option>Select One:</option>
+	  <?php
+		foreach($result as $result){
+		 	echo '<option value="',$result['name'],'">',$result['name'],'</option>';
+		}
+	  ?>
+	</select>
+	<br />
+	
+    <label for="time">Time Requested: </label>
+	
+    <select name="time">
+	  <option>Select One:</option>
+	  <option value="00:30">.5</option>
+	  <option value="01:00">1</option>
+	  <option value="01:30">1.5</option>
+	  <option value="02:00">2</option>
+	  <option value="02:30">2.5</option>
+	  <option value="03:00">3</option>
+	  <option value="03:30">3.5</option>
+	  <option value="04:00">4</option>
+	  <option value="04:30">4.5</option>
+	  <option value="05:00">5</option>
+	  <option value="05:30">5.5</option>
+	  <option value="06:00">6</option>
+	  <option value="06:30">6.5</option>
+	  <option value="07:00">7</option>
+	  <option value="07:30">7.5</option>
+	  <option value="08:00">8</option>
+	  <option value="08:30">8.5</option>
+	  <option value="09:00">9</option>
+	  <option value="09:30">9.5</option>
+	  <option value="10:00">10</option>
+	  <option value="10:30">10.5</option>
+	  <option value="11:00">11</option>
+	  <option value="11:30">11.5</option>
+	  <option value="12:00">12</option>
+	  <option value="12:30">12.5</option>
+	  <option value="13:00">13</option>
+	  <option value="13:30">13.5</option>
+	  <option value="14:00">14</option>
+	  <option value="14:30">14.5</option>
+	  <option value="15:00">15</option>
+	  <option value="15:30">15.5</option>
+	  <option value="16:00">16</option>
+	  <option value="16:30">16.5</option>
+	  <option value="17:00">17</option>
+	  <option value="17:30">17.5</option>
+	  <option value="18:00">18</option>
+	  <option value="18:30">18.5</option>
+	  <option value="19:00">19</option>
+	  <option value="19:30">19.5</option>
+	  <option value="20:00">20</option>
+	  <option value="20:30">20.5</option>
+	</select>
+	<br />
+	
+     
+	<label for="start_date">Start Date:</label>
+	
+		<input type="text" id="start_date" name="start_date" />
+		
+	</br>
+	
+	
+	<label for="end_date">End Date</label>
+	
+		<input type="text" id="end_date" name="end_date" />
+	
+	<br />
+	
+	<input type="submit" value="Request" />
+	
+   </fieldset>
+   
+  </form>
+  
+ </body>
+
+</html>
