@@ -1,4 +1,4 @@
- <?php
+<?php
 
 /*
 	Object Oriented MySQLi Interface
@@ -11,7 +11,7 @@ class db
 	//hard coded database login info
 	private $db_host = 'localhost';
 	private $db_user = 'root';
-	private $db_pass = '';
+	private $db_pass = 'kd0hdf';
 	private $db_database = 'resources';
 	
 	//mysqli object
