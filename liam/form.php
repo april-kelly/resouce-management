@@ -4,7 +4,7 @@
 	$dbc = new db;
 	$dbc->connect();
 	$result = $dbc->query('SELECT * FROM people');
-	$dbc->close();
+	  
 
 ?>
 <html>
@@ -40,7 +40,10 @@
 	  <option>Select One:</option>
 	  <?php
 		foreach($result as $result){
-		 	echo '<option value=',$result['name'],'>',$result['name'],'</option>';
+			//print_r($result);
+			if($result['type'] == '0' or $result['type'] == '1'){
+		 	 echo '<option value=',$result['name'],'>',$result['name'],'</option>';
+		 	}
 		}
 	  ?>
 	</select>
@@ -56,9 +59,13 @@
 	<select name="resource" id="resource">
 	  <option>Select One:</option>
 	  <?php
-		foreach($result as $result){
-		 	echo '<option value="',$result['name'],'">',$result['name'],'</option>';
+	  	$result = $dbc->query('SELECT * FROM people');
+	  	foreach($result as $result){
+	  		if($result['type'] >= '2'){
+	  			echo '<option value=',$result['name'],'>',$result['name'],'</option>';
+	  		}
 		}
+		$dbc->close();
 	  ?>
 	</select>
 	<br />
