@@ -4,12 +4,6 @@
 	$dbc = new db;
 	$dbc->connect();
 	$result = $dbc->query('SELECT * FROM people');
-	$dbc->close();
-	
-		  
-		foreach($result as $result){
-		 	echo '<option value=',$result['name'],'>',$result['name'],'</option>';
-		}
 	  
 
 ?>
@@ -20,6 +14,13 @@
   <title>Bluetent Resource Management</title>
   
   <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  
+  <script>
+    $(function() {
+        $( "#datepicker" ).datepicker();
+    });
+  </script>
 
  <head>
  
@@ -64,6 +65,15 @@
 	
 	<select name="resource" id="resource">
 	  <option>Select One:</option>
+	  <?php
+	  	$result = $dbc->query('SELECT * FROM people');
+	  	foreach($result as $result){
+	  		if($result['type'] == '0' or $result['type'] >= '2'){
+	  			echo '<option value=',$result['name'],'>',$result['name'],'</option>';
+	  		}
+		}
+		$dbc->close();
+	  ?>
 	</select>
 	<br />
 	
@@ -118,7 +128,7 @@
      
 	<label for="start_date">Start Date:</label>
 	
-		<input type="text" id="start_date" name="start_date" />
+		<input type="text" id="datepicker" name="start_date" />
 		
 	</br>
 	

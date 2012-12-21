@@ -21,7 +21,7 @@
 	foreach($result as $result)
 	{
 
-		if($result['sales_status'] = '0'){
+		if($result['sales_status'] == '0'){
 			$status = "Opportunity";
 		}else{
 			$status = "Sold";

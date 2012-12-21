@@ -13,7 +13,22 @@
  
   <title>Bluetent Resource Management</title>
   
-  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+   
+  <script>
+  $(function() {                                
+      $( "#start_datepicker" ).datepicker();
+  });
+  $(function() {
+      $( "#end_datepicker" ).datepicker();
+  });
+  function test(){
+  	document.getElementById('start_date_label').innerHTML ='Start Date: <input type="text" id="start_date" name="start_date" />';
+  	document.getElementById('end_date_label').innerHTML ='End Date: <input type="text" id="end_date" name="end_date" />';
+  }
+  </script>
 
  <head>
  
@@ -61,7 +76,7 @@
 	  <?php
 	  	$result = $dbc->query('SELECT * FROM people');
 	  	foreach($result as $result){
-	  		if($result['type'] >= '2'){
+	  		if($result['type'] == '0' or $result['type'] >= '2'){
 	  			echo '<option value=',$result['name'],'>',$result['name'],'</option>';
 	  		}
 		}
@@ -118,23 +133,16 @@
 	</select>
 	<br />
 	
-     
-	<label for="start_date">Start Date:</label>
-	
-		<input type="text" id="start_date" name="start_date" />
-		
-	</br>
-	
-	
-	<label for="end_date">End Date</label>
-	
-		<input type="text" id="end_date" name="end_date" />
-	
-	<br />
+	<p>
+	 <span id="start_date_label">Date: <input type="text" id="start_date" name="start_date" /></span><br />
+	 <span id="end_date_label"></span><br />
+	 More than one day? <input type="checkbox" id="multi" onclick="test()"/>
+	</p>
 	
 	<input type="submit" value="Request" />
 	
    </fieldset>
+   <a href="list.php">See current resource usage</a>
    
   </form>
   

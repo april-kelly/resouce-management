@@ -5,7 +5,11 @@ include('data.php');
 $project_id = $_REQUEST['project_id'];
 $manager = $_REQUEST['manager'];
 $start_date = $_REQUEST['start_date'];
+if(!(isset($_REQUEST['end_date']))){
+ $end_date = $_REQUEST['start_date'];
+}else{
 $end_date = $_REQUEST['end_date'];
+}
 $time = $_REQUEST['time'];
 $resource = $_REQUEST['resource'];
 $sales_status = $_REQUEST['sales_status'];
