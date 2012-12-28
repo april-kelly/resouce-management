@@ -24,6 +24,12 @@ table{
 }
 </style>
 <form action="./list.php" method="post">
+	<label><b>Page:</b></label>
+	<input type="submit" value="First" name="first">
+	<input type="submit" value="Previous" name="previous">
+	<input type="submit" value="Next" name="next">
+	<input type="submit" value="Last" name="Last"><br />
+	
 	<label><b>Filters: </b><label>
 	<select name="by">
 	 <option value="">Select One:</option>
@@ -50,9 +56,6 @@ table{
 	</select>
 
 	<input type="submit" value="Filter" />
-	<label><b>Page:</b></label>
-	<input type="submit" value="Previous" name="last">
-	<input type="submit" value="Next" name="next">
 </form>
 
 <table border="1">
@@ -74,13 +77,22 @@ table{
 	$_SESSION['end'] = '30';
 	}
 
+	if(isset($_REQUEST['last'])){
+		//$_SESSION['start'] = $_SESSION['start'] - 30;
+		//$_SESSION['end'] = $_SESSION['end'] - 30;
+	}
+	
+	if(isset($_REQUEST['first'])){
+		$_SESSION['start'] = '0';
+		$_SESSION['end'] = '30';
+	}
 	
 	if(isset($_REQUEST['next'])){
 		$_SESSION['start'] = $_SESSION['start'] + 30;
 		$_SESSION['end'] = $_SESSION['end'] + 30;
 	}
 	
-	if(isset($_REQUEST['last'])){
+	if(isset($_REQUEST['previous'])){
 		$_SESSION['start'] = $_SESSION['start'] - 30;
 		$_SESSION['end'] = $_SESSION['end'] - 30;
 	}
@@ -148,11 +160,13 @@ table{
 ?>
 <table
 <form action="./list.php" method="get">
+	<label><b>Page:</b></label>
+	<input type="submit" value="First" name="first">
+	<input type="submit" value="Previous" name="previous">
+	<input type="submit" value="Next" name="next">
+	<input type="submit" value="Last" name="Last"><br />
 	<label><b>Download: </b></label>
 	<input type="submit" value="Download as csv" name="csv">
-	<label><b>Page:</b></label>
-	<input type="submit" value="Previous" name="last">
-	<input type="submit" value="Next" name="next">
 </form>
 </body>
 </html>
