@@ -14,8 +14,9 @@
   <title>Bluetent Resource Management</title>
   
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+  <script src="./js/test.js"></script>
    
   <script>
   $(function() {                                
@@ -34,19 +35,19 @@
  
  <body>
  
-  <form action="insert.php" method="post" >
+  <form action="insert.php" method="post" onsubmit="return validate()" name="form">
   
    <fieldset>
    
     <legend>Resource Request Form:</legend>
 	
-    <label for="sales_status">Sales Status: </label>
+    <span id="error"><label for="sales_status">Sales Status: </label>
 	
 	 <select name="sales_status">
 	  <option>Select One:</option>
 	  <option value="1">Sold</option>
 	  <option value="0">Opportunity</option>
-	 </select>
+	 </select><b id="error2"></b></span>
 	 <br />
 	 
     <label for="manager">Project Manager: </label> 
@@ -64,9 +65,9 @@
 	</select>
 	<br />
 	
-    <label for="project_id">Project ID: </label>
+    <span id="error"><label for="project_id">Project ID: </label>
 	
-	<input type="text" name="project_id" />
+	<input type="text" name="project_id" /><b id="error2"></b></span>
 	<br />
 	
     <label for="resource">Desired Resource: </label>
