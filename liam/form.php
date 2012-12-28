@@ -44,7 +44,7 @@
     <span id="error"><label for="sales_status">Sales Status: </label>
 	
 	 <select name="sales_status">
-	  <option>Select One:</option>
+	  <option value="">Select One:</option>
 	  <option value="1">Sold</option>
 	  <option value="0">Opportunity</option>
 	 </select><b id="error2"></b></span>
@@ -53,7 +53,7 @@
     <label for="manager">Project Manager: </label> 
 	
 	<select name="manager" id="manager">
-	  <option>Select One:</option>
+	  <option value="">Select One:</option>
 	  <?php
 		foreach($result as $result){
 			//print_r($result);
@@ -73,7 +73,7 @@
     <label for="resource">Desired Resource: </label>
 	
 	<select name="resource" id="resource">
-	  <option>Select One:</option>
+	  <option value="">Select One:</option>
 	  <?php
 	  	$result = $dbc->query('SELECT * FROM people');
 	  	foreach($result as $result){
@@ -89,7 +89,7 @@
     <label for="time">Time Requested: </label>
 	
     <select name="time">
-	  <option>Select One:</option>
+	  <option value="">Select One:</option>
 	  <option value="00:30">.5</option>
 	  <option value="01:00">1</option>
 	  <option value="01:30">1.5</option>

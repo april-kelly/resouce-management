@@ -41,13 +41,13 @@
    
     <legend>Resource Request Form:</legend>
 	
-    <label for="sales_status">Sales Status: </label>
+    <span id="error"><label for="sales_status">Sales Status: </label>
 	
 	 <select name="sales_status">
 	  <option>Select One:</option>
 	  <option value="1">Sold</option>
 	  <option value="0">Opportunity</option>
-	 </select>
+	 </select><b id="error2"></b></span>
 	 <br />
 	 
     <label for="manager">Project Manager: </label> 
@@ -65,9 +65,9 @@
 	</select>
 	<br />
 	
-    <label for="project_id">Project ID: </label>
+    <span id="error"><label for="project_id">Project ID: </label>
 	
-	<input type="text" name="project_id" />
+	<input type="text" name="project_id" /><b id="error2"></b></span>
 	<br />
 	
     <label for="resource">Desired Resource: </label>

@@ -1,4 +1,6 @@
 <?php
+//start session
+session_start();
 //Force csv download
    $file = "resources.csv";
    if(isset($_REQUEST['csv'])){
@@ -67,26 +69,29 @@ table{
 <?php
    }
 	//pagination code
-	$start = '0';
-	$end = '30';
+	if(!(isset($_SESSION['start']))){
+	$_SESSION['start'] = '0';
+	$_SESSION['end'] = '30';
+	}
+
 	
 	if(isset($_REQUEST['next'])){
-		$start = $start + 30;
-		$end = $end + 30;
+		$_SESSION['start'] = $_SESSION['start'] + 30;
+		$_SESSION['end'] = $_SESSION['end'] + 30;
 	}
 	
 	if(isset($_REQUEST['last'])){
-		$start = $start - 30;
-		$end = $end - 30;
+		$_SESSION['start'] = $_SESSION['start'] - 30;
+		$_SESSION['end'] = $_SESSION['end'] - 30;
 	}
 	
-	if($start < 0 or $end < 0){
-		$start = '0';
-		$end = '30';
+	if($_SESSION['start'] < 0 or $_SESSION['end'] < 0){
+		$_SESSION['start'] = '0';
+		$_SESSION['end'] = '30';
 	}
 	
 	
-	$query = 'SELECT * FROM projects LIMIT '.$start.','.$end.' ';
+	$query = 'SELECT * FROM projects LIMIT '.$_SESSION['start'].','.$_SESSION['end'].' ';
 	
 	if(isset($_REQUEST['by']) && isset($_REQUEST['column']) && isset($_REQUEST['order']) ){
 		$query = $query.$_REQUEST['by']." ".$_REQUEST['column']." ".$_REQUEST['order'];
@@ -138,17 +143,11 @@ table{
 	if(isset($_REQUEST['csv'])){
 		echo $csv;
 	}
-	//save csv file
-	/*
-	$fp = fopen("data.csv", "w+");
-	fwrite($fp, $csv);
-	fclose($fp);
-	*/
 	
 	if(!(isset($_REQUEST['csv']))){
 ?>
 <table
-<form action="./list.php" method="post">
+<form action="./list.php" method="get">
 	<label><b>Download: </b></label>
 	<input type="submit" value="Download as csv" name="csv">
 	<label><b>Page:</b></label>
