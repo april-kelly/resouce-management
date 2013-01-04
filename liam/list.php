@@ -109,14 +109,28 @@ table{
 		$query = $query.$_REQUEST['by']." ".$_REQUEST['column']." ".$_REQUEST['order'];
 	}
 	
+	//csv header
+	$csv = "Index:,Project_id:,Manager:,Start_Date:,End_Date:,Time:,Resource:,Sales_Status:\r\n";
+	
+	//Include the data object
 	include('data.php');
 	
+	
+	//connection for projects
 	$dbc = new db;
 	
 	$dbc->connect();
 	$result = $dbc->query($query);
 	$dbc->close();
-	$csv = "Index:,Project_id:,Manager:,Start_Date:,End_Date:,Time:,Resource:,Sales_Status:\r\n";
+	
+	
+	//connection for people
+	$dbcI new db;
+	$people = $dbcI->query("SELECT * FROM people");
+	$dbcI->close();
+	
+	
+	
 	foreach($result as $result)
 	{
 		
