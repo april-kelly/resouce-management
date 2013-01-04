@@ -20,14 +20,16 @@
    
   <script>
   $(function() {                                
-      $( "#start_datepicker" ).datepicker();
+      $( "#start_date" ).datepicker();
   });
   $(function() {
-      $( "#end_datepicker" ).datepicker();
+      $( "#end_date" ).datepicker();
   });
   function test(){
-  	document.getElementById('start_date_label').innerHTML ='Start Date: <input type="text" id="start_date" name="start_date" />';
-  	document.getElementById('end_date_label').innerHTML ='End Date: <input type="text" id="end_date" name="end_date" />';
+      document.getElementById("end_date").style.display='block'; 
+      document.getElementById("test").style.display='block'; 
+      document.getElementById("days").style.display='none'; 
+      document.getElementById("multi").style.display='none'; 
   }
   </script>
 
@@ -135,9 +137,8 @@
 	<br />
 	
 	<p>
-	 <span id="start_date_label">Date: <input type="text" id="start_date" name="start_date" /></span><br />
-	 <span id="end_date_label"></span><br />
-	 More than one day? <input type="checkbox" id="multi" onclick="test()"/>
+	<label>Start Date:</label><br /><input type="text" id="start_date" name="start_date" /> <label id="days">More than one day?</label> <input type="checkbox" id="multi" onclick="test()"/><br />
+  	<label id="test" style="display: none;">End Date:</label><input type="text" id="end_date" name="end_date"  style="display: none;" /><br />
 	</p>
 	
 	<input type="submit" value="Request" />
