@@ -135,6 +135,8 @@ table{
 		echo $csv;
 	}
 	
+	//var_dump($people);
+
 	//echo out the results
 	foreach($result as $result)
 	{

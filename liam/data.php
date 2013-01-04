@@ -62,6 +62,8 @@ class db
 			}
 			
 			return $array;	//return results
+			
+
 		}
 		
 	}
