@@ -123,14 +123,21 @@ table{
 	$result = $dbc->query($query);
 	$dbc->close();
 	
-	
 	//connection for people
-	$dbcI new db;
-	$people = $dbcI->query("SELECT * FROM people");
-	$dbcI->close();
+	$dbc = new db;
 	
+	$dbc->connect();
+	$people = $dbc->query("SELECT * FROM people");
+	$dbc->close();
 	
+	//echo out csv if the user is attempting to download it
+	if(isset($_REQUEST['csv'])){
+		echo $csv;
+	}
 	
+	//var_dump($people);
+
+	//echo out the results
 	foreach($result as $result)
 	{
 		
@@ -142,34 +149,38 @@ table{
 		}
 		
 		//create csv from results
-		$csv = $csv.implode(',',$result)."\r\n";
+		//$csv = $csv.implode(',',$result)."\r\n";
 
 		//table view
 		if(!(isset($_REQUEST['csv']))){
 			echo '<tr>';
 			echo '<td>',$result['index'],'</td>';
 			echo '<td>',$result['project_id'],'</td>';
-			echo '<td>',$result['manager'],'</td>';
+			echo '<td>',$people[$result['manager']]['name'],'</td>';
 			echo '<td>',$result['start_date'],'</td>';
 			echo '<td>',$result['end_date'],'</td>';
 			echo '<td>',$result['time'],'</td>';
-			echo '<td>',$result['resource'],'</td>';
+			echo '<td>',$people[$result['resource']]['name'],'</td>';
 			echo '<td>',$status,'</td>';
 			echo '</tr>';
+		}
+		
+		//csv view
+		if(isset($_REQUEST['csv'])){
+			echo $result['index'].',';
+			echo $result['project_id'].',';
+			echo $people[$result['manager']]['name'].',';
+			echo $result['start_date'].',';
+			echo $result['end_date'].',';
+			echo $result['time'].',';
+			echo $people[$result['resource']]['name'].',';
+			echo $status."\r\n";
 		}
 
 
 	}
 
-	//change boolean sales status to english
-	$csv = preg_replace('/,0\r\n/', ",Opportunity\r\n", $csv);
-	$csv = preg_replace('/,1\r\n/', ",Sold\r\n", $csv);
-	
-	//echo out csv if the user is attempting to download it
-	if(isset($_REQUEST['csv'])){
-		echo $csv;
-	}
-	
+	//Don't echo out the table if the user is downloading a csv version
 	if(!(isset($_REQUEST['csv']))){
 ?>
 <table

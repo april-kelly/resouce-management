@@ -120,14 +120,14 @@ table{
 	$dbc = new db;
 	
 	$dbc->connect();
-	$result = $dbc->query($query);
+	$project = $dbc->query($query);
 	$dbc->close();
 	
 	//connection for people
 	$dbc = new db;
 	
 	$dbc->connect();
-	$people = $dbc->query("SELECT * FROM people");
+	$result = $dbc->query("SELECT * FROM people");
 	$dbc->close();
 	
 	//echo out csv if the user is attempting to download it
@@ -135,45 +135,52 @@ table{
 		echo $csv;
 	}
 	
-	//var_dump($people);
+	//fix the $people results to have an index matching that of the database
+	$people = array();
+	
+	foreach($result as $result){
+		$people[$result['index']]['index'] = $result['index'];
+		$people[$result['index']]['name'] = $result['name'];
+		$people[$result['index']]['type'] = $result['type'];
+	}
 
 	//echo out the results
-	foreach($result as $result)
+	foreach($project as $project)
 	{
 		
 		//make boolean sales_status human readable
-		if($result['sales_status'] == '0'){
+		if($project['sales_status'] == '0'){
 			$status = "Opportunity";
 		}else{
 			$status = "Sold";
 		}
 		
 		//create csv from results
-		//$csv = $csv.implode(',',$result)."\r\n";
+		//$csv = $csv.implode(',',$project)."\r\n";
 
 		//table view
 		if(!(isset($_REQUEST['csv']))){
 			echo '<tr>';
-			echo '<td>',$result['index'],'</td>';
-			echo '<td>',$result['project_id'],'</td>';
-			echo '<td>',$people[$result['manager']]['name'],'</td>';
-			echo '<td>',$result['start_date'],'</td>';
-			echo '<td>',$result['end_date'],'</td>';
-			echo '<td>',$result['time'],'</td>';
-			echo '<td>',$people[$result['resource']]['name'],'</td>';
+			echo '<td>',$project['index'],'</td>';
+			echo '<td>',$project['project_id'],'</td>';
+			echo '<td>',$people[$project['manager']]['name'],'</td>';
+			echo '<td>',$project['start_date'],'</td>';
+			echo '<td>',$project['end_date'],'</td>';
+			echo '<td>',$project['time'],'</td>';
+			echo '<td>',$people[$project['resource']]['name'],'</td>';
 			echo '<td>',$status,'</td>';
 			echo '</tr>';
 		}
 		
 		//csv view
 		if(isset($_REQUEST['csv'])){
-			echo $result['index'].',';
-			echo $result['project_id'].',';
-			echo $people[$result['manager']]['name'].',';
-			echo $result['start_date'].',';
-			echo $result['end_date'].',';
-			echo $result['time'].',';
-			echo $people[$result['resource']]['name'].',';
+			echo $project['index'].',';
+			echo $project['project_id'].',';
+			echo $people[$project['manager']]['name'].',';
+			echo $project['start_date'].',';
+			echo $project['end_date'].',';
+			echo $project['time'].',';
+			echo $people[$project['resource']]['name'].',';
 			echo $status."\r\n";
 		}
 
