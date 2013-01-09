@@ -16,6 +16,28 @@ if(!(isset($_REQUEST['end_date']))){
  $end_date = $_REQUEST['end_date'];
 }
 
+$start_date = $_REQUEST['start_date'];
+
+//convert dates to Y-m-d format
+$end_date = date("Y-m-d", strtotime($end_date));
+$start_date = date("Y-m-d", strtotime($start_date));
+
+//connect to the database	
+$dbc = new db;
+$dbc->connect();
+
+//sanitize the user inputs
+$project_id   = $dbc->sanitize($_REQUEST['project_id']);
+$manager      = $dbc->sanitize($_REQUEST['manager']);
+$start_end    = $dbc->sanitize($start_date);
+$end_date     = $dbc->sanitize($end_date);
+$time         = $dbc->sanitize($_REQUEST['time']);
+$resource     = $dbc->sanitize($_REQUEST['resource']);
+$sales_status = $dbc->sanitize($_REQUEST['sales_status']);
+
+//Verifiy the user filled out all inputs correctly
+
+
 //Query
 $query = "INSERT INTO `resources`.`projects`
 		(`index`,
@@ -28,21 +50,22 @@ $query = "INSERT INTO `resources`.`projects`
 		`sales_status`)
 		VALUES
 		(NULL,
-		'".$_REQUEST['project_id']."',
-		'".$_REQUEST['manager']."',
-		'".$_REQUEST['start_date']."',
+		'".$project_id."',
+		'".$manager."',
+		'".$start_date."',
 		'".$end_date."',
-		'".$_REQUEST['time']."',
-		'".$_REQUEST['resource']."',
-		'".$_REQUEST['sales_status']."')";
+		'".$time."',
+		'".$resource."',
+		'".$sales_status."')";
 
-//Run the query on the database		
-$dbc = new db;
-$dbc->connect();
+
+//Query
 $dbc->insert($query);
+
+//Disconnect
 $dbc->close();
 
 //Redirect the user to list.php
-header('Location: ./list.php');
+//header('Location: ./list.php');
 
 ?>

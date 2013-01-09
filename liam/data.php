@@ -115,5 +115,13 @@ class db
 		}
 	}
 	
+	//allow user to sanatize data
+	public function sanitize($input)
+	{
+		
+		return $this->dbc->real_escape_string($input);
+		
+	}
+	
 }
 
