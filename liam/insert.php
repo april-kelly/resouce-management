@@ -18,9 +18,15 @@ if(!(isset($_REQUEST['end_date']))){
 
 $start_date = $_REQUEST['start_date'];
 
+//check for an empty start date
+if($start_date == ""){
+ header("Location: ./index.php?nodate");
+}
+
+
 //convert dates to Y-m-d format
-$end_date = date("Y-m-d", strtotime($end_date));
-$start_date = date("Y-m-d", strtotime($start_date));
+echo $end_date = date("Y-m-d", strtotime($end_date));
+echo $start_date = date("Y-m-d", strtotime($start_date));
 
 //connect to the database	
 $dbc = new db;
@@ -36,7 +42,30 @@ $resource     = $dbc->sanitize($_REQUEST['resource']);
 $sales_status = $dbc->sanitize($_REQUEST['sales_status']);
 
 //Verifiy the user filled out all inputs correctly
+$fail = '';
 
+if(!(isset($_REQUEST['project_id']))){
+ $fail = true;
+}
+
+if(!(isset($_REQUEST['manager']))){
+ $fail = true;
+}
+
+if(!(isset($_REQUEST['start_date']))){
+ $fail = true;
+}
+if(!(isset($_REQUEST['time']))){
+ $fail = true;
+}
+
+if(!(isset($_REQUEST['resource']))){
+ $fail = true;
+}
+
+if(!(isset($_REQUEST['sales_status']))){
+ $fail = true;
+}
 
 //Query
 $query = "INSERT INTO `resources`.`projects`
@@ -60,7 +89,9 @@ $query = "INSERT INTO `resources`.`projects`
 
 
 //Query
-$dbc->insert($query);
+if(!($fail == true)){
+ $dbc->insert($query);
+}
 
 //Disconnect
 $dbc->close();
