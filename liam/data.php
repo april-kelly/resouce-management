@@ -125,3 +125,37 @@ class db
 	
 }
 
+//Quick access functions
+
+//Provide a quick query function that uses preset defaults
+function query($query)
+{	
+	
+	$dbc = new db;			//set up object
+	$dbc->connect();		//connect using defaults
+	$result = $dbc->query($query);	//run the query
+	$dbc->close();			//close the database connection
+	
+	return $result;			//return the results
+	
+}
+
+//verify that a peice of data is in the database
+function verify($table, $field, $data)
+{
+	
+	$query = "SELECT * FROM ".$table." WHERE `".$field."` = ".$data."";
+
+	$dbc = new db;			//set up object
+	$dbc->connect();		//connect using defaults
+	$result = $dbc->query($query);	//run the query
+	$dbc->close();			//close the database connection
+	
+	if(count($result) == '1'){
+		return true;
+	}else{
+		return false;
+	}
+		
+}
+

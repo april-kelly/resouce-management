@@ -10,17 +10,26 @@
 include('data.php');
 
 //If the request is only for one day
-if(!(isset($_REQUEST['end_date']))){
+/*if(!(isset($_REQUEST['end_date']))){
  $end_date = $_REQUEST['start_date'];
 }else{
  $end_date = $_REQUEST['end_date'];
 }
+*/
 
+//preset variables
 $start_date = $_REQUEST['start_date'];
+$end_date = $_REQUEST['end_date'];
+$fail = false;				//flag to prevent running query
 
 //check for an empty start date
 if($start_date == ""){
  header("Location: ./index.php?nodate");
+}
+
+//check for an empty end date
+if($end_date == ""){
+	 $end_date = $_REQUEST['start_date'];
 }
 
 
@@ -41,31 +50,17 @@ $time         = $dbc->sanitize($_REQUEST['time']);
 $resource     = $dbc->sanitize($_REQUEST['resource']);
 $sales_status = $dbc->sanitize($_REQUEST['sales_status']);
 
+//verifiy the resource or manger requested existed
+if(!(verify('people', 'index', $_REQUEST['resource']))){ $fail = true; }
+if(!(verify('people', 'index', $_REQUEST['manager']))){ $fail = true; }
+
 //Verifiy the user filled out all inputs correctly
-$fail = '';
-
-if(!(isset($_REQUEST['project_id']))){
- $fail = true;
-}
-
-if(!(isset($_REQUEST['manager']))){
- $fail = true;
-}
-
-if(!(isset($_REQUEST['start_date']))){
- $fail = true;
-}
-if(!(isset($_REQUEST['time']))){
- $fail = true;
-}
-
-if(!(isset($_REQUEST['resource']))){
- $fail = true;
-}
-
-if(!(isset($_REQUEST['sales_status']))){
- $fail = true;
-}
+if(!(isset($_REQUEST['project_id']))){ $fail = true; }
+if(!(isset($_REQUEST['manager']))){ $fail = true; }
+if(!(isset($_REQUEST['start_date']))){ $fail = true; }
+if(!(isset($_REQUEST['time']))){ $fail = true; }
+if(!(isset($_REQUEST['resource']))){ $fail = true; }
+if(!(isset($_REQUEST['sales_status']))){ $fail = true; }
 
 //Query
 $query = "INSERT INTO `resources`.`projects`
@@ -89,7 +84,7 @@ $query = "INSERT INTO `resources`.`projects`
 
 
 //Query
-if(!($fail == true)){
+if($fail = false){
  $dbc->insert($query);
 }
 
