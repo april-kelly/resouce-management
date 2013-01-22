@@ -9,14 +9,6 @@
 //Include the data object
 include('data.php');
 
-//If the request is only for one day
-/*if(!(isset($_REQUEST['end_date']))){
- $end_date = $_REQUEST['start_date'];
-}else{
- $end_date = $_REQUEST['end_date'];
-}
-*/
-
 //preset variables
 $start_date = $_REQUEST['start_date'];
 $end_date = $_REQUEST['end_date'];
@@ -29,13 +21,12 @@ if($start_date == ""){
 
 //check for an empty end date
 if($end_date == ""){
-	 $end_date = $_REQUEST['start_date'];
+ $end_date = $_REQUEST['start_date'];
 }
 
-
 //convert dates to Y-m-d format
-echo $end_date = date("Y-m-d", strtotime($end_date));
-echo $start_date = date("Y-m-d", strtotime($start_date));
+$start_date = date("Y-m-d", strtotime($start_date));
+$end_date = date("Y-m-d", strtotime($end_date));
 
 //connect to the database	
 $dbc = new db;
@@ -50,7 +41,7 @@ $time         = $dbc->sanitize($_REQUEST['time']);
 $resource     = $dbc->sanitize($_REQUEST['resource']);
 $sales_status = $dbc->sanitize($_REQUEST['sales_status']);
 
-//verifiy the resource or manger requested existed
+//verifiy the resource or manger requested exists
 if(!(verify('people', 'index', $_REQUEST['resource']))){ $fail = true; }
 if(!(verify('people', 'index', $_REQUEST['manager']))){ $fail = true; }
 
@@ -84,7 +75,7 @@ $query = "INSERT INTO `resources`.`projects`
 
 
 //Query
-if($fail = false){
+if($fail == false){
  $dbc->insert($query);
 }
 
@@ -92,6 +83,19 @@ if($fail = false){
 $dbc->close();
 
 //Redirect the user to list.php
-//header('Location: ./list.php');
+if(isset($_REQUEST['debug']) || $faile == true){
+ echo '<br />';
+ 
+ if(isset($_REQUEST['debug'])){
+  echo '<b>Debug mode:</b> on<br />';
+  echo '<br /><b>Query:</b><br />'.$query;
+ }else{
+  echo '<span style="color: red;"><b>ERROR: </b>The insert statement has failed.</span><br />';
+ }
+ 
+ echo '<br />';
+}else{
+ header('Location: ./list.php');
+}
 
 ?>
