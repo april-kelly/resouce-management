@@ -1,7 +1,5 @@
 <?php
-//start session
-session_start();
-//Force csv download
+//Force csv download (if applicable)
    $file = "resources.csv";
    if(isset($_REQUEST['csv'])){
     header('Content-Type: application/octet-stream');
@@ -23,44 +21,15 @@ table{
 	margin-right: auto;
 }
 </style>
-<form action="./list.php" method="post">
-	<label><b>Page:</b></label>
-	<input type="submit" value="First" name="first">
-	<input type="submit" value="Previous" name="previous">
-	<input type="submit" value="Next" name="next">
-	<input type="submit" value="Last" name="Last"><br />
-	
-	<label><b>Filters: </b><label>
-	<select name="by">
-	 <option value="">Select One:</option>
-	 <option value="ORDER BY">Order by</option>
-	 <option value="SORT BY">Sort by</option>
-	</select>
-	
-	<select name="column">
-	 <option value="">Select One:</option>
-	 <option value="PRIMARY">Index:</option>
-	 <option value="project_id">Project_ID:</option>
-	 <option value="manager">Manager:</option>
-	 <option value="start_date">Start_Date:</option>
-	 <option value="end_date">End_Date:</option>
-	 <option value="time">Time:</option>
-	 <option value="resource">Resource:</option>
-	 <option value="sales_status">Sales_Status:</option>
-	</select>
-	
-	<select name="order">
-	 <option value="">Select One:</option>
-	 <option value="DESC">Descending</option>
-	 <option value="ASC">Ascending</option>
-	</select>
-
-	<input type="submit" value="Filter" />
-</form>
 
 <table border="1">
 <tr>
-	<td><b>Index:</b></td>
+	<td>
+	  <a href="?c=1&o=1"><img src="./images/up.png" title="Order by index ascending" /></a>
+	  <b>Index:</b>
+	  <a href="?c=1&o=2"><img src="./images/down.png" title="Order by index descending" /></a>
+	</td>
+	
 	<td><b>Project_ID:</b></td>
 	<td><b>Manager:</b></td>
 	<td><b>Start_Date:</b></td>
@@ -71,50 +40,84 @@ table{
 </tr>
 <?php
    }
-	//pagination code
-	if(!(isset($_SESSION['start']))){
-	$_SESSION['start'] = '0';
-	$_SESSION['end'] = '30';
+   	//preset variables
+   	$column = '';
+   	$order = '';
+   	
+   		
+	//the base query
+	$query = 'SELECT * FROM `projects` ';
+   	
+	//Preformed Queries (for ordering)
+	if(isset($_REQUEST['c']) && isset($_REQUEST['o'])){
+		switch($_REQUEST['c']){
+		
+		case 1:
+		 $column = "`index`";
+		break;
+	
+		case 2:
+		 $column = "`project_id`";
+		break;
+	
+		case 3:
+		 $column = "`manager`";
+		break;
+	
+		case 4:
+		 $column = "`start_date`";
+		break;
+	
+		case 5:
+		 $column = "`end_date`";
+		break;
+	
+		case 6:
+		 $column = "`time`";
+		break;
+	
+		case 7:
+		 $column = "`resource`";
+		break;
+	
+		case 8:
+		 $column = "`sales_status`";
+		break;
+	
+		default:
+		 $column = '';
+		break;
+	
+		}
+	
+		//order in asc or desc
+		if($_REQUEST['o'] == '1'){
+			$order = 'ASC';
+		}elseif($_REQUEST['o'] == '2'){
+			$order = 'DESC';
+		}
+		
+		//add the order commands
+		$query .= "ORDER BY $column ";
+		$query .= $order;
+	
 	}
 
-	if(isset($_REQUEST['last'])){
-		//$_SESSION['start'] = $_SESSION['start'] - 30;
-		//$_SESSION['end'] = $_SESSION['end'] - 30;
-	}
 	
-	if(isset($_REQUEST['first'])){
-		$_SESSION['start'] = '0';
-		$_SESSION['end'] = '30';
-	}
+
+		
+
 	
-	if(isset($_REQUEST['next'])){
-		$_SESSION['start'] = $_SESSION['start'] + 30;
-		$_SESSION['end'] = $_SESSION['end'] + 30;
-	}
+	//if(isset($_REQUEST['by']) && isset($_REQUEST['column']) && isset($_REQUEST['order']) ){
+	//	$query = $query.$_REQUEST['by']." ".$_REQUEST['column']." ".$_REQUEST['order'];
+	//}
 	
-	if(isset($_REQUEST['previous'])){
-		$_SESSION['start'] = $_SESSION['start'] - 30;
-		$_SESSION['end'] = $_SESSION['end'] - 30;
-	}
-	
-	if($_SESSION['start'] < 0 or $_SESSION['end'] < 0){
-		$_SESSION['start'] = '0';
-		$_SESSION['end'] = '30';
-	}
-	
-	
-	$query = 'SELECT * FROM projects LIMIT '.$_SESSION['start'].','.$_SESSION['end'].' ';
-	
-	if(isset($_REQUEST['by']) && isset($_REQUEST['column']) && isset($_REQUEST['order']) ){
-		$query = $query.$_REQUEST['by']." ".$_REQUEST['column']." ".$_REQUEST['order'];
-	}
-	
+	echo $query;
 	//csv header
 	$csv = "Index:,Project_id:,Manager:,Start_Date:,End_Date:,Time:,Resource:,Sales_Status:\r\n";
 	
 	//Include the data object
 	include('data.php');
-	
 	
 	//connection for projects
 	$dbc = new db;

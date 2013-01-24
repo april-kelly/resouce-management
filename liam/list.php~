@@ -143,7 +143,6 @@ table{
 		$people[$result['index']]['name'] = $result['name'];
 		$people[$result['index']]['type'] = $result['type'];
 	}
-
 	//echo out the results
 	foreach($project as $project)
 	{
@@ -155,32 +154,74 @@ table{
 			$status = "Sold";
 		}
 		
-		//create csv from results
-		//$csv = $csv.implode(',',$project)."\r\n";
-
+		//Verify project manager exists
+		if(isset($people[$project['manager']])){
+			$manager = true;
+		}else{
+			$manager = false;
+		}
+		
+		//Verify resource exists
+		if(isset($people[$project['resource']])){
+			$resource = true;
+		}else{
+			$resource = false;
+		}
+		
 		//table view
-		if(!(isset($_REQUEST['csv']))){
+		if(!(isset($_REQUEST['csv'])))
+		{
 			echo '<tr>';
 			echo '<td>',$project['index'],'</td>';
 			echo '<td>',$project['project_id'],'</td>';
-			echo '<td>',$people[$project['manager']]['name'],'</td>';
+			
+			//echo out manager
+			if($manager == true){
+				echo '<td>',$people[$project['manager']]['name'],'</td>';
+			}else{
+				echo '<td><span style="color: red;">[Error]</span></td>';
+			}
+			
 			echo '<td>',$project['start_date'],'</td>';
 			echo '<td>',$project['end_date'],'</td>';
 			echo '<td>',$project['time'],'</td>';
-			echo '<td>',$people[$project['resource']]['name'],'</td>';
+			
+			//echo out resource
+			if($resource == true){
+				echo '<td>',$people[$project['resource']]['name'],'</td>';
+			}else{
+				echo '<td><span style="color: red;">[Error]</span></td>';
+			}
+			
+			
 			echo '<td>',$status,'</td>';
 			echo '</tr>';
 		}
 		
 		//csv view
-		if(isset($_REQUEST['csv'])){
+		if(isset($_REQUEST['csv']))
+		{
 			echo $project['index'].',';
 			echo $project['project_id'].',';
-			echo $people[$project['manager']]['name'].',';
+			
+			//echo out manager
+			if($manager == true){
+				echo $people[$project['manager']]['name'].',';
+			}else{
+				echo "[error]".',';
+			}
+			
 			echo $project['start_date'].',';
 			echo $project['end_date'].',';
 			echo $project['time'].',';
-			echo $people[$project['resource']]['name'].',';
+			
+			//echo out resource
+			if($resource == true){
+				echo $people[$project['resource']]['name'].',';
+			}else{
+				echo "[error]".',';
+			}
+			
 			echo $status."\r\n";
 		}
 
