@@ -68,7 +68,7 @@ class db
 		
 	}
 	
-	//inset into the database
+	//insert into the database
 	public function insert($db_query)
 	{
 		if($this->fail == '0'){
@@ -76,12 +76,22 @@ class db
 			if(is_object($this->dbc)){
 		
 				$this->dbc->query($db_query);	//query the database
-				/*
-				while ($row = $result->fetch_assoc()) {	//fetch assoc array
-					$array[] = $row;
-				}
-			
-				return $array;	//return results*/
+
+			}
+
+		}
+		
+	}
+	
+	//delete from the database
+	public function delete($db_query)
+	{
+		if($this->fail == '0'){
+
+			if(is_object($this->dbc)){
+		
+				$this->dbc->query($db_query);	//query the database
+
 			}
 
 		}

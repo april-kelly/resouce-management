@@ -1,11 +1,14 @@
 <?php
+//Include the data object
+include('data.php');
+
 //Force csv download (if applicable)
    $file = "resources.csv";
    if(isset($_REQUEST['csv'])){
     header('Content-Type: application/octet-stream');
     header("Content-Transfer-Encoding: text/csv"); 
     header("Content-disposition: attachment; filename=\"".$file."\"");
-   }else{
+   }elseif(isset($_REQUEST['edit'])){}{
 ?>
 <html>
 <head>
@@ -72,9 +75,6 @@ table{
 	  <a href="?c=8&o=2"><img src="./images/down.png" title="Order by Sales Status descending" /></a>
 	</td>
 	
-	<td>
-	 <a href=""><img src=
-	</td>
 </tr>
 <?php
    }
@@ -141,11 +141,25 @@ table{
 	
 	}
 	
+	//Query for a delete
+	if(isset($_REQUEST['rm'])){
+		
+		//Delete query
+		$delete = 'DELETE FROM `projects` WHERE `index`='.$_REQUEST['rm'];
+		
+		//Run the query
+		$dbc = new db;
+		$dbc->connect();
+		$project = $dbc->delete($delete);
+		$dbc->close();
+		
+		//redirect to the normal view
+		header('Location: ?edit');
+		
+	}
+	
 	//csv header
 	$csv = "Index:,Project_id:,Manager:,Start_Date:,End_Date:,Time:,Resource:,Sales Status:\r\n";
-	
-	//Include the data object
-	include('data.php');
 	
 	//connection for projects
 	$dbc = new db;
@@ -226,6 +240,12 @@ table{
 			
 			
 			echo '<td>',$status,'</td>';
+			
+			//show delete options if editing is enabled
+			if(isset($_REQUEST['edit'])){
+				echo '<td><a href="?rm='.$project['index'].'"><img src="./images/x.jpg" height="23" width="32" title="Delete this request"></a></td>';
+			}
+			
 			echo '</tr>';
 		}
 		
@@ -266,6 +286,8 @@ table{
 <form action="?&" method="get">
 	<label><b>Download: </b></label>
 	<input type="submit" value="Download as csv" name="csv">
+	<label><b>Edit: </b></label>
+	<input type="submit" value="<?php if(isset($_REQUEST['edit'])){ echo 'Done'; }else{ echo 'Edit Records'; } ?>" name="<?php if(isset($_REQUEST['edit'])){ echo ''; }else{ echo 'edit'; } ?>">
 </form>
 </body>
 </html>
