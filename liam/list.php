@@ -31,9 +31,9 @@ table{
 	</td>
 	
 	<td>
-	  <a href="?c=2&o=1"><img src="./images/up.png" title="Order by Project_ID ascending" /></a>
-	  <b>Project_ID:</b>
-	  <a href="?c=2&o=2"><img src="./images/down.png" title="Order by Project_ID descending" /></a>
+	  <a href="?c=2&o=1"><img src="./images/up.png" title="Order by Project ID ascending" /></a>
+	  <b>Project ID:</b>
+	  <a href="?c=2&o=2"><img src="./images/down.png" title="Order by Project ID descending" /></a>
 	</td>
 	
 	<td>
@@ -43,15 +43,15 @@ table{
 	</td>
 	
 	<td>
-	  <a href="?c=4&o=1"><img src="./images/up.png" title="Order by Start_Date ascending" /></a>
-	  <b>Start_Date:</b>
-	  <a href="?c=4&o=2"><img src="./images/down.png" title="Order by Start_Date descending" /></a>
+	  <a href="?c=4&o=1"><img src="./images/up.png" title="Order by Start Date ascending" /></a>
+	  <b>Start Date:</b>
+	  <a href="?c=4&o=2"><img src="./images/down.png" title="Order by Start Date descending" /></a>
 	</td>
 	
 	<td>
-	  <a href="?c=5&o=1"><img src="./images/up.png" title="Order by End_Date ascending" /></a>
-	  <b>End_Date:</b>
-	  <a href="?c=5&o=2"><img src="./images/down.png" title="Order by End_Date descending" /></a>
+	  <a href="?c=5&o=1"><img src="./images/up.png" title="Order by End Date ascending" /></a>
+	  <b>End Date:</b>
+	  <a href="?c=5&o=2"><img src="./images/down.png" title="Order by End Date descending" /></a>
 	</td>
 	
 	<td>
@@ -67,11 +67,14 @@ table{
 	</td>
 	
 	<td>
-	  <a href="?c=8&o=1"><img src="./images/up.png" title="Order by Sales_Status ascending" /></a>
-	  <b>Sales_Status:</b>
-	  <a href="?c=8&o=2"><img src="./images/down.png" title="Order by Sales_Status descending" /></a>
+	  <a href="?c=8&o=1"><img src="./images/up.png" title="Order by Sales Status ascending" /></a>
+	  <b>Sales Status:</b>
+	  <a href="?c=8&o=2"><img src="./images/down.png" title="Order by Sales Status descending" /></a>
 	</td>
 	
+	<td>
+	 <a href=""><img src=
+	</td>
 </tr>
 <?php
    }
@@ -139,7 +142,7 @@ table{
 	}
 	
 	//csv header
-	$csv = "Index:,Project_id:,Manager:,Start_Date:,End_Date:,Time:,Resource:,Sales_Status:\r\n";
+	$csv = "Index:,Project_id:,Manager:,Start_Date:,End_Date:,Time:,Resource:,Sales Status:\r\n";
 	
 	//Include the data object
 	include('data.php');
@@ -259,8 +262,8 @@ table{
 	//Don't echo out the table if the user is downloading a csv version
 	if(!(isset($_REQUEST['csv']))){
 ?>
-<table
-<form action="./list.php" method="get">
+<table>
+<form action="?&" method="get">
 	<label><b>Download: </b></label>
 	<input type="submit" value="Download as csv" name="csv">
 </form>

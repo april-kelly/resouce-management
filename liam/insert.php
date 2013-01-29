@@ -14,15 +14,42 @@ $start_date = $_REQUEST['start_date'];
 $end_date = $_REQUEST['end_date'];
 $fail = false;				//flag to prevent running query
 
-//check for an empty start date
-if($start_date == ""){
- header("Location: ./index.php?nodate");
-}
 
-//check for an empty end date
-if($end_date == ""){
- $end_date = $_REQUEST['start_date'];
-}
+//check for invalid user inputs
+	
+	//check for a valid sales status
+	if(!(is_bool($_REQUEST['sales_status']))){
+		header("Location: ./index.php?&bool");
+	}
+	
+	//check for a valid project manager
+	if(!(is_numeric($_REQUEST['manager'])) && !(strlen($_REQUEST['manager']) >= '11' )){
+		header("Location: ./index.php?&manager");
+	}
+	
+	//check for a valid project id
+	if(!(is_numeric($_REQUEST['project_id'])) && !(strlen($_REQUEST['project_id']) >= '11' )){
+		header("Location: ./index.php?&projectid");
+		echo $_REQUEST['project_id'].strlen($_REQUEST['project_id']);
+	}
+	
+	//check for a valid resource
+	if(!(is_numeric($_REQUEST['resource'])) && !(strlen($_REQUEST['resource']) >= '11' )){
+		header("Location: ./index.php?&resource");
+	}
+	
+	//check for a valid time
+
+	//check for an empty start date
+	if($start_date == ""){
+		header("Location: ./index.php?&nodate");
+	}
+	
+
+	//check for an empty end date
+	if($end_date == ""){
+		$end_date = $_REQUEST['start_date'];
+	}
 
 //convert dates to Y-m-d format
 $start_date = date("Y-m-d", strtotime($start_date));
