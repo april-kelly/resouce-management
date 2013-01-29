@@ -25,18 +25,53 @@ table{
 <table border="1">
 <tr>
 	<td>
-	  <a href="?c=1&o=1"><img src="./images/up.png" title="Order by index ascending" /></a>
+	  <a href="?c=1&o=1"><img src="./images/up.png" title="Order by Index ascending" /></a>
 	  <b>Index:</b>
-	  <a href="?c=1&o=2"><img src="./images/down.png" title="Order by index descending" /></a>
+	  <a href="?c=1&o=2"><img src="./images/down.png" title="Order by Index descending" /></a>
 	</td>
 	
-	<td><b>Project_ID:</b></td>
-	<td><b>Manager:</b></td>
-	<td><b>Start_Date:</b></td>
-	<td><b>End_Date:</b></td>
-	<td><b>Time:</b></td>
-	<td><b>Resource:</b></td>
-	<td><b>Sales_Status:</b></td>
+	<td>
+	  <a href="?c=2&o=1"><img src="./images/up.png" title="Order by Project_ID ascending" /></a>
+	  <b>Project_ID:</b>
+	  <a href="?c=2&o=2"><img src="./images/down.png" title="Order by Project_ID descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=3&o=1"><img src="./images/up.png" title="Order by Manager ascending" /></a>
+	  <b>Manager:</b>
+	  <a href="?c=3&o=2"><img src="./images/down.png" title="Order by Manager descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=4&o=1"><img src="./images/up.png" title="Order by Start_Date ascending" /></a>
+	  <b>Start_Date:</b>
+	  <a href="?c=4&o=2"><img src="./images/down.png" title="Order by Start_Date descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=5&o=1"><img src="./images/up.png" title="Order by End_Date ascending" /></a>
+	  <b>End_Date:</b>
+	  <a href="?c=5&o=2"><img src="./images/down.png" title="Order by End_Date descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=6&o=1"><img src="./images/up.png" title="Order by Time ascending" /></a>
+	  <b>Time:</b>
+	  <a href="?c=6&o=2"><img src="./images/down.png" title="Order by Time descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=7&o=1"><img src="./images/up.png" title="Order by Resource ascending" /></a>
+	  <b>Resource:</b>
+	  <a href="?c=7&o=2"><img src="./images/down.png" title="Order by Resource descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=8&o=1"><img src="./images/up.png" title="Order by Sales_Status ascending" /></a>
+	  <b>Sales_Status:</b>
+	  <a href="?c=8&o=2"><img src="./images/down.png" title="Order by Sales_Status descending" /></a>
+	</td>
+	
 </tr>
 <?php
    }
@@ -102,17 +137,7 @@ table{
 		$query .= $order;
 	
 	}
-
 	
-
-		
-
-	
-	//if(isset($_REQUEST['by']) && isset($_REQUEST['column']) && isset($_REQUEST['order']) ){
-	//	$query = $query.$_REQUEST['by']." ".$_REQUEST['column']." ".$_REQUEST['order'];
-	//}
-	
-	echo $query;
 	//csv header
 	$csv = "Index:,Project_id:,Manager:,Start_Date:,End_Date:,Time:,Resource:,Sales_Status:\r\n";
 	
@@ -236,11 +261,6 @@ table{
 ?>
 <table
 <form action="./list.php" method="get">
-	<label><b>Page:</b></label>
-	<input type="submit" value="First" name="first">
-	<input type="submit" value="Previous" name="previous">
-	<input type="submit" value="Next" name="next">
-	<input type="submit" value="Last" name="Last"><br />
 	<label><b>Download: </b></label>
 	<input type="submit" value="Download as csv" name="csv">
 </form>
