@@ -3,7 +3,7 @@
 /*
 	Database Insert Script
 	Programmer: Liam Kelly
-	Last Modified: 1/3/2013
+	Last Modified: 1/31/2013
 */
 
 //Include the data object
@@ -12,13 +12,12 @@ include('data.php');
 //preset variables
 $start_date = $_REQUEST['start_date'];
 $end_date = $_REQUEST['end_date'];
-$fail = false;				//flag to prevent running query
-
+$fail = false; //flag to prevent running query
 
 //check for invalid user inputs
 	
 	//check for a valid sales status
-	if(!(is_bool($_REQUEST['sales_status']))){
+	if(!(is_numeric($_REQUEST['sales_status']))){
 		header("Location: ./index.php?&bool");
 	}
 	
@@ -39,6 +38,9 @@ $fail = false;				//flag to prevent running query
 	}
 	
 	//check for a valid time
+	if(!(isset($_REQUEST['']))){
+		header("Location: ./index.php?&time");
+	}
 
 	//check for an empty start date
 	if($start_date == ""){
@@ -110,14 +112,14 @@ if($fail == false){
 $dbc->close();
 
 //Redirect the user to list.php
-if(isset($_REQUEST['debug']) || $faile == true){
+if(isset($_REQUEST['debug']) || $fail == true){
  echo '<br />';
  
  if(isset($_REQUEST['debug'])){
   echo '<b>Debug mode:</b> on<br />';
   echo '<br /><b>Query:</b><br />'.$query;
  }else{
-  echo '<span style="color: red;"><b>ERROR: </b>The insert statement has failed.</span><br />';
+  echo '<span style="color: red;"><b>ERROR: </b>The insert statement has failed. </span><br />';
  }
  
  echo '<br />';
