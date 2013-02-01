@@ -1,0 +1,33 @@
+<?php
+	//check for a valid sales status
+	if(!(is_numeric($_REQUEST['sales_status']))){
+		header("Location: ./index.php?&bool");
+	}
+	
+	//check for a valid project manager
+	if(!(is_numeric($_REQUEST['manager'])) && !(strlen($_REQUEST['manager']) >= '11' )){
+		header("Location: ./index.php?&manager");
+	}
+	
+	//check for a valid project id
+	if(!(is_numeric($_REQUEST['project_id'])) && !(strlen($_REQUEST['project_id']) >= '11' )){
+		header("Location: ./index.php?&projectid");
+		echo $_REQUEST['project_id'].strlen($_REQUEST['project_id']);
+	}
+	
+	//check for a valid resource
+	if(!(is_numeric($_REQUEST['resource'])) && !(strlen($_REQUEST['resource']) >= '11' )){
+		header("Location: ./index.php?&resource");
+	}
+	
+	//check for a valid time
+	if(!(isset($_REQUEST['']))){
+		header("Location: ./index.php?&time");
+	}
+
+	//check for an empty start date
+	if($start_date == ""){
+		header("Location: ./index.php?&nodate");
+	}
+	
+?>
