@@ -3,7 +3,7 @@
 /*
 	Database Insert Script
 	Programmer: Liam Kelly
-	Last Modified: 1/3/2013
+	Last Modified: 1/31/2013
 */
 
 //Include the data object
@@ -12,17 +12,46 @@ include('data.php');
 //preset variables
 $start_date = $_REQUEST['start_date'];
 $end_date = $_REQUEST['end_date'];
-$fail = false;				//flag to prevent running query
+$fail = false; //flag to prevent running query
 
-//check for an empty start date
-if($start_date == ""){
- header("Location: ./index.php?nodate");
-}
+//check for invalid user inputs
+	
+	//check for a valid sales status
+	if(!(is_numeric($_REQUEST['sales_status']))){
+		header("Location: ./index.php?&bool");
+	}
+	
+	//check for a valid project manager
+	if(!(is_numeric($_REQUEST['manager'])) && !(strlen($_REQUEST['manager']) >= '11' )){
+		header("Location: ./index.php?&manager");
+	}
+	
+	//check for a valid project id
+	if(!(is_numeric($_REQUEST['project_id'])) && !(strlen($_REQUEST['project_id']) >= '11' )){
+		header("Location: ./index.php?&projectid");
+		echo $_REQUEST['project_id'].strlen($_REQUEST['project_id']);
+	}
+	
+	//check for a valid resource
+	if(!(is_numeric($_REQUEST['resource'])) && !(strlen($_REQUEST['resource']) >= '11' )){
+		header("Location: ./index.php?&resource");
+	}
+	
+	//check for a valid time
+	if(!(isset($_REQUEST['']))){
+		header("Location: ./index.php?&time");
+	}
 
-//check for an empty end date
-if($end_date == ""){
- $end_date = $_REQUEST['start_date'];
-}
+	//check for an empty start date
+	if($start_date == ""){
+		header("Location: ./index.php?&nodate");
+	}
+	
+
+	//check for an empty end date
+	if($end_date == ""){
+		$end_date = $_REQUEST['start_date'];
+	}
 
 //convert dates to Y-m-d format
 $start_date = date("Y-m-d", strtotime($start_date));
@@ -83,14 +112,14 @@ if($fail == false){
 $dbc->close();
 
 //Redirect the user to list.php
-if(isset($_REQUEST['debug']) || $faile == true){
+if(isset($_REQUEST['debug']) || $fail == true){
  echo '<br />';
  
  if(isset($_REQUEST['debug'])){
   echo '<b>Debug mode:</b> on<br />';
   echo '<br /><b>Query:</b><br />'.$query;
  }else{
-  echo '<span style="color: red;"><b>ERROR: </b>The insert statement has failed.</span><br />';
+  echo '<span style="color: red;"><b>ERROR: </b>The insert statement has failed. </span><br />';
  }
  
  echo '<br />';

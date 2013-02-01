@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-  <script src="./js/test.js"></script>
    
   <script>
   $(function() {                                
@@ -37,7 +36,7 @@
  
  <body>
  
-  <form action="insert.php" method="get" onsubmit="return validate()" name="form">
+  <form action="verifiy.php" method="get" onsubmit="return validate()" name="form">
   
    <fieldset>
    
@@ -140,18 +139,42 @@
 	<label>Start Date:</label><br /><input type="text" id="start_date" name="start_date" /> <label id="days">More than one day?</label> <input type="checkbox" id="multi" onclick="test()"/><br />
   	<label id="test" style="display: none;">End Date:</label><input type="text" id="end_date" name="end_date"  style="display: none;" /><br />
 	</p>
-	
-	Debug: <input type="checkbox" name="debug" value="debug" /><br />
-	
+
 	<input type="submit" value="Request" />
 	
 	<?php
-	//echo out errors for improper data:
+	//Echo out errors for improper data:
 	
-	//no date
-	if(isset($_REQUEST['nodate'])){
-		echo '<span style="color: red">You must input a start date.</span>';
+	//Sales_Status issues
+	if(isset($_REQUEST['bool'])){
+		echo '<span style="color: red">You must input a valid Sales Status.</span>';
 	}
+	
+	//Project Manager issues
+	if(isset($_REQUEST['manager'])){
+		echo '<span style="color: red">You must input a valid Manager.</span>';
+	}
+	
+	//Project_id issues
+	if(isset($_REQUEST['projectid'])){
+		echo '<span style="color: red">You must input a valid Project ID.</span>';
+	}
+	
+	//Project Resource Issues
+	if(isset($_REQUEST['resource'])){
+		echo '<span style="color: red">You must input a valid Resource.</span>';
+	}
+	
+	//Time issues
+	if(isset($_REQUEST['time'])){
+		echo '<span style="color: red">You must input a valid Time.</span>';
+	}
+	
+	//No Start Date
+	if(isset($_REQUEST['nodate'])){
+		echo '<span style="color: red">You must input a Start Date.</span>';
+	}
+	
 	
 	?>
 	

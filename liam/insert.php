@@ -16,8 +16,18 @@ $fail = false; //flag to prevent running query
 
 //check for invalid user inputs
 	
+	//make the sales_status be boolean
+	$sales_status = 1;
+	if($_REQUEST['sales_status'] == '1'){
+		$sales_status = true;
+	}
+	
+	if($_REQUEST['sales_status'] == '0'){
+		$sales_status = false;
+	}
+	
 	//check for a valid sales status
-	if(!(is_numeric($_REQUEST['sales_status']))){
+	if(!(is_bool($sales_status))){
 		header("Location: ./index.php?&bool");
 	}
 	
@@ -29,7 +39,6 @@ $fail = false; //flag to prevent running query
 	//check for a valid project id
 	if(!(is_numeric($_REQUEST['project_id'])) && !(strlen($_REQUEST['project_id']) >= '11' )){
 		header("Location: ./index.php?&projectid");
-		echo $_REQUEST['project_id'].strlen($_REQUEST['project_id']);
 	}
 	
 	//check for a valid resource
@@ -37,13 +46,13 @@ $fail = false; //flag to prevent running query
 		header("Location: ./index.php?&resource");
 	}
 	
-	//check for a valid time
-	if(!(isset($_REQUEST['']))){
+	//check for a time
+	if(!(isset($_REQUEST['time']))){
 		header("Location: ./index.php?&time");
 	}
-
+	
 	//check for an empty start date
-	if($start_date == ""){
+	if($start_date == ''){
 		header("Location: ./index.php?&nodate");
 	}
 	

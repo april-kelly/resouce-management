@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-  <script src="./js/test.js"></script>
    
   <script>
   $(function() {                                
@@ -37,7 +36,7 @@
  
  <body>
  
-  <form action="verifiy.php" method="get" onsubmit="return validate()" name="form">
+  <form action="insert.php" method="get" onsubmit="return validate()" name="form">
   
    <fieldset>
    
