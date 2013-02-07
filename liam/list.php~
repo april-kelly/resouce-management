@@ -1,11 +1,14 @@
 <?php
+//Include the data object
+include('data.php');
+
 //Force csv download (if applicable)
    $file = "resources.csv";
    if(isset($_REQUEST['csv'])){
     header('Content-Type: application/octet-stream');
     header("Content-Transfer-Encoding: text/csv"); 
     header("Content-disposition: attachment; filename=\"".$file."\"");
-   }else{
+   }elseif(isset($_REQUEST['edit'])){}{
 ?>
 <html>
 <head>
@@ -25,18 +28,53 @@ table{
 <table border="1">
 <tr>
 	<td>
-	  <a href="?c=1&o=1"><img src="./images/up.png" title="Order by index ascending" /></a>
+	  <a href="?c=1&o=1"><img src="./images/up.png" title="Order by Index ascending" /></a>
 	  <b>Index:</b>
-	  <a href="?c=1&o=2"><img src="./images/down.png" title="Order by index descending" /></a>
+	  <a href="?c=1&o=2"><img src="./images/down.png" title="Order by Index descending" /></a>
 	</td>
 	
-	<td><b>Project_ID:</b></td>
-	<td><b>Manager:</b></td>
-	<td><b>Start_Date:</b></td>
-	<td><b>End_Date:</b></td>
-	<td><b>Time:</b></td>
-	<td><b>Resource:</b></td>
-	<td><b>Sales_Status:</b></td>
+	<td>
+	  <a href="?c=2&o=1"><img src="./images/up.png" title="Order by Project ID ascending" /></a>
+	  <b>Project ID:</b>
+	  <a href="?c=2&o=2"><img src="./images/down.png" title="Order by Project ID descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=3&o=1"><img src="./images/up.png" title="Order by Manager ascending" /></a>
+	  <b>Manager:</b>
+	  <a href="?c=3&o=2"><img src="./images/down.png" title="Order by Manager descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=4&o=1"><img src="./images/up.png" title="Order by Start Date ascending" /></a>
+	  <b>Start Date:</b>
+	  <a href="?c=4&o=2"><img src="./images/down.png" title="Order by Start Date descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=5&o=1"><img src="./images/up.png" title="Order by End Date ascending" /></a>
+	  <b>End Date:</b>
+	  <a href="?c=5&o=2"><img src="./images/down.png" title="Order by End Date descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=6&o=1"><img src="./images/up.png" title="Order by Time ascending" /></a>
+	  <b>Time:</b>
+	  <a href="?c=6&o=2"><img src="./images/down.png" title="Order by Time descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=7&o=1"><img src="./images/up.png" title="Order by Resource ascending" /></a>
+	  <b>Resource:</b>
+	  <a href="?c=7&o=2"><img src="./images/down.png" title="Order by Resource descending" /></a>
+	</td>
+	
+	<td>
+	  <a href="?c=8&o=1"><img src="./images/up.png" title="Order by Sales Status ascending" /></a>
+	  <b>Sales Status:</b>
+	  <a href="?c=8&o=2"><img src="./images/down.png" title="Order by Sales Status descending" /></a>
+	</td>
+	
 </tr>
 <?php
    }
@@ -102,22 +140,26 @@ table{
 		$query .= $order;
 	
 	}
-
 	
-
+	//Query for a delete
+	if(isset($_REQUEST['rm'])){
 		
-
+		//Delete query
+		$delete = 'DELETE FROM `projects` WHERE `index`='.$_REQUEST['rm'];
+		
+		//Run the query
+		$dbc = new db;
+		$dbc->connect();
+		$project = $dbc->delete($delete);
+		$dbc->close();
+		
+		//redirect to the normal view
+		header('Location: ?edit');
+		
+	}
 	
-	//if(isset($_REQUEST['by']) && isset($_REQUEST['column']) && isset($_REQUEST['order']) ){
-	//	$query = $query.$_REQUEST['by']." ".$_REQUEST['column']." ".$_REQUEST['order'];
-	//}
-	
-	echo $query;
 	//csv header
-	$csv = "Index:,Project_id:,Manager:,Start_Date:,End_Date:,Time:,Resource:,Sales_Status:\r\n";
-	
-	//Include the data object
-	include('data.php');
+	$csv = "Index:,Project_id:,Manager:,Start_Date:,End_Date:,Time:,Resource:,Sales Status:\r\n";
 	
 	//connection for projects
 	$dbc = new db;
@@ -198,6 +240,12 @@ table{
 			
 			
 			echo '<td>',$status,'</td>';
+			
+			//show delete options if editing is enabled
+			if(isset($_REQUEST['edit'])){
+				echo '<td><a href="?rm='.$project['index'].'"><img src="./images/x.jpg" height="23" width="32" title="Delete this request"></a></td>';
+			}
+			
 			echo '</tr>';
 		}
 		
@@ -234,15 +282,12 @@ table{
 	//Don't echo out the table if the user is downloading a csv version
 	if(!(isset($_REQUEST['csv']))){
 ?>
-<table
-<form action="./list.php" method="get">
-	<label><b>Page:</b></label>
-	<input type="submit" value="First" name="first">
-	<input type="submit" value="Previous" name="previous">
-	<input type="submit" value="Next" name="next">
-	<input type="submit" value="Last" name="Last"><br />
+<table>
+<form action="?&" method="get">
 	<label><b>Download: </b></label>
 	<input type="submit" value="Download as csv" name="csv">
+	<label><b>Edit: </b></label>
+	<input type="submit" value="<?php if(isset($_REQUEST['edit'])){ echo 'Done'; }else{ echo 'Edit Records'; } ?>" name="<?php if(isset($_REQUEST['edit'])){ echo ''; }else{ echo 'edit'; } ?>">
 </form>
 </body>
 </html>
