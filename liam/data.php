@@ -150,6 +150,18 @@ function query($query)
 	
 }
 
+//Provide a quick insert statement
+function insert($query){
+	
+	$dbc = new db;			//set up object
+	$dbc->connect();		//connect using defaults
+	$result = $dbc->insert($query);	//run the query
+	$dbc->close();			//close the database connection
+	
+	return $result;
+	
+}
+
 //verify that a peice of data is in the database
 function verify($table, $field, $data)
 {
