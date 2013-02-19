@@ -61,8 +61,11 @@ class db
 				$array[] = $row;
 			}
 			
-			return $array;	//return results
+			if(!(empty($array))){
+				return $array;	//return results
+			}
 			
+			return;
 
 		}
 		

@@ -1,3 +1,56 @@
-<img src="./images/up.png"/><br />
-<img src="./images/down.png" />
+<?php
+//include the data object
+include('data.php');
+/*
+$array = array(
+		"0" => array("resource" => "1", "week" => array(1 => 40, 2 => 42, 3 => 45)),
+		"1" => array("resource" => "3", "week" => array(1 => 40, 2 => 42, 3 => 45))
+	);
 
+//echo var_dump($array);
+echo "Week 3: ",var_dump($array[1]['week'][1]);
+*/
+
+//Fetch the list of resources
+$resource = query("SELECT * FROM people WHERE type='2'");
+
+//Create the $table array and put the resources in it
+$table = array();
+$i = 0;
+foreach($resource as $resource){
+	
+	$table[$i] = array( 'id' => $resource['index'], 'name' => $resource['name'], 'weeks' => array(1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '') );
+	$i++;
+}
+
+//Start putting data into the weeks section
+foreach($table as $table){
+	
+	//Get all projects applicable by resource and week
+	$start_week = '2013-02-10';
+	for($i = 1; $i <= 8; $i++){
+		
+		//Setup dates
+		$date = new DateTime($start_week);
+		$date->add(new DateInterval('P07D'));
+		$week = $date->format('Y-m-d') . "\n";
+		$project = query("SELECT * FROM test WHERE resource='".$table['id']."' AND week_of='".$week."'");
+		
+		$hours = '';
+		//count the hours up for each week
+		foreach($project as $project){
+			
+			$hours = $hours + $project['time'];
+			
+		}
+		
+		//Stuff the hours into the table
+		$table['week'][$i] = $hours;
+		
+	}
+	
+}
+
+//var_dump($table);
+
+?>
