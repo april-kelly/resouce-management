@@ -10,14 +10,24 @@
 include('data.php');
 
 //preset variables
-$start_date = $_REQUEST['start_date'];
-$end_date = $_REQUEST['end_date'];
+$start_date = $_REQUEST['start_date']; //rename to weekof upon completion of debugging
+//$end_date = $_REQUEST['end_date'];
 $fail = false; //flag to prevent running query
 
 //check for invalid user inputs
 	
+	//make the sales_status be boolean
+	$sales_status = 1;
+	if($_REQUEST['sales_status'] == '1'){
+		$sales_status = true;
+	}
+	
+	if($_REQUEST['sales_status'] == '0'){
+		$sales_status = false;
+	}
+	
 	//check for a valid sales status
-	if(!(is_numeric($_REQUEST['sales_status']))){
+	if(!(is_bool($sales_status))){
 		header("Location: ./index.php?&bool");
 	}
 	
@@ -29,7 +39,6 @@ $fail = false; //flag to prevent running query
 	//check for a valid project id
 	if(!(is_numeric($_REQUEST['project_id'])) && !(strlen($_REQUEST['project_id']) >= '11' )){
 		header("Location: ./index.php?&projectid");
-		echo $_REQUEST['project_id'].strlen($_REQUEST['project_id']);
 	}
 	
 	//check for a valid resource
@@ -37,36 +46,49 @@ $fail = false; //flag to prevent running query
 		header("Location: ./index.php?&resource");
 	}
 	
-	//check for a valid time
-	if(!(isset($_REQUEST['']))){
+	//check for a time
+	if(!(isset($_REQUEST['time']))){
 		header("Location: ./index.php?&time");
 	}
-
+	
 	//check for an empty start date
-	if($start_date == ""){
+	if($start_date == ''){
 		header("Location: ./index.php?&nodate");
 	}
 	
 
 	//check for an empty end date
-	if($end_date == ""){
+	/*if($end_date == ""){
 		$end_date = $_REQUEST['start_date'];
-	}
+	}*/
 
 //convert dates to Y-m-d format
 $start_date = date("Y-m-d", strtotime($start_date));
-$end_date = date("Y-m-d", strtotime($end_date));
+//$end_date = date("Y-m-d", strtotime($end_date));
 
 //connect to the database	
 $dbc = new db;
 $dbc->connect();
+
+//fill the hours array
+$hours = array( 
+		"sunday"    => $REQUEST['sunday'],
+		"monday"    => $REQUEST['monday'],
+		"tuesday"   => $REQUEST['tuesday'],
+		"wednesday" => $REQUEST['wednesday'],
+		"thursday"  => $REQUEST['thursday'],
+		"friday"    => $REQUEST['friday'],
+		"saturday"  => $REQUEST['saturday'],
+		);
+		
 
 //sanitize the user inputs
 $project_id   = $dbc->sanitize($_REQUEST['project_id']);
 $manager      = $dbc->sanitize($_REQUEST['manager']);
 $start_end    = $dbc->sanitize($start_date);
 $end_date     = $dbc->sanitize($end_date);
-$time         = $dbc->sanitize($_REQUEST['time']);
+//$time         = $dbc->sanitize($_REQUEST['time']);
+$hours	      = $dbc->sanitize($hours);
 $resource     = $dbc->sanitize($_REQUEST['resource']);
 $sales_status = $dbc->sanitize($_REQUEST['sales_status']);
 
@@ -82,7 +104,28 @@ if(!(isset($_REQUEST['time']))){ $fail = true; }
 if(!(isset($_REQUEST['resource']))){ $fail = true; }
 if(!(isset($_REQUEST['sales_status']))){ $fail = true; }
 
-//Query
+//Query(old)
+/*$query = "INSERT INTO `resources`.`projects`
+		(`index`,
+		`project_id`,
+		`manager`,
+		`start_date`,
+		`end_date`,
+		`time`,
+		`resource`,
+		`sales_status`)
+		VALUES
+		(NULL,
+		'".$project_id."',
+		'".$manager."',
+		'".$start_date."',
+		'".$end_date."',
+		'".$time."',
+		'".$resource."',
+		'".$sales_status."')";
+*/
+
+//Query(new)
 $query = "INSERT INTO `resources`.`projects`
 		(`index`,
 		`project_id`,
@@ -101,7 +144,6 @@ $query = "INSERT INTO `resources`.`projects`
 		'".$time."',
 		'".$resource."',
 		'".$sales_status."')";
-
 
 //Query
 if($fail == false){

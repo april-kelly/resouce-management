@@ -8,7 +8,7 @@ include('data.php');
     header('Content-Type: application/octet-stream');
     header("Content-Transfer-Encoding: text/csv"); 
     header("Content-disposition: attachment; filename=\"".$file."\"");
-   }elseif(isset($_REQUEST['edit'])){}{
+   }else{
 ?>
 <html>
 <head>
