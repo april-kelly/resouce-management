@@ -3,27 +3,24 @@
 /*
 	Database Insert Script
 	Programmer: Liam Kelly
-	Last Modified: 1/31/2013
+	Last Modified: 2/22/2013
 */
 
 //Include the data object
 include('data.php');
 
 //Preset variables:
-//$start_date = $_REQUEST['start_date'];
-//$end_date = $_REQUEST['end_date'];
-$week_of = $_REQUEST['start_date'];  //rename to weekof upon completion of debugging
+$week_of = $_REQUEST['start_date'];  //rename to week_of upon completion of debugging
 
 //Debugging Flags:
-$debug = true; 		//flag to prevent running query
-$valid = true;		//flag to prevent user data validation
-$sanitize = false;	//flag to prevent user data sanitation (use with caution)
-$dump = true;		//flag to enable userdate dumping ($debug must be true)
-$fail = false;		//flag to alert the user the script has failed
+$debug = false;		//flag to prevent running query					Default: false
+$valid = true;		//flag to prevent user data validation				Default: true
+$sanitize = true;	//flag to prevent user data sanitation (use with caution)	Default: true
+$fail = false;		//flag to terminate the insert if something fails		Default: false
 
 
 //check for invalid user inputs
-if($debug == false){
+if($valid == false){
 		
 	//make the sales_status be boolean
 	$sales_status = 1;
@@ -65,45 +62,42 @@ if($debug == false){
 		header("Location: ./index.php?&nodate");
 	}
 	
+	//check for an empty priority
+	if(!(is_numeric($_REQUEST['priority'])) && !(strlen($_REQUEST['priority']) >= '1' )){
+		header("Location: ./index.php?&priority");
+	}
+	
 }
-	//check for an empty end date
-	/*if($end_date == ""){
-		$end_date = $_REQUEST['start_date'];
-	}*/
 
-//convert dates to Y-m-d format
-/*$start_date = date("Y-m-d", strtotime($start_date));
-$end_date = date("Y-m-d", strtotime($end_date));
-*/
+//convert date(s) to Y-m-d format
 $week_of = date("Y-m-d", strtotime($week_of));
+                                                  
 
+      
 //connect to the database	
 $dbc = new db;
 $dbc->connect();
 
-//fill the hours array
-$hours = serialize(array( 
-		"sunday"    => $_REQUEST['sunday'],
-		"monday"    => $_REQUEST['monday'],
-		"tuesday"   => $_REQUEST['tuesday'],
-		"wednesday" => $_REQUEST['wednesday'],
-		"thursday"  => $_REQUEST['thursday'],
-		"friday"    => $_REQUEST['friday'],
-		"saturday"  => $_REQUEST['saturday'],
-		));
-		
 
 //sanitize the user inputs
-if($sanitize == false){
-	$project_id   = $dbc->sanitize($_REQUEST['project_id']);
-	$manager      = $dbc->sanitize($_REQUEST['manager']);
-	//$start_end    = $dbc->sanitize($start_date);
-	//$end_date     = $dbc->sanitize($end_date);
-	//$time         = $dbc->sanitize($_REQUEST['time']);
-	//$hours	      = $dbc->sanitize($hours);
-	$resource     = $dbc->sanitize($_REQUEST['resource']);
-	$sales_status = $dbc->sanitize($_REQUEST['sales_status']);
-	$priority     = '';//$dbc->sanitize($_REQUEST['priority']);
+if($sanitize == true){
+	
+	$project_id   		= $dbc->sanitize($_REQUEST['project_id']);
+	$manager     		= $dbc->sanitize($_REQUEST['manager']);
+	$resource    		= $dbc->sanitize($_REQUEST['resource']);
+	$sales_status 		= $dbc->sanitize($_REQUEST['sales_status']);
+	$priority     		= $dbc->sanitize($_REQUEST['priority']);
+	
+	//sanitize, fill and serialize the hours array
+	$hours = serialize(array( 
+		"sunday"    	=> $dbc->sanitize($_REQUEST['sunday']),
+		"monday"   	=> $dbc->sanitize($_REQUEST['monday']),
+		"tuesday"   	=> $dbc->sanitize($_REQUEST['tuesday']),
+		"wednesday" 	=> $dbc->sanitize($_REQUEST['wednesday']),
+		"thursday"  	=> $dbc->sanitize($_REQUEST['thursday']),
+		"friday"    	=> $dbc->sanitize($_REQUEST['friday']),
+		"saturday"  	=> $dbc->sanitize($_REQUEST['saturday']),
+		));
 }
 
 //verifiy the resource and manger requested exists
@@ -121,27 +115,6 @@ if($valid == false){
 	if(!(isset($_REQUEST['resource']))){ $fail = true; }
 	if(!(isset($_REQUEST['sales_status']))){ $fail = true; }
 }
-
-//Query(old)
-/*$query = "INSERT INTO `resources`.`projects`
-		(`index`,
-		`project_id`,
-		`manager`,
-		`start_date`,
-		`end_date`,
-		`time`,
-		`resource`,
-		`sales_status`)
-		VALUES
-		(NULL,
-		'".$project_id."',
-		'".$manager."',
-		'".$start_date."',
-		'".$end_date."',
-		'".$time."',
-		'".$resource."',
-		'".$sales_status."')";
-*/
 
 //Query(new)
 $query = "INSERT INTO `resources`.`test`
@@ -171,25 +144,36 @@ if($fail == false){
 //Disconnect
 $dbc->close();
 
-//Redirect the user to list.php
+//Debugging and redirection
 if(isset($_REQUEST['debug']) || $fail == true || $debug == true){
- echo '<br />';
- 
- if($debug == true){
+
+ //Echo out the Debugging page
+ if($debug == true && $fail == false){ 
   echo '<h2>Debug mode:</h2><br /><hr>';
   echo '<b>Query:</b><br />'.$query.'<hr>';
-  echo '<b>Flags:</b><br />Fail: '.$fail.'<br />Debug: '.$debug.'<br />Valid: '.$valid.'<br />Sanitize: '.$sanitize.'<br />Dump: '.$dump.'<hr />';
+  echo '<b>Flags:</b><br />Fail: '.$fail.'<br />Debug: '.$debug.'<br />Valid: '.$valid.'<br />Sanitize: '.$sanitize.'<hr />';
   echo '<b>Values:</b><br />project_id: '.$project_id.'<br />manager: '.$manager.'<br />week_of: '.$resource.'<br />hours: '.$week_of.'<br />priority: '.$priority.'<br />sales_status: '.$sales_status.'<hr />';
-  echo '<p style="text-align: center;"><a href="./new_list.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>';
- }elseif(isset($_REQUEST['debug'])){
-  echo '<h2>Debug mode:</h2><br />For security reasons debug mode must be enable by setting the $debug flag to true.<hr>';
- }else{
-  echo '<span style="color: red;"><b>ERROR: </b>The insert statement has failed. </span><br />';
+  echo '<p style="text-align: center;"><a href="./week.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>'; 
+ }                           
+ 
+ //Echo out an error message if the user tries to enter debugging mode with out setting the flag first               
+ if(isset($_REQUEST['debug']) && $fail == false){
+  echo '<h2>Debug mode:</h2><br />For security reasons debug mode must be enable by setting the $debug flag to true.<hr>';  
  }
  
- echo '<br />';
+ //Aleart the user that their query has failed                                                      
+ if($fail == true){
+  echo '<span style="color: red;"><h2>ERROR: </h2>The insert statement has failed. </span><br /><hr />';
+  echo '<br /><br /><h3>Debugging info:</h3><br />';
+  echo '<b>Query:</b><br />'.$query.'<hr>';
+  echo '<b>Flags:</b><br />Fail: '.$fail.'<br />Debug: '.$debug.'<br />Valid: '.$valid.'<br />Sanitize: '.$sanitize.'<hr />';
+  echo '<b>Values:</b><br />project_id: '.$project_id.'<br />manager: '.$manager.'<br />week_of: '.$resource.'<br />hours: '.$week_of.'<br />priority: '.$priority.'<br />sales_status: '.$sales_status.'<hr />';
+  echo '<p style="text-align: center;"><a href="./week.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>'; 
+ }
+
+//otherwise redirect the user to the results page
 }else{
- header('Location: ./new_list.php');
+ header('Location: ./week.php');
 }
 
 ?>

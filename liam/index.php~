@@ -87,7 +87,7 @@
 	</select>
 	<br />
 	
-    <label for="time">Time Requested: </label>
+    <!-- <label for="time">Time Requested: </label>
 	
     <select name="time">
 	  <option value="">Select One:</option>
@@ -133,12 +133,46 @@
 	  <option value="20:00">20</option>
 	  <option value="20:30">20.5</option>
 	</select>
-	<br />
+	<br />-->
 	
 	<p>
-	<label>Start Date:</label><br /><input type="text" id="start_date" name="start_date" /> <label id="days">More than one day?</label> <input type="checkbox" id="multi" onclick="test()"/><br />
-  	<label id="test" style="display: none;">End Date:</label><input type="text" id="end_date" name="end_date"  style="display: none;" /><br />
-	</p>
+	<label>Week of: <!--Start Date:--></label><br /><input type="text" id="start_date" name="start_date" /> <label id="days"><!--More than one day?</label> <input type="checkbox" id="multi" onclick="test()"/><br />
+  	<label id="test" style="display: none;">End Date:</label><input type="text" id="end_date" name="end_date"  style="display: none;" /><br />-->
+	<br /><br />
+	<label>Hours:</label>
+	<br />
+	<table border="1">
+	 <tr>
+	  <td>Sun: </td>
+	  <td>Mon: </td>
+	  <td>Tues:</td>
+	  <td>Wed: </td>
+	  <td>Thur:</td>
+	  <td>Fri: </td>
+	  <td>Sat: </td>
+	 </tr>
+	 
+	 <tr>
+	  <td><input type="text" name="sunday"    value="0" size="4" maxlength="4" /></td>
+	  <td><input type="text" name="monday"    value="0" size="4" maxlength="4" /></td>
+	  <td><input type="text" name="tuesday"   value="0" size="4" maxlength="4" /></td>
+	  <td><input type="text" name="wednesday" value="0" size="4" maxlength="4"  /></td>
+	  <td><input type="text" name="thursday"  value="0" size="4" maxlength="4"  /></td>
+	  <td><input type="text" name="friday"    value="0" size="4" maxlength="4"  /></td>
+	  <td><input type="text" name="saturday"  value="0" size="4" maxlength="4"  /></td>
+	 </tr>
+	 
+	</table>
+  	</p>
+  	
+  	<label>Priority</label>
+  	<select name="priority">
+  	   <option value="3">Low</option>
+  	   <option value="2">Medium</option>
+  	   <option value="1">High</option>
+  	   <option value="0">Very High</option>
+  	</select>
+  	<br />
 
 	<input type="submit" value="Request" />
 	

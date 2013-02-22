@@ -76,30 +76,7 @@ table{
 		$people[$result['index']]['name'] = $result['name'];
 		$people[$result['index']]['type'] = $result['type'];
 	}
-
-	/*$sort = $project;
-	ksort($sort);
-	foreach($sort as $key['week_of'] => $val){
-		echo '<br /><b>Week of: '.$project['week_of'].'</b><br />';
-		?>
-		  <table border="1">
-  
-   <tr>
-    <td>Resource</td>
-    <td>Manager</td>
-    <td>Project id:</td>
-    <td>Proirity</td>
-    <td>Sunday</td>
-    <td>Monday</td>
-    <td>Tuesday</td>
-    <td>Wednesday</td>
-    <td>Thursday</td>
-    <td>Friday</td>
-    <td>Saturday</td>
-    <td>Sales Status</td>
-   </tr>
-		<?php
-	}*/
+	
 	$past_week = '';
 	$i = '0';
 	$sort = $project;
@@ -115,17 +92,17 @@ table{
 		<table border="1">
 		<tr>
 		 <td>Resource</td>
-		 <!--<td>Manager</td>-->
-		 <td>Project id:</td>
-		 <td>Priority</td>
-		 <td>Sunday</td>
+		 <!--<td>Project id:</td>
+		 <td>Priority</td>-->
+		 <td>Hours</td>
+		 <!--<td>Sunday</td>
 		 <td>Monday</td>
 		 <td>Tuesday</td>
 		 <td>Wednesday</td>
 		 <td>Thursday</td>
 		 <td>Friday</td>
 		 <td>Saturday</td>
-		 <td>Sales Status</td>
+		 <td>Sales Status</td>-->
 		</tr>
 		<?php
 		}
@@ -177,15 +154,17 @@ table{
 				echo '<td><span style="color: red;">[Error]</span></td>';
 			}
 			
-			//echo out the manager(remove?)
-			/*if($manager == true){
-				echo '<td>',$people[$project['manager']]['name'],'</td>';
-			}else{
-				echo '<td><span style="color: red;">[Error]</span></td>';
-			}*/
+			//add up all of the hours for the week
+			$hours = $time['sunday']
+				+$time['monday']
+				+$time['tuesday']
+				+$time['wednesday']
+				+$time['thursday']
+				+$time['friday']
+				+$time['saturday'];
 			
 			//echo out the rest of the table
-			echo '<td>',$project['project_id'],'</td>';
+			/*echo '<td>',$project['project_id'],'</td>';
 			echo '<td>',$priority,'</td>';
 			echo '<td>',$time['sunday'],'</td>';
 			echo '<td>',$time['monday'],'</td>';
@@ -194,7 +173,8 @@ table{
 			echo '<td>',$time['thursday'],'</td>';
 			echo '<td>',$time['friday'],'</td>';
 			echo '<td>',$time['saturday'],'</td>';
-			echo '<td>',$status,'</td>';
+			echo '<td>',$status,'</td>';*/
+			echo '<td>',$hours,'</td>';
 
 			//show delete options if editing is enabled
 			if(isset($_REQUEST['edit'])){

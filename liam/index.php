@@ -87,54 +87,6 @@
 	</select>
 	<br />
 	
-    <!-- <label for="time">Time Requested: </label>
-	
-    <select name="time">
-	  <option value="">Select One:</option>
-	  <option value="00:30">.5</option>
-	  <option value="01:00">1</option>
-	  <option value="01:30">1.5</option>
-	  <option value="02:00">2</option>
-	  <option value="02:30">2.5</option>
-	  <option value="03:00">3</option>
-	  <option value="03:30">3.5</option>
-	  <option value="04:00">4</option>
-	  <option value="04:30">4.5</option>
-	  <option value="05:00">5</option>
-	  <option value="05:30">5.5</option>
-	  <option value="06:00">6</option>
-	  <option value="06:30">6.5</option>
-	  <option value="07:00">7</option>
-	  <option value="07:30">7.5</option>
-	  <option value="08:00">8</option>
-	  <option value="08:30">8.5</option>
-	  <option value="09:00">9</option>
-	  <option value="09:30">9.5</option>
-	  <option value="10:00">10</option>
-	  <option value="10:30">10.5</option>
-	  <option value="11:00">11</option>
-	  <option value="11:30">11.5</option>
-	  <option value="12:00">12</option>
-	  <option value="12:30">12.5</option>
-	  <option value="13:00">13</option>
-	  <option value="13:30">13.5</option>
-	  <option value="14:00">14</option>
-	  <option value="14:30">14.5</option>
-	  <option value="15:00">15</option>
-	  <option value="15:30">15.5</option>
-	  <option value="16:00">16</option>
-	  <option value="16:30">16.5</option>
-	  <option value="17:00">17</option>
-	  <option value="17:30">17.5</option>
-	  <option value="18:00">18</option>
-	  <option value="18:30">18.5</option>
-	  <option value="19:00">19</option>
-	  <option value="19:30">19.5</option>
-	  <option value="20:00">20</option>
-	  <option value="20:30">20.5</option>
-	</select>
-	<br />-->
-	
 	<p>
 	<label>Week of: <!--Start Date:--></label><br /><input type="text" id="start_date" name="start_date" /> <label id="days"><!--More than one day?</label> <input type="checkbox" id="multi" onclick="test()"/><br />
   	<label id="test" style="display: none;">End Date:</label><input type="text" id="end_date" name="end_date"  style="display: none;" /><br />-->
@@ -164,6 +116,15 @@
 	 
 	</table>
   	</p>
+  	
+  	<label>Priority</label>
+  	<select name="priority">
+  	   <option value="3">Low</option>
+  	   <option value="2">Medium</option>
+  	   <option value="1">High</option>
+  	   <option value="0">Very High</option>
+  	</select>
+  	<br />
 
 	<input type="submit" value="Request" />
 	
@@ -199,7 +160,11 @@
 	if(isset($_REQUEST['nodate'])){
 		echo '<span style="color: red">You must input a Start Date.</span>';
 	}
-	
+
+	//No Start Date
+	if(isset($_REQUEST['priority'])){
+		echo '<span style="color: red">You must input a Priority Level.</span>';
+	}
 	
 	?>
 	
