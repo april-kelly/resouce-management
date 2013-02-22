@@ -92,8 +92,8 @@ table{
 		<table border="1">
 		<tr>
 		 <td>Resource</td>
-		 <!--<td>Project id:</td>
-		 <td>Priority</td>-->
+		 <td>Project id:</td>
+		 <!--<td>Priority</td>-->
 		 <td>Hours</td>
 		 <!--<td>Sunday</td>
 		 <td>Monday</td>
@@ -164,8 +164,8 @@ table{
 				+$time['saturday'];
 			
 			//echo out the rest of the table
-			/*echo '<td>',$project['project_id'],'</td>';
-			echo '<td>',$priority,'</td>';
+			echo '<td>',$project['project_id'],'</td>';
+			/*echo '<td>',$priority,'</td>';
 			echo '<td>',$time['sunday'],'</td>';
 			echo '<td>',$time['monday'],'</td>';
 			echo '<td>',$time['tuesday'],'</td>';
