@@ -1,3 +1,6 @@
+  <table border="1">
+
+
 <?php
 //include the data object
 include('data.php');
@@ -10,6 +13,32 @@ $dbc->connect();
 //Fetch the list of resources
 $people = $dbc->query('SELECT * FROM people');	//Get the table of people
 
+//build a list of weeks
+
+//get the current or last sunday
+if(date( "w", date("U")) == '0'){
+	$current = date('Y-m-d');
+}else{
+	$current = date('Y-m-d', strtotime('Last Sunday', time()));
+}
+
+$weeks = array();
+$weeks[1] = $current;
+for($i = 2; $i <= 8; $i++){
+	$weeks[$i] = $current = date('Y-m-d',strtotime($current) + (24*3600*7));
+}
+
+//echo out the table header
+echo '<tr>';
+echo '<td>Resource</td>';
+foreach($weeks as $weeks){
+	echo '<td>'.$weeks.'</td>';
+}
+echo '</tr>';
+//echo '<!--';
+//build a list of people
+
+//Start processing for each person
 foreach($people as $people){
 	
 	$project = $dbc->query("SELECT * FROM test WHERE resource='".$people['index']."' ");	//Get the table of people
@@ -20,12 +49,17 @@ foreach($people as $people){
 	$hours = '';
 	if(!(empty($project))){
 	//echo out the results
+		
+	echo '<tr>';
+	echo '<td>'.$people['name'].'</td>';
+	echo '</tr>';
+	
 	foreach($project as $project)
 	{
 		//Determine if the week of: label and table header should be spit out
 		if(!($past_week == $project['week_of'])){
-			echo '<br /><b>Week of: '.$project['week_of'].'</b><br />';
-			echo 'Resource: '.$people['name'].'<br />';
+			//echo '<br /><b>Week of: '.$project['week_of'].'</b><br />';
+			//echo 'Resource: '.$people['name'].'<br />';
 		
 			//Process the hours
 		
@@ -50,16 +84,16 @@ foreach($people as $people){
 			
 				//If another record exists see if it is of the same week as the current record
 				if(!($project['week_of'] == $sort[$j]['week_of'])){
-					echo '</tr><table>';
+					//echo '</tr><table>';
 				}
 			
 			}else{
-				echo '</tr><table>';
+				//echo '</tr><table>';
 			}
 		}
 		
 		//echo out the hours
-		echo 'Hours: '.$hours.'<br />';
+		//echo 'Hours: '.$hours.'<br />';
 		
 		//empty the hours variable
 		$hours = '';
@@ -69,6 +103,7 @@ foreach($people as $people){
 		$i++;
 		
 	}
+
 	}
 
 
@@ -81,3 +116,4 @@ foreach($people as $people){
 $dbc->close();
 	
 ?>
+</table>
