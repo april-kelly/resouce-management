@@ -19,7 +19,8 @@ for($i = 2; $i <= 8; $i++){
 }
 $count = count($weeks);
 
-var_dump($weeks);
+//Define variable
+$hours = '';
 
 //include the data object
 include('data.php');
@@ -40,9 +41,9 @@ foreach($people as $people)
 	//Build the table
 	$table[$people['index']]['id'] = $people['index'];
 	
-	for($i = $count; $i >= 0; $i--){
+	for($i = $count; $i >= 1; $i--){
 		
-		$table[$people['index']][$i] = '';
+		$table[$people['index']][$i] = '0';
 		
 	}
 	
@@ -56,9 +57,35 @@ foreach($people as $people)
 			
 			foreach($project as $project){
 				
-				for($i = $count; $i >= 0; $i--){
+				for($i = $count; $i >= 1; $i--){
+					//echo $project['week_of'].' = ';
+					//echo $weeks[$i]."\r\n";
+					if($project['week_of'] == $weeks[$i]){
+						
+						//Process the hours
+		
+						//unserialize the hours array
+						$time = unserialize($project['time']);
+		
+						//add everything up
+						$hours = $hours + $time['sunday']
+								+ $time['monday']
+								+ $time['tuesday']
+								+ $time['wednesday']
+								+ $time['thursday']
+								+ $time['friday']
+								+ $time['saturday'];
+						//echo "It happened hours = $hours resource = ".$project['resource']."\r\n";
+								
+						$table[$people['index']][$i] = $hours; 
+						
+						//empty the hours variable
+						$hours = '';
+					}else{
 					
-					$table[$people['index']][$count] = ''; 
+						$table[$people['index']][$i] = '0';
+					
+					}						
 					
 				}
 				
@@ -68,10 +95,8 @@ foreach($people as $people)
 	}
 	
 }
-
-var_dump($table);
-	
-	
+//spit out the table
+//var_dump($table);
 	
 //close the database connection
 $dbc->close();
