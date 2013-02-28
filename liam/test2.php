@@ -1,7 +1,29 @@
-  <table border="1">
+<html>
 
+ <head>
+ 
+ 	<title>Bluetent Resource Management: Monthly View</title>
+ 	
+ 	<style>
+ 	body{
+ 		text-align: center;
+ 	}
+ 	table{
+ 		margin-left: auto;
+ 		margin-right: auto;
+ 	}
+ 	</style>
+ 
+ </head>
+ 
+ <body>
 
+<table border="1">
 <?php
+
+//Define variables
+$hours = '';
+$show = '12';
 
 //build a list of weeks
 
@@ -14,13 +36,10 @@ if(date( "w", date("U")) == '0'){
 
 $weeks = array();
 $weeks[1] = $current;
-for($i = 2; $i <= 8; $i++){
+for($i = 2; $i <= $show; $i++){
 	$weeks[$i] = $current = date('Y-m-d',strtotime($current) + (24*3600*7));
 }
 $count = count($weeks);
-
-//Define variable
-$hours = '';
 
 //include the data object
 include('data.php');
@@ -40,6 +59,7 @@ foreach($people as $people)
 {
 	//Build the table
 	$table[$people['index']]['id'] = $people['index'];
+	$table[$people['index']]['name'] = $people['name'];
 	
 	for($i = $count; $i >= 1; $i--){
 		
@@ -50,56 +70,92 @@ foreach($people as $people)
 	//Get the list of projects for each person
 	$project = $dbc->query("SELECT * FROM test WHERE resource='".$people['index']."' ");
 
-	//Make user the person actually has projects
-	if(!(empty($project))){
-	
 
+	//Make sure the person actually has projects
+	if(!(empty($project))){
 			
-			foreach($project as $project){
+		foreach($project as $project){
+			
+			for($i = $count; $i >= 1; $i--){
 				
-				for($i = $count; $i >= 1; $i--){
-					//echo $project['week_of'].' = ';
-					//echo $weeks[$i]."\r\n";
-					if($project['week_of'] == $weeks[$i]){
-						
-						//Process the hours
+				if($project['week_of'] == $weeks[$i]){
+					
+					//Process the hours
+					
+					//unserialize the hours array
+					$time = unserialize($project['time']);
 		
-						//unserialize the hours array
-						$time = unserialize($project['time']);
-		
-						//add everything up
-						$hours = $hours + $time['sunday']
-								+ $time['monday']
-								+ $time['tuesday']
-								+ $time['wednesday']
-								+ $time['thursday']
-								+ $time['friday']
-								+ $time['saturday'];
-						//echo "It happened hours = $hours resource = ".$project['resource']."\r\n";
+					//add everything up
+					$hours = $hours + $time['sunday']
+							+ $time['monday']
+							+ $time['tuesday']
+							+ $time['wednesday']
+							+ $time['thursday']
+							+ $time['friday']
+							+ $time['saturday'];
 								
-						$table[$people['index']][$i] = $hours; 
+					$table[$people['index']][$i] = $hours; 
 						
-						//empty the hours variable
-						$hours = '';
-					}else{
+					//empty the hours variable
+					$hours = '';
 					
-						$table[$people['index']][$i] = '0';
-					
-					}						
-					
-				}
+				}else{
 				
+					$table[$people['index']][$i] = '0';
+				
+				}						
+					
 			}
+				
+		}
 		
 		
 	}
 	
 }
-//spit out the table
-//var_dump($table);
-	
 //close the database connection
 $dbc->close();
+
+//Echo out the table header
+echo "\t".'<tr>'."\r\n\r\n";
+echo "\t\t".'<td>Resource: </td>'."\r\n";
+foreach($weeks as $weeks){
+	echo "\t\t".'<td>'.$weeks.'</td>'."\r\n";
+}
+echo "\t".'</tr>'."\r\n\r\n";
+
+//echo out each of the rows in the table
+foreach($table as $table){
+	
+	echo "\t".'<tr>'."\r\n";
+	echo "\t\t".'<td>'.$table['name'].'</td>'."\r\n";
+	
+	for($i = 1; $i <= $count; $i++){
+		echo "\t\t".'<td>'.$table[$i].'</td>'."\r\n";
+	}  
+	
+	echo "\t".'</tr>'."\r\n\r\n";
+	
+}
 	
 ?>
 </table>
+
+  </body>
+
+</html>
+<?php
+/*
+	echo "\t\t".'<td>'.$table['1'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['2'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['3'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['4'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['5'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['6'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['7'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['8'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['5'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['6'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['7'].'</td>'."\r\n";
+	echo "\t\t".'<td>'.$table['8'].'</td>'."\r\n";
+*/
