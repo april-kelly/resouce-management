@@ -10,15 +10,13 @@
 include('data.php');
 
 //Preset variables:
-//$start_date = $_REQUEST['start_date'];
-//$end_date = $_REQUEST['end_date'];
 $week_of = $_REQUEST['start_date'];  //rename to week_of upon completion of debugging
 
 //Debugging Flags:
-$debug = true; 		//flag to prevent running query					Default: false
+$debug = false;		//flag to prevent running query					Default: false
 $valid = true;		//flag to prevent user data validation				Default: true
-$sanitize = false;	//flag to prevent user data sanitation (use with caution)	Default: true
-$fail = true;		//flag to terminate the insert if something fails		Default: false
+$sanitize = true;	//flag to prevent user data sanitation (use with caution)	Default: true
+$fail = false;		//flag to terminate the insert if something fails		Default: false
 
 
 //check for invalid user inputs
@@ -69,41 +67,20 @@ if($valid == false){
 		header("Location: ./index.php?&priority");
 	}
 	
-	//chekc for an empty 
-	
 }
-
-//check for an empty end date
-/*if($end_date == ""){
-	$end_date = $_REQUEST['start_date'];
-}*/
 
 //convert date(s) to Y-m-d format
 $week_of = date("Y-m-d", strtotime($week_of));
-
-/*$start_date = date("Y-m-d", strtotime($start_date));
-$end_date = date("Y-m-d", strtotime($end_date));
-*/                                                    
+                                                  
 
       
 //connect to the database	
 $dbc = new db;
 $dbc->connect();
 
-//fill the hours array
-$hours = serialize(array( 
-		"sunday"    => $_REQUEST['sunday'],
-		"monday"    => $_REQUEST['monday'],
-		"tuesday"   => $_REQUEST['tuesday'],
-		"wednesday" => $_REQUEST['wednesday'],
-		"thursday"  => $_REQUEST['thursday'],
-		"friday"    => $_REQUEST['friday'],
-		"saturday"  => $_REQUEST['saturday'],
-		));
-		
 
 //sanitize the user inputs
-if($sanitize == false){
+if($sanitize == true){
 	
 	$project_id   		= $dbc->sanitize($_REQUEST['project_id']);
 	$manager     		= $dbc->sanitize($_REQUEST['manager']);
@@ -176,11 +153,11 @@ if(isset($_REQUEST['debug']) || $fail == true || $debug == true){
   echo '<b>Query:</b><br />'.$query.'<hr>';
   echo '<b>Flags:</b><br />Fail: '.$fail.'<br />Debug: '.$debug.'<br />Valid: '.$valid.'<br />Sanitize: '.$sanitize.'<hr />';
   echo '<b>Values:</b><br />project_id: '.$project_id.'<br />manager: '.$manager.'<br />week_of: '.$resource.'<br />hours: '.$week_of.'<br />priority: '.$priority.'<br />sales_status: '.$sales_status.'<hr />';
-  echo '<p style="text-align: center;"><a href="./$week.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>'; 
+  echo '<p style="text-align: center;"><a href="./week.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>'; 
  }                           
  
  //Echo out an error message if the user tries to enter debugging mode with out setting the flag first               
- elseif(isset($_REQUEST['debug'])){
+ if(isset($_REQUEST['debug']) && $fail == false){
   echo '<h2>Debug mode:</h2><br />For security reasons debug mode must be enable by setting the $debug flag to true.<hr>';  
  }
  
@@ -191,7 +168,7 @@ if(isset($_REQUEST['debug']) || $fail == true || $debug == true){
   echo '<b>Query:</b><br />'.$query.'<hr>';
   echo '<b>Flags:</b><br />Fail: '.$fail.'<br />Debug: '.$debug.'<br />Valid: '.$valid.'<br />Sanitize: '.$sanitize.'<hr />';
   echo '<b>Values:</b><br />project_id: '.$project_id.'<br />manager: '.$manager.'<br />week_of: '.$resource.'<br />hours: '.$week_of.'<br />priority: '.$priority.'<br />sales_status: '.$sales_status.'<hr />';
-  echo '<p style="text-align: center;"><a href="./$week.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>'; 
+  echo '<p style="text-align: center;"><a href="./week.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>'; 
  }
 
 //otherwise redirect the user to the results page

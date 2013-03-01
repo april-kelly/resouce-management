@@ -13,7 +13,7 @@ include('data.php');
 $week_of = $_REQUEST['start_date'];  //rename to week_of upon completion of debugging
 
 //Debugging Flags:
-$debug = false;		//flag to prevent running query					Default: false
+$debug = true;		//flag to prevent running query					Default: false
 $valid = true;		//flag to prevent user data validation				Default: true
 $sanitize = true;	//flag to prevent user data sanitation (use with caution)	Default: true
 $fail = false;		//flag to terminate the insert if something fails		Default: false
@@ -168,12 +168,12 @@ if(isset($_REQUEST['debug']) || $fail == true || $debug == true){
   echo '<b>Query:</b><br />'.$query.'<hr>';
   echo '<b>Flags:</b><br />Fail: '.$fail.'<br />Debug: '.$debug.'<br />Valid: '.$valid.'<br />Sanitize: '.$sanitize.'<hr />';
   echo '<b>Values:</b><br />project_id: '.$project_id.'<br />manager: '.$manager.'<br />week_of: '.$resource.'<br />hours: '.$week_of.'<br />priority: '.$priority.'<br />sales_status: '.$sales_status.'<hr />';
-  echo '<p style="text-align: center;"><a href="./week.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>'; 
+  echo '<p style="text-align: center;"><a href="./month.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>'; 
  }
 
 //otherwise redirect the user to the results page
 }else{
- header('Location: ./week.php');
+ header('Location: ./month.php');
 }
 
 ?>
