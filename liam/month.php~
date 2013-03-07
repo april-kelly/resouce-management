@@ -11,15 +11,28 @@
  	table{
  		margin-left: auto;
  		margin-right: auto;
- 	}
+ 		border-collapse:collapse;
+ 	}    
  	</style>
- 
+ 	
  </head>
  
  <body>
 
 <table border="1">
 <?php
+//Settings
+
+	//Define Settings Variables
+	
+	//Colors
+	$colors = array('id' => '1', 'color' => 'green', 'low' => '1', 'high' => '16'
+			'id' => '2', 'color' => 'yellow', 'low' => '17', 'high' => '25');
+	var_dump($colors);
+
+
+
+
 
 //Define variables
 $hours = '';
@@ -83,7 +96,7 @@ foreach($people as $people)
 					//Process the hours
 					
 					//unserialize the hours array
-					echo $time = unserialize($project['time']);
+					$time = unserialize($project['time']);
 		
 					//add everything up
 					$hours = $hours + $time['sunday']
@@ -113,7 +126,7 @@ foreach($people as $people)
 $dbc->close();
 
 //Echo out the table header
-echo "\t".'<tr>'."\r\n\r\n";
+echo "\t".'<tr class="header">'."\r\n\r\n";
 echo "\t\t".'<td>Resource: </td>'."\r\n";
 foreach($weeks as $weeks){
 	echo "\t\t".'<td>'.$weeks.'</td>'."\r\n";
@@ -141,6 +154,7 @@ foreach($table as $table){
 	echo "\t".'</tr>'."\r\n\r\n";
 	
 }
+var_dump($table);
 	
 ?>
 </table>
