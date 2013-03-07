@@ -83,7 +83,7 @@ foreach($people as $people)
 					//Process the hours
 					
 					//unserialize the hours array
-					echo $time = unserialize($project['time']);
+					$time = unserialize($project['time']);
 		
 					//add everything up
 					$hours = $hours + $time['sunday']

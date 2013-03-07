@@ -156,10 +156,7 @@ function query($query)
 //Provide a quick insert statement
 function insert($query){
 	
-	$dbc = new db;			//set up object
-	$dbc->connect();		//connect using defaults
-	$result = $dbc->insert($query);	//run the query
-	$dbc->close();			//close the database connection
+			//close the database connection
 	
 	return $result;
 	
