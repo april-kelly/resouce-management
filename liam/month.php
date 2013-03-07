@@ -11,8 +11,30 @@
  	table{
  		margin-left: auto;
  		margin-right: auto;
+ 		border-collapse:collapse;
  	}
  	</style>
+ 	<!--<style>
+    table { 
+    border: AppWorkspace solid 1px; 
+    font-size: 0.8em; 
+    text-align: center; 
+    border-collapse:collapse; 
+    style: 600px;
+} 
+
+tr.header{
+    font-weight: bold;
+    background-color: #ffffef
+}
+
+td { 
+    border: 1px solid AppWorkspace; 
+    margin: 0; 
+    padding: 3px; 
+} 
+
+</style>-->
  
  </head>
  
@@ -113,7 +135,7 @@ foreach($people as $people)
 $dbc->close();
 
 //Echo out the table header
-echo "\t".'<tr>'."\r\n\r\n";
+echo "\t".'<tr class="header">'."\r\n\r\n";
 echo "\t\t".'<td>Resource: </td>'."\r\n";
 foreach($weeks as $weeks){
 	echo "\t\t".'<td>'.$weeks.'</td>'."\r\n";
