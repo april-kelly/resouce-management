@@ -3,17 +3,7 @@
  <head>
  
  	<title>Bluetent Resource Management: Monthly View</title>
- 	
- 	<style>
- 	body{
- 		text-align: center;
- 	}
- 	table{
- 		margin-left: auto;
- 		margin-right: auto;
- 		border-collapse:collapse;
- 	}    
- 	</style>
+ 	<link rel="stylesheet" href="./styles/styles.css" type="text/css" />
  	
  </head>
  
@@ -21,6 +11,10 @@
 
 <table border="1">
 <?php
+//Includes
+include('data.php');
+include('./excel/ABG_PhpToXls.cls.php');
+
 //Settings
 
 	//Define Settings Variables
@@ -31,9 +25,11 @@
 			array('color' => 'orange', 'low' => '31', 'high' => '39'),
 			array('color' => 'red', 'low' => '40', 'high' => ''),
 			);
-	//var_dump($colors);
-	
+	//Others
 	$color_enable = true;
+	$excel_enable = false;
+	$show = '12';
+
 
 
 
@@ -41,7 +37,6 @@
 
 //Define variables
 $hours = '';
-$show = '12';
 
 //build a list of weeks
 
@@ -58,9 +53,6 @@ for($i = 2; $i <= $show; $i++){
 	$weeks[$i] = $current = date('Y-m-d',strtotime($current) + (24*3600*7));
 }
 $count = count($weeks);
-
-//include the data object
-include('data.php');
 
 //Connect to the database
 $dbc = new db;
@@ -112,7 +104,8 @@ foreach($people as $people)
 							+ $time['friday']
 							+ $time['saturday'];
 								
-					$table[$people['index']][$i] = $hours; 
+					//insert the hours into the table
+					$table[$people['index']][$i] = $table[$people['index']][$i] + $hours; 
 						
 					//empty the hours variable
 					$hours = '';
@@ -133,11 +126,41 @@ $dbc->close();
 //Echo out the table header
 echo "\t".'<tr class="header">'."\r\n\r\n";
 echo "\t\t".'<td>Resource: </td>'."\r\n";
+$excel[0][0] = "Resource:";
+$i = 1;
 foreach($weeks as $weeks){
 	echo "\t\t".'<td>'.$weeks.'</td>'."\r\n";
+	$excel[0][$i] = $weeks;
+	$i++;
 }
 echo "\t".'</tr>'."\r\n\r\n";
 
+
+
+//Excel output:
+if($excel_enable == true){
+	
+	$copy = $table;
+
+	$i = 1;		//Must be set to the first row after the header
+	foreach($copy as $copy){
+		$excel[$i] = $copy;
+		$i++;
+	}
+
+	try{
+		$PhpToXls = new ABG_PhpToXls($excel, null, 'month', true);
+		$PhpToXls->SaveFile();
+	}
+	catch(Exception $Except){ 
+	
+	}
+	
+}
+
+
+  
+  
 //echo out each of the rows in the table
 foreach($table as $table){
 	

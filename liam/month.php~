@@ -8,7 +8,7 @@
  	body{
  		text-align: center;
  	}
- 	table{
+ 	table{                                      
  		margin-left: auto;
  		margin-right: auto;
  		border-collapse:collapse;
@@ -26,9 +26,14 @@
 	//Define Settings Variables
 	
 	//Colors
-	$colors = array('id' => '1', 'color' => 'green', 'low' => '1', 'high' => '16'
-			'id' => '2', 'color' => 'yellow', 'low' => '17', 'high' => '25');
-	var_dump($colors);
+	$colors = array(array('color' => 'green', 'low' => '1', 'high' => '15'),
+			array('color' => 'yellow', 'low' => '16', 'high' => '30'),
+			array('color' => 'orange', 'low' => '31', 'high' => '39'),
+			array('color' => 'red', 'low' => '40', 'high' => ''),
+			);
+	//var_dump($colors);
+	
+	$color_enable = true;
 
 
 
@@ -107,7 +112,8 @@ foreach($people as $people)
 							+ $time['friday']
 							+ $time['saturday'];
 								
-					$table[$people['index']][$i] = $hours; 
+					//insert the hours into the table
+					$table[$people['index']][$i] = $table[$people['index']][$i] + $hours; 
 						
 					//empty the hours variable
 					$hours = '';
@@ -142,19 +148,25 @@ foreach($table as $table){
 	for($i = 1; $i <= $count; $i++){
 		echo "\t\t".'<td>';
 		
-		if($table[$i] == 0) { echo '<span style="background-color: #fff; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		if($table[$i] <= 15 && $table[$i] >= 1 ) { echo '<span style="background-color: green; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		if($table[$i] <= 25 && $table[$i] >= 16 ) { echo '<span style="background-color: yellow; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		if($table[$i] <= 36 && $table[$i] >= 26 ) { echo '<span style="background-color: orange; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		if($table[$i] <= 50 && $table[$i] >= 37 ) { echo '<span style="background-color: red; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
+		if($color_enable == true){
+			
+		   if($table[$i] == 0) { echo '<span style="background-color: #fff; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
+		   if($table[$i] <= $colors[0]['high'] && $table[$i] >= $colors[0]['low']) { echo '<span style="background-color: '.$colors[0]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
+		   if($table[$i] <= $colors[1]['high'] && $table[$i] >= $colors[2]['low']) { echo '<span style="background-color: '.$colors[1]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
+		   if($table[$i] <= $colors[2]['high'] && $table[$i] >= $colors[2]['low']) { echo '<span style="background-color: '.$colors[2]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
+		   if($table[$i] >= $colors[3]['low']) { echo '<span style="background-color: '.$colors[3]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
+		//if($table[$i] > $colors[3]['high']){ echo '<span style="color: red;">[Error 2]</span>'; } //.$table[$i]; }
 		
+		}else{
+			echo $table[$i];
+		}
 		echo '</td>'."\r\n";
 	}  
 	
 	echo "\t".'</tr>'."\r\n\r\n";
 	
 }
-var_dump($table);
+
 	
 ?>
 </table>

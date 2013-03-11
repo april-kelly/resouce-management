@@ -13,15 +13,18 @@ include('data.php');
 <html>
 <head>
 	<title>Bluetent Resource Management Program</title>
+	<link rel="stylesheet" href="./styles/styles.css" type="text/css" />
 </head>
 <body>
-<style>
+
+<!--<style>
 body{
 	text-align: left;
 }
 table{
 }
-</style>
+</style>-->
+
 <?php
    }
    	//preset variables
@@ -223,7 +226,7 @@ table{
 	}
 
 ?>
-<form action="?&" method="get">
+
 	<label><b>Download: </b></label>
 	<input type="submit" value="Download as csv" name="csv">
 	<label><b>Edit: </b></label>
