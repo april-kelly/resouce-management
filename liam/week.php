@@ -5,14 +5,6 @@
 </head>
 <body>
 
-<!--<style>
-body{
-	text-align: left;
-}
-table{
-}
-</style>-->
-
 <?php
 //Includes
 include('data.php');
@@ -69,29 +61,6 @@ $count = count($weeks);
 		$people[$result['index']]['type'] = $result['type'];
 	}
 
-	/*$sort = $project;
-	ksort($sort);
-	foreach($sort as $key['week_of'] => $val){
-		echo '<br /><b>Week of: '.$project['week_of'].'</b><br />';
-		?>
-		  <table border="1">
-  
-   <tr>
-    <td>Resource</td>
-    <td>Manager</td>
-    <td>Project id:</td>
-    <td>Proirity</td>
-    <td>Sunday</td>
-    <td>Monday</td>
-    <td>Tuesday</td>
-    <td>Wednesday</td>
-    <td>Thursday</td>
-    <td>Friday</td>
-    <td>Saturday</td>
-    <td>Sales Status</td>
-   </tr>
-		<?php
-	}*/
 	$past_week = '';
 	$i = '0';
 	$sort = $project;
@@ -107,7 +76,6 @@ $count = count($weeks);
 		<table border="1">
 		<tr>
 		 <td>Resource:</td>
-		 <!--<td>Manager</td>-->
 		 <td>Project id:</td>
 		 <td>Priority</td>
 		 <td>Sunday</td>
@@ -219,11 +187,6 @@ $count = count($weeks);
 
 ?>
 
-	<label><b>Download: </b></label>
-	<input type="submit" value="Download as csv" name="csv">
-	<label><b>Edit: </b></label>
-	<input type="submit" value="<?php if(isset($_REQUEST['edit'])){ echo 'Done'; }else{ echo 'Edit Records'; } ?>" name="<?php if(isset($_REQUEST['edit'])){ echo ''; }else{ echo 'edit'; } ?>">
-</form>
 </body>
 </html>
 
