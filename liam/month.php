@@ -1,14 +1,3 @@
-<html>
-
- <head>
- 
- 	<title>Bluetent Resource Management: Monthly View</title>
- 	<link rel="stylesheet" href="./styles/styles.css" type="text/css" />
- 	
- </head>
- 
- <body>
-
 <table border="1">
 <?php
 //Includes
@@ -27,7 +16,7 @@ include('./excel/ABG_PhpToXls.cls.php');
 			);
 	//Others
 	$color_enable = true;
-	$excel_enable = false;
+	$excel_enable = true;
 	$show = '12';
 
 
@@ -165,7 +154,7 @@ if($excel_enable == true){
 foreach($table as $table){
 	
 	echo "\t".'<tr>'."\r\n";
-	echo "\t\t".'<td>'.$table['name'].'</td>'."\r\n";
+	echo "\t\t".'<td><a href="./week.php?p='.$table['id'].'">'.$table['name'].'</a></td>'."\r\n";
 	
 	for($i = 1; $i <= $count; $i++){
 		echo "\t\t".'<td>';
@@ -192,7 +181,3 @@ foreach($table as $table){
 	
 ?>
 </table>
-
-  </body>
-
-</html>

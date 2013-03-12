@@ -13,7 +13,7 @@ include('data.php');
 $week_of = $_REQUEST['start_date'];  //rename to week_of upon completion of debugging
 
 //Debugging Flags:
-$debug = true;		//flag to prevent running query					Default: false
+$debug = false;		//flag to prevent running query					Default: false
 $valid = true;		//flag to prevent user data validation				Default: true
 $sanitize = true;	//flag to prevent user data sanitation (use with caution)	Default: true
 $fail = false;		//flag to terminate the insert if something fails		Default: false
@@ -173,7 +173,7 @@ if(isset($_REQUEST['debug']) || $fail == true || $debug == true){
 
 //otherwise redirect the user to the results page
 }else{
- header('Location: ./month.php');
+ header('Location: ./index.php');
 }
 
 ?>

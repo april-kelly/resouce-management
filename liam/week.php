@@ -1,15 +1,3 @@
-<?php
-//Include the data object
-include('data.php');
-
-//Force csv download (if applicable)
-   $file = "resources.csv";
-   if(isset($_REQUEST['csv'])){
-    header('Content-Type: application/octet-stream');
-    header("Content-Transfer-Encoding: text/csv"); 
-    header("Content-disposition: attachment; filename=\"".$file."\"");
-   }else{
-?>
 <html>
 <head>
 	<title>Bluetent Resource Management Program</title>
@@ -26,46 +14,47 @@ table{
 </style>-->
 
 <?php
-   }
-   	//preset variables
-   	$column = '';
-   	$order = '';
-   	
-   		
-	//the base query
-	$query = 'SELECT * FROM `test` ORDER BY week_of ASC';
-   	
-	//Query for a delete
-	if(isset($_REQUEST['rm'])){
-		
-		//Delete query
-		$delete = 'DELETE FROM `test` WHERE `index`='.$_REQUEST['rm'];
-		
-		//Run the query
-		$dbc = new db;
-		$dbc->connect();
-		$project = $dbc->delete($delete);
-		$dbc->close();
-		
-		//redirect to the normal view
-		header('Location: ?edit');
-		
-	}
+//Includes
+include('data.php');
+
+//preset variables
+$column = '';
+$order = '';
+$show = '8';
+  	
+//build a list of weeks
+
+//get the current or last sunday
+if(date( "w", date("U")) == '0'){
+	$current = date('Y-m-d');
+}else{
+	$current = date('Y-m-d', strtotime('Last Sunday', time()));
+}
+
+$weeks = array();
+$weeks[1] = $current;
+for($i = 2; $i <= $show; $i++){
+	$weeks[$i] = $current = date('Y-m-d',strtotime($current) + (24*3600*7));
+}
+$count = count($weeks);
+
 	
 	//connection for projects
 	$dbc = new db;
 	
 	$dbc->connect();
-	$project = $dbc->query($query);
-	$dbc->close();
+	if(isset($_REQUEST['p'])){
+	$person = $dbc->sanitize($_REQUEST['p']);
+	$project = $dbc->query('SELECT * FROM `test` WHERE resource = '.$person.' ');
+	}
 	
 	//connection for people
 	$dbc = new db;
 	
 	$dbc->connect();
-	$result = $dbc->query("SELECT * FROM people ");
+	$result = $dbc->query("SELECT * FROM people");
 	$dbc->close();
-	
+	                                     
 	//echo out csv if the user is attempting to download it
 	if(isset($_REQUEST['csv'])){
 		echo $csv;
@@ -117,7 +106,7 @@ table{
 		?>
 		<table border="1">
 		<tr>
-		 <td>Resource</td>
+		 <td>Resource:</td>
 		 <!--<td>Manager</td>-->
 		 <td>Project id:</td>
 		 <td>Priority</td>
@@ -129,6 +118,7 @@ table{
 		 <td>Friday</td>
 		 <td>Saturday</td>
 		 <td>Sales Status</td>
+		 <?php if(isset($_REQUEST['edit'])){ echo '<td></td>'; ?>
 		</tr>
 		<?php
 		}
@@ -171,7 +161,11 @@ table{
 		//table view
 		if(!(isset($_REQUEST['csv'])))
 		{
-			echo '<tr>';
+			
+			for($x = $count; $i >= 1; $x--){
+				
+				if($project['week_of'] == $weeks[$i]){
+					echo '<tr>';
 			
 			//echo out the resource
 			if($resource == true){
@@ -179,13 +173,7 @@ table{
 			}else{
 				echo '<td><span style="color: red;">[Error]</span></td>';
 			}
-			
-			//echo out the manager(remove?)
-			/*if($manager == true){
-				echo '<td>',$people[$project['manager']]['name'],'</td>';
-			}else{
-				echo '<td><span style="color: red;">[Error]</span></td>';
-			}*/
+
 			
 			//echo out the rest of the table
 			echo '<td>',$project['project_id'],'</td>';
@@ -198,7 +186,7 @@ table{
 			echo '<td>',$time['friday'],'</td>';
 			echo '<td>',$time['saturday'],'</td>';
 			echo '<td>',$status,'</td>';
-
+			
 			//show delete options if editing is enabled
 			if(isset($_REQUEST['edit'])){
 				echo '<td><a href="?rm='.$project['index'].'"><img src="./images/x.jpg" height="23" width="32" title="Delete this request"></a></td>';
@@ -221,8 +209,12 @@ table{
 			//Make the past week equal this week before moving to the next record
 			$past_week = $project['week_of'];
 			$i++;
+			
+				}
+			}
 
 		}
+	}
 	}
 
 ?>
