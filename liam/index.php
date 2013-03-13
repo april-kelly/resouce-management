@@ -86,14 +86,22 @@
 	  ?>
 	</select>
 	<br />
+	<label>Priority</label>
+  	<select name="priority">
+  	   <option value="3">Low</option>
+  	   <option value="2">Medium</option>
+  	   <option value="1">High</option>
+  	   <option value="0">Very High</option>
+  	</select>
+  	<br />
+  	<label>Week of: </label><input type="text" id="start_date" name="start_date" /><br />
+
+	 
 	
-	<p>
-	<label>Week of: <!--Start Date:--></label><br /><input type="text" id="start_date" name="start_date" /> <label id="days"><!--More than one day?</label> <input type="checkbox" id="multi" onclick="test()"/><br />
-  	<label id="test" style="display: none;">End Date:</label><input type="text" id="end_date" name="end_date"  style="display: none;" /><br />-->
-	<br /><br />
-	<label>Hours:</label>
+	<p>   
+	<label>Hours:</label><br />
 	<br />
-	<table border="1">
+	<table border="0">
 	 <tr>
 	  <td>Sun: </td>
 	  <td>Mon: </td>
@@ -103,28 +111,22 @@
 	  <td>Fri: </td>
 	  <td>Sat: </td>
 	 </tr>
-	 
+	
 	 <tr>
-	  <td><input type="text" name="sunday"    value="0" size="4" maxlength="4" /></td>
-	  <td><input type="text" name="monday"    value="0" size="4" maxlength="4" /></td>
-	  <td><input type="text" name="tuesday"   value="0" size="4" maxlength="4" /></td>
-	  <td><input type="text" name="wednesday" value="0" size="4" maxlength="4"  /></td>
-	  <td><input type="text" name="thursday"  value="0" size="4" maxlength="4"  /></td>
-	  <td><input type="text" name="friday"    value="0" size="4" maxlength="4"  /></td>
-	  <td><input type="text" name="saturday"  value="0" size="4" maxlength="4"  /></td>
+	  <td><input type="text" name="sunday"    id="sunday" value="0" size="4" maxlength="4" /><br /></td>
+	  <td><input type="text" name="monday"    id="monday" value="0" size="4" maxlength="4" /><br /></td>
+	  <td><input type="text" name="tuesday"   id="tuesday" value="0" size="4" maxlength="4" /><br /></td>
+	  <td><input type="text" name="wednesday" id="wed" value="0" size="4" maxlength="4" /><br /></td>
+	  <td><input type="text" name="thursday"  id="thur" value="0" size="4" maxlength="4" /><br /></td>
+	  <td><input type="text" name="friday"    id="fri" value="0" size="4" maxlength="4" /><br /></td>
+	  <td><input type="text" name="saturday"  id="sat" value="0" size="4" maxlength="4" /><br /></td>
 	 </tr>
 	 
-	</table>
+	 </table>
+	 <br />
+
+	 
   	</p>
-  	
-  	<label>Priority</label>
-  	<select name="priority">
-  	   <option value="3">Low</option>
-  	   <option value="2">Medium</option>
-  	   <option value="1">High</option>
-  	   <option value="0">Very High</option>
-  	</select>
-  	<br />
 
 	<input type="submit" value="Request" />
 	
@@ -161,7 +163,7 @@
 		echo '<span style="color: red">You must input a Start Date.</span>';
 	}
 
-	//No Start Date
+	//No Priority Level
 	if(isset($_REQUEST['priority'])){
 		echo '<span style="color: red">You must input a Priority Level.</span>';
 	}
@@ -176,3 +178,4 @@
  </body>
 
 </html>
+<!-- VYbirUhagreFabjNfu. -->

@@ -36,7 +36,7 @@
  
  <body>
  
-  <form action="insert.php" method="get" onsubmit="return validate()" name="form">
+  <form action="insert.php" method="post" onsubmit="return validate()" name="form">
   
    <fieldset>
    
