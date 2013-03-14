@@ -67,7 +67,7 @@ foreach($people as $people)
 	}
 	
 	//Get the list of projects for each person
-	$project = $dbc->query("SELECT * FROM test WHERE resource='".$people['index']."' ");
+	$project = $dbc->query("SELECT * FROM jobs WHERE resource='".$people['index']."' ");
 
 
 	//Make sure the person actually has projects

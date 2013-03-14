@@ -63,7 +63,8 @@ if($valid == false){
 	}
 	
 	//check for an empty priority
-	if(!(is_numeric($_REQUEST['priority'])) && !(strlen($_REQUEST['priority']) >= '1' )){
+	if(!(is_numeric($_REQUEST['priority'])) && 
+	   !(strlen($_REQUEST['priority']) >= '1' )){
 		header("Location: ./index.php?&priority");
 	}
 	

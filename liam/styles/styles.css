@@ -1,0 +1,15 @@
+ 	body{
+ 		text-align: center;
+ 	}
+ 	table{                                      
+ 		margin-left: auto;
+ 		margin-right: auto;
+ 		border-collapse:collapse;
+ 	}
+ 	a{
+ 		text-decoration: none;
+ 		color: black;
+ 	}
+ 	a:hover{
+ 		color: lightgray;
+ 	}
