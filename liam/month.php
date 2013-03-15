@@ -17,7 +17,7 @@ include('./excel/ABG_PhpToXls.cls.php');
 	//Others
 	$color_enable = true;
 	$excel_enable = true;
-	$show = '12000';
+	$show = '12';
 	$output = 	true;
 
 
