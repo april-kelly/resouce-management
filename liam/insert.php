@@ -174,7 +174,7 @@ if(isset($_REQUEST['debug']) || $fail == true || $debug == true){
 
 //otherwise redirect the user to the results page
 }else{
- header('Location: ./index.php');
+ header('Location: ./dashboard.php');
 }
 
 ?>

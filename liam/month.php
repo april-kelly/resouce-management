@@ -17,7 +17,8 @@ include('./excel/ABG_PhpToXls.cls.php');
 	//Others
 	$color_enable = true;
 	$excel_enable = true;
-	$show = '12';
+	$show = '12000';
+	$output = 	true;
 
 
 
@@ -83,7 +84,7 @@ foreach($people as $people)
 					
 					//unserialize the hours array
 					$time = unserialize($project['time']);
-		
+					
 					//add everything up
 					$hours = $hours + $time['sunday']
 							+ $time['monday']
@@ -91,7 +92,7 @@ foreach($people as $people)
 							+ $time['wednesday']
 							+ $time['thursday']
 							+ $time['friday']
-							+ $time['saturday'];
+							+ $time['saturday'];//*/
 								
 					//insert the hours into the table
 					$table[$people['index']][$i] = $table[$people['index']][$i] + $hours; 
@@ -112,6 +113,7 @@ foreach($people as $people)
 //close the database connection
 $dbc->close();
 
+if($output == true){
 //Echo out the table header
 echo "\t".'<tr class="header">'."\r\n\r\n";
 echo "\t\t".'<td>Resource: </td>'."\r\n";
@@ -163,7 +165,7 @@ foreach($table as $table){
 			
 		   if($table[$i] == 0) { echo '<span style="background-color: #fff; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
 		   if($table[$i] <= $colors[0]['high'] && $table[$i] >= $colors[0]['low']) { echo '<span style="background-color: '.$colors[0]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		   if($table[$i] <= $colors[1]['high'] && $table[$i] >= $colors[2]['low']) { echo '<span style="background-color: '.$colors[1]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
+		   if($table[$i] <= $colors[1]['high'] && $table[$i] >= $colors[1]['low']) { echo '<span style="background-color: '.$colors[1]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
 		   if($table[$i] <= $colors[2]['high'] && $table[$i] >= $colors[2]['low']) { echo '<span style="background-color: '.$colors[2]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
 		   if($table[$i] >= $colors[3]['low']) { echo '<span style="background-color: '.$colors[3]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
 		//if($table[$i] > $colors[3]['high']){ echo '<span style="color: red;">[Error 2]</span>'; } //.$table[$i]; }
@@ -176,6 +178,7 @@ foreach($table as $table){
 	
 	echo "\t".'</tr>'."\r\n\r\n";
 	
+}
 }
 
 	
