@@ -37,21 +37,16 @@ $count = count($weeks);
 	$dbc->connect();
 	if(isset($_REQUEST['p'])){
 	$person = $dbc->sanitize($_REQUEST['p']);
-	$project = $dbc->query('SELECT * FROM `test` WHERE resource = '.$person.' ');
+	$project = $dbc->query('SELECT * FROM `jobs` WHERE resource = '.$person.' ');
 	}
 	
 	//connection for people
-	$dbc = new db;
+	//$dbc = new db;
 	
-	$dbc->connect();
+	//$dbc->connect();
 	$result = $dbc->query("SELECT * FROM people");
 	$dbc->close();
 	                                     
-	//echo out csv if the user is attempting to download it
-	if(isset($_REQUEST['csv'])){
-		echo $csv;
-	}
-	
 	//fix the $people results to have an index matching that of the database
 	$people = array();
 	
@@ -70,7 +65,7 @@ $count = count($weeks);
 		//Determine if the week of: label and table header should be spit out
 		if(!($past_week == $project['week_of'])){
 		echo '<br /><b>Week of: '.$project['week_of'].'</b><br />';
-		
+                
 		//Spit out the table header
 		?>
 		<table border="1">
@@ -108,7 +103,7 @@ $count = count($weeks);
 		}elseif($project['priority'] == '3'){
 			$priority = "Low";
 		}
-		
+                
 		//Verify project manager exists
 		if(isset($people[$project['manager']])){
 			$manager = true;
@@ -127,13 +122,11 @@ $count = count($weeks);
 		$time = unserialize($project['time']);
 		
 		//table view
-		if(!(isset($_REQUEST['csv'])))
-		{
 			
-			for($x = $count; $i >= 1; $x--){
+			for($i = $count; $i >= 1; $i--){
 				
 				if($project['week_of'] == $weeks[$i]){
-					echo '<tr>';
+				echo '<tr>';
 			
 			//echo out the resource
 			if($resource == true){
@@ -141,7 +134,8 @@ $count = count($weeks);
 			}else{
 				echo '<td><span style="color: red;">[Error]</span></td>';
 			}
-
+                        
+                        //var_dump($project);
 			
 			//echo out the rest of the table
 			echo '<td>',$project['project_id'],'</td>';
@@ -154,11 +148,6 @@ $count = count($weeks);
 			echo '<td>',$time['friday'],'</td>';
 			echo '<td>',$time['saturday'],'</td>';
 			echo '<td>',$status,'</td>';
-			
-			//show delete options if editing is enabled
-			if(isset($_REQUEST['edit'])){
-				echo '<td><a href="?rm='.$project['index'].'"><img src="./images/x.jpg" height="23" width="32" title="Delete this request"></a></td>';
-			}
 			
 			//Add one to the increment operator
 			$j = $i + 1;
@@ -176,13 +165,13 @@ $count = count($weeks);
 			
 			//Make the past week equal this week before moving to the next record
 			$past_week = $project['week_of'];
-			$i++;
+			//$i++;
 			
 				}
 			}
 
 		}
-	}
+	
 	}
 
 ?>
