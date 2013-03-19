@@ -6,6 +6,12 @@
 <body>
 
 <?php
+
+
+/*
+Note to self: use a foreach $week then foreach projects
+*/
+
 //Includes
 include('data.php');
 
@@ -48,13 +54,14 @@ foreach($projects as $projects){
 	$copy = $weeks;
 	
 	foreach($copy as $copy){
-		
+		echo $projects['week_of'].'  '.$past_week."\r\n";
 		//if the week exists in both $copy and $projects echo out the project
 		if($projects['week_of'] == $copy/* && $projects['week_of'] !== $past_week*/){
 			
 			//echo out the table header
-			if($projects['week_of'] !== $past_week){ 
-			if($past_week !== ''){ echo '</table>'; }
+			if(!($projects['week_of'] == $past_week)){ 
+				echo "equal";
+							if($past_week !== ''){ echo '</table>'; }
 			?>
 			 <br /><?php echo $copy; ?>
 			 <table border="1">
@@ -74,7 +81,9 @@ foreach($projects as $projects){
 		 	 </tr>
 		 	<?php
 		 	}
-		 			//make boolean sales_status human readable
+		
+		
+		///*//make boolean sales_status human readable
 		if($projects['sales_status'] == '0'){
 			$status = "Opportunity";
 		}else{
@@ -126,7 +135,7 @@ foreach($projects as $projects){
 			echo '<td>',$time['thursday'],'</td>';
 			echo '<td>',$time['friday'],'</td>';
 			echo '<td>',$time['saturday'],'</td>';
-			echo '<td>',$status,'</td>';
+			echo '<td>',$status,'</td>';//*/
 			
 		 	
 		 	//set the past week
