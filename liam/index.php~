@@ -171,7 +171,7 @@
 	?>
 	
    </fieldset>
-   <a href="list.php">See current resource usage</a>
+   <a href="dashboard.php">See current resource usage</a>
    
   </form>
   
