@@ -6,6 +6,12 @@
 <body>
 
 <?php
+
+
+/*
+Note to self: use a foreach $week then foreach projects
+*/
+
 //Includes
 include('data.php');
 
@@ -30,7 +36,124 @@ for($i = 2; $i <= $show; $i++){
 }
 $count = count($weeks);
 
+//variables
+$person = 1;
+$past_week = '';
+
+//Database connection
+$dbc = new db;
+
+$dbc->connect();
+
+$people = $dbc->query('SELECT * FROM people');
+$projects = $dbc->query('SELECT * FROM `jobs` WHERE resource = '.$person.' ');
+
+foreach($projects as $projects){
 	
+	//create a copy of weeks
+	$copy = $weeks;
+	
+	foreach($copy as $copy){
+		echo $projects['week_of'].'  '.$past_week."\r\n";
+		//if the week exists in both $copy and $projects echo out the project
+		if($projects['week_of'] == $copy/* && $projects['week_of'] !== $past_week*/){
+			
+			//echo out the table header
+			if(!($projects['week_of'] == $past_week)){ 
+				echo "equal";
+							if($past_week !== ''){ echo '</table>'; }
+			?>
+			 <br /><?php echo $copy; ?>
+			 <table border="1">
+			 <tr>
+			  <td>Resource:</td>
+			  <td>Project id:</td>
+			  <td>Priority</td>
+			  <td>Sunday</td>
+			  <td>Monday</td>
+			  <td>Tuesday</td>
+			  <td>Wednesday</td>
+		 	  <td>Thursday</td>
+		 	  <td>Friday</td>
+		 	  <td>Saturday</td>
+		 	  <td>Sales Status</td>
+		 	  <?php if(isset($_REQUEST['edit'])){ echo '<td></td>';} ?>
+		 	 </tr>
+		 	<?php
+		 	}
+		
+		
+		///*//make boolean sales_status human readable
+		if($projects['sales_status'] == '0'){
+			$status = "Opportunity";
+		}else{
+			$status = "Sold";
+		}
+		
+		//make numeric priority human readable
+		if($projects['priority'] == '0'){
+			$priority = "Very High";
+		}elseif($projects['priority'] == '1'){
+			$priority = "High";
+		}elseif($projects['priority'] == '2'){
+			$priority = "Medium";
+		}elseif($projects['priority'] == '3'){
+			$priority = "Low";
+		}
+                
+		//Verify projects manager exists
+		if(isset($people[$projects['manager']])){
+			$manager = true;
+		}else{
+			$manager = false;
+		}
+		
+		//Verify resource exists
+		if(isset($people[$projects['resource']])){
+			$resource = true;
+		}else{
+			$resource = false;
+		}
+		
+			//echo out the resource
+			if($resource == true){
+				echo '<td>',$people[$projects['resource']]['name'],'</td>';
+			}else{
+				echo '<td><span style="color: red;">[Error]</span></td>';
+			}
+			
+		 	//Unserialize the time
+		 	$time = unserialize($projects['time']);
+		 	
+		 	//echo out the rest of the table
+			echo '<td>',$projects['project_id'],'</td>';
+			echo '<td>',$priority,'</td>';
+			echo '<td>',$time['sunday'],'</td>';
+			echo '<td>',$time['monday'],'</td>';
+			echo '<td>',$time['tuesday'],'</td>';
+			echo '<td>',$time['wednesday'],'</td>';
+			echo '<td>',$time['thursday'],'</td>';
+			echo '<td>',$time['friday'],'</td>';
+			echo '<td>',$time['saturday'],'</td>';
+			echo '<td>',$status,'</td>';//*/
+			
+		 	
+		 	//set the past week
+			$past_week = $projects['week_of'];
+			
+		}
+		
+	}
+
+}
+
+
+//Close database connection
+$dbc->close();
+
+
+
+/*	
 	//connection for projects
 	$dbc = new db;
 	
@@ -173,7 +296,7 @@ $count = count($weeks);
 		}
 	
 	}
-
+//*/
 ?>
 
 </body>
