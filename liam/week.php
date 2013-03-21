@@ -59,7 +59,6 @@ foreach($week as $week){
 	$project = $projects; //reset the destroyed project variable
 	
 	//sort by project
-	
 	if(!(empty($project))){
 	foreach($project as $project){
 		
