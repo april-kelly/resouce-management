@@ -14,7 +14,7 @@ $people = query('SELECT * FROM people');
 		));
 	
 $current = '2013-03-10'; //date('Y-m-d');
-$show = 300;
+$show = 12;
 $weeks = array();
 $weeks[1] = $current;
 for($i = 2; $i <= $show; $i++){

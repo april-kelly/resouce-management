@@ -11,41 +11,43 @@
 //include the data object
 include('data.php');
 
-//settings fetch function
-get_settings($id)
-{
+class settings{
 	
-	$dbc = new db;						//set up object
-	$dbc->connect();					//connect using defaults
-	$id = $dbc->sanitize($id);				//sanitize the inputs
-	$query = "SELECT * FROM settings WHERE index='$id'";	//define the query
-	$result = $dbc->query($query);				//run the query
-	$dbc->close();						//close the database connection
+	//settings fetch function
+	public function fetch($id){
+		
+		$dbc = new db;						//set up object
+		$dbc->connect();					//connect using defaults
+		$id = $dbc->sanitize($id);				//sanitize the inputs
+		$query = "SELECT * FROM settings WHERE id='$id'";	//define the query
+		$results = $dbc->query($query);				//run the query
+		$dbc->close();						//close the database connection
 	
-	return $results;
+		return $results;
 	
 	
-}
+	}
 
-//settings creation function
-create_settings($name, $settings, $comments){
+	//settings creation function
+	public function create($name, $settings, $comments){
 	
-	$dbc = new db;						//set up object
-	$dbc->connect();					//connect using defaults
+		$dbc = new db;						//set up object
+		$dbc->connect();					//connect using defaults
 	
-	//sanitize the inputs
-	$name 	  = $dbc->sanitize($id);
-	$settings = $dbc->sanitize($id);
-	$comments = $dbc->sanitize($id);
+		//sanitize the inputs
+		$name 	  = $dbc->sanitize($id);
+		$settings = $dbc->sanitize($id);
+		$comments = $dbc->sanitize($id);
 	
-	//define the query
-	$query = "SELECT * FROM settings WHERE index='$id'";
+		//define the query
+		$query = "SELECT * FROM settings WHERE index='$id'";
+		
+		$result = $dbc->query($query);				//run the query
+		$dbc->close();						//close the database connection
 	
-	$result = $dbc->query($query);				//run the query
-	$dbc->close();						//close the database connection
+		return $results;
 	
-	return $results;
-	
-}
+	}
 
+}
 ?>
