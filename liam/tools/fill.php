@@ -32,7 +32,7 @@ foreach($people as $people){
 
 	foreach($weeks as $weeks){
 	
-	$result = $dbc->insert("INSERT INTO `resources`.`jobs` (`index`, `project_id`, `manager`, `resource`, `week_of`, `time`, `priority`, `sales_status`) VALUES (NULL, '88989', '29', '".$people['index']."', '".$weeks."', '".$hours."', '1', '1')");
+	$result = $dbc->insert("INSERT INTO `resources`.`jobs` (`index`, `project_id`, `manager`, `resource`, `week_of`, `time`, `priority`, `sales_status`) VALUES (NULL, '88989', '28', '".$people['index']."', '".$weeks."', '".$hours."', '1', '1')");
 	echo $people['name']."  ".$weeks."\r\n";
 	//echo "Week: ".$weeks."\r\n";
 	}

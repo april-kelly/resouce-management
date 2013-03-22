@@ -45,11 +45,20 @@ $dbc = new db;
 
 $dbc->connect();
 
-$people		 = $dbc->query('SELECT * FROM people');
+$result		 = $dbc->query('SELECT * FROM people');
 $person 	 = $dbc->sanitize($_REQUEST['p']);
 $projects        = $dbc->query('SELECT * FROM `jobs` WHERE resource = '.$person.' ');
 
-$test = $person - 1;
+//$test = $person - 1;
+
+//fix indexes of the people table
+$people = array();
+
+foreach($result as $result){
+	$people[$result['index']]['index'] = $result['index'];
+	$people[$result['index']]['name'] = $result['name'];
+	$people[$result['index']]['type'] = $result['type'];
+}
 
 echo "<h3>Weekly expanded view for ".$people[$person]['name']."</h3>";
 
