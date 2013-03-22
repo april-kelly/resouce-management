@@ -18,10 +18,13 @@
 //Includes
 include('data.php');
 
+//Settings
+$show = '8';
+
+
 //Variables
 $column = '';
 $order = '';
-$show = '8';
 $past_week = '';
   	
 //build a list of weeks
@@ -48,8 +51,6 @@ $dbc->connect();
 $result		 = $dbc->query('SELECT * FROM people');
 $person 	 = $dbc->sanitize($_REQUEST['p']);
 $projects        = $dbc->query('SELECT * FROM `jobs` WHERE resource = '.$person.' ');
-
-//$test = $person - 1;
 
 //fix indexes of the people table
 $people = array();

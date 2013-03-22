@@ -3,18 +3,9 @@
 include('../data.php');
 
 $people = query('SELECT * FROM people');
-	$hours = serialize(array( 
-		"sunday"    	=> '13',
-		"monday"   	=> '0',
-		"tuesday"   	=> '0',
-		"wednesday" 	=> '0',
-		"thursday"  	=> '0',
-		"friday"    	=> '0',
-		"saturday"  	=> '0',
-		));
-	
+
 $current = '2013-03-10'; //date('Y-m-d');
-$show = 300;
+$show = 12;
 $weeks = array();
 $weeks[1] = $current;
 for($i = 2; $i <= $show; $i++){
@@ -31,6 +22,17 @@ $copy = $weeks;
 foreach($people as $people){
 
 	foreach($weeks as $weeks){
+            
+            	$hours = serialize(array( 
+		"sunday"    	=> rand('1', '40'),
+		"monday"   	=> '0',
+		"tuesday"   	=> '0',
+		"wednesday" 	=> '0',
+		"thursday"  	=> '0',
+		"friday"    	=> '0',
+		"saturday"  	=> '0',
+		));
+	
 	
 	$result = $dbc->insert("INSERT INTO `resources`.`jobs` (`index`, `project_id`, `manager`, `resource`, `week_of`, `time`, `priority`, `sales_status`) VALUES (NULL, '88989', '28', '".$people['index']."', '".$weeks."', '".$hours."', '1', '1')");
 	echo $people['name']."  ".$weeks."\r\n";

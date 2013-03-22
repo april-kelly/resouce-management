@@ -3,25 +3,28 @@
 //Includes
 include('data.php');
 include('./excel/ABG_PhpToXls.cls.php');
+//include('settings.php');
 
 //Settings
 
-	//Define Settings Variables
-	
-	//Colors
-	$colors = array(array('color' => 'green', 'low' => '1', 'high' => '15'),
-			array('color' => 'yellow', 'low' => '16', 'high' => '30'),
-			array('color' => 'orange', 'low' => '31', 'high' => '39'),
-			array('color' => 'red', 'low' => '40', 'high' => ''),
-			);
-	//Others
-	$color_enable = true;
-	$excel_enable = true;
-	$show = '12';
-	$output = 	true;
+//Colors
+$colors = array(array('color' => 'green', 'low' => '1', 'high' => '15'),
+		array('color' => 'yellow', 'low' => '16', 'high' => '30'),
+		array('color' => 'orange', 'low' => '31', 'high' => '39'),
+		array('color' => 'red', 'low' => '40', 'high' => ''),
+		);
+//Others
+$color_enable = true;
+$excel_enable = true;
+$show = '12';
+$output = 	true;
 
-
-
+//$set = new settings;
+//create('colors', serialize($colors), 'Color coding settings for month.php');
+$name = "adfadf";
+$value = serialize($colors);
+$comments = "A comments afasdfaldfsjlsdljksdjkfljk";
+insert("INSERT INTO `resources`.`settings` (`id`, `name`, `value`, `comments`) VALUES (NULL, '".$name."', '".$value."', '".$comments."')");
 
 
 

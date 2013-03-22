@@ -11,10 +11,8 @@
 //include the data object
 include('data.php');
 
-class settings{
-	
 	//settings fetch function
-	public function fetch($id){
+	function fetch($id){
 		
 		$dbc = new db;						//set up object
 		$dbc->connect();					//connect using defaults
@@ -29,25 +27,34 @@ class settings{
 	}
 
 	//settings creation function
-	public function create($name, $settings, $comments){
+	function create($name, $value, $comments){
 	
 		$dbc = new db;						//set up object
 		$dbc->connect();					//connect using defaults
 	
 		//sanitize the inputs
-		$name 	  = $dbc->sanitize($id);
-		$settings = $dbc->sanitize($id);
-		$comments = $dbc->sanitize($id);
+		$name 	  = $dbc->sanitize($name);
+		$value = $dbc->sanitize($value);
+		$comments = $dbc->sanitize($comments);
 	
 		//define the query
-		$query = "SELECT * FROM settings WHERE index='$id'";
+		$query = "INSERT INTO `resources`.`settings` (`id`, `name`, `value`, `comments`) VALUES (NULL, \'".$name."\', \'".$value."\', \'".$comments."\')";
 		
-		$result = $dbc->query($query);				//run the query
+		$result = $dbc->insert($query);				//run the query
 		$dbc->close();						//close the database connection
 	
-		return $results;
+		return $result;
 	
 	}
 
-}
+
+//Colors
+/*$colors = array(array('color' => 'green', 'low' => '1', 'high' => '15'),
+		array('color' => 'yellow', 'low' => '16', 'high' => '30'),
+		array('color' => 'orange', 'low' => '31', 'high' => '39'),
+		array('color' => 'red', 'low' => '40', 'high' => ''),
+		);*/
+
+//$set = create('colors', serialize($colors), 'Color coding settings for month.php');
+
 ?>
