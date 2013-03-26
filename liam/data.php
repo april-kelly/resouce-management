@@ -181,7 +181,7 @@ function verify($table, $field, $data)
 		
 }
 
-	//settings creation function
+/*	//settings creation function
 	function create($name, $value, $comments){
 	
 		$dbc = new db;						//set up object
@@ -200,4 +200,4 @@ function verify($table, $field, $data)
 	
 		return;
 	
-	}
+	}*/

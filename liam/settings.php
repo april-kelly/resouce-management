@@ -9,7 +9,7 @@
 */
 
 //include the data object
-include('data.php');
+include_once('data.php');
 
 	//settings fetch function
 	function fetch($id){
@@ -20,26 +20,29 @@ include('data.php');
 		$query = "SELECT * FROM settings WHERE id='$id'";	//define the query
 		$results = $dbc->query($query);				//run the query
 		$dbc->close();						//close the database connection
+		
+		unset($dbc);
 	
-		return $results;
+		return unserialize($results[0]['value']);
 	
 	
 	}
 
 	//settings creation function
-	function create($name, $value, $comments){
-	
+
+		function create($name, $value, $comments){
+		
 		$dbc = new db;						//set up object
 		$dbc->connect();					//connect using defaults
 	
 		//sanitize the inputs
 		$name 	  = $dbc->sanitize($name);
-		$value = $dbc->sanitize($value);
+		$value 	  = $dbc->sanitize($value);
 		$comments = $dbc->sanitize($comments);
-	
+
 		//define the query
-		$query = "INSERT INTO `resources`.`settings` (`id`, `name`, `value`, `comments`) VALUES (NULL, \'".$name."\', \'".$value."\', \'".$comments."\')";
-		
+		$query = "INSERT INTO `resources`.`settings` (`id`, `name`, `value`, `comments`) VALUES (NULL, '".$name."', '".$value."', '".$comments."')";
+		echo $query;
 		$result = $dbc->insert($query);				//run the query
 		$dbc->close();						//close the database connection
 	
@@ -47,6 +50,27 @@ include('data.php');
 	
 	}
 
+	//Settings update function
+	
+	function update($id, $name, $value, $comments){
+		
+		$dbc = new db;						//set up object
+		$dbc->connect();					//connect using defaults
+	
+		//sanitize the inputs
+		$name 	  = $dbc->sanitize($name);
+		$value 	  = $dbc->sanitize($value);
+		$comments = $dbc->sanitize($comments);
+		$id	  = $dbc->sanitize($id);
+		//define the query
+		$query = "UPDATE settings SET name='".$name."' value='".$value."' comments='".$comments."' WHERE id='".$id."' ";
+		echo $query;
+		$result = $dbc->insert($query);				//run the query
+		$dbc->close();						//close the database connection
+	
+		return $result;
+	
+	}
 
 //Colors
 /*$colors = array(array('color' => 'green', 'low' => '1', 'high' => '15'),

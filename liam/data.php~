@@ -157,9 +157,9 @@ function query($query)
 function insert($query){
 	
 			//close the database connection
-	
-	return $result;
-	
+                        
+	//return $result;
+	return;
 }
 
 //verify that a peice of data is in the database
@@ -181,3 +181,23 @@ function verify($table, $field, $data)
 		
 }
 
+	//settings creation function
+	function create($name, $value, $comments){
+	
+		$dbc = new db;						//set up object
+		$dbc->connect();					//connect using defaults
+	
+		//sanitize the inputs
+		$name 	  = $dbc->sanitize($name);
+		$value = $dbc->sanitize($value);
+		$comments = $dbc->sanitize($comments);
+	
+		//define the query
+		$query = "INSERT INTO `resources`.`settings` (`id`, `name`, `value`, `comments`) VALUES (NULL, \'".$name."\', \'".$value."\', \'".$comments."\')";
+		
+		$dbc->insert($query);				//run the query
+		$dbc->close();						//close the database connection
+	
+		return;
+	
+	}
