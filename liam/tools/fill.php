@@ -4,7 +4,7 @@ include('../data.php');
 
 $people = query('SELECT * FROM people');
 
-$current = '2013-03-10'; //date('Y-m-d');
+$current = '2013-03-31'; //date('Y-m-d');
 $show = 12;
 $weeks = array();
 $weeks[1] = $current;
@@ -24,8 +24,8 @@ foreach($people as $people){
 	foreach($weeks as $weeks){
             
             	$hours = serialize(array( 
-		"sunday"    	=> rand('1', '40'),
-		"monday"   	=> '0',
+		"sunday"    	=> '0',
+		"monday"   	=> rand('0', '40'),
 		"tuesday"   	=> '0',
 		"wednesday" 	=> '0',
 		"thursday"  	=> '0',
@@ -35,7 +35,7 @@ foreach($people as $people){
 	
 	
 	$result = $dbc->insert("INSERT INTO `resources`.`jobs` (`index`, `project_id`, `manager`, `resource`, `week_of`, `time`, `priority`, `sales_status`) VALUES (NULL, '88989', '28', '".$people['index']."', '".$weeks."', '".$hours."', '1', '1')");
-	echo $people['name']."  ".$weeks."\r\n";
+	echo $people['name']."   ".$weeks."<br />\r\n";
 	//echo "Week: ".$weeks."\r\n";
 	}
 	

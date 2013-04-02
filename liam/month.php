@@ -22,8 +22,8 @@ $colors = fetch(8);
 //Others
 $color_enable = true;
 $excel_enable = true;
-$show = '12';
-$output = 	true;
+$show	      = '12';
+$output       = true;
 
 //$set = new settings;
 //create('colors', serialize($colors), 'Color coding settings for month.php');
@@ -177,7 +177,6 @@ foreach($table as $table){
 		   if($table[$i] <= $colors[1]['high'] && $table[$i] >= $colors[1]['low']) { echo '<span style="background-color: '.$colors[1]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
 		   if($table[$i] <= $colors[2]['high'] && $table[$i] >= $colors[2]['low']) { echo '<span style="background-color: '.$colors[2]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
 		   if($table[$i] >= $colors[3]['low']) { echo '<span style="background-color: '.$colors[3]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		//if($table[$i] > $colors[3]['high']){ echo '<span style="color: red;">[Error 2]</span>'; } //.$table[$i]; }
 		
 		}else{
 			echo $table[$i];

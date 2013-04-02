@@ -3,16 +3,22 @@
 //Includes
 include('data.php');
 include('./excel/ABG_PhpToXls.cls.php');
+include('settings.php');
 //include('settings.php');
 
 //Settings
 
 //Colors
-$colors = array(array('color' => 'green', 'low' => '1', 'high' => '15'),
+/*$colors = array(array('color' => 'green', 'low' => '1', 'high' => '15'),
 		array('color' => 'yellow', 'low' => '16', 'high' => '30'),
 		array('color' => 'orange', 'low' => '31', 'high' => '39'),
 		array('color' => 'red', 'low' => '40', 'high' => ''),
 		);
+hunter('colors', serialize($colors), 'Month.php colorization values');*/
+
+$colors = fetch(8);
+
+
 //Others
 $color_enable = true;
 $excel_enable = true;
