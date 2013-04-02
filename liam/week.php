@@ -61,7 +61,7 @@ foreach($result as $result){
 	$people[$result['index']]['type'] = $result['type'];
 }
 
-echo "<h3>Weekly expanded view for ".$people[$person]['name']."</h3>";
+echo "<h3>Weekly expanded view for ".$people[$person]['name'].": </h3>";
 
 //sort by week
 foreach($week as $week){
@@ -77,7 +77,7 @@ foreach($week as $week){
 			
 			if($past_week !== $project['week_of']){
 				if($past_week !== ''){ echo '</table><br /><br />'; }
-				echo $week;
+				echo '<b>'.$week.'</b>';
 				?>
 				<table border="1">
 				<tr>
@@ -171,7 +171,7 @@ foreach($week as $week){
 	}
 	
 	}else{
-		if($past_week == ''){ echo "<h3>Sorry, no records were found</h3>"; }
+		if($past_week == ''){ echo "<b>Sorry, no records were found</b>"; }
 		$past_week = $week;
 	}
 	

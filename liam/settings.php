@@ -48,33 +48,36 @@ function create($name, $value, $comments){
 }
 
 //Settings update function
-function update($id, $name, $value, $comments){
-	
+function update($inputs){
+	var_dump($inputs);
+	/*
 	//setup database connect
 	$dbc = new db;
 	$dbc->connect();
 	
 	//sanitize the inputs
-	$name 	  = $dbc->sanitize($name);
-	$value 	  = $dbc->sanitize($value);
-	$comments = $dbc->sanitize($comments);
-	$id	  = $dbc->sanitize($id);
+	$id = $dbc->sanitize($inputs[0]);
+	serialize($value = $dbc->sanitize($inputs[1]));   
+	if(isset($inputs[2])){ $name = $dbc->sanitize($inputs[2]); }
+	if(isset($inputs[3])){ $comments = $dbc->sanitize($inputs[3]); }
 	
 	//define the query
-	$dbc->insert("UPDATE settings SET name='".$name."' WHERE id='".$id."'");
+	if(isset($inputs[2])){ $dbc->insert("UPDATE settings SET name='".$name."' WHERE id='".$id."'"); }
 	$dbc->insert("UPDATE settings SET value='".$value."' WHERE id='".$id."'");
-	$dbc->insert("UPDATE settings SET comments='".$comments."' WHERE id='".$id."'");
+	if(isset($inputs[3])){ $dbc->insert("UPDATE settings SET comments='".$comments."' WHERE id='".$id."'"); }
 	
 	//close the database connection
 	$dbc->close();
 	
 	return;
+	*/
 
 }
 
 ?>
 
 <!--
+//$id, $value, $name, $comments
 $query = "UPDATE settings SET name='".$name."' and value='".$value."' and comments='".$comments."' WHERE id='".$id."' ";
 	echo $query;
 -->
