@@ -47,6 +47,7 @@ function create($name, $value, $comments){
 
 }
 
+/*
 //Settings update function
 function update($inputs){
 	var_dump($inputs);
@@ -70,9 +71,10 @@ function update($inputs){
 	$dbc->close();
 	
 	return;
-	*/
+	
 
 }
+*/
 
 ?>
 
