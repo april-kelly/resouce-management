@@ -14,10 +14,7 @@ $debug = true;		//flag to prevent running query					Default: false
 $valid = true;		//flag to enable user data validation				Default: true
 $sanitize = true;	//flag to enable user data sanitation (use with caution)	Default: true
 $fail = false;		//flag to terminate the insert if something fails		Default: false
-
-//convert date(s) to Y-m-d format
-$week_of = date("Y-m-d", strtotime($week_of));
-                                                        
+     
 //connect to the database	
 $dbc = new db;
 $dbc->connect();
@@ -55,7 +52,8 @@ if($sanitize == true){
 }
 
 //If the week_of is not in Y-m-d format fix it
-$week_of = date('Ymd', $week_of)
+$week_of = date("Y-m-d", strtotime($week_of));
+
 
 //verifiy the resource and manger requested exists
 if($valid == true){
@@ -66,7 +64,8 @@ if($valid == true){
 
 //check for in valid user inputs
 if($valid == true){
-	echo "entered vaildation mode";
+	
+	echo "<b>Entered vaildation mode:</b><br>";
 	//make the sales_status be boolean
 	$sales_status = 1;
 	if($_REQUEST['sales_status'] == '1'){
@@ -79,43 +78,51 @@ if($valid == true){
 	
 	//check for a valid sales status
 	if(!(is_bool($sales_status))){
-		header("Location: ./index.php?&bool");
+		//header("Location: ./index.php?&bool");
+		echo "Invaild sales status <br />";
 	}
 	
 	//check for a valid project manager
 	if(!(is_numeric($_REQUEST['manager'])) && !(strlen($_REQUEST['manager']) >= '11' )){
-		header("Location: ./index.php?&manager");
+		//header("Location: ./index.php?&manager");
+		echo "Invaild Project Manager <br />";
 	}
 	
 	//check for a valid project id
 	if(!(is_numeric($_REQUEST['project_id'])) && !(strlen($_REQUEST['project_id']) >= '11' )){
-		header("Location: ./index.php?&projectid");
+		//header("Location: ./index.php?&projectid");
+		echo "Invaild Project id <br />";
 	}
 	
 	//check for a valid resource
 	if(!(is_numeric($_REQUEST['resource'])) && !(strlen($_REQUEST['resource']) >= '11' )){
-		header("Location: ./index.php?&resource");
+		//header("Location: ./index.php?&resource");
+		echo "Invaild Resouce <br />";
 	}
 	
 	//check for a time
 	if(!(isset($_REQUEST['time']))){
-		header("Location: ./index.php?&time");
+		//header("Location: ./index.php?&time");
+		echo "No time <br />";
 	}
 	
 	//check for an empty start date
 	if($week_of == ''){
-		header("Location: ./index.php?&nodate");
+		//header("Location: ./index.php?&nodate");
+		echo "Empty start date <br />";
 	}
 	
         //ensure the start date is a sunday
         if(!(date('w', strtotime($week_of)) == '0')){
-            header("Location: ./index.php?&weekstart");
+        	//header("Location: ./index.php?&weekstart");
+        	echo "Start date not a sunday <br />";
         }
         
 	//check for an empty priority
 	if(!(is_numeric($_REQUEST['priority'])) && 
 	   !(strlen($_REQUEST['priority']) >= '1' )){
-		header("Location: ./index.php?&priority");
+		//header("Location: ./index.php?&priority");
+		echo "Empty Priority <br />";
 	}
         
 }
@@ -172,7 +179,7 @@ if(isset($_REQUEST['debug']) || $fail == true || $debug == true){
   echo '<b>Query:</b><br />'.$query.'<hr>';
   echo '<b>Flags:</b><br />Fail: '.$fail.'<br />Debug: '.$debug.'<br />Valid: '.$valid.'<br />Sanitize: '.$sanitize.'<hr />';
   echo '<b>Values:</b><br />project_id: '.$project_id.'<br />manager: '.$manager.'<br />week_of: '.$resource.'<br />hours: '.$week_of.'<br />priority: '.$priority.'<br />sales_status: '.$sales_status.'<hr />';
-  echo '<p style="text-align: center;"><a href="./dashboard.php" style="text-align:right;">Click Here to Continue >></a><br />(C) Copyright 2013 Liam Kelly</p>'; 
+  echo '<p style="text-align: center;"><a href="./dashboard.php" style="text-align:right;">Click Here to Continue >></a></p>'; 
  }
 
 //otherwise redirect the user to the results page

@@ -57,8 +57,13 @@ class db
 		
 			$result = $this->dbc->query($db_query);	//query the database
 			
-			while ($row = $result->fetch_assoc()) {	//fetch assoc array
-				$array[] = $row;
+			
+			if(is_object($result)){
+					
+				while($row = $result->fetch_assoc()) {	//fetch assoc array
+						$array[] = $row;
+				}
+				
 			}
 			
 			if(!(empty($array))){
@@ -165,11 +170,17 @@ function insert($query){
 //verify that a peice of data is in the database
 function verify($table, $field, $data)
 {
-	
-	$query = "SELECT * FROM ".$table." WHERE `".$field."` = ".$data."";
 
 	$dbc = new db;			//set up object
 	$dbc->connect();		//connect using defaults
+	
+	//sanitize the user inputs
+	$table = $dbc->sanitize($table);
+	$field = $dbc->sanitize($field);
+	$data  = $dbc->sanitize($data);
+	
+	$query = "SELECT * FROM ".$table." WHERE `".$field."` = ".$data."";
+	
 	$result = $dbc->query($query);	//run the query
 	$dbc->close();			//close the database connection
 	
