@@ -88,6 +88,7 @@
 	<br />
 	<label>Priority</label>
   	<select name="priority">
+  	   <option>Select One:</option>
   	   <option value="3">Low</option>
   	   <option value="2">Medium</option>
   	   <option value="1">High</option>
@@ -143,6 +144,11 @@
 		echo '<span style="color: red">You must input a valid Manager.</span>';
 	}
 	
+	//Project Manager existance issues
+	if(isset($_REQUEST['manager_db'])){
+		echo '<span style="color: red">Manager does not exist in database.</span>';
+	}
+	
 	//Project_id issues
 	if(isset($_REQUEST['projectid'])){
 		echo '<span style="color: red">You must input a valid Project ID.</span>';
@@ -151,6 +157,11 @@
 	//Project Resource Issues
 	if(isset($_REQUEST['resource'])){
 		echo '<span style="color: red">You must input a valid Resource.</span>';
+	}
+	
+	//Project Resource existance issues
+	if(isset($_REQUEST['resource_db'])){
+		echo '<span style="color: red">Resource does not exist in database.</span>';
 	}
 	
 	//Time issues
@@ -172,6 +183,11 @@
         if(isset($_REQUEST['weekstart'])){
                 echo '<span style="color: red">The date you selected is not the start of a week.</span>';
         }
+        
+        //SQL Injection alert
+	if(isset($_REQUEST['sql'])){
+		echo '<span style="color: red">You are going to have to try harder than that. ;)</span>';
+	}
         
 	?>
 	

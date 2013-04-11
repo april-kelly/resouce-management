@@ -27,6 +27,7 @@ if($valid == true){
 	if(!(isset($_REQUEST['time']))){ $fail = true; }
 	if(!(isset($_REQUEST['resource']))){ $fail = true; }
 	if(!(isset($_REQUEST['sales_status']))){ $fail = true; }
+	if(!(isset($_REQUEST['priority']))){ $fail = true; }
 }
 
 //sanitize the user inputs
@@ -54,11 +55,21 @@ if($sanitize == true){
 //If the week_of is not in Y-m-d format fix it
 $week_of = date("Y-m-d", strtotime($week_of));
 
+//make the sales_status be boolean
+$sales_status = 1;
+if($_REQUEST['sales_status'] == '1'){
+	$sales_status = true;
+}
+	
+if($_REQUEST['sales_status'] == '0'){
+	$sales_status = false;
+}
+
 
 //verifiy the resource and manger requested exists
 if($valid == true){
-	if(!(verify('people', 'index', $_REQUEST['resource']))){ $fail = true; }
-	if(!(verify('people', 'index', $_REQUEST['manager']))){ $fail = true; }
+
+
 }
 
 
@@ -66,56 +77,73 @@ if($valid == true){
 if($valid == true){
 	
 	echo "<b>Entered vaildation mode:</b><br>";
-	//make the sales_status be boolean
-	$sales_status = 1;
-	if($_REQUEST['sales_status'] == '1'){
-		$sales_status = true;
-	}
-	
-	if($_REQUEST['sales_status'] == '0'){
-		$sales_status = false;
-	}
 	
 	//check for a valid sales status
 	if(!(is_bool($sales_status))){
 		//header("Location: ./index.php?&bool");
 		echo "Invaild sales status <br />";
+		$fail = true;
 	}
 	
 	//check for a valid project manager
 	if(!(is_numeric($_REQUEST['manager'])) && !(strlen($_REQUEST['manager']) >= '11' )){
 		//header("Location: ./index.php?&manager");
 		echo "Invaild Project Manager <br />";
+		$fail = true;
 	}
+	
+	//Ensure the project manager exists in the database
+	if(!(verify('people', 'index', $_REQUEST['manager']))){
+		echo "Project manager does not exist in the database <br />";
+		$fail = true;
+	}
+	
 	
 	//check for a valid project id
 	if(!(is_numeric($_REQUEST['project_id'])) && !(strlen($_REQUEST['project_id']) >= '11' )){
 		//header("Location: ./index.php?&projectid");
 		echo "Invaild Project id <br />";
+		$fail = true;
 	}
 	
 	//check for a valid resource
-	if(!(is_numeric($_REQUEST['resource'])) && !(strlen($_REQUEST['resource']) >= '11' )){
+	if(!(is_numeric($_REQUEST['resource'])) && !(strlen($_REQUEST['resource']) >= '11' )){//fix this
 		//header("Location: ./index.php?&resource");
 		echo "Invaild Resouce <br />";
+		$fail = true;
+	}
+	
+	//Ensure resource exists in the database
+	if(!(verify('people', 'index', $_REQUEST['resource']))){
+		echo "Resource does not exist in the Database <br />";
+		$fail = true;
+	}
+	
+	//check for a vaild prority
+	if(!(is_numeric($_REQUEST['priority']))){
+		echo "Priority not vaild <br />";
+		$fail = true;
 	}
 	
 	//check for a time
 	if(!(isset($_REQUEST['time']))){
 		//header("Location: ./index.php?&time");
 		echo "No time <br />";
+		$fail = true;
 	}
 	
 	//check for an empty start date
 	if($week_of == ''){
 		//header("Location: ./index.php?&nodate");
 		echo "Empty start date <br />";
+		$fail = true;
 	}
 	
         //ensure the start date is a sunday
         if(!(date('w', strtotime($week_of)) == '0')){
         	//header("Location: ./index.php?&weekstart");
         	echo "Start date not a sunday <br />";
+        	$fail = true;
         }
         
 	//check for an empty priority
@@ -123,6 +151,7 @@ if($valid == true){
 	   !(strlen($_REQUEST['priority']) >= '1' )){
 		//header("Location: ./index.php?&priority");
 		echo "Empty Priority <br />";
+		$fail = true;
 	}
         
 }

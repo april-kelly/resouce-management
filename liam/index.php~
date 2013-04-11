@@ -168,6 +168,11 @@
 		echo '<span style="color: red">You must input a Priority Level.</span>';
 	}
 	
+        //The day selected is not a sunday (ie start of the week)
+        if(isset($_REQUEST['weekstart'])){
+                echo '<span style="color: red">The date you selected is not the start of a week.</span>';
+        }
+        
 	?>
 	
    </fieldset>
@@ -178,4 +183,3 @@
  </body>
 
 </html>
-<!-- VYbirUhagreFabjNfu. -->

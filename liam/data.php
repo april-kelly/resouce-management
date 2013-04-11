@@ -137,7 +137,9 @@ class db
 	public function sanitize($input)
 	{
 		
-		return $this->dbc->real_escape_string($input);
+		//return $this->dbc->real_escape_string($input);
+		$sanitize = new PDO;
+		$output = $sanitize->quote($input);
 		
 	}
 	
