@@ -137,13 +137,14 @@ class db
 	public function sanitize($input)
 	{
 		
+		//Working but deprecated
+		return $this->dbc->real_escape_string($input);
+		
 		//Not working yet
 		/*
 		$sanitize = new PDO;
 		return $sanitize->quote($input);
 		*/
-		//Working but deprecated
-		return $this->dbc->real_escape_string($input);
 		
 	}
 	
