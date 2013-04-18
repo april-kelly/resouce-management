@@ -24,11 +24,13 @@ if($valid == true){
 	if(!(isset($_REQUEST['project_id']))){ $fail = true; }
 	if(!(isset($_REQUEST['manager']))){ $fail = true; }
 	if(!(isset($_REQUEST['start_date']))){ $fail = true; }
-	if(!(isset($_REQUEST['time']))){ $fail = true; }
+	//if(!(isset($_REQUEST['time']))){ $fail = true; }
 	if(!(isset($_REQUEST['resource']))){ $fail = true; }
 	if(!(isset($_REQUEST['sales_status']))){ $fail = true; }
 	if(!(isset($_REQUEST['priority']))){ $fail = true; }
 }
+
+if($fail == true){ echo "verification"; }
 
 //sanitize the user inputs
 if($sanitize == true){
@@ -155,9 +157,10 @@ if($valid == true){
 	}
         
 }
+if($fail == true){ echo "validation"; }
 
 //Query(new)
-$query = "INSERT INTO `resources`.`test`
+$query = "INSERT INTO `jobs`
 		(`index`,
 		`project_id`,
 		`manager`,
@@ -179,6 +182,7 @@ $query = "INSERT INTO `resources`.`test`
 //Query
 if($fail == false){
  $dbc->insert($query);
+ echo "attempted insert";
 }
 
 //Disconnect

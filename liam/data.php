@@ -8,11 +8,14 @@
 
 class db
 {
-	//hard coded database login info
-	private $db_host = 'localhost';
-	private $db_user = 'root';
-	private $db_pass = 'kd0hdf';
-	private $db_database = 'resources';
+	
+	//Login related
+	private $settings;
+	private $settings_location = 'settings.bin';
+	private $db_host;
+	private $db_user;
+	private $db_database;
+	private $user_defined = false;
 	
 	//mysqli object
 	private $dbc;
@@ -20,8 +23,8 @@ class db
 	//Fail
 	private $fail = '0';
 
-	//change database login info
-	public function set ($new_host, $new_user, $new_pass, $new_database)
+	//change database login info temporarly
+	public function credentials($new_host, $new_user, $new_pass, $new_database)
 	{
 	
 		if(isset($new_host)){
@@ -39,13 +42,37 @@ class db
 		if(isset($new_host)){
 			$this->db_database = $new_database;
 		}
+		
+		$this->user_defined = true;
 	
+	}
+	
+	//change the database login info permently
+	public function update_creds()
+	{
+		
+		$this->settings['db_host']      = $this->db_host;
+		$this->settings['db_user']      = $this->db_user;
+		$this->settings['db_pass']      = $this->db_pass;
+		$this->settings['db_database']  = $this->db_database;
+		
 	}
 	
 	//connect to the database
 	public function connect()
 	{
-	
+		//fetch the credentials
+		if($this->user_defined == false){
+			
+			$this->settings = unserialize(file_get_contents($this->settings_location));
+			$this->db_host     = $this->settings['db_host'];
+			$this->db_user     = $this->settings['db_user'];
+			$this->db_pass     = $this->settings['db_pass'];
+			$this->db_database = $this->settings['db_database'];
+			
+		}
+		
+		//connect to the database
 		$this->dbc = new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_database) or die($this->fail = '1');
 		
 	}
@@ -64,6 +91,8 @@ class db
 						$array[] = $row;
 				}
 				
+			}else{
+				return false;
 			}
 			
 			if(!(empty($array))){
@@ -147,6 +176,7 @@ class db
 		*/
 		
 	}
+	
 	
 }
 

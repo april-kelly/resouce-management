@@ -107,7 +107,7 @@ if($valid == true){
 	}
 	
 	//check for a valid resource
-	if(!(is_numeric($_REQUEST['resource'])) && !(strlen($_REQUEST['resource']) >= '11' )){//fix this
+	if(!(is_numeric($_REQUEST['resource']))){//fix this
 		//header("Location: ./index.php?&resource");
 		echo "Invaild Resouce <br />";
 		$fail = true;
@@ -126,22 +126,22 @@ if($valid == true){
 	}
 	
 	//check for a time
-	if(!(isset($_REQUEST['time']))){
+	/*if(!(isset($_REQUEST['time']))){
 		//header("Location: ./index.php?&time");
 		echo "No time <br />";
 		$fail = true;
-	}
+	}*/
 	
 	//check for an empty start date
 	if($week_of == ''){
-		//header("Location: ./index.php?&nodate");
+		header("Location: ./index.php?&nodate");
 		echo "Empty start date <br />";
 		$fail = true;
 	}
 	
         //ensure the start date is a sunday
         if(!(date('w', strtotime($week_of)) == '0')){
-        	//header("Location: ./index.php?&weekstart");
+        	header("Location: ./index.php?&weekstart");
         	echo "Start date not a sunday <br />";
         	$fail = true;
         }
@@ -149,7 +149,7 @@ if($valid == true){
 	//check for an empty priority
 	if(!(is_numeric($_REQUEST['priority'])) && 
 	   !(strlen($_REQUEST['priority']) >= '1' )){
-		//header("Location: ./index.php?&priority");
+		header("Location: ./index.php?&priority");
 		echo "Empty Priority <br />";
 		$fail = true;
 	}
