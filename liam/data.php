@@ -76,7 +76,7 @@ class db
 		$this->dbc = new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_database) or die($this->fail = '1');
 		
 	}
-	
+
 	//query the database
 	public function query($db_query)
 	{
