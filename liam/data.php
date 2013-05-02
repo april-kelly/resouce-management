@@ -28,20 +28,32 @@ class db
 	public function credentials($new_host, $new_user, $new_pass, $new_database)
 	{
 	
-		if(isset($new_host)){
+		if(isset($new_host))
+        {
+
 			$this->db_host = $new_host;
+
 		}
 		
-		if(isset($new_user)){
+		if(isset($new_user))
+        {
+
 			$this->db_user = $new_user;
+
 		}
 		
-		if(isset($new_pass)){
+		if(isset($new_pass))
+        {
+
 			$this->db_pass = $new_pass;
+
 		}
 		
-		if(isset($new_host)){
+		if(isset($new_host))
+        {
+
 			$this->db_database = $new_database;
+
 		}
 		
 		$this->user_defined = TRUE;
@@ -52,9 +64,12 @@ class db
 	public function connect()
 	{
 		//fetch the credentials
-		if($this->user_defined == FALSE){
-			
+		if($this->user_defined == FALSE)
+        {
+
+            //get the settings from file
 			$this->settings = unserialize(file_get_contents($this->settings_location));
+
 			$this->db_host     = $this->settings['db_host'];
 			$this->db_user     = $this->settings['db_user'];
 			$this->db_pass     = $this->settings['db_pass'];
