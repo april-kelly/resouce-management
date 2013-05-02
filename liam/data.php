@@ -14,6 +14,7 @@ class db
 	private $settings_location = 'settings.bin';
 	private $db_host;
 	private $db_user;
+    private $db_pass;
 	private $db_database;
 	private $user_defined = false;
 	
@@ -92,15 +93,19 @@ class db
 				}
 				
 			}else{
+
 				return false;
 			}
 			
 			if(!(empty($array))){
-				return $array;	//return results
-			}
-			
-			return;
 
+				return $array;	//return results
+
+			}else{
+			
+			    return false;
+
+            }
 		}
 		
 	}
@@ -180,30 +185,6 @@ class db
 	
 }
 
-//Quick access functions
-
-//Provide a quick query function that uses preset defaults
-function query($query)
-{	
-	
-	$dbc = new db;			//set up object
-	$dbc->connect();		//connect using defaults
-	$result = $dbc->query($query);	//run the query
-	$dbc->close();			//close the database connection
-	
-	return $result;			//return the results
-	
-}
-
-//Provide a quick insert statement
-function insert($query){
-	
-			//close the database connection
-                        
-	//return $result;
-	return;
-}
-
 //verify that a peice of data is in the database
 function verify($table, $field, $data)
 {
@@ -229,23 +210,28 @@ function verify($table, $field, $data)
 		
 }
 
-/*	//settings creation function
-	function create($name, $value, $comments){
-	
-		$dbc = new db;						//set up object
-		$dbc->connect();					//connect using defaults
-	
-		//sanitize the inputs
-		$name 	  = $dbc->sanitize($name);
-		$value = $dbc->sanitize($value);
-		$comments = $dbc->sanitize($comments);
-	
-		//define the query
-		$query = "INSERT INTO `resources`.`settings` (`id`, `name`, `value`, `comments`) VALUES (NULL, \'".$name."\', \'".$value."\', \'".$comments."\')";
-		
-		$dbc->insert($query);				//run the query
-		$dbc->close();						//close the database connection
-	
-		return;
-	
-	}*/
+/*
+//Quick access functions
+
+//Provide a quick query function that uses preset defaults
+function query($query)
+{
+
+	$dbc = new db;			//set up object
+	$dbc->connect();		//connect using defaults
+	$result = $dbc->query($query);	//run the query
+	$dbc->close();			//close the database connection
+
+	return $result;			//return the results
+
+}
+
+//Provide a quick insert statement
+function insert($query){
+
+			//close the database connection
+
+	//return $result;
+	return;
+}
+*/
