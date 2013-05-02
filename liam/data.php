@@ -24,7 +24,7 @@ class db
 	//Fail
 	private $fail = '0';
 
-	//change database login info temporarly
+	//change database login info temporarily
 	public function credentials($new_host, $new_user, $new_pass, $new_database)
 	{
 	
@@ -48,17 +48,6 @@ class db
 	
 	}
 	
-	//change the database login info permently
-	public function update_creds()
-	{
-		
-		$this->settings['db_host']      = $this->db_host;
-		$this->settings['db_user']      = $this->db_user;
-		$this->settings['db_pass']      = $this->db_pass;
-		$this->settings['db_database']  = $this->db_database;
-		
-	}
-	
 	//connect to the database
 	public function connect()
 	{
@@ -74,14 +63,28 @@ class db
 		}
 		
 		//connect to the database
-		$this->dbc = new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_database) or die($this->fail = '1');
+		$this->dbc = new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_database) or die($this->fail = TRUE);
 		
 	}
+
+    //save the database login info to file
+    public function update_creds()
+    {
+
+        $this->settings['db_host']      = $this->db_host;
+        $this->settings['db_user']      = $this->db_user;
+        $this->settings['db_pass']      = $this->db_pass;
+        $this->settings['db_database']  = $this->db_database;
+
+        file_put_contents($this->settings_location, serialize($this->settings));
+
+
+    }
 
 	//query the database
 	public function query($db_query)
 	{
-		if($this->fail !== true){
+		if($this->fail = FALSE){
 		
 			$result = $this->dbc->query($db_query);	//query the database
 			
@@ -167,71 +170,32 @@ class db
 		}
 	}
 	
-	//allow user to sanatize data
+	//allow user to sanitize data
 	public function sanitize($input)
 	{
-		
-		//Working but deprecated
+
 		return $this->dbc->real_escape_string($input);
-		
-		//Not working yet
-		/*
-		$sanitize = new PDO;
-		return $sanitize->quote($input);
-		*/
-		
+
 	}
+
+    //allow the user to verify that a piece of data is in the database
+    public function verify($table, $field, $data){
+
+        //sanitize the user inputs
+        $table  = $this->sanitize($table);
+        $field  = $this->sanitize($field);
+        $data   = $this->sanitize($data);
+
+        $result = $this->dbc->query("SELECT * FROM ".$table." WHERE `".$field."` = ".$data."");
+
+        if(count($result) == '1'){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 	
 	
 }
-
-//verify that a peice of data is in the database
-function verify($table, $field, $data)
-{
-
-	$dbc = new db;			//set up object
-	$dbc->connect();		//connect using defaults
-	
-	//sanitize the user inputs
-	$table = $dbc->sanitize($table);
-	$field = $dbc->sanitize($field);
-	$data  = $dbc->sanitize($data);
-	
-	$query = "SELECT * FROM ".$table." WHERE `".$field."` = ".$data."";
-	
-	$result = $dbc->query($query);	//run the query
-	$dbc->close();			//close the database connection
-	
-	if(count($result) == '1'){
-		return true;
-	}else{
-		return false;
-	}
-		
-}
-
-/*
-//Quick access functions
-
-//Provide a quick query function that uses preset defaults
-function query($query)
-{
-
-	$dbc = new db;			//set up object
-	$dbc->connect();		//connect using defaults
-	$result = $dbc->query($query);	//run the query
-	$dbc->close();			//close the database connection
-
-	return $result;			//return the results
-
-}
-
-//Provide a quick insert statement
-function insert($query){
-
-			//close the database connection
-
-	//return $result;
-	return;
-}
-*/
