@@ -16,13 +16,13 @@ class db
 	private $db_user;
     private $db_pass;
 	private $db_database;
-	private $user_defined = false;
+	private $user_defined = FALSE;
 	
 	//mysqli object
 	private $dbc;
 	
-	//Fail
-	private $fail = '0';
+	//variable to indicate the connection has failed
+	private $fail = FALSE;
 
 	//change database login info temporarily
 	public function credentials($new_host, $new_user, $new_pass, $new_database)
@@ -44,7 +44,7 @@ class db
 			$this->db_database = $new_database;
 		}
 		
-		$this->user_defined = true;
+		$this->user_defined = TRUE;
 	
 	}
 	
@@ -52,7 +52,7 @@ class db
 	public function connect()
 	{
 		//fetch the credentials
-		if($this->user_defined == false){
+		if($this->user_defined == FALSE){
 			
 			$this->settings = unserialize(file_get_contents($this->settings_location));
 			$this->db_host     = $this->settings['db_host'];
@@ -84,80 +84,116 @@ class db
 	//query the database
 	public function query($db_query)
 	{
-		if($this->fail = FALSE){
-		
+		if($this->fail = FALSE)
+        {
+
 			$result = $this->dbc->query($db_query);	//query the database
 			
 			
-			if(is_object($result)){
+			if(is_object($result))
+            {
 					
 				while($row = $result->fetch_assoc()) {	//fetch assoc array
 						$array[] = $row;
 				}
 				
-			}else{
+			}
+            else
+            {
 
-				return false;
+				return FALSE;
 			}
 			
-			if(!(empty($array))){
+			if(!(empty($array)))
+            {
 
 				return $array;	//return results
 
-			}else{
+			}
+            else
+            {
 			
-			    return false;
+			    return FALSE;
 
             }
+
 		}
-		
+        else
+        {
+
+            return FALSE;
+
+        }
+
 	}
 	
 	//insert into the database
 	public function insert($db_query)
 	{
-		if($this->fail == '0'){
 
-			if(is_object($this->dbc)){
+		if($this->fail = FALSE)
+        {
+
+			if(is_object($this->dbc))
+            {
 		
 				$this->dbc->query($db_query);	//query the database
+
+                return TRUE;
 
 			}
 
 		}
-		
+		else
+        {
+
+            return FALSE;
+
+        }
 	}
 	
 	//delete from the database
 	public function delete($db_query)
 	{
-		if($this->fail == '0'){
+		if($this->fail = FALSE)
+        {
 
-			if(is_object($this->dbc)){
+			if(is_object($this->dbc))
+            {
 		
 				$this->dbc->query($db_query);	//query the database
+
+                return TRUE;
 
 			}
 
 		}
+        else
+        {
+
+            return FALSE;
+
+        }
 		
 	}
 	
 	//disconnect from the database
 	public function close()
 	{
-		if($this->fail == '0'){
+
+		if($this->fail = FALSE)
+        {
 		
 			if($this->dbc->close())
 			{
 			
-				return true;	//connection closed
+				return TRUE;	//connection closed
 				
 			}
 			else
 			{
 		
-				return false;	//connection not closed
+				return FALSE;	//connection not closed
 				
 			}
 			
@@ -165,33 +201,57 @@ class db
 		else
 		{
 		
-			return false;	//no connection
+			return FALSE;	//no connection
 			
 		}
+
 	}
 	
 	//allow user to sanitize data
 	public function sanitize($input)
 	{
 
-		return $this->dbc->real_escape_string($input);
+        if($this->fail = FALSE)
+        {
+
+		       return $this->dbc->real_escape_string($input);
+
+        }
 
 	}
 
     //allow the user to verify that a piece of data is in the database
     public function verify($table, $field, $data){
 
-        //sanitize the user inputs
-        $table  = $this->sanitize($table);
-        $field  = $this->sanitize($field);
-        $data   = $this->sanitize($data);
+        if($this->fail == FALSE)
+        {
 
-        $result = $this->dbc->query("SELECT * FROM ".$table." WHERE `".$field."` = ".$data."");
+            //sanitize the user inputs
+            $table  = $this->sanitize($table);
+            $field  = $this->sanitize($field);
+            $data   = $this->sanitize($data);
 
-        if(count($result) == '1'){
-            return true;
-        }else{
-            return false;
+            $result = $this->dbc->query("SELECT * FROM ".$table." WHERE `".$field."` = ".$data."");
+
+            if(count($result) == '1')
+            {
+
+               return TRUE;
+
+            }
+            else
+            {
+
+               return FALSE;
+
+            }
+
+        }
+        else
+        {
+
+            return FALSE;
+
         }
 
     }
