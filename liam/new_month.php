@@ -1,9 +1,10 @@
-<table border="1">
 <?php
+
+function table(){
 //Includes
-include('data.php');
-include('./excel/ABG_PhpToXls.cls.php');
-include('settings.php');
+include_once('data.php');
+include_once('./excel/ABG_PhpToXls.cls.php');
+include_once('settings.php');
 
 //Settings
 $colors = fetch(8);
@@ -26,6 +27,8 @@ if(date( "w", date("U")) == '0'){
 }else{
 	$current = date('Y-m-d', strtotime('Last Sunday', time()));
 }
+
+
 
 $weeks = array();
 $weeks[1] = $current;
@@ -114,76 +117,13 @@ foreach($people as $people)
 //close the database connection
 $dbc->close();
 
-if($output == true){
-//Echo out the table header
-echo "\t".'<tr class="header">'."\r\n\r\n";
-echo "\t\t".'<td>Resource: </td>'."\r\n";
-$excel[0][0] = "Resource:";
-$i = 1;
-foreach($weeks as $weeks){
-	echo "\t\t".'<td>'.$weeks.'</td>'."\r\n";
-	$excel[0][$i] = $weeks;
-	$i++;
-}
-echo "\t".'</tr>'."\r\n\r\n";
 
-
-
-//Excel output:
-if($excel_enable == true){
-	
-	$copy = $table;
-
-	$i = 1;		//Must be set to the first row after the header
-	foreach($copy as $copy){
-		$excel[$i] = $copy;
-		$i++;
-	}
-
-	try{
-		$PhpToXls = new ABG_PhpToXls($excel, null, 'month', true);
-		$PhpToXls->SaveFile();
-	}
-	catch(Exception $Except){ 
-	
-	}
-	
 }
 
 
-  
-  
-//echo out each of the rows in the table
-foreach($table as $table){
-	
-	echo "\t".'<tr>'."\r\n";
-	echo "\t\t".'<td><a href="./week.php?p='.$table['id'].'">'.$table['name'].'</a></td>'."\r\n";
-	
-	for($i = 1; $i <= $count; $i++){
-		echo "\t\t".'<td>';
-		
-		if($color_enable == true){
-			
-		   if($table[$i] == 0) { echo '<span style="background-color: #fff; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		   if($table[$i] <= $colors[0]['high'] && $table[$i] >= $colors[0]['low']) { echo '<span style="background-color: '.$colors[0]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		   if($table[$i] <= $colors[1]['high'] && $table[$i] >= $colors[1]['low']) { echo '<span style="background-color: '.$colors[1]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		   if($table[$i] <= $colors[2]['high'] && $table[$i] >= $colors[2]['low']) { echo '<span style="background-color: '.$colors[2]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		   if($table[$i] >= $colors[3]['low']) { echo '<span style="background-color: '.$colors[3]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		
-		}else{
-			echo $table[$i];
-		}
-		echo '</td>'."\r\n";
-	}  
-	
-	echo "\t".'</tr>'."\r\n\r\n";
-	
-}
-}
-}else{
-    echo '<span style="color:red;"><b>Error</b>: <em>Database connection failed.</em></span>';
+return array("weeks"=>$weeks,"table"=>$table);
 }
 
 	
 ?>
-</table>
+
