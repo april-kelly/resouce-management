@@ -24,7 +24,7 @@ class db
 	//Fail
 	private $fail = '0';
 
-	//change database login info temporarly
+	//change database login info temporarily
 	public function credentials($new_host, $new_user, $new_pass, $new_database)
 	{
 	
@@ -75,19 +75,9 @@ class db
 
 		}
 
-        try
-        {
+            $this->dbc = new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_database)
+                or die("Could not connect!");
 
-            $this->dbc = new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_database); //or die($this->fail = TRUE);
-
-        }
-        catch(Exception $e)
-        {
-
-            //echo $e;
-            return false;
-
-        }
 
 	}
 	
@@ -171,51 +161,48 @@ class db
 		else
 		{
 		
-			return false;	//no connection
+			return NULL;	//no connection
 			
 		}
 	}
 	
-	//allow user to sanatize data
+	//allow user to sanitize data
 	public function sanitize($input)
 	{
 		
 		//Working but deprecated
 		return $this->dbc->real_escape_string($input);
-		
-		//Not working yet
-		/*
-		$sanitize = new PDO;
-		return $sanitize->quote($input);
-		*/
-		
+
 	}
-	
-	
-}
 
-//Quick access functions
+    //allow user to verify that a piece of data is in the database
+    public function verify($table, $field, $string)
+    {
+        /*
+        $data = new db;
 
-//Provide a quick query function that uses preset defaults
-function query($query)
-{	
-	
-	$dbc = new db;			//set up object
-	$dbc->connect();		//connect using defaults
-	$result = $dbc->query($query);	//run the query
-	$dbc->close();			//close the database connection
-	
-	return $result;			//return the results
-	
-}
+        $data->connect();
 
-//Provide a quick insert statement
-function insert($query){
+        //sanitize the user inputs
+        $table = $data->sanitize($table);
+        $field = $data->sanitize($field);
+        $data  = $data->sanitize($string);
+
+        $query = "SELECT * FROM ".$table." WHERE `".$field."` = ".$data."";
+
+        $result = $data->query($query);	//run the query
+        $data->close();			//close the database connection
+
+        if(count($result) >= '1'){
+            return true;
+        }else{
+            return false;
+        }
+
+*/
+        return false;
+    }
 	
-			//close the database connection
-                        
-	//return $result;
-	return;
 }
 
 //verify that a peice of data is in the database
