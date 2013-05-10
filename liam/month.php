@@ -50,7 +50,7 @@ if(is_bool($connection)){
 
 if($fail = TRUE){
 //Fetch the list of resources
-$people = $dbc->'SELECT * FROM people');	//Get the table of people
+$people = $dbc->query('SELECT * FROM people');	//Get the table of people
 
 //create the table
 $i = 0;
