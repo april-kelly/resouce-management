@@ -29,15 +29,12 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
     //close connection
     $dbc->close();
 
+
     if(count($results) == '1')
     {
 
        //valid login
-
-       $_SESSION['index']   = $results[0]['index'];
-       $_SESSION['name']    = $results[0]['name'];
-       $_SESSION['type']    = $results[0]['type'];
-
+       $_SESSION['userid'] = $results[0]['index'];
        header('location: ./admin.php');
 
 

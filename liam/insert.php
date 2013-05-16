@@ -9,11 +9,14 @@
 //Include the data object
 include('data.php');
 
-//Debugging Flags:
-$debug = true;		//flag to prevent running query					Default: false
-$valid = true;		//flag to enable user data validation				Default: true
-$sanitize = true;	//flag to enable user data sanitation (use with caution)	Default: true
-$fail = false;		//flag to terminate the insert if something fails		Default: false
+//Fetch Settings
+$settings = unserialize(file_get_contents('./settings.bin'));
+
+//Settings and Debugging flags
+$debug       = $settings['insert_debug'];		//flag to prevent running query					Default: false
+$valid       = $settings['insert_valid'];		//flag to enable user data validation				Default: true
+$sanitize    = $settings['insert_sanitize'];	//flag to enable user data sanitation (use with caution)	Default: true
+$fail        = $settings['insert_fail'];		//flag to terminate the insert if something fails		Default: false
      
 //connect to the database	
 $dbc = new db;
