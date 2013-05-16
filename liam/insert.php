@@ -10,20 +10,20 @@
 include('data.php');
 
 //Fetch Settings
-$settings = unserialize(file_get_contents('./settings.bin'));
+$settings = unserialize(file_get_contents('./admin/settings.bin'));
 
 //Settings and Debugging flags
-$debug       = $settings['insert_debug'];		//flag to prevent running query					Default: false
+$debug       = $settings['insert_debug'];		//flag to prevent running query					    Default: false
 $valid       = $settings['insert_valid'];		//flag to enable user data validation				Default: true
-$sanitize    = $settings['insert_sanitize'];	//flag to enable user data sanitation (use with caution)	Default: true
-$fail        = $settings['insert_fail'];		//flag to terminate the insert if something fails		Default: false
+$sanitize    = $settings['insert_sanitize'];	//flag to enable user data sanitation           	Default: true
+$fail        = $settings['insert_fail'];		//flag to terminate the insert if something fails   Default: false
      
 //connect to the database	
 $dbc = new db;
 $dbc->connect();
 
 //Verifiy the user filled out all inputs correctly
-if($valid == true){
+if($valid = TRUE){
 	if(!(isset($_REQUEST['project_id']))){ $fail = true; }
 	if(!(isset($_REQUEST['manager']))){ $fail = true; }
 	if(!(isset($_REQUEST['start_date']))){ $fail = true; }
@@ -33,10 +33,10 @@ if($valid == true){
 	if(!(isset($_REQUEST['priority']))){ $fail = true; }
 }
 
-if($fail == true){ echo "verification"; }
+if($fail = TRUE){ echo "verification"; }
 
 //sanitize the user inputs
-if($sanitize == true){
+if($sanitize = TRUE){
 	
         $week_of                = $dbc->sanitize($_REQUEST['start_date']);
 	$project_id   		= $dbc->sanitize($_REQUEST['project_id']);
@@ -72,15 +72,15 @@ if($_REQUEST['sales_status'] == '0'){
 
 
 //verifiy the resource and manger requested exists
-if($valid == true){
+if($valid = TRUE){
 
 
 }
 
 
 //check for in valid user inputs
-if($valid == true){
-	
+if($valid = TRUE){
+
 	echo "<b>Entered vaildation mode:</b><br>";
 	
 	//check for a valid sales status
@@ -160,7 +160,7 @@ if($valid == true){
 	}
         
 }
-if($fail == true){ echo "validation"; }
+if($fail = TRUE){ echo "validation"; }
 
 //Query(new)
 $query = "INSERT INTO `jobs`
@@ -183,7 +183,7 @@ $query = "INSERT INTO `jobs`
 		'".$sales_status."')";
 
 //Query
-if($fail == false){
+if($fail = FALSE){
  $dbc->insert($query);
  echo "attempted insert";
 }
@@ -192,10 +192,10 @@ if($fail == false){
 $dbc->close();
 
 //Debugging and redirection
-if(isset($_REQUEST['debug']) || $fail == true || $debug == true){
+if(isset($_REQUEST['debug']) || $fail = TRUE || $debug = TRUE){
 
  //Echo out the Debugging page
- if($debug == true && $fail == false){ 
+ if($debug = TRUE && $fail = FALSE){
   echo '<h2>Debug mode:</h2><br /><hr>';
   echo '<b>Query:</b><br />'.$query.'<hr>';
   echo '<b>Flags:</b><br />Fail: '.$fail.'<br />Debug: '.$debug.'<br />Valid: '.$valid.'<br />Sanitize: '.$sanitize.'<hr />';
@@ -204,12 +204,12 @@ if(isset($_REQUEST['debug']) || $fail == true || $debug == true){
  }                           
  
  //Echo out an error message if the user tries to enter debugging mode with out setting the flag first               
- if(isset($_REQUEST['debug']) && $fail == false){
+ if(isset($_REQUEST['debug']) && $fail = FALSE){
   echo '<h2>Debug mode:</h2><br />For security reasons debug mode must be enable by setting the $debug flag to true.<hr>';  
  }
  
  //Aleart the user that their query has failed                                                      
- if($fail == true){
+ if($fail = TRUE){
   echo '<span style="color: red;"><h2>ERROR: </h2>The insert statement has failed. </span><br /><hr />';
   echo '<br /><br /><h3>Debugging info:</h3><br />';
   echo '<b>Query:</b><br />'.$query.'<hr>';
