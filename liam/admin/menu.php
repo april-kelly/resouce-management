@@ -1,8 +1,5 @@
 <?php
 
-    //start the users session
-    session_start();
-
     //includes
     include_once('../data.php');
 
@@ -44,7 +41,7 @@ if($settings['insert_fail'] == TRUE)
 
         <legend>Display and Debugging Options:</legend>
 
-        <form action="admin.php" method="post">
+        <form action="save.php" method="post">
             <br />
 
             <b>month.php: </b><br /><br />

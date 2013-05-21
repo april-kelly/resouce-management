@@ -24,7 +24,6 @@ if(isset($_SESSION['userid']))
     switch($user[0]['admin'])
     {
         case true:
-            //echo "Hi, ".$user[0]['name']."! (<a href='./login.php?logout'>Logout</a>)";
             require_once('menu.php');
         break;
 

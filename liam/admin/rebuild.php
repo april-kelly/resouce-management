@@ -1,9 +1,10 @@
 <?php
 /**
- * Name:       settings.bin repair/creation tool
+ * Name:       settings.bin repair and creation tool
  * Programmer: liam
  * Date:       5/16/13
  */
+
 
 //settings file location
 $location = './settings.bin';
@@ -12,7 +13,7 @@ $location = './settings.bin';
 $file = file_get_contents($location);
 
 //unserialize file
-$settings = unserialize($file);
+$settings = unserialize($location);
 
 //spit out debugging information
 ?>
@@ -38,5 +39,7 @@ $settings['month_output']   = TRUE;
 
 $settings['weeks']          = 12;
 $file = serialize($settings);
+
+file_put_contents($location, '');
 
 file_put_contents($location, $file);
