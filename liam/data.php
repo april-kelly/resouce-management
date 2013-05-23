@@ -5,11 +5,12 @@
      Programmer:    Liam Kelly
      Last Modified: 04/23/13
 */
+include_once('./config/settings.php');
 
 class db
 {
 	//Settings
-	private $settings_location = 'settings.bin';
+	//private $settings_location = 'settings.bin';
 	
 	//Login related
 	private $settings;
@@ -66,12 +67,15 @@ class db
 	{
 		//fetch the credentials
 		if($this->user_defined == false){
-			
-			$this->settings = unserialize(file_get_contents($this->settings_location));
-			$this->db_host     = $this->settings['db_host'];
-			$this->db_user     = $this->settings['db_user'];
-			$this->db_pass     = $this->settings['db_pass'];
-			$this->db_database = $this->settings['db_database'];
+
+            //Fetch the settings
+			$this->settings = new settings;
+			$settings = $this->settings->fetch();
+
+			$this->db_host     = $settings['db_host'];
+			$this->db_user     = $settings['db_user'];
+			$this->db_pass     = $settings['db_pass'];
+			$this->db_database = $settings['db_database'];
 
 		}
 

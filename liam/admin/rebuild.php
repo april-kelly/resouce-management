@@ -10,10 +10,10 @@
 $location = './settings.bin';
 
 //fetch file
-$file = file_get_contents($location);
+//$file = file_get_contents($location);
 
 //unserialize file
-$settings = unserialize($location);
+//$settings = unserialize($location);
 
 //spit out debugging information
 ?>
@@ -25,7 +25,7 @@ echo '<pre>'.$file.'</pre>';
 echo '<h3>Unserialized:</h3>';
 echo '<pre>';
 var_dump($settings);
-echo '</pre>';
+
 
 $settings['insert_debug']   = FALSE;
 $settings['insert_valid']    = TRUE;
@@ -38,8 +38,18 @@ $settings['month_excel']    = TRUE;
 $settings['month_output']   = TRUE;
 
 $settings['weeks']          = 12;
-$file = serialize($settings);
+//$file = serialize($settings);
+$file = json_encode($settings);
+//file_put_contents($location, $file);
 
-file_put_contents($location, '');
 
-file_put_contents($location, $file);
+$test = json_decode($file);
+var_dump($test);
+
+
+$array = (array) $test;
+var_dump($array);
+echo $array['weeks'];
+
+
+echo '</pre>';
