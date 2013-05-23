@@ -7,7 +7,9 @@
 
 class settings {
 
-    //Define the settings
+    /**Prefine the settings, with defaults
+     * Note: DO NOT use private or protected variables, it will cause json_decode generate a fatal exception.
+    */
 
         //Settings for insert.php
             public $insert_debug    = FALSE;
@@ -24,12 +26,12 @@ class settings {
         //Settings for data.php
             public $db_host         = 'localhost';
             public $db_user         = 'root';
-            public $db_pass         = 'kd0dhf';
+            public $db_pass         = 'kd0hdf';
             public $db_database     = 'resources';
 
         //Global Settings
             public $weeks           = 12;
-            public $location        = 'settings.json'; //location for the settings file
+            public $location        = '/opt/lampp/htdocs/resouce-management/liam/config/settings.json'; //location for the settings file
 
 
     //Create a json settings file

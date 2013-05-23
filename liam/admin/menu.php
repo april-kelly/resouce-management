@@ -11,7 +11,8 @@
     $dbc->close();
 
     //Fetch values to populate fields
-    $settings = unserialize(file_get_contents('./settings.bin'));
+    $settings = new settings;
+    $settings = $settings->fetch();
     $db_host = $settings['db_host'];
     $db_user = $settings['db_user'];
     $db_pass = $settings['db_pass'];
