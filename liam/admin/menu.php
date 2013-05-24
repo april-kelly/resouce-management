@@ -11,17 +11,8 @@
     $dbc->close();
 
     //Fetch values to populate fields
-    $settings = new settings;
-    $settings = $settings->fetch();
-    $db_host = $settings['db_host'];
-    $db_user = $settings['db_user'];
-    $db_pass = $settings['db_pass'];
-    $db_database = $settings['db_database'];
-
-if($settings['insert_fail'] == TRUE)
-{
-    echo "checked";
-}
+    $set = new settings;
+    $settings = $set->fetch();
 
 ?>
 <!DOCTYPE html>
@@ -31,63 +22,75 @@ if($settings['insert_fail'] == TRUE)
 </head>
 <body>
 
-    <p>
 
         <h2>Administrative Control Panel:</h2>
         <b>Welcome, <?php echo $user[0]['name'] ?> <a href="./login.php?logout">(logout)</a></b>
 
-    </p>
+
 
     <fieldset>
 
         <legend>Display and Debugging Options:</legend>
 
-        <form action="save.php" method="post">
-            <br />
+        <form action="save.php" method="post"><br />
 
             <b>month.php: </b><br /><br />
-            <input type="checkbox"
-                <?php if($settings['month_debug'] == TRUE){ echo "checked"; } ?>
-                /><label>Enable debug mode</label><br />
-            <input type="checkbox"
-                <?php if($settings['month_colors'] == TRUE){ echo "checked"; } ?>
-                /><label>Enable coloration</label><br />
-            <input type="checkbox"
-                <?php if($settings['month_excel'] == TRUE){ echo "checked"; } ?>
-                /><label>Enable excel output</label><br />
-            <input type="checkbox"
-                <?php if($settings['month_output'] == TRUE){ echo "checked"; } ?>
-                /><label>Enable output</label><br />
-            <input type="text" value="<?php echo $settings['weeks'] ?>" /><label># of weeks to display</label><br />
-            <br />
+
+            <input type="hidden" name="month_debug" value="FALSE" />
+            <input type="checkbox" name="month_debug" value="TRUE" <?php if($settings['month_debug'] == TRUE){ echo "checked"; } ?> />
+            <label>Enable debug mode</label><br />
+            <input type="hidden" name="month_colors" value="FALSE" />
+            <input type="checkbox" name="month_colors" value="TRUE" <?php if($settings['month_colors'] == TRUE){ echo "checked"; } ?> />
+            <label>Enable coloration</label><br />
+            <input type="hidden" name="month_excel" value="FALSE" />
+            <input type="checkbox" name="month_excel" value="TRUE" <?php if($settings['month_excel'] == TRUE){ echo "checked"; } ?> />
+            <label>Enable excel output</label><br />
+            <input type="hidden" name="month_output" value="FALSE" />
+            <input type="checkbox" name="month_output" value="TRUE" <?php if($settings['month_output'] == TRUE){ echo "checked"; } ?> />
+            <label>Enable output</label><br />
+            <input type="text" name="weeks" value="<?php echo $settings['weeks'] ?>" />
+            <label># of weeks to display</label><br /><br />
 
 
             <b>insert.php</b><br /><br />
-            <input type="checkbox"
-                <?php if($settings['insert_debug'] == TRUE){ echo "checked"; } ?>
-                /><label>Enable debug mode</label><br />
-            <input type="checkbox"
-                <?php if($settings['insert_valid'] == TRUE){ echo "checked"; } ?>
-                /><label>Enable user data validation</label><br />
-            <input type="checkbox"
-                <?php if($settings['insert_sanitize'] == TRUE){ echo "checked"; } ?>
-                /><label>Enable user data sanitation</label><br />
-            <input type="checkbox"
-                <?php if($settings['insert_fail'] == TRUE){ echo "checked"; } ?>
-                /><label>Force insert to fail</label><br />
-            <br />
+
+            <input type="hidden" name="insert_debug" value="FALSE" />
+            <input type="checkbox" name="insert_debug" value="TRUE" <?php if($settings['insert_debug'] == TRUE){ echo "checked"; } ?> />
+                <label>Enable debug mode</label><br />
+            <input type="hidden" name="insert_valid" value="FALSE" />
+            <input type="checkbox" name="insert_valid" value="TRUE" <?php if($settings['insert_valid'] == TRUE){ echo "checked"; } ?> />
+                <label>Enable user data validation</label><br />
+            <input type="hidden" name="insert_sanitize" value="FALSE" />
+            <input type="checkbox" name="insert_sanitize" value="TRUE" <?php if($settings['insert_sanitize'] == TRUE){ echo "checked"; } ?> />
+                <label>Enable user data sanitation</label><br />
+            <input type="hidden" name="insert_fail" value="FALSE" />
+            <input type="checkbox" name="insert_fail" value="TRUE" <?php if($settings['insert_fail'] == TRUE){ echo "checked"; } ?> />
+                <label>Force insert to fail</label><br />
 
 
             <b>data.php</b><br /><br />
-            <input type="text" value="<?php echo $db_host; ?>" /><label>Database Hostname</label><br />
-            <input type="text" value="<?php echo $db_user; ?>" /><label>Database Username</label><br />
-            <input type="password" value="<?php echo $db_pass; ?>" /><label>Database Password</label><br />
-            <input type="text" value="<?php echo $db_database; ?>" /><label>Database Name</label><br />
+            <input type="text" name="db_host" value="<?php echo $settings['db_host']; ?>" /><label>Database Hostname</label><br />
+            <input type="text" name="db_user" value="<?php echo $settings['db_user']; ?>" /><label>Database Username</label><br />
+            <input type="password" name="db_pass" value="<?php echo $settings['db_pass']; ?>" /><label>Database Password</label><br />
+            <input type="text" name="db_database" value="<?php echo $settings['db_database']; ?>" /><label>Database Name</label><br />
             <br />
 
 
             <br />
             <input type="submit" value="Update" />
+            <?php
+
+                if(isset($_REQUEST['success'])){
+                    echo '<span style="color:green">Settings saved successfully!</span>';
+                }
+
+                if(isset($_REQUEST['failure'])){
+                    echo '<span style="color:red">Error: Unable to save settings!</span>';
+                }
+
+            ?>
+
+
         </form>
 
     </fieldset>
@@ -131,6 +134,26 @@ if($settings['insert_fail'] == TRUE)
 
 
             <input type="submit" value="Add" />
+        </form>
+
+    </fieldset>
+
+    <fieldset>
+
+        <legend>Settings Options</legend>
+
+        <form action="save.php" method="post">
+            <b>Core Settings:</b><br />
+            <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings file from preset defaults</label>
+            <?php
+
+            if(isset($_REQUEST['rebuilt'])){
+                echo '<span style="color:green">Settings file rebuilt successfully!</span>';
+            }
+
+            ?><br />
+            <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br /><br />
+
         </form>
 
     </fieldset>

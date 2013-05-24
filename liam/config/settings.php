@@ -7,9 +7,9 @@
 
 class settings {
 
-    /**Prefine the settings, with defaults
-     * Note: DO NOT use private or protected variables, it will cause json_decode generate a fatal exception.
-    */
+    //Prefine the settings, with defaults
+
+        //Note: DO NOT use private or protected variables, it will cause json_decode generate a fatal exception.
 
         //Settings for insert.php
             public $insert_debug    = FALSE;

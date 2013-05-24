@@ -35,8 +35,8 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 
        //valid login
        $_SESSION['userid'] = $results[0]['index'];
-       header('location: ./admin.php');
-
+       //header('location: ./admin.php');
+        var_dump($_REQUEST);
 
     }
     else
