@@ -42,33 +42,48 @@ if(isset($_POST['rebuild'])){
     header('location: ./admin.php?rebuilt');
 }
 
+var_dump($_REQUEST);
 
 //Reset all of the settings
 
-/*//Settings for insert.php
-$settings['insert_debug']    = $_POST['insert_debug'];
-$settings['insert_valid']    = $_POST['insert_valid'];
-$settings['insert_sanitize'] = $_POST['insert_sanitize'];
-$settings['insert_fail']     = $_POST['insert_fail'];
+foreach($_REQUEST as $key => $value){
 
-//Settings for month.php
-$settings['month_colors']    = $_POST['month_colors'];
-$settings['month_debug']     = $_POST['month_debug'];
-$settings['month_excel']     = $_POST['month_excel'];
-$settings['month_output']    = $_POST['month_output'];
+    echo $key.' => '.$value."<br />\r\n";
 
-//Settings for data.php
-$settings['db_host']         = $_POST['db_host'];
-$settings['db_user']         = $_POST['db_user'];
-$settings['db_pass']         = $_POST['db_pass'];
-$settings['db_database']     = $_POST['db_database'];
+    if(isset($settings[$key])){
 
-//Global Settings
-$settings['weeks']           = $_POST['weeks'];
-$settings['location']        = $_POST['location'];
-*/
+        switch($value){
 
-//Update the settings
+            CASE 'TRUE':
+
+                $settings[$key] = TRUE;
+
+            break;
+
+            CASE 'FALSE':
+
+                $settings[$key] = FALSE;
+
+            break;
+
+            DEFAULT:
+
+                $settings[$key] = $value;
+
+            break;
+        }
+
+        echo "set <br />\r\n";
+
+    }else{
+        echo "not set <br />\r\n";
+    }
+
+
+}
+
+//update the settings
+var_dump($settings);
 $fail = $set->update($settings);
 
 //Redirect the user back to the settings menu
