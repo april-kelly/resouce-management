@@ -13,9 +13,6 @@
     //Fetch values to populate fields
     $set = new settings;
     $settings = $set->fetch();
-echo '<pre>';
-var_dump($settings);
-echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html>

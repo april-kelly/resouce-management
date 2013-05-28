@@ -8,13 +8,13 @@
 //includes
 include_once('/opt/lampp/htdocs/resouce-management/liam/config/settings.php');
 
+//fetch the settings
 $set = new settings;
 $settings = $set->fetch();
-$set->create();
 
 
-//Output Debugging info on request
-if(isset($_POST['dump'])){
+//output debugging info on request
+if(isset($_REQUEST['dump'])){
 ?>
     <h1>Settings Debugging information</h1>
     <hr />
@@ -42,10 +42,7 @@ if(isset($_POST['rebuild'])){
     header('location: ./admin.php?rebuilt');
 }
 
-var_dump($_REQUEST);
-
-//Reset all of the settings
-
+//update each of the settings
 foreach($_REQUEST as $key => $value){
 
     echo $key.' => '.$value."<br />\r\n";
@@ -56,39 +53,33 @@ foreach($_REQUEST as $key => $value){
 
             CASE 'TRUE':
 
-                $settings[$key] = TRUE;
+                $settings[$key] = TRUE; //this ensures a boolean is saved
 
             break;
 
             CASE 'FALSE':
 
-                $settings[$key] = FALSE;
+                $settings[$key] = FALSE; //this ensures a boolean is saved
 
             break;
 
             DEFAULT:
 
-                $settings[$key] = $value;
+                $settings[$key] = $value; //normal method (for strings)
 
             break;
         }
 
-        echo "set <br />\r\n";
-
-    }else{
-        echo "not set <br />\r\n";
     }
-
 
 }
 
 //update the settings
-var_dump($settings);
 $fail = $set->update($settings);
 
 //Redirect the user back to the settings menu
 if($fail == TRUE){
-    //header('location: ./admin.php?success');
+    header('location: ./admin.php?success');
 }else{
-    //header('location: ./admin.php?failure');
+    header('location: ./admin.php?failure');
 }
