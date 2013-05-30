@@ -14,6 +14,8 @@
   <title>Bluetent Resource Management</title>
   
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
    
@@ -35,12 +37,25 @@
  <head>
  
  <body>
- 
-  <form action="insert.php" method="post" onsubmit="return validate()" name="form">
-  
-   <fieldset>
-   
-    <legend>Resource Request Form:</legend>
+
+ <div id="header">
+
+     <img src="./images/logo.gif" style="center"/>
+
+     <ul>
+         <li><a href="./dashboard.php">Overview</a></li>
+         <li><a href="./index.php">Request</a></li>
+         <li><a href="./admin/index.php">Login</a></li>
+         <li><a href="./admin/admin.php">Settings</a></li>
+     </ul>
+
+ </div>
+
+  <div id="main">
+
+  <h3>Request a resource:</h3>
+
+  <form action="insert.php" method="post" onsubmit="return validate()" name="form" class="request">
 	
     <span id="error"><label for="sales_status">Sales Status: </label>
 	
@@ -190,11 +205,10 @@
 	}
         
 	?>
-	
-   </fieldset>
-   <a href="dashboard.php">See current resource usage</a>
-   
+
   </form>
+
+  </div>
   
  </body>
 

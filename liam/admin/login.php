@@ -35,8 +35,7 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 
        //valid login
        $_SESSION['userid'] = $results[0]['index'];
-       //header('location: ./admin.php');
-        var_dump($_REQUEST);
+       header('location: ./admin.php');
 
     }
     else
@@ -63,7 +62,7 @@ if(isset($_REQUEST['logout']))
 
     //log the user out
     session_destroy();
-    header('location: ./index.php');
+    header('location: ./index.php?logout');
 
 }
 

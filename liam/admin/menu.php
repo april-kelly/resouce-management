@@ -18,11 +18,24 @@
 <html>
 <head>
     <title>Bluetent Resource Management: Admin</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
 </head>
 <body>
+<div id="header">
 
+    <img src="../images/logo.gif" style="center"/>
 
-        <h2>Administrative Control Panel:</h2>
+    <ul>
+        <li><a href="../dashboard.php">Overview</a></li>
+        <li><a href="../index.php">Request</a></li>
+        <li><a href="./index.php">Login</a></li>
+        <li><a href="./admin.php">Settings</a></li>
+    </ul>
+
+</div>
+
+<div id="main">
+        <h3>Administrative Control Panel:</h3>
         <b>Welcome, <?php echo $user[0]['name'] ?> <a href="./login.php?logout">(logout)</a></b>
 
 
@@ -156,6 +169,6 @@
         </form>
 
     </fieldset>
-
+<div/>
 </body>
 </html>

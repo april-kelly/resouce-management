@@ -1,4 +1,4 @@
-<table border="1">
+<table border="1" class="data">
 <?php
 //Includes
 include('data.php');

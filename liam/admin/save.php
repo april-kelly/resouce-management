@@ -12,6 +12,10 @@ include_once('/opt/lampp/htdocs/resouce-management/liam/config/settings.php');
 $set = new settings;
 $settings = $set->fetch();
 
+//flags
+$fail = TRUE;
+$save = TRUE;
+
 
 //output debugging info on request
 if(isset($_REQUEST['dump'])){
@@ -34,18 +38,21 @@ if(isset($_REQUEST['dump'])){
    <a href="./admin.php">Go back</a>
 <?php
 
+    $save = FALSE; //prevent redirection
 }
 
 //Rest the settings file to defaults on request
 if(isset($_POST['rebuild'])){
+
     $set->create();
+
     header('location: ./admin.php?rebuilt');
+
+    $save = FALSE;
 }
 
 //update each of the settings
 foreach($_REQUEST as $key => $value){
-
-    echo $key.' => '.$value."<br />\r\n";
 
     if(isset($settings[$key])){
 
@@ -74,12 +81,16 @@ foreach($_REQUEST as $key => $value){
 
 }
 
-//update the settings
-$fail = $set->update($settings);
 
-//Redirect the user back to the settings menu
-if($fail == TRUE){
-    header('location: ./admin.php?success');
-}else{
-    header('location: ./admin.php?failure');
+if($save == TRUE){ //prevent unnecessary updates
+
+    //update the settings
+    $fail = $set->update($settings);
+
+    //Redirect the user back to the settings menu
+    if($fail == TRUE){
+        header('location: ./admin.php?success');
+    }else{
+        header('location: ./admin.php?failure');
+    }
 }
