@@ -1,6 +1,11 @@
 <?php
+    //session
+    session_start();
+
+    //includes
 	include('data.php');
-	
+
+    //database connection
 	$dbc = new db;
 	$dbc->connect();
 	$result = $dbc->query('SELECT * FROM people');
@@ -15,6 +20,7 @@
   
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
   <link rel="stylesheet" href="./styles/styles.css" />
+  <link rel="icon" href="./images/btm_favicon.ico" />
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
@@ -40,14 +46,13 @@
 
  <div id="header">
 
-     <img src="./images/logo.gif" style="center"/>
+     <img src="./images/logo.gif" />
 
-     <ul>
-         <li><a href="./dashboard.php">Overview</a></li>
-         <li><a href="./index.php">Request</a></li>
-         <li><a href="./admin/index.php">Login</a></li>
-         <li><a href="./admin/admin.php">Settings</a></li>
-     </ul>
+     <?php
+
+     require_once(dirname(__FILE__).'/nav.php');
+
+     ?>
 
  </div>
 

@@ -6,18 +6,24 @@
 
     <link rel="stylesheet" href="../styles/styles.css" />
 
-    <base href="http://localhost/resouce-managment/liam/" target="_blank"/>
+    <base href="http://localhost/resouce-management/liam/" target="_blank"/>
 
 </head>
 <body>
 
-<?php
+    <div id="header">
 
-    require_once('../header.php');
+        <img src="./images/logo.gif" />
 
-?>
+    <?php
+
+        require_once('../nav.php');
+
+    ?>
+
+    </div>
     <div id="login">
-        <form action="login.php" method="post">
+        <form action="./admin/login.php" method="post">
            <label>Username:  </label><input type="text" name="username"><br />
            <label>Password: </label><input type="password" name="password"><br />
            <input type="submit" value="login">

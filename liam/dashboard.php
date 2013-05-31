@@ -6,18 +6,17 @@
 </head>
 <body>
 
-    <div id="header">
+<div id="header">
 
-        <img src="./images/logo.gif" style="center"/>
+    <img src="./images/logo.gif" />
 
-        <ul>
-           <li><a href="./dashboard.php">Overview</a></li>
-           <li><a href="./index.php">Request</a></li>
-           <li><a href="./admin/index.php">Login</a></li>
-           <li><a href="./admin/admin.php">Settings</a></li>
-        </ul>
+    <?php
 
-    </div>
+    require_once(dirname(__FILE__).'/nav.php');
+
+    ?>
+
+</div>
 
     <div id="main">
 

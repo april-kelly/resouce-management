@@ -21,16 +21,17 @@
     <link rel="stylesheet" href="../styles/styles.css" />
 </head>
 <body>
+
 <div id="header">
 
-    <img src="../images/logo.gif" style="center"/>
+    <img src="./images/logo.gif" />
 
-    <ul>
-        <li><a href="../dashboard.php">Overview</a></li>
-        <li><a href="../index.php">Request</a></li>
-        <li><a href="./index.php">Login</a></li>
-        <li><a href="./admin.php">Settings</a></li>
-    </ul>
+    <?php
+
+    require_once('../nav.php');
+
+    ?>
+
 
 </div>
 
@@ -62,7 +63,6 @@
             <label>Enable output</label><br />
             <input type="text" name="weeks" value="<?php echo $settings['weeks'] ?>" />
             <label># of weeks to display</label><br /><br />
-
 
             <b>insert.php</b><br /><br />
 
