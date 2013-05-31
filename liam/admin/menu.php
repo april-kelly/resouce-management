@@ -1,7 +1,9 @@
 <?php
 
-    //includes
-    include_once('../data.php');
+//ensure the user is logged in
+if(isset($_SESSION['userid'])){
+
+
 
     //fectch user info
     $dbc = new db;
@@ -13,31 +15,11 @@
     //Fetch values to populate fields
     $set = new settings;
     $settings = $set->fetch();
+
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Bluetent Resource Management: Admin</title>
-    <link rel="stylesheet" href="../styles/styles.css" />
-</head>
-<body>
 
-<div id="header">
-
-    <img src="./images/logo.gif" />
-
-    <?php
-
-    require_once('../nav.php');
-
-    ?>
-
-
-</div>
-
-<div id="main">
         <h3>Administrative Control Panel:</h3>
-        <b>Welcome, <?php echo $user[0]['name'] ?> <a href="./login.php?logout">(logout)</a></b>
+        <b>Welcome, <?php echo $user[0]['name'] ?> <a href="./admin/login.php?logout">(logout)</a></b>
 
 
 
@@ -169,6 +151,8 @@
         </form>
 
     </fieldset>
-<div/>
-</body>
-</html>
+
+<?php
+}else{
+    ?><b class="error">You do not have permission to view this page.</b><?php
+}
