@@ -9,7 +9,8 @@
 session_start();
 
 //includes
-include('../data.php');
+require_once('../index.php'); //to set the ABSPATH constant
+require_once(ABSPATH.'/data.php');
 
 //ensure the user filled out both inputs
 if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
@@ -35,7 +36,8 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 
        //valid login
        $_SESSION['userid'] = $results[0]['index'];
-       header('location: ./admin.php');
+       $_SESSION['name'] = $results[0]['name'];
+       header('location: ../?p=admin');
 
     }
     else
@@ -56,13 +58,3 @@ else
     header('location: ./index.php?bad');
 
 }
-
-if(isset($_REQUEST['logout']))
-{
-
-    //log the user out
-    session_destroy();
-    header('location: ./index.php?logout');
-
-}
-

@@ -1,9 +1,13 @@
 <table border="1" class="data">
 <?php
 //Includes
-include('data.php');
-include('./excel/ABG_PhpToXls.cls.php');
-include('settings.php');
+
+    //needed to execute
+    require_once(ABSPATH.'/data.php');
+    require_once(ABSPATH.'/settings.php');
+
+    //optional
+    include_once(ABSPATH.'/excel/ABG_PhpToXls.cls.php');
 
 //Settings
 $colors = fetch(8);

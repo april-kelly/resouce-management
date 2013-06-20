@@ -1,7 +1,7 @@
 <?php
 
     //includes
-	include('data.php');
+	require_once(ABSPATH.'/data.php');
 
     //database connection
 	$dbc = new db;

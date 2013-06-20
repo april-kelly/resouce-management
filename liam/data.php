@@ -185,10 +185,11 @@ class db
 
 	}
 
+    /*
     //allow user to verify that a piece of data is in the database
     public function verify($table, $field, $string)
     {
-        /*
+
         $data = new db;
 
         $data->connect();
@@ -209,10 +210,11 @@ class db
             return false;
         }
 
-*/
+
         return false;
     }
-	
+    */
+
 }
 
 //verify that a peice of data is in the database

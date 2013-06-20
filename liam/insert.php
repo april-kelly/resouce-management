@@ -7,7 +7,7 @@
 */
 
 //Include the data object
-include('data.php');
+require_once(ABSPATH.'/data.php');
 
 //Fetch Settings
 $settings = unserialize(file_get_contents('./admin/settings.bin'));

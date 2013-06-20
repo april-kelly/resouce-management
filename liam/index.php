@@ -8,14 +8,14 @@
 //start the users session
 session_start();
 
-//includes
-include_once('./data.php');
+//create the location constant
+define('ABSPATH', dirname(__FILE__));
 
 //fetch the user's request
 if(isset($_REQUEST['p'])){
     $request = $_REQUEST['p'];
 }else{
-    $request = '';
+    $request = 'home';
 }
 
 //determine what page to show
@@ -43,8 +43,14 @@ switch($request){
     break;
 
     case "user":
-        $page = './admin/user.php';
+        $page = './user.php';
         $main_id = 'main';
+    break;
+
+    case "logout":
+        $page = './admin/index.php';
+        $main_id = 'login';
+        $_SESSION['logout'] = true; //lets the login page know the user has just logged out
     break;
 
     default:
@@ -68,7 +74,7 @@ switch($request){
 
     if(isset($extras)){
 
-        require_once('head_extras.html');
+        include_once('head_extras.html');
 
     }
 
@@ -83,7 +89,7 @@ switch($request){
 
         <?php
 
-            require_once('./nav.php');
+            include_once('./nav.php');
 
         ?>
 
@@ -93,7 +99,7 @@ switch($request){
 
         <?php
 
-            require_once($page);
+            include_once($page);
 
         ?>
 

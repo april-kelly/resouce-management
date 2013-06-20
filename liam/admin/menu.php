@@ -1,5 +1,8 @@
 <?php
 
+//includes
+require_once(ABSPATH.'/data.php');
+
 //ensure the user is logged in
 if(isset($_SESSION['userid'])){
 

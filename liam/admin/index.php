@@ -4,4 +4,11 @@
            <input type="submit" value="login">
         </form>
         <span class="error"><?php if(isset($_REQUEST['bad'])){ echo 'Incorrect username or password.'; } ?></span>
-        <span class="info"><?php if(isset($_REQUEST['logout'])){ echo 'Logged out.'; } ?></span>
+<?php
+
+        if(isset($_SESSION['logout'])){
+            echo '<span class="info">Logged out.</span>';
+            unset($_SESSION['logout']);
+        }
+
+?>
