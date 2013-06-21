@@ -6,9 +6,9 @@
         <span class="error"><?php if(isset($_REQUEST['bad'])){ echo 'Incorrect username or password.'; } ?></span>
 <?php
 
-        if(isset($_SESSION['logout'])){
+        if($_SESSION['logout'] == true){
             echo '<span class="info">Logged out.</span>';
-            unset($_SESSION['logout']);
+            $_SESSION['logout'] = false;
         }
 
 ?>

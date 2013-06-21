@@ -50,7 +50,16 @@ switch($request){
     case "logout":
         $page = './admin/index.php';
         $main_id = 'login';
-        $_SESSION['logout'] = true; //lets the login page know the user has just logged out
+
+        //Destroy and recreate the session
+        session_destroy();
+        session_start();
+
+        //Trigger the login page to display a log out message.
+        $_SESSION['logout'] = true;
+
+        //Force the page to reload to get rid of the username
+        //echo '<script>document.location.reload(true);</script>';
     break;
 
     default:
