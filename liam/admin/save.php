@@ -46,7 +46,7 @@ if(isset($_POST['rebuild'])){
 
     $set->create();
 
-    header('location: ./admin.php?rebuilt');
+    header('location: ../?p=admin?s=3');
 
     $save = FALSE;
 }
@@ -89,8 +89,8 @@ if($save == TRUE){ //prevent unnecessary updates
 
     //Redirect the user back to the settings menu
     if($fail == TRUE){
-        header('location: ./admin.php?success');
+        header('location: ../?p=admin&s=1');
     }else{
-        header('location: ./admin.php?failure');
+        header('location: ../?p=admin&s=0');
     }
 }

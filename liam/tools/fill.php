@@ -2,9 +2,12 @@
 //include the data object
 include('../data.php');
 
-$people = query('SELECT * FROM people');
+$dbc = new db;			//set up object
+$dbc->connect();		//connect using defaults
 
-$current = '2013-03-31'; //date('Y-m-d');
+$people = $dbc->query('SELECT * FROM people');
+
+$current = '2013-06-23'; //date('Y-m-d');
 $show = 12;
 $weeks = array();
 $weeks[1] = $current;
@@ -14,9 +17,6 @@ for($i = 2; $i <= $show; $i++){
 //var_dump($weeks);
 
 $copy = $weeks;
-
-	$dbc = new db;			//set up object
-	$dbc->connect();		//connect using defaults
 
 	
 foreach($people as $people){

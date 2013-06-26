@@ -133,7 +133,7 @@ class db
 		}
 		
 	}
-	
+
 	//delete from the database
 	public function delete($db_query)
 	{

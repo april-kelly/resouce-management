@@ -22,6 +22,7 @@ class settings {
             public $month_debug     = FALSE;
             public $month_excel     = TRUE;
             public $month_output    = TRUE;
+            public $colors = array();
 
         //Settings for data.php
             public $db_host         = 'localhost';

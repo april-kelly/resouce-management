@@ -4,20 +4,23 @@
 
     //needed to execute
     require_once(ABSPATH.'/data.php');
-    require_once(ABSPATH.'/settings.php');
+    require_once(ABSPATH . '/config/settings.php');
 
     //optional
     include_once(ABSPATH.'/excel/ABG_PhpToXls.cls.php');
 
 //Settings
-$colors = fetch(8);
-$debug = fetch(9);
+$set = new settings;
+$settings = $set->fetch();
+
+
 
 //Others
-$color_enable = $debug['color_enable'];
-$excel_enable = $debug['excel_enable'];
-$show	      = $debug['show'];
-$output       = $debug['output'];
+$color_enable = $settings['month_colors'];
+$excel_enable = $settings['month_excel'];
+$show	      = $settings['weeks'];
+$output       = $settings['month_output'];
+//$colors       = $settings['colors'];
 
 //Define variables
 $hours = '';
@@ -91,13 +94,13 @@ foreach($people as $people)
 					$time = unserialize($project['time']);
 					
 					//add everything up
-					$hours = $hours + $time['sunday']
+                    $hours = $hours + $time['sunday']
 							+ $time['monday']
 							+ $time['tuesday']
 							+ $time['wednesday']
 							+ $time['thursday']
 							+ $time['friday']
-							+ $time['saturday'];//*/
+							+ $time['saturday'];
 								
 					//insert the hours into the table
 					$table[$people['index']][$i] = $table[$people['index']][$i] + $hours; 
@@ -161,18 +164,18 @@ if($excel_enable == true){
 foreach($table as $table){
 	
 	echo "\t".'<tr>'."\r\n";
-	echo "\t\t".'<td><a href="./week.php?p='.$table['id'].'">'.$table['name'].'</a></td>'."\r\n";
+	echo "\t\t".'<td><a href="./?p=week&w='.$table['id'].'">'.$table['name'].'</a></td>'."\r\n";
 	
 	for($i = 1; $i <= $count; $i++){
 		echo "\t\t".'<td>';
 		
 		if($color_enable == true){
 			
-		   if($table[$i] == 0) { echo '<span style="background-color: #fff; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		   if($table[$i] <= $colors[0]['high'] && $table[$i] >= $colors[0]['low']) { echo '<span style="background-color: '.$colors[0]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		   if($table[$i] <= $colors[1]['high'] && $table[$i] >= $colors[1]['low']) { echo '<span style="background-color: '.$colors[1]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		   if($table[$i] <= $colors[2]['high'] && $table[$i] >= $colors[2]['low']) { echo '<span style="background-color: '.$colors[2]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
-		   if($table[$i] >= $colors[3]['low']) { echo '<span style="background-color: '.$colors[3]['color'].'; width: 100%; height: 100%; display: block;">'.$table[$i].'</span>'; }
+		   if($table[$i] == 0) { echo '<span id="colors" class="zero" >'.$table[$i].'</span>'; }
+		   if($table[$i] <= '15' && $table[$i] >= '1') { echo '<span id="colors" class="low" >'.$table[$i].'</span>'; }
+		   if($table[$i] <= '25' && $table[$i] >= '16') { echo '<span id="colors" class="medium" >'.$table[$i].'</span>'; }
+		   if($table[$i] <= '40' && $table[$i] >= '26') { echo '<span id="colors" class="high" >'.$table[$i].'</span>'; }
+		   if($table[$i] >= '41') { echo '<span id="colors" class="veryhigh" >'.$table[$i].'</span>'; }
 		
 		}else{
 			echo $table[$i];
@@ -185,9 +188,13 @@ foreach($table as $table){
 }
 }
 }else{
-    echo '<span style="color:red;"><b>Error</b>: <em>Database connection failed.</em></span>';
+    echo '<span class="error"><b>Error</b>: <em>Database connection failed.</em></span>';
 }
 
 	
 ?>
 </table>
+<?php
+ echo 'Last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy
+ echo ' at '.date('g:ia T'); //outputs the hour:minute am/pm and the timezone
+?>

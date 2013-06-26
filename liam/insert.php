@@ -7,10 +7,12 @@
 */
 
 //Include the data object
-require_once(ABSPATH.'/data.php');
+require_once('./data.php');
+require_once('./config/settings.php');
 
 //Fetch Settings
-$settings = unserialize(file_get_contents('./admin/settings.bin'));
+$set = new settings;
+$settings= $set->fetch();
 
 //Settings and Debugging flags
 $debug       = $settings['insert_debug'];		//flag to prevent running query					    Default: false
@@ -23,7 +25,7 @@ $dbc = new db;
 $dbc->connect();
 
 //Verifiy the user filled out all inputs correctly
-if($valid = TRUE){
+/*if($valid = TRUE){
 	if(!(isset($_REQUEST['project_id']))){ $fail = true; }
 	if(!(isset($_REQUEST['manager']))){ $fail = true; }
 	if(!(isset($_REQUEST['start_date']))){ $fail = true; }
@@ -31,14 +33,14 @@ if($valid = TRUE){
 	if(!(isset($_REQUEST['resource']))){ $fail = true; }
 	if(!(isset($_REQUEST['sales_status']))){ $fail = true; }
 	if(!(isset($_REQUEST['priority']))){ $fail = true; }
-}
+}*/
 
 if($fail = TRUE){ echo "verification"; }
 
 //sanitize the user inputs
 if($sanitize = TRUE){
 	
-        $week_of                = $dbc->sanitize($_REQUEST['start_date']);
+    $week_of            = $dbc->sanitize($_REQUEST['start_date']);
 	$project_id   		= $dbc->sanitize($_REQUEST['project_id']);
 	$manager     		= $dbc->sanitize($_REQUEST['manager']);
 	$resource    		= $dbc->sanitize($_REQUEST['resource']);
@@ -48,7 +50,7 @@ if($sanitize = TRUE){
 	//sanitize, fill and serialize the hours array
 	$hours = serialize(array( 
 		"sunday"    	=> $dbc->sanitize($_REQUEST['sunday']),
-		"monday"   	=> $dbc->sanitize($_REQUEST['monday']),
+		"monday"   	    => $dbc->sanitize($_REQUEST['monday']),
 		"tuesday"   	=> $dbc->sanitize($_REQUEST['tuesday']),
 		"wednesday" 	=> $dbc->sanitize($_REQUEST['wednesday']),
 		"thursday"  	=> $dbc->sanitize($_REQUEST['thursday']),
@@ -70,7 +72,7 @@ if($_REQUEST['sales_status'] == '0'){
 	$sales_status = false;
 }
 
-
+/*
 //verifiy the resource and manger requested exists
 if($valid = TRUE){
 
@@ -135,7 +137,7 @@ if($valid = TRUE){
 		//header("Location: ./index.php?&time");
 		echo "No time <br />";
 		$fail = true;
-	}*/
+	}
 	
 	//check for an empty start date
 	if($week_of == ''){
@@ -159,7 +161,7 @@ if($valid = TRUE){
 		$fail = true;
 	}
         
-}
+}*/
 if($fail = TRUE){ echo "validation"; }
 
 //Query(new)
@@ -183,10 +185,10 @@ $query = "INSERT INTO `jobs`
 		'".$sales_status."')";
 
 //Query
-if($fail = FALSE){
+
  $dbc->insert($query);
  echo "attempted insert";
-}
+
 
 //Disconnect
 $dbc->close();

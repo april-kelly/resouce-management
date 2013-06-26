@@ -18,23 +18,47 @@ if(isset($_REQUEST['p'])){
     $request = 'home';
 }
 
+//make sure that the settings file exists
+if(!(file_exists('./config/settings.json'))){
+    $request = "config";
+}
+
 //determine what page to show
 switch($request){
+
+    case "config":
+        $page = './config/welcome.php';
+        $main_id = 'profile';
+
+        //pass extra values to welcome.php (if set)
+        if(isset($_REQUEST['c'])){
+            $_SESSION['c'] = $_REQUEST['c'];
+        }
+
+    break;
 
     case "home":
         $page = './month.php';
         $main_id = 'main';
+        $title = '<h3>Current Resource Utilization:</h3>';
     break;
 
     case "request":
         $page = './request.php';
-        $main_id = 'main';
+        $main_id = 'profile';
         $extras = TRUE;
     break;
 
     case "admin":
+
         $page = './admin/menu.php';
-        $main_id = 'main';
+        $main_id = 'admin';
+
+        //pass the save status (if set)
+        if(isset($_REQUEST['s'])){
+            $_SESSION['saved'] = $_REQUEST['s'];
+        }
+
     break;
 
     case "login":
@@ -44,6 +68,12 @@ switch($request){
 
     case "user":
         $page = './user.php';
+        $main_id = 'profile';
+    break;
+
+    case "week":
+        $page = './week.php';
+        $_SESSION['person'] = $_REQUEST['w']; //this lets week.php know what user to show
         $main_id = 'main';
     break;
 
@@ -57,9 +87,11 @@ switch($request){
 
         //Trigger the login page to display a log out message.
         $_SESSION['logout'] = true;
+    break;
 
-        //Force the page to reload to get rid of the username
-        //echo '<script>document.location.reload(true);</script>';
+    case "debug":
+        $page = base64_decode($_REQUEST['r']);
+        $main_id = 'main';
     break;
 
     default:
@@ -107,7 +139,12 @@ switch($request){
     <div id="<?php echo $main_id;?>">
 
         <?php
+            //if a title is set echo it out
+            if(!(empty($title))){
+                echo $title;
+            }
 
+            //include the page
             include_once($page);
 
         ?>

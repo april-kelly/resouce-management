@@ -8,7 +8,7 @@
 */
 
 //include the data object
-include_once('data.php');
+include_once('../../data.php');
 
 //settings fetch function
 function fetch($id){
@@ -20,7 +20,7 @@ function fetch($id){
 	$results = $dbc->query($query);				//run the query
 	$dbc->close();						//close the database connection
 
-	return unserialize($results[0]['value']);
+	return $results[0]['value'];
 
 
 }
@@ -75,7 +75,7 @@ function update($inputs){
 
 }
 */
-
+echo fetch(8);
 ?>
 
 <!--

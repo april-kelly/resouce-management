@@ -15,6 +15,11 @@ if(isset($_SESSION['userid'])){
     $resources = $dbc->query("SELECT * FROM people");
     $dbc->close();
 
+    //Verifiy the user is actually an admin
+    if($user[0]["admin"] == '1'){
+
+
+
     //Fetch values to populate fields
     $set = new settings;
     $settings = $set->fetch();
@@ -22,7 +27,7 @@ if(isset($_SESSION['userid'])){
 ?>
 
         <h3>Administrative Control Panel:</h3>
-        <b>Welcome, <?php echo $user[0]['name'] ?> <a href="./admin/login.php?logout">(logout)</a></b>
+        <b>Welcome, <?php echo $user[0]['name'] ?></b>
 
 
 
@@ -30,7 +35,7 @@ if(isset($_SESSION['userid'])){
 
         <legend>Display and Debugging Options:</legend>
 
-        <form action="save.php" method="post"><br />
+        <form action="./admin/save.php" method="post"><br />
 
             <b>month.php: </b><br /><br />
 
@@ -77,12 +82,12 @@ if(isset($_SESSION['userid'])){
             <input type="submit" value="Update" />
             <?php
 
-                if(isset($_REQUEST['success'])){
-                    echo '<span style="color:green">Settings saved successfully!</span>';
-                }
-
-                if(isset($_REQUEST['failure'])){
-                    echo '<span style="color:red">Error: Unable to save settings!</span>';
+                if($_SESSION['saved'] == '1'){
+                    echo '<span class="success">Settings saved successfully!</span>';
+                    $_SESSION['saved'] = null;
+                }elseif($_SESSION['saved'] == '0'){
+                    echo '<span class="error">Settings were not saved!</span>';
+                    $_SESSION['saved'] = null;
                 }
 
             ?>
@@ -139,23 +144,26 @@ if(isset($_SESSION['userid'])){
 
         <legend>Settings Options</legend>
 
-        <form action="save.php" method="post">
+        <form action="./admin/save.php" method="post">
             <b>Core Settings:</b><br />
-            <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings file from preset defaults</label>
+            <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings file from preset defaults</label><br />
+            <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br>
+            <input type="submit" value="Download" name="download" /><label>Download the settings file</label><br /><br />
             <?php
 
-            if(isset($_REQUEST['rebuilt'])){
-                echo '<span style="color:green">Settings file rebuilt successfully!</span>';
+            if($_SESSION['saved'] == '3'){
+                echo '<span class="success">Settings file rebuilt successfully!</span>';
             }
 
-            ?><br />
-            <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br /><br />
-
+            ?>
         </form>
 
     </fieldset>
 
 <?php
+    }else{
+        ?><span class="error">You do not have permission to view this page.(not admin)</span><?php
+    }
 }else{
-    ?><b class="error">You do not have permission to view this page.</b><?php
+    ?><span class="error">You do not have permission to view this page.(not logged in)</span><?php
 }

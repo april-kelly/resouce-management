@@ -49,7 +49,7 @@ $dbc = new db;
 $dbc->connect();
 
 $result		 = $dbc->query('SELECT * FROM people');
-$person 	 = $dbc->sanitize($_REQUEST['p']);
+$person 	 = $dbc->sanitize($_SESSION['person']);
 $projects        = $dbc->query('SELECT * FROM `jobs` WHERE resource = '.$person.' ');
 
 //fix indexes of the people table
