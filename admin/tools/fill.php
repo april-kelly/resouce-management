@@ -1,6 +1,15 @@
 <?php
 //include the data object
-include('../data.php');
+require_once('path.php');
+require_once(ABSPATH.'includes/data.php');
+require_once(ABSPATH.'includes/config/settings.php');
+
+//fetch the debug status
+$set = new settings;
+$status = $set->debug;
+
+if($status == true){
+
 
 $dbc = new db;			//set up object
 $dbc->connect();		//connect using defaults
@@ -45,4 +54,7 @@ foreach($people as $people){
 	//$result = $dbc->insert($query);	//run the query
 	$dbc->close();
 
+}else{
+    echo '<span class="error">To use this tool, debug mode most be enabled.</span>';
+}
 ?>

@@ -1,10 +1,3 @@
-<html>
-<head>
-	<title>Bluetent Resource Management Program</title>
-	<link rel="stylesheet" href="./styles/styles.css" type="text/css" />
-</head>
-<body>
-
 <?php
 
 /*
@@ -180,6 +173,3 @@ foreach($week as $week){
 //Close database connection
 $dbc->close();
 ?>
-</body>
-</html>
-

@@ -8,15 +8,16 @@
 //Fetch ABSPATH in the event that this is a new install
 if(isset($_REQUEST['submit'])){
     define('ABSPATH', $_REQUEST['ABSPATH']);
+}else{
+require_once('path.php');
 }
-
 //start the session if it does not exist
 if(!(isset($_SESSION))){
     session_start();
 }
 
 //Includes
-require_once(ABSPATH.'/config/settings.php');
+require_once(ABSPATH.'includes/config/settings.php');
 
 //Display welcome for first time
 if(!(isset($_SESSION['c'])) and !(isset($_REQUEST['submit']))){
@@ -31,7 +32,7 @@ something went wrong. If this is a new install please click <a href="?p=config&c
     //New install
     if($_SESSION['c'] == '1'){
         ?>
-        <form action="./config/welcome.php" method="post">
+        <form action="./includes/config/welcome.php" method="post">
             <b>Please enter your database credentials:</b><br /><br />
             <input type="text" name="db_host" /><label>Database Hostname</label><br />
             <input type="text" name="db_user" /><label>Database Username</label><br />
@@ -46,7 +47,7 @@ something went wrong. If this is a new install please click <a href="?p=config&c
     if(isset($_REQUEST['submit'])){
 
         $set = new settings;
-        $set->location = ABSPATH.'/config/settings.json';
+        $set->location = ABSPATH.'includes/config/settings.json';
 
         $set->db_database = $_REQUEST['db_database'];
         $set->db_host     = $_REQUEST['db_host'];
@@ -54,7 +55,7 @@ something went wrong. If this is a new install please click <a href="?p=config&c
         $set->db_user     = $_REQUEST['db_user'];
 
         $set->create();
-        header('location: ../?p=home');
+        header('location: ../../?p=home');
 
     }
 
@@ -63,11 +64,11 @@ something went wrong. If this is a new install please click <a href="?p=config&c
 //Rebuild
 if($_SESSION['c'] == '2'){
     $set = new settings;
-    $set->location = ABSPATH.'/config/settings.json';
+    $set->location = ABSPATH.'includes/config/settings.json';
     $set->create();
 
     session_destroy();
-    //header('location: ./?p=home');
+    header('location: ./?p=home');
 }
 
 

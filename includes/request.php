@@ -16,7 +16,7 @@
 
   <h3>Request a resource:</h3>
 
-  <form action="insert.php" method="post" onsubmit="return validate()" name="form" class="request">
+  <form action="./includes/insert.php" method="post" onsubmit="return validate()" name="form" class="request">
 	
     <span id="error"><label for="sales_status">Sales Status: </label>
 	
@@ -109,69 +109,74 @@
 	
 	<?php
 	//Echo out errors for improper data:
-	
-	//Sales_Status issues
-	if(isset($_REQUEST['bool'])){
-		echo '<span style="color: red">You must input a valid Sales Status.</span>';
-	}
-	
-	//Project Manager issues
-	if(isset($_REQUEST['manager'])){
-		echo '<span style="color: red">You must input a valid Manager.</span>';
-	}
-	
-	//Project Manager existance issues
-	if(isset($_REQUEST['manager_db'])){
-		echo '<span style="color: red">Manager does not exist in database.</span>';
-	}
-	
-	//Project_id issues
-	if(isset($_REQUEST['projectid'])){
-		echo '<span style="color: red">You must input a valid Project ID.</span>';
-	}
-	
-	//Project Resource Issues
-	if(isset($_REQUEST['resource'])){
-		echo '<span style="color: red">You must input a valid Resource.</span>';
-	}
-	
-	//Project Resource existance issues
-	if(isset($_REQUEST['resource_db'])){
-		echo '<span style="color: red">Resource does not exist in database.</span>';
-	}
-	
-	//Time issues
-	if(isset($_REQUEST['time'])){
-		echo '<span style="color: red">You must input a valid Time.</span>';
-	}
-	
-	//No Start Date
-	if(isset($_REQUEST['nodate'])){
-		echo '<span style="color: red">You must input a Start Date.</span>';
-	}
+    if(isset($_SESSION['form'])){
+    switch($_SESSION['form']){
 
-	//No Priority Level
-	if(isset($_REQUEST['priority'])){
-		echo '<span style="color: red">You must input a Priority Level.</span>';
-	}
+	    //Sales_Status issues
+        case 'bool':
+		    echo '<span style="color: red">You must input a valid Sales Status.</span>';
+        break;
+	
+	    //Project Manager issues
+        case 'manager':
+		    echo '<span style="color: red">You must input a valid Manager.</span>';
+	    break;
+	
+	    //Project Manager existance issues
+        case 'manager_db':
+		    echo '<span style="color: red">Manager does not exist in database.</span>';
+	    break;
+	
+	    //Project_id issues
+        case 'projectid':
+		    echo '<span style="color: red">You must input a valid Project ID.</span>';
+	    break;
+	
+	    //Project Resource Issues
+        case'resource':
+		    echo '<span style="color: red">You must input a valid Resource.</span>';
+	    break;
+	
+	    //Project Resource existance issues
+        case 'resource_db':
+		    echo '<span style="color: red">Resource does not exist in database.</span>';
+	    break;
+	
+	    //Time issues
+        case 'time':
+		    echo '<span style="color: red">You must input a valid Time.</span>';
+	    break;
+	
+	    //No Start Date
+        case 'nodate':
+		    echo '<span style="color: red">You must input a Start Date.</span>';
+        break;
+
+	    //No Priority Level
+        case 'priority':
+		    echo '<span style="color: red">You must input a Priority Level.</span>';
+	    break;
 	
         //The day selected is not a sunday (ie start of the week)
-        if(isset($_REQUEST['weekstart'])){
-                echo '<span style="color: red">The date you selected is not the start of a week.</span>';
-        }
+        case 'weekstart':
+            echo '<span style="color: red">The date you selected is not the start of a week.</span>';
+        break;
         
         //SQL Injection alert
-	if(isset($_REQUEST['sql'])){
-		echo '<span style="color: red">You are going to have to try harder than that. ;)</span>';
-	}
-        
+        case 'sql':
+		    echo '<span style="color: red">You are going to have to try harder than that. ;)</span>';
+	    break;
+
+        default:
+            //do nothing
+        break;
+
+    }
+
+    //make sure to unset the error so it does not continue to be displayed
+    unset($_SESSION['form']);
+    }
+
 	?>
 
   </form>
-
-<!--
-  </div>
-  
- </body>
-
-</html> -->

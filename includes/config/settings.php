@@ -32,7 +32,8 @@ class settings {
 
         //Global Settings
             public $weeks           = 12;
-            public $location        = null; //we'll set this in the constructor
+            public $location        = NULL; //we'll set this in the constructor
+            public $debug           = false;
 
     public function __construct(){
 

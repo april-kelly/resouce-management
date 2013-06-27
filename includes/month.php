@@ -13,8 +13,6 @@
 $set = new settings;
 $settings = $set->fetch();
 
-
-
 //Others
 $color_enable = $settings['month_colors'];
 $excel_enable = $settings['month_excel'];
@@ -198,7 +196,15 @@ foreach($table as $table){
 <?php
  echo 'Page last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy
  echo ' at '.date('g:ia T'); //outputs the hour:minute am/pm and the timezone
+ $today =  date('md');
 ?>
 <br />
-You can also <a href="./month.xls">download</a> this in excel format.
+    You can also <a href="./month.xls">download</a> this in excel format.
 </p>
+<?php
+ if($today == '0225'){
+     echo base64_decode('PGJyIC8+PHAgY2xhc3M9ImluZm8iPjxpPiJXaGVuIGdvaW5nIHRocm91Z2ggaGVsbCwganVzdCBr
+                         ZWVwIGdvaW5nLiI8L2k+IC1XaW5zdG9uIENodXJjaGlsbDxiciAvPiAxICZhbmQ7IDEgPSAmZW1w
+                         dHk7PC9wPg==');
+ }
+?>

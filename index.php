@@ -10,6 +10,11 @@ session_start();
 
 //includes
 require_once('path.php');
+require_once(ABSPATH.'includes/config/settings.php');
+
+//fetch the debug status
+$set = new settings;
+$status = $set->debug;
 
 //fetch the user's request
 if(isset($_REQUEST['p'])){
@@ -47,6 +52,11 @@ switch($request){
         $page = './includes/request.php';
         $main_id = 'profile';
         $extras = TRUE;
+
+        //pass any errors (if set)
+        if(isset($_REQUEST['r'])){
+            $_SESSION['form'] = $_REQUEST['r'];
+        }
     break;
 
     case "admin":
@@ -78,8 +88,12 @@ switch($request){
 
     case "week":
         $page = './includes/week.php';
-        $_SESSION['person'] = $_REQUEST['w']; //this lets week.php know what user to show
         $main_id = 'main';
+
+        //pass the requested user id to week.php (if set)
+        if(isset($_REQUEST['w'])){
+            $_SESSION['person'] = $_REQUEST['w'];
+        }
     break;
 
     case "logout":
@@ -92,6 +106,28 @@ switch($request){
 
         //Trigger the login page to display a log out message.
         $_SESSION['logout'] = true;
+    break;
+
+    case "debug":
+
+        //make sure debug mode is actually enabled
+        if($status == true){
+
+            $page = './includes/debug.php';
+            $main_id = 'main';
+
+            //pass the debug options back to debug.php (if set)
+            if(isset($_REQUEST['d'])){
+                $_SESSION['debug'] = $_REQUEST['d'];
+            }
+
+        }else{
+
+            //send the user to the home page
+            header('location: ./');
+
+        }
+
     break;
 
     default:
@@ -138,7 +174,13 @@ switch($request){
 
     <div id="<?php echo $main_id;?>">
 
+
         <?php
+
+            //if debug mode is enabled let the user know
+            if($status == true){
+                echo '<span class="info">Debug mode has been enabled.</span>';
+            }
             //if a title is set echo it out
             if(!(empty($title))){
                 echo $title;

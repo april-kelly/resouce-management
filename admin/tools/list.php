@@ -1,6 +1,14 @@
 <?php
 //Include the data object
-include('../data.php');
+require_once('path.php');
+require_once(ABSPATH.'includes/data.php');
+require_once(ABSPATH.'includes/config/settings.php');
+
+//fetch the debug status
+$set = new settings;
+$status = $set->debug;
+
+if($status == true){
 
 //Force csv download (if applicable)
    $file = "resources.csv";
@@ -28,34 +36,34 @@ table{
 <table border="1">
 <tr>
 	<td>
-	  <a href="?c=1&o=1"><img src="../images/up.png" title="Order by Index ascending" /></a>
+	  <a href="?c=1&o=1"><img src="./includes/images/up.png" title="Order by Index ascending" /></a>
 	  <b>index:</b>
-	  <a href="?c=1&o=2"><img src="../images/down.png" title="Order by Index descending" /></a>
+	  <a href="?c=1&o=2"><img src="./includes/images/down.png" title="Order by Index descending" /></a>
 	</td>
 	
 	<td>
-	  <a href="?c=2&o=1"><img src="../images/up.png" title="Order by Project ID ascending" /></a>
+	  <a href="?c=2&o=1"><img src="./includes/images/up.png" title="Order by Project ID ascending" /></a>
 	  <b>project_id:</b>
-	  <a href="?c=2&o=2"><img src="../images/down.png" title="Order by Project ID descending" /></a>
+	  <a href="?c=2&o=2"><img src="./includes/images/down.png" title="Order by Project ID descending" /></a>
 	</td>
 	
 	<td>
-	  <a href="?c=3&o=1"><img src="../images/up.png" title="Order by Manager ascending" /></a>
+	  <a href="?c=3&o=1"><img src="./includes/images/up.png" title="Order by Manager ascending" /></a>
 	  <b>manager:</b>
-	  <a href="?c=3&o=2"><img src="../images/down.png" title="Order by Manager descending" /></a>
+	  <a href="?c=3&o=2"><img src="./includes/images/down.png" title="Order by Manager descending" /></a>
 	</td>
 	
 	<td>
-	  <a href="?c=7&o=1"><img src="../images/up.png" title="Order by Resource ascending" /></a>
+	  <a href="?c=7&o=1"><img src="./includes/images/up.png" title="Order by Resource ascending" /></a>
 	  <b>resource:</b>
-	  <a href="?c=7&o=2"><img src="../images/down.png" title="Order by Resource descending" /></a>
+	  <a href="?c=7&o=2"><img src="./includes/images/down.png" title="Order by Resource descending" /></a>
 	</td>
 	
 	
 	<td>
-	  <a href="?c=4&o=1"><img src="../images/up.png" title="Order by Start Date ascending" /></a>
+	  <a href="?c=4&o=1"><img src="./includes/images/up.png" title="Order by Start Date ascending" /></a>
 	  <b>week_of:</b>
-	  <a href="?c=4&o=2"><img src="../images/down.png" title="Order by Start Date descending" /></a>
+	  <a href="?c=4&o=2"><img src="./includes/images/down.png" title="Order by Start Date descending" /></a>
 	</td>
 	
 	<!--<td>
@@ -73,15 +81,15 @@ table{
 		 <td>Saturday</td>
 	
 	<td>
-	  <a href="?c=6&o=1"><img src="../images/up.png" title="Order by Time ascending" /></a>
+	  <a href="?c=6&o=1"><img src="./includes/images/up.png" title="Order by Time ascending" /></a>
 	  <b>priority:</b>
-	  <a href="?c=6&o=2"><img src="../images/down.png" title="Order by Time descending" /></a>
+	  <a href="?c=6&o=2"><img src="./includes/images/down.png" title="Order by Time descending" /></a>
 	</td>
 	
 	<td>
-	  <a href="?c=8&o=1"><img src="../images/up.png" title="Order by Sales Status ascending" /></a>
+	  <a href="?c=8&o=1"><img src="./includes/images/up.png" title="Order by Sales Status ascending" /></a>
 	  <b>sales_status:</b>
-	  <a href="?c=8&o=2"><img src="../images/down.png" title="Order by Sales Status descending" /></a>
+	  <a href="?c=8&o=2"><img src="./includes/images/down.png" title="Order by Sales Status descending" /></a>
 	</td>
 	
 </tr>
@@ -308,14 +316,19 @@ table{
 	if(!(isset($_REQUEST['csv']))){
 ?>
 <table>
+<!--
 <form action="?&" method="get">
 	<label><b>Download: </b></label>
 	<input type="submit" value="Download as csv" name="csv">
 	<label><b>Edit: </b></label>
 	<input type="submit" value="<?php if(isset($_REQUEST['edit'])){ echo 'Done'; }else{ echo 'Edit Records'; } ?>" name="<?php if(isset($_REQUEST['edit'])){ echo ''; }else{ echo 'edit'; } ?>">
 </form>
+-->
 </body>
 </html>
 <?php
 	}
+}else{
+    echo '<span class="error">To use this tool, debug mode most be enabled.</span>';
+}
 ?>
