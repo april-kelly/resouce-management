@@ -12,14 +12,12 @@ class settings {
         //Note: DO NOT use private or protected variables, it will cause json_decode generate a fatal exception.
 
         //Settings for insert.php
-            public $insert_debug    = FALSE;
             public $insert_valid    = TRUE;
             public $insert_sanitize = TRUE;
             public $insert_fail     = FALSE;
 
         //Settings for month.php
-            public $month_colors    = TRUE;
-            public $month_debug     = FALSE;
+            public $month_colors    = FALSE;
             public $month_excel     = TRUE;
             public $month_output    = TRUE;
             public $colors = array();
@@ -33,7 +31,7 @@ class settings {
         //Global Settings
             public $weeks           = 12;
             public $location        = NULL; //we'll set this in the constructor
-            public $debug           = false;
+            public $debug           = FALSE;
 
     public function __construct(){
 

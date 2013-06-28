@@ -6,9 +6,9 @@ require_once(ABSPATH.'includes/config/settings.php');
 
 //fetch the debug status
 $set = new settings;
-$status = $set->debug;
+$status = $set->fetch();
 
-if($status == true){
+if($status['debug'] == true){
 
 
 $dbc = new db;			//set up object

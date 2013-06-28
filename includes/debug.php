@@ -12,9 +12,9 @@ require_once(ABSPATH.'includes/config/settings.php');
 
 //fetch the debug status
 $set = new settings;
-$status = $set->debug;
+$status = $set->fetch();
 
-if($status == true){
+if($status['debug'] == true){
 
     if(isset($_SESSION['debug'])){
 
@@ -37,6 +37,11 @@ if($status == true){
             $page = 'admin/tools/list.php';
         break;
 
+        CASE "dump":
+            $page = 'admin/tools/dump.php';
+        break;
+
+
         DEFAULT:
             //Just show the current page
             $default = true;
@@ -51,9 +56,12 @@ if($status == true){
     if($default = true){
         //show the normal page
         ?>
-        <h3>Extra admin tools:</h3>
+        <h3>Debugging tools:</h3>
         <a href="./?p=debug&d=fill">fill.php</a> Fills the jobs table with random data. <br />
         <a href="./?p=debug&d=list">list.php</a> Lists the contents of the database. <br />
+        <a href="./?p=debug&d=dump">dump.php</a> Dumps the contents of the $_SESSION variable. <br />
+        <a href="./admin/save.php?d=0">Disable debug mode</a>
+        <br /><br /><i class="info">Please not these tools may not be fully functional and are for debugging and developement only.</i>
         <?php
     }
 

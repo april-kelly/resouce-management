@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Debugging information - insert.php</title>
+
+    <link rel="stylesheet" href="./styles/styles.css" type="text/css" />
+    <link rel="icon" href="./images/btm_favicon.ico" />
+
+</head>
+<body>
 <?php
 
 /*
@@ -5,6 +16,9 @@
 	Programmer: Liam Kelly
 	Last Modified: 4/09/2013
 */
+
+//start the users session
+session_start();
 
 //Include the data object
 require_once('../path.php');
@@ -15,28 +29,43 @@ require_once('./config/settings.php');
 $set = new settings;
 $settings= $set->fetch();
 
+
 //Settings and Debugging flags
-//$debug       = $settings['debug'];		        //flag to prevent running query					    Default: false
+$debug       = $settings['debug'];		        //flag to enable debugging output				    Default: false
 $valid       = $settings['insert_valid'];		//flag to enable user data validation				Default: true
 $sanitize    = $settings['insert_sanitize'];	//flag to enable user data sanitation           	Default: true
 $fail        = $settings['insert_fail'];		//flag to terminate the insert if something fails   Default: false
+$location    = '../';                           //where we will redirect the use upon completion    Default: ../
 
 //connect to the database	
 $dbc = new db;
 $dbc->connect();
+
+//Determine who is requesting
+if(isset($_SESSION['userid'])){
+    //A user is logged in
+    $requestor = $_SESSION['userid'];
+}else{
+    //Set the requestor to anonymous
+    $requestor = '0';
+}
+
+//...and yes, requestor is spell correctly, I user -or because were dealing with computers
+
+//Debugging title
+echo '<h1>Debugging info:</h1><hr />';
 
 //Verifiy the user filled out all inputs correctly
 if($valid == TRUE){
 	if(!(isset($_REQUEST['project_id']))){ $fail = true; }
 	if(!(isset($_REQUEST['manager']))){ $fail = true; }
 	if(!(isset($_REQUEST['start_date']))){ $fail = true; }
-	//if(!(isset($_REQUEST['time']))){ $fail = true; }
 	if(!(isset($_REQUEST['resource']))){ $fail = true; }
 	if(!(isset($_REQUEST['sales_status']))){ $fail = true; }
 	if(!(isset($_REQUEST['priority']))){ $fail = true; }
 }
 
-if($fail == TRUE){ echo "Verification issues<br />"; }
+if($fail == TRUE){ echo '<i class="error">Verification issues.</i><br />'; }
 
 //sanitize the user inputs
 if($sanitize = TRUE){
@@ -45,6 +74,7 @@ if($sanitize = TRUE){
 	$project_id   		= $dbc->sanitize($_REQUEST['project_id']);
 	$manager     		= $dbc->sanitize($_REQUEST['manager']);
 	$resource    		= $dbc->sanitize($_REQUEST['resource']);
+    $requestor          = $dbc->sanitize($requestor);
 	$sales_status 		= $dbc->sanitize($_REQUEST['sales_status']);
 	$priority     		= $dbc->sanitize($_REQUEST['priority']);
 	
@@ -77,91 +107,47 @@ if($_REQUEST['sales_status'] == '0'){
 //check for in valid user inputs
 if($valid == TRUE){
 
-	echo "<b>Entered vaildation mode:</b><br>";
+	echo "<h3>Entered vaildation mode:</h3>";
 	
 	//check for a valid sales status
 	if(!(is_bool($sales_status))){
-		//header("Location: ../?p=request&r=bool");
+		$location = "../?p=request&r=bool";
 		echo "Invaild sales status <br />";
 		$fail = true;
 	}
 	
 	//check for a valid project manager
 	if(!(is_numeric($_REQUEST['manager'])) && !(strlen($_REQUEST['manager']) >= '11' )){
-		//header("Location: ../?p=request&r=manager");
+        $location = "../?p=request&r=manager";
 		echo "Invaild Project Manager <br />";
 		$fail = true;
 	}
 	
-	//Ensure the project manager exists in the database
-	if(!(verify('people', 'index', $_REQUEST['manager']))){
-		echo "Project manager does not exist in the database <br />";
-		$fail = true;
-	}
-	
-	
 	//check for a valid project id
 	if(!(is_numeric($_REQUEST['project_id'])) && !(strlen($_REQUEST['project_id']) >= '11' )){
-		//header("Location: ../?p=request&r=projectid");
+        $location = "../?p=request&r=projectid";
 		echo "Invaild Project id <br />";
 		$fail = true;
 	}
 	
-	//check for a valid resource
-	if(!(is_numeric($_REQUEST['resource']))){//fix this
-		//header("Location: ../?p=request&r=resource");
-		echo "Invaild Resouce <br />";
-		$fail = true;
-	}
-	
-	//Ensure resource exists in the database
-	if(!(verify('people', 'index', $_REQUEST['resource']))){
-		echo "Resource does not exist in the Database <br />";
-		$fail = true;
-	}
-	
-	//check for a vaild prority
-	if(!(is_numeric($_REQUEST['priority']))){
-		echo "Priority not vaild <br />";
-		$fail = true;
-	}
-
-    //
-    //
-    //this is where I left off......
-    //     ||
-    //     ||
-    //     ||
-    //  \      /
-    //   \    /
-    //    \  /
-    //     \/
-
-	//check for an empty start date
-	if($week_of == ''){
-		header("Location: ../?p=request&r=&nodate");
-		echo "Empty start date <br />";
-		$fail = true;
-	}
-	
-        //ensure the start date is a sunday
-        if(!(date('w', strtotime($week_of)) == '0')){
-        	//header("Location: ../?p=request&r=weekstart");
-        	echo "Start date not a sunday <br />";
-        	$fail = true;
-        }
+    //ensure the start date is a sunday
+    if(!(date('w', strtotime($week_of)) == '0')){
+        $location = "../?p=request&r=weekstart";
+       	echo "Start date not a sunday <br />";
+       	$fail = true;
+    }
         
 	//check for an empty priority
-	if(!(is_numeric($_REQUEST['priority'])) && 
+	if(!(is_numeric($_REQUEST['priority'])) or
 	   !(strlen($_REQUEST['priority']) >= '1' )){
-		//header("Location: ../?p=request&r=priority");
+        $location = "../?p=request&r=priority";
 		echo "Empty Priority <br />";
 		$fail = true;
 	}
         
 }
 
-if($fail == TRUE){ echo "Validation <br />"; }
+if($fail == TRUE){ echo '<i class="error">Validation issues</i><br />'; }
 
 //Query(new)
 $query = "INSERT INTO `jobs`
@@ -169,6 +155,7 @@ $query = "INSERT INTO `jobs`
 		`project_id`,
 		`manager`,
 		`resource`,
+		`requestor`,
 		`week_of`,
 		`time`,
 		`priority`,
@@ -178,6 +165,7 @@ $query = "INSERT INTO `jobs`
 		'".$project_id."',
 		'".$manager."',
 		'".$resource."',
+		'".$requestor."',
 		'".$week_of."',   
 		'".$hours."',
 		'".$priority."',
@@ -186,14 +174,25 @@ $query = "INSERT INTO `jobs`
 //Query
 if($fail == false){
     $dbc->insert($query);
-    echo "Attempted to insert. <br />";
+    echo '<br /><i class="success">Attempted to insert. </i><br />';
+}else{
+    echo '<br /><i class="error">Insert not attempted. </i><br />';
 }
 
 //Disconnect
 $dbc->close();
 
+//Redirect to the main page
+if($debug == true){
 
- //header('Location: ./');
+    echo '<hr><h3>Query:</h3>'.$query.'<hr /><a href="../">Click here to continue =></a>';
 
+}else{
+
+    header('Location: '.$location);
+
+}
 
 ?>
+    </body>
+</html>

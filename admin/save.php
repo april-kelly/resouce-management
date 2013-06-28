@@ -43,12 +43,18 @@ if(isset($_REQUEST['dump'])){
 }
 
 //Rest the settings file to defaults on request
-if(isset($_POST['rebuild'])){
+if(isset($_REQUEST['rebuild'])){
 
     $set->create();
 
     header('location: ../?p=admin?s=3');
 
+    $save = FALSE;
+}
+
+if(isset($_REQUEST['download'])){
+
+    header('location: ../includes/config/settings.json');
     $save = FALSE;
 }
 
@@ -82,6 +88,27 @@ foreach($_REQUEST as $key => $value){
 
 }
 
+
+//Debug mode enable/disable
+if(isset($_REQUEST['d'])){
+
+    if($_REQUEST['d'] == '1'){
+
+        //Enable debug mode
+        $settings['debug'] = TRUE;
+        $set->update($settings);
+
+    }
+
+    if($_REQUEST['d'] == '0'){
+
+        //Disable debug mode
+        $settings['debug'] = FALSE;
+        $set->update($settings);
+
+
+    }
+}
 
 if($save == TRUE){ //prevent unnecessary updates
 

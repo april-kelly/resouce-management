@@ -33,15 +33,12 @@ if(isset($_SESSION['userid'])){
 
     <fieldset>
 
-        <legend>Display and Debugging Options:</legend>
+        <legend>Display Options:</legend>
 
         <form action="./admin/save.php" method="post"><br />
 
             <b>month.php: </b><br /><br />
 
-            <input type="hidden" name="month_debug" value="FALSE" />
-            <input type="checkbox" name="month_debug" value="TRUE" <?php if($settings['month_debug'] == TRUE){ echo "checked"; } ?> />
-            <label>Enable debug mode</label><br />
             <input type="hidden" name="month_colors" value="FALSE" />
             <input type="checkbox" name="month_colors" value="TRUE" <?php if($settings['month_colors'] == TRUE){ echo "checked"; } ?> />
             <label>Enable coloration</label><br />
@@ -56,9 +53,6 @@ if(isset($_SESSION['userid'])){
 
             <b>insert.php</b><br /><br />
 
-            <input type="hidden" name="insert_debug" value="FALSE" />
-            <input type="checkbox" name="insert_debug" value="TRUE" <?php if($settings['insert_debug'] == TRUE){ echo "checked"; } ?> />
-                <label>Enable debug mode</label><br />
             <input type="hidden" name="insert_valid" value="FALSE" />
             <input type="checkbox" name="insert_valid" value="TRUE" <?php if($settings['insert_valid'] == TRUE){ echo "checked"; } ?> />
                 <label>Enable user data validation</label><br />
@@ -103,7 +97,7 @@ if(isset($_SESSION['userid'])){
 
     <fieldset>
 
-        <legend>User Options</legend>
+        <legend>User Options:</legend>
 
         <form action="admin.php" method="post">
 
@@ -113,6 +107,7 @@ if(isset($_SESSION['userid'])){
                 <option value="">Select One:</option>
 
                 <?php
+
                 foreach($resources as $resources){
 
                     echo '<option value="',$resources['index'],'">',$resources['name'],'</option>';
@@ -146,13 +141,15 @@ if(isset($_SESSION['userid'])){
 
     <fieldset>
 
-        <legend>Settings Options</legend>
+        <legend>Settings Options:</legend>
 
         <form action="./admin/save.php" method="post">
             <b>Core Settings:</b><br />
             <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings file from preset defaults</label><br />
-            <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br>
+            <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br />
             <input type="submit" value="Download" name="download" /><label>Download the settings file</label><br /><br />
+
+
             <?php
 
                 if(isset($_SESSION['saved'])){
@@ -165,6 +162,22 @@ if(isset($_SESSION['userid'])){
 
             ?>
         </form>
+
+    </fieldset>
+
+    <fieldset>
+
+        <legend>Debugging Mode:</legend>
+
+        <br />
+        <?php
+        if($settings['debug'] == FALSE){
+            echo 'Click <a href="./admin/save.php?d=1">here</a> to enable debug mode.';
+        }else{
+            echo 'Click <a href="./admin/save.php?d=0">here</a> to disable debug mode.';
+        }
+        ?>
+        <br /><br />
 
     </fieldset>
 

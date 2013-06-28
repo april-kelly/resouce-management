@@ -61,7 +61,12 @@
 		$dbc->close();
 	  ?>
 	</select>
-	<br />
+
+    <br />
+    <label>Requesting: </label>
+    <input type="text" value="<?php if(isset($_SESSION['name'])){ echo $_SESSION['name']; }else{ echo 'Anonymous'; } ?>" />
+    <br />
+
 	<label>Priority</label>
   	<select name="priority">
   	   <option>Select One:</option>

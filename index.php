@@ -14,7 +14,14 @@ require_once(ABSPATH.'includes/config/settings.php');
 
 //fetch the debug status
 $set = new settings;
-$status = $set->debug;
+$settings = $set->fetch();
+
+//error reporting
+if($settings['debug'] == TRUE){
+    error_reporting(E_ALL);
+}else{
+    error_reporting(0);
+}
 
 //fetch the user's request
 if(isset($_REQUEST['p'])){
@@ -111,7 +118,7 @@ switch($request){
     case "debug":
 
         //make sure debug mode is actually enabled
-        if($status == true){
+        if($settings['debug'] == true){
 
             $page = './includes/debug.php';
             $main_id = 'main';
@@ -178,7 +185,7 @@ switch($request){
         <?php
 
             //if debug mode is enabled let the user know
-            if($status == true){
+            if($settings['debug'] == true){
                 echo '<span class="info">Debug mode has been enabled.</span>';
             }
             //if a title is set echo it out

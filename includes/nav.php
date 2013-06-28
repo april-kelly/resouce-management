@@ -5,7 +5,7 @@ include_once(ABSPATH.'includes/config/settings.php');
 
 //fetch the debug status
 $set = new settings;
-$status = $set->debug;
+$status = $set->fetch();
 
 
 ?>
@@ -17,7 +17,7 @@ $status = $set->debug;
     <li><a href="./?p=login">Login</a></li>
     <?php }else{ ?>
     <li><a href="./?p=user">Hi, <?php echo $_SESSION['name']; ?></a></li>
-    <?php } if($status == true){ ?>
+    <?php } if($status['debug'] == true){ ?>
     <li><a href="./?p=debug">Debug</a></li>
     <?php } ?>
 </ul>
