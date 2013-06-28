@@ -200,5 +200,15 @@ switch($request){
 
     </div>
 
+    <div id="footer">
+
+        <?php
+
+            include_once(ABSPATH.'includes/footer.php');
+
+        ?>
+
+    </div>
+
 </body>
 </html>
