@@ -18,7 +18,7 @@ $settings = $set->fetch();
 
 //error reporting
 if($settings['debug'] == TRUE){
-    error_reporting(E_ALL);
+    error_reporting(E_STRICT);
 }else{
     error_reporting(0);
 }
