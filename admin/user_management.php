@@ -6,20 +6,20 @@
  */
 
 //includes
-require_once(ABSPATH.'/data.php');
+require_once(ABSPATH.'includes/data.php');
 
-public class users {
+class users {
 
-    private $email;
-    private $password;
-    private $name;
-    private $type;
-    private $admin;
-    private $index;
-    public  $force = false;
+    public $index       = '';
+    public $name        = '';
+    public $email       = '';
+    public $password    = '';
+    public $type        = '2';
+    public $admin       = '0';
 
-    //logs a user in
-    public function login(){
+
+    //Checks a supplied username and password in the database
+    public function login($username, $password){
 
         //connect to the database
         $dbc = new db;
@@ -27,16 +27,101 @@ public class users {
 
         //sanitize user inputs
         $username = $dbc->sanitize($username);
-        $password =$dbc->sanitize(sha1($passwordd));
+        $password = $dbc->sanitize(sha1($password));
 
         //search for user
-        $results = $dbc->query("SELECT * FROM people WHERE email='".$username."' AND password='".$password."'");
+        $query = "SELECT * FROM people WHERE email='".$username."' AND password='".$password."'";
+        $results = $dbc->query($query);
 
         //close connection
         $dbc->close();
 
         //count the number of rows returned
         if(count($results) == '1'){
+            $this->index = $results[0]['index'];
+
+            //Save all of the users information in case they want to issue and update query later
+            $this->name     = $results[0]['name'];
+            $this->email    = $results[0]['email'];
+            $this->password = $results[0]['password'];
+            $this->type     = $results[0]['type'];
+            $this->admin    = $results[0]['admin'];
+
+            return $results;
+        }else{
+            return false;
+        }
+
+    }
+
+    //Deletes an existing user
+    public function delete(){
+
+        //connect to the database
+        $dbc = new db;
+        $dbc->connect();
+
+        //search for user
+        $query = "SELECT * FROM people WHERE index='".$this->index."'";
+        $results = $dbc->query($query);
+
+        if(count($results) == '1'){
+
+           //go ahead with the delete query
+           $query = "DELETE FROM people WHERE `index`='".$this->index."'";
+           $dbc->delete($query);
+
+           return true;
+
+        }else{
+
+           return false;
+
+        }
+
+        //close connection
+        $dbc->close();
+
+
+    }
+
+    //Create a new user (set values with define())
+    public function create(){
+
+        //connect to the database
+        $dbc = new db;
+        $dbc->connect();
+
+        //sanitize inputs
+        $this->name     = $dbc->sanitize($this->name);
+        $this->email    = $dbc->sanitize($this->email);
+        $this->password = $dbc->sanitize(sha1($this->password));
+        $this->type     = $dbc->sanitize($this->type);
+        $this->admin    = $dbc->sanitize($this->admin);
+
+        //define query
+        $query = "INSERT INTO people (`index`, `name`, `email`, `password`, `type`, `admin`)
+                VALUES (NULL,
+                 '".$this->name."',
+                 '".$this->email."',
+                 '".$this->password."',
+                 '".$this->type."',
+                 '".$this->admin."')";
+
+        //run the query
+        echo $query;
+        $dbc->insert($query);
+
+        //close connection
+        $dbc->close();
+
+    }
+
+    //This function allows the user to change the values in $this with out accessing them directly
+    public function change($key, $value){
+
+        if(isset($this->$key)){
+            $this->$key = $value;
             return true;
         }else{
             return false;
@@ -44,58 +129,38 @@ public class users {
 
     }
 
-    //creates a new user
-    public function create(){
+    //Updates an existing user's information, credentials, etc.
+    public function update(){
 
         //connect to the database
         $dbc = new db;
         $dbc->connect();
 
-        //sanitize user inputs
-        $username = $dbc->sanitize($_REQUEST['username']);
-        $password =$dbc->sanitize(sha1($_REQUEST['password']));
+        //sanitize inputs
+        $this->name     = $dbc->sanitize($this->name);
+        $this->email    = $dbc->sanitize($this->email);
+        $this->password = $dbc->sanitize($this->password); //password MUST already be hashed with sha1
+        $this->type     = $dbc->sanitize($this->type);
+        $this->admin    = $dbc->sanitize($this->admin);
 
+        //define query
+        $query = "UPDATE people SET
+                `name`         = '".$this->name."',
+                `email`        = '".$this->email."',
+                `password`     = '".$this->password."',
+                `type`         = '".$this->type."',
+                `admin`        = '".$this->admin."'
+                 WHERE `index` = '".$this->index."'";
 
-
-    }
-
-    public function force_delete(){
-        $force = true;
-    }
-
-    //deletes and existing user
-    public function delete(){
-
-        //connect to the database
-        $dbc = new db;
-        $dbc->connect();
-
-        //sanitize user inputs
-        $username = $dbc->sanitize($username);
-        $password =$dbc->sanitize(sha1($passwordd));
-
-        //search for user
-        $results = $dbc->query("SELECT * FROM people WHERE index=".$index."'");
-
-
-        //count the number of rows returned
-        if(count($results) == '1' or $force == true){
-
-           //go ahead with the delete query
-           $dbc->delete("DELETE * FROM people WHERE index=".$index."'");
-
-           return true;
-
-        }else{
-
-           return false;
-            
-        }
+        //run the query
+        echo $query;
+        $dbc->insert($query);
 
         //close connection
         $dbc->close();
 
-
     }
+
+
 
 }

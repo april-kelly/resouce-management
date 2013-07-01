@@ -17,7 +17,7 @@ $set = new settings;
 $settings = $set->fetch();
 
 //error reporting
-if($settings['debug'] == TRUE){
+if($settings['debug'] == TRUE && $_SESSION['admin'] == '1'){
     error_reporting(E_STRICT);
 }else{
     error_reporting(0);
@@ -37,6 +37,12 @@ if(!(file_exists('./includes/config/settings.json'))){
 
 //determine what page to show
 switch($request){
+
+    //this is for temporary debugging (to be removed)
+    case "test":
+        $page = '/admin/test.php';
+        $main_id = 'main';
+    break;
 
     case "config":
         $page = './includes/config/welcome.php';
@@ -185,9 +191,10 @@ switch($request){
         <?php
 
             //if debug mode is enabled let the user know
-            if($settings['debug'] == true){
-                echo '<span class="info">Debug mode has been enabled.</span>';
+            if($settings['debug'] == true && $_SESSION['admin'] == '1'){
+                echo '<br /><span class="info">Debug mode has been enabled.</span><br />';
             }
+
             //if a title is set echo it out
             if(!(empty($title))){
                 echo $title;

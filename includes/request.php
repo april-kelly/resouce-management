@@ -24,7 +24,7 @@
     <?php
 
         if(!(isset($_SESSION['userid']))){
-            echo '<span class="info">Alert you are not logged in.</span><br /><br />';
+            echo '<span class="info">Alert you are not logged in. Please login.</span><br /><br />';
         }
 
     ?>

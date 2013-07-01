@@ -13,7 +13,7 @@ require_once(ABSPATH.'includes/config/settings.php');
 //fetch the debug status
 $set = new settings;
 $status = $set->fetch();
-
+if($_SESSION['admin'] == '1'){
 if($status['debug'] == true){
 
     if(isset($_SESSION['debug'])){
@@ -68,4 +68,7 @@ if($status['debug'] == true){
 
 }else{
     echo '<span class="error">To view this page, debug mode most be enabled.</span>';
+}
+}else{
+    ?><span class="error">You do not have permission to view this page.(not admin)</span><?php
 }

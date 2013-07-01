@@ -22,7 +22,7 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 
     //sanitize user inputs
     $user = $dbc->sanitize($_REQUEST['username']);
-    $pass =$dbc->sanitize(sha1($_REQUEST['password']));
+    $pass = $dbc->sanitize(sha1($_REQUEST['password']));
 
     //search for user
     $results = $dbc->query("SELECT * FROM people WHERE email='".$user."' AND password='".$pass."'");
@@ -37,6 +37,7 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
        //valid login
        $_SESSION['userid'] = $results[0]['index'];
        $_SESSION['name'] = $results[0]['name'];
+       $_SESSION['admin'] = $results[0]['admin'];
        header('location: ../?p=admin');
 
     }
