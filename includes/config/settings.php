@@ -32,6 +32,7 @@ class settings {
             public $weeks           = 12;
             public $location        = NULL; //we'll set this in the constructor
             public $debug           = FALSE;
+            public $logo            = './includes/images/logo.gif';
 
     public function __construct(){
 

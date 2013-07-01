@@ -8,6 +8,13 @@
 //includes
 require_once('../path.php');
 require_once(ABSPATH.'includes/config/settings.php');
+require_once(ABSPATH.'includes/data.php');
+require_once(ABSPATH.'admin/users.php');
+
+//Start the users session if nessary
+if(!(isset($_SESSION))){
+    session_start();
+}
 
 //fetch the settings
 $set = new settings;
@@ -17,6 +24,9 @@ $settings = $set->fetch();
 $fail = TRUE;
 $save = TRUE;
 
+
+//Begin administrator ONLY section
+if($_SESSION['admin'] >= '1' && !(isset($_REQUEST['userid']))){
 
 //output debugging info on request
 if(isset($_REQUEST['dump'])){
@@ -122,3 +132,34 @@ if($save == TRUE){ //prevent unnecessary updates
         header('location: ../?p=admin&s=0');
     }
 }
+//end administrator only section
+}
+
+
+//Begin user section
+
+//User profile updates
+if($_REQUEST['userid']){
+    echo "Entered user mode";
+
+    $users = new users();
+
+    $status = $users->login($_REQUEST['email'], $_REQUEST['password']);
+
+    //password change
+    if(isset($_REQUEST['new_pass'])){
+        if(isset($_REQUEST['new_pass_II'])){
+            if($_REQUEST['new_pass'] == $_REQUEST['new_pass_II']){
+                $users->change('password', sha1($_REQUEST['new_pass']));
+                $users->update();
+            }
+        }
+    }
+
+    var_dump($status);
+
+}
+
+
+
+

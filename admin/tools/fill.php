@@ -8,7 +8,7 @@ require_once(ABSPATH.'includes/config/settings.php');
 $set = new settings;
 $status = $set->fetch();
 
-if($status['debug'] == true && $_SESSION['admin'] == '1'){
+if($status['debug'] == true && $_SESSION['admin'] >= '2'){
 
 
 $dbc = new db;			//set up object
@@ -55,6 +55,6 @@ foreach($people as $people){
 	$dbc->close();
 
 }else{
-    echo '<span class="error">To use this tool, debug mode most be enabled.</span>';
+    ?><span class="error">You do not enough have permission to view this page or debug mode is not enabled.</span><?php
 }
 ?>

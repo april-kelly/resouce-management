@@ -16,7 +16,7 @@ if(isset($_SESSION['userid'])){
     $dbc->close();
 
     //Verifiy the user is actually an admin
-    if($user[0]["admin"] == '1'){
+    if($user[0]["admin"] >= '1'){
 
 
 
@@ -24,7 +24,28 @@ if(isset($_SESSION['userid'])){
     $set = new settings;
     $settings = $set->fetch();
 
-?>
+
+        if(isset($_SESSION['saved'])){
+
+            if($_SESSION['saved'] == '3'){
+                echo '<span class="success">Settings file rebuilt successfully!</span>';
+            }
+
+        }
+
+        if(isset($_SESSION['saved'])){
+
+            if($_SESSION['saved'] == '1'){
+                echo '<span class="success">Settings saved successfully!</span>';
+                $_SESSION['saved'] = null;
+            }elseif($_SESSION['saved'] == '0'){
+                echo '<span class="error">Settings were not saved!</span>';
+                $_SESSION['saved'] = null;
+            }
+
+        }
+
+        ?>
 
         <h3>Administrative Control Panel:</h3>
         <b>Welcome, <?php echo $user[0]['name'] ?></b>
@@ -51,6 +72,13 @@ if(isset($_SESSION['userid'])){
             <input type="text" name="weeks" value="<?php echo $settings['weeks'] ?>" />
             <label># of weeks to display</label><br /><br />
 
+
+            <?php
+
+            //class 2 admin only
+            if($user[0]["admin"] >= '2'){
+
+            ?>
             <b>insert.php</b><br /><br />
 
             <input type="hidden" name="insert_valid" value="FALSE" />
@@ -64,32 +92,18 @@ if(isset($_SESSION['userid'])){
                 <label>Force insert to fail</label><br />
 
 
-            <b>data.php</b><br /><br />
+            <b>Database</b><br /><br />
             <input type="text" name="db_host" value="<?php echo $settings['db_host']; ?>" /><label>Database Hostname</label><br />
             <input type="text" name="db_user" value="<?php echo $settings['db_user']; ?>" /><label>Database Username</label><br />
             <input type="password" name="db_pass" value="<?php echo $settings['db_pass']; ?>" /><label>Database Password</label><br />
             <input type="text" name="db_database" value="<?php echo $settings['db_database']; ?>" /><label>Database Name</label><br />
             <br />
-
+            <?php
+            }
+            ?>
 
             <br />
             <input type="submit" value="Update" />
-            <?php
-
-                if(isset($_SESSION['saved'])){
-
-                    if($_SESSION['saved'] == '1'){
-                        echo '<span class="success">Settings saved successfully!</span>';
-                        $_SESSION['saved'] = null;
-                    }elseif($_SESSION['saved'] == '0'){
-                        echo '<span class="error">Settings were not saved!</span>';
-                        $_SESSION['saved'] = null;
-                    }
-
-                }
-
-            ?>
-
 
         </form>
 
@@ -139,6 +153,12 @@ if(isset($_SESSION['userid'])){
 
     </fieldset>
 
+        <?php
+        //end admin class 1
+        }
+        if($user[0]["admin"] >= '2'){
+        ?>
+
     <fieldset>
 
         <legend>Settings Options:</legend>
@@ -149,18 +169,6 @@ if(isset($_SESSION['userid'])){
             <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br />
             <input type="submit" value="Download" name="download" /><label>Download the settings file</label><br /><br />
 
-
-            <?php
-
-                if(isset($_SESSION['saved'])){
-
-                    if($_SESSION['saved'] == '3'){
-                        echo '<span class="success">Settings file rebuilt successfully!</span>';
-                    }
-
-                }
-
-            ?>
         </form>
 
     </fieldset>
@@ -182,9 +190,10 @@ if(isset($_SESSION['userid'])){
     </fieldset>
 
 <?php
-    }else{
-        ?><span class="error">You do not have permission to view this page.(not admin)</span><?php
-    }
+}
+if($user[0]["admin"] == '0'){
+    ?><span class="error">You do not have permission to view this page.(not admin)</span><?php
+}
 }else{
     ?><span class="error">You do not have permission to view this page.(not logged in)</span><?php
 }

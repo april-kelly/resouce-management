@@ -38,7 +38,7 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
        $_SESSION['userid'] = $results[0]['index'];
        $_SESSION['name'] = $results[0]['name'];
        $_SESSION['admin'] = $results[0]['admin'];
-       header('location: ../?p=admin');
+       header('location: ../');
 
     }
     else

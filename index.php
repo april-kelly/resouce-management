@@ -17,7 +17,7 @@ $set = new settings;
 $settings = $set->fetch();
 
 //error reporting
-if($settings['debug'] == TRUE && $_SESSION['admin'] == '1'){
+if($settings['debug'] == TRUE){
     error_reporting(E_STRICT);
 }else{
     error_reporting(0);
@@ -95,7 +95,7 @@ switch($request){
     break;
 
     case "user":
-        $page = './includes/user.php';
+        $page = './includes/profile.php';
         $main_id = 'profile';
     break;
 
@@ -175,7 +175,7 @@ switch($request){
 
     <div id="header">
 
-        <img src="./includes/images/logo.gif" style="center"/>
+        <img src="<?php echo $settings['logo']; ?>" style="center"/>
 
         <?php
 
@@ -191,7 +191,7 @@ switch($request){
         <?php
 
             //if debug mode is enabled let the user know
-            if($settings['debug'] == true && $_SESSION['admin'] == '1'){
+            if($settings['debug'] == true && $_SESSION['admin'] == '2'){
                 echo '<br /><span class="info">Debug mode has been enabled.</span><br />';
             }
 
