@@ -1,5 +1,10 @@
 <?php
 
+    //set the session
+    if(!(isset($_SESSION))){
+        session_start();
+    }
+
     //includes
 	require_once(ABSPATH.'includes/data.php');
 
@@ -15,6 +20,14 @@
 ?>
 
   <h3>Request a resource:</h3>
+
+    <?php
+
+        if(!(isset($_SESSION['userid']))){
+            echo '<span class="info">Alert you are not logged in.</span><br /><br />';
+        }
+
+    ?>
 
   <form action="./includes/insert.php" method="post" onsubmit="return validate()" name="form" class="request">
 	
@@ -61,11 +74,14 @@
 		$dbc->close();
 	  ?>
 	</select>
+    <br />
 
+    <!--
     <br />
     <label>Requesting: </label>
     <input type="text" value="<?php if(isset($_SESSION['name'])){ echo $_SESSION['name']; }else{ echo 'Anonymous'; } ?>" />
     <br />
+    -->
 
 	<label>Priority</label>
   	<select name="priority">
