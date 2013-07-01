@@ -129,6 +129,7 @@ foreach($weeks as $weeks){
 	echo "\t\t".'<td>'.$weeks.'</td>'."\r\n";
 	$excel[0][$i] = $weeks;
 	$i++;
+
 }
 echo "\t".'</tr>'."\r\n\r\n";
 
@@ -139,11 +140,23 @@ if($excel_enable == true){
 	
 	$copy = $table;
 
+    //figure out where the end of the table is
+    $end = end($copy);
+    $date_location = $end['id'] + 2;
+    $space_location = $end['id'] + 1;
+
+    //add the "Last updated:" notice to the array
+    $copy[$space_location]['name'] = "";
+    $copy[$date_location]['name'] = "Last updated: ";
+    $copy[$date_location]['1'] = date('g:ia T');
+
+
 	$i = 1;		//Must be set to the first row after the header
 	foreach($copy as $copy){
 		$excel[$i] = $copy;
 		$i++;
 	}
+
 
 	try{
 		$PhpToXls = new ABG_PhpToXls($excel, null, 'month', true);
