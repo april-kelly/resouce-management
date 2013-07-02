@@ -29,6 +29,26 @@ body{
     color: #35639d;
 }
 
+#admin_head {
+    text-align: center;
+}
+
+#admin_head a {
+    text-decoration: none;
+    color: black;
+}
+
+#admin_head a:hover {
+    color: #35639d;
+}
+
+#admin_head li{
+    list-style-type: none;
+    display: inline;
+    font-size: 23px;
+    padding: 10px;
+    color: #35639d;
+}
 #main {
     background-color: white;
     margin-left: auto;
@@ -73,6 +93,10 @@ body{
     width: 43%;
     padding: 15px;
     box-shadow: 0 5px 24px #111;
+}
+
+#status{
+    text-align: center;
 }
 
 .request {

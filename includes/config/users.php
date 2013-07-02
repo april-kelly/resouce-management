@@ -85,6 +85,43 @@ class users {
 
     }
 
+
+    //Selects a user in the database
+    public function select($userid){
+
+        //connect to the database
+        $dbc = new db;
+        $dbc->connect();
+
+        //sanitize user inputs
+        $userid = $dbc->sanitize($userid);
+
+
+        //search for user
+        $query = "SELECT * FROM people WHERE index = '".$userid."'";
+        $results = $dbc->query($query);
+
+        //close connection
+        $dbc->close();
+
+        //count the number of rows returned
+        if(count($results) == '1'){
+            $this->index = $results[0]['index'];
+
+            //Save all of the users information in case they want to issue and update query later
+            $this->name     = $results[0]['name'];
+            $this->email    = $results[0]['email'];
+            $this->password = $results[0]['password'];
+            $this->type     = $results[0]['type'];
+            $this->admin    = $results[0]['admin'];
+
+            return $results;
+        }else{
+            return false;
+        }
+
+    }
+
     //Create a new user (set values with define())
     public function create(){
 
@@ -109,7 +146,6 @@ class users {
                  '".$this->admin."')";
 
         //run the query
-        echo $query;
         $dbc->insert($query);
 
         //close connection

@@ -79,12 +79,17 @@ switch($request){
 
     case "admin":
 
-        $page = './admin/menu.php';
+        $page = './admin/menu2.php';
         $main_id = 'admin';
 
         //pass the save status (if set)
         if(isset($_REQUEST['s'])){
             $_SESSION['saved'] = $_REQUEST['s'];
+        }
+
+        //pass the admin page request (if set)
+        if(isset($_REQUEST['a'])){
+            $_SESSION['a'] = $_REQUEST['a'];
         }
 
     break;
@@ -141,7 +146,7 @@ switch($request){
         //make sure debug mode is actually enabled
         if($settings['debug'] == true){
 
-            $page = './includes/debug.php';
+            $page = './admin/menus/debug.php';
             $main_id = 'main';
 
             //pass the debug options back to debug.php (if set)
