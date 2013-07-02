@@ -61,6 +61,11 @@ switch($request){
         $title = '<h3>Current Resource Utilization:</h3>';
     break;
 
+    case "search":
+        $page = './includes/search.php';
+        $main_id = 'main';
+    break;
+
     case "request":
         $page = './includes/request.php';
         $main_id = 'profile';
@@ -106,6 +111,16 @@ switch($request){
         //pass the requested user id to week.php (if set)
         if(isset($_REQUEST['w'])){
             $_SESSION['person'] = $_REQUEST['w'];
+        }
+
+        //pass the edit flag (if set)
+        if(isset($_REQUEST['e'])){
+            $_SESSION['edit'] = $_REQUEST['e'];
+        }
+
+        //pass the index of the item to be deleted (if set)
+        if(isset($_REQUEST['d'])){
+            $_SESSION['d'] = $_REQUEST['d'];
         }
     break;
 
@@ -191,9 +206,10 @@ switch($request){
         <?php
 
             //if debug mode is enabled let the user know
-            if($settings['debug'] == true && $_SESSION['admin'] == '2'){
+            //This is commented out because it is annoying.
+            /*if($settings['debug'] == true && $_SESSION['admin'] == '2'){
                 echo '<br /><span class="info">Debug mode has been enabled.</span><br />';
-            }
+            }*/
 
             //if a title is set echo it out
             if(!(empty($title))){

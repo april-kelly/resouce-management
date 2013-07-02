@@ -9,10 +9,15 @@
 */
 
 //Includes
-include('data.php');
+require_once(ABSPATH.'includes/data.php');
+require_once(ABSPATH.'includes/config/settings.php');
+
+$set = new settings;
+$settings = $set->fetch();
+
 
 //Settings
-$show = '8';
+$show = $settings['weeks'];
 
 
 //Variables
@@ -43,7 +48,15 @@ $dbc->connect();
 
 $result		 = $dbc->query('SELECT * FROM people');
 $person 	 = $dbc->sanitize($_SESSION['person']);
-$projects        = $dbc->query('SELECT * FROM `jobs` WHERE resource = '.$person.' ');
+$projects    = $dbc->query('SELECT * FROM `jobs` WHERE resource = '.$person.' ');
+
+//Delete section
+if(isset($_SESSION['d'])){
+    $query = "DELETE FROM jobs WHERE `index` = '".$_SESSION['d']."'";
+    $dbc->delete($query);
+    unset($_SESSION['d']);
+    header('location: ./?p=week&w='.$_SESSION['person'].'&e=1');
+}
 
 //fix indexes of the people table
 $people = array();
@@ -72,10 +85,11 @@ foreach($week as $week){
 				if($past_week !== ''){ echo '</table><br /><br />'; }
 				echo '<b>'.$week.'</b>';
 				?>
-				<table border="1">
+				<table border="1" class="data">
 				<tr>
 				<td>Resource:</td>
 				<td>Manager</td>
+                <td>Requestor</td>
 				<td>Project id:</td>
 				<td>Priority</td>
 				<td>Sunday</td>
@@ -86,6 +100,11 @@ foreach($week as $week){
 				<td>Friday</td>
 				<td>Saturday</td>
 				<td>Sales Status</td>
+                    <?php
+                    if(isset($_SESSION['edit']) && isset($_SESSION['userid'])){
+                        echo '<td>Delete</td>';
+                    }
+                    ?>
 				</tr>
 				<?php
 		 	}
@@ -122,6 +141,13 @@ foreach($week as $week){
 		 	}else{
 		 		$resource = false;
 			}
+
+            //Verify requestor exists
+            if(isset($people[$project['requestor']])){
+                $requestor = true;
+            }else{
+                $requestor = false;
+            }
 		
 			//Begin echo out the record
 			echo '<tr/>';
@@ -130,15 +156,22 @@ foreach($week as $week){
 			if($resource == true){
 				echo '<td>',$people[$project['resource']]['name'],'</td>';
 			}else{
-				echo '<td><span style="color: red;">[Error]</span></td>';
+				echo '<td><span class="error">[Error]</span></td>';
 			}
 			
 			//echo out manager
 			if($manager == true){
 				echo '<td>',$people[$project['manager']]['name'],'</td>';
 			}else{
-				echo '<td><span style="color: red;">[Error]</span></td>';
+				echo '<td><span class="error">[Error]</span></td>';
 			}
+
+            //echo out the requestor
+            if($requestor == true){
+                echo '<td>',$people[$project['requestor']]['name'],'</td>';
+            }else{
+                echo '<td><span class="error">[Error]</span></td>';
+            }
 			
 		 	//Unserialize the time
 		 	$time = unserialize($project['time']);
@@ -154,12 +187,18 @@ foreach($week as $week){
 			echo '<td>',$time['friday'],'</td>';
 			echo '<td>',$time['saturday'],'</td>';
 			echo '<td>',$status,'</td>';
-			
+
+            if(isset($_SESSION['edit'])){
+                echo '<td><a href="./?p=week&w='.$_SESSION['person'].'&e=1&d='.$project['index'].'"><img src="./includes/images/x32.png"></a></td>';
+            }
+
 			echo '</tr>';
 			
 			$past_week = $week;
 			
 		}
+
+
 		
 	}
 	
@@ -167,9 +206,26 @@ foreach($week as $week){
 		if($past_week == ''){ echo "<b>Sorry, no records were found</b>"; }
 		$past_week = $week;
 	}
-	
+
+    //end the last table
+    if($week == end($weeks)){
+        echo '</table>';
+    }
 }
 
 //Close database connection
 $dbc->close();
+
+//if the user is logged in allow them to edit records
+if(isset($_SESSION['userid']) && !(isset($_SESSION['edit']))){
+   echo '<br /><a href="./?p=week&w='.$_SESSION['person'].'&e=1">Edit</a><br />';
+}elseif(isset($_SESSION['edit'])){
+    echo '<br /><a href="./?p=week&w='.$_SESSION['person'].'&e=0">Done editing?</a><br />';
+}
+
+if($_SESSION['edit'] == '0'){
+    unset($_SESSION['edit']);
+    header('location: ./?p=week&w='.$_SESSION['person']);
+}
+
 ?>

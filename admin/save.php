@@ -9,7 +9,7 @@
 require_once('../path.php');
 require_once(ABSPATH.'includes/config/settings.php');
 require_once(ABSPATH.'includes/data.php');
-require_once(ABSPATH.'admin/users.php');
+require_once(ABSPATH.'includes/config/users.php');
 
 //Start the users session if nessary
 if(!(isset($_SESSION))){
@@ -120,6 +120,26 @@ if(isset($_REQUEST['d'])){
     }
 }
 
+    //Administrator user tools
+    echo "<br />Entered user mode<br />";
+    $users = new users();
+
+    if(isset($_REQUEST['Add'])){
+
+        $users->change('name', $_REQUEST['name']);
+        $users->change('name', $_REQUEST['email']);
+        $users->change('name', sha1($_REQUEST['password']));
+
+        $users->change('name', $_REQUEST['type']);
+        $users->change('name', $_REQUEST['admin']);
+
+        var_dump($users);
+        //$users->create();
+
+        $save =false;
+
+    }
+
 if($save == TRUE){ //prevent unnecessary updates
 
     //update the settings
@@ -132,6 +152,8 @@ if($save == TRUE){ //prevent unnecessary updates
         header('location: ../?p=admin&s=0');
     }
 }
+
+
 //end administrator only section
 }
 
@@ -140,24 +162,39 @@ if($save == TRUE){ //prevent unnecessary updates
 
 //User profile updates
 if($_REQUEST['userid']){
-    echo "Entered user mode";
+    echo "<br />Entered user mode<br />";
 
     $users = new users();
 
     $status = $users->login($_REQUEST['email'], $_REQUEST['password']);
 
+    //make sure the users info checked out
+    if(!($status == false)){
+
+
     //password change
-    if(isset($_REQUEST['new_pass'])){
-        if(isset($_REQUEST['new_pass_II'])){
+    if(isset($_REQUEST['new_pass']) && !(empty($_REQUEST['new_pass']))){
+        if(isset($_REQUEST['new_pass_II'])  && !(empty($_REQUEST['new_pass']))){
             if($_REQUEST['new_pass'] == $_REQUEST['new_pass_II']){
+                echo '<br />Changeing password <br />';
                 $users->change('password', sha1($_REQUEST['new_pass']));
                 $users->update();
             }
         }
     }
+var_dump($status);
+    //name change
+    if(!($_REQUEST['name'] == $status[0]['name'])){
+        echo '<br />Changing name <br />';
+        $users->change('name', $_REQUEST['name']);
+        $users->update();
+    }
 
-    var_dump($status);
+    }else{
+        echo "<br />Bad user info supplied (probably password).<br />";
+    }
 
+    header('location: ../?p=user');
 }
 
 

@@ -7,7 +7,9 @@ require_once(ABSPATH.'/includes/data.php');
 //see if the user is logged in
 if(!(isset($_SESSION['userid']))){
 ?>
-    <p class='error'>You do not have permission to view this page.</p>
+    <p class='error'>Congratulations you have just proven <a href="http://en.wikipedia.org/wiki/Schr%C3%B6dinger's_cat">Schr&#246;dinger's</a> thought experiment correct!
+        You do not exist but yet you are accessing this page! Therefore you exist and do not exist
+        at the same time. (This probably just means you have not logged).</p>
 <?php
 }else{
 

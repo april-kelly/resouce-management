@@ -37,10 +37,14 @@ if($status['debug'] == true){
             $page = 'admin/tools/list.php';
         break;
 
+
         CASE "dump":
             $page = 'admin/tools/dump.php';
         break;
 
+        CASE "test":
+            $page = 'admin/tools/test.php';
+        break;
 
         DEFAULT:
             //Just show the current page
@@ -60,6 +64,7 @@ if($status['debug'] == true){
         <a href="./?p=debug&d=fill">fill.php</a> Fills the jobs table with random data. <br />
         <a href="./?p=debug&d=list">list.php</a> Lists the contents of the database. <br />
         <a href="./?p=debug&d=dump">dump.php</a> Dumps the contents of the $_SESSION variable. <br />
+        <a href="./?p=debug&d=test">test.php</a> Exactly as it sounds. <br />
         <a href="./admin/save.php?d=0">Disable debug mode</a>
         <br /><br /><i class="info">Please not these tools may not be fully functional and are for debugging and developement only.</i>
         <?php

@@ -113,10 +113,10 @@ if(isset($_SESSION['userid'])){
 
         <legend>User Options:</legend>
 
-        <form action="admin.php" method="post">
+        <form action="./admin/save.php" method="post">
 
             <b>Delete a user:</b><br />
-            <select>
+            <select name="rm">
 
                 <option value="">Select One:</option>
 
@@ -133,18 +133,24 @@ if(isset($_SESSION['userid'])){
             <input type="submit" value="Delete" /><br /><br />
 
             <b>Add a user:</b><br />
-            <input type="text" /><label>Name</label><br />
-            <input type="text" /><label>Email</label><br />
-            <input type="text" /><label>Password</label><br />
-            <select>
-                <option value="">Select one:</option>
-                <option value="1">Project Manager</option>
+            <input type="text" name="name"/><label>Name</label><br />
+            <input type="text" name="email"/><label>Email</label><br />
+            <input type="text" name="password"/><label>Password</label><br />
+            <select name="type">
                 <option value="2">Project Resource</option>
-                <option value="0">Other</option>
+                <option value="1">Project Manager</option>
+                <option value="0">Both</option>
             </select>
-            <label>Type of user</label>
+            <label>Type of resource</label>
             <br />
-            <input type="checkbox" /><label>Is admin?</label><br />
+            <select name="admin">
+                <option value="0">Normal</option>
+                <option value="1">Administrator</option>
+                <option value="2">Debugger</option>
+                <option value="3">Developer</option>
+            </select>
+            <label>Type of user</label><br />
+
 
 
 
