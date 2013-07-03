@@ -15,6 +15,8 @@ $settings = $set->fetch();
 
 
 ?>
-<p>
-Hello and welecome to version <?php echo $settings['version']; ?> of the Bluetent Resource Management software.
-</p>
+<div id="status">
+    <p>
+        Hello and welecome to version <?php echo $settings['version']; ?> of the Bluetent Resource Management software.
+    </p>
+</div>

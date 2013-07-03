@@ -24,6 +24,8 @@ $settings = $set->fetch();
 $fail = TRUE;
 $save = TRUE;
 
+//make sure the user is actually logged in.
+if(isset($_SESSION['userid'])){
 
 //Begin administrator ONLY section
 if($_SESSION['admin'] >= '1' && !(isset($_REQUEST['userid']))){
@@ -199,4 +201,7 @@ var_dump($status);
 
 
 
-
+//end of login check
+}else{
+    ?><span class="error">You must be logged in to view this page.</span><?php
+}
