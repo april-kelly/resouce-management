@@ -16,9 +16,6 @@ $settings = $set->fetch();
     <?php if($_SESSION['admin'] >= '1'){ ?>
     <li><a href="./?p=admin">Settings</a></li>
     <?php } ?>
-    <?php if($settings['debug'] == true && $_SESSION['admin'] >= '2'){ ?>
-    <li><a href="./?p=debug">Debug</a></li>
-    <?php } ?>
     <?php if(!(isset($_SESSION['name']))){ ?>
     <li><a href="./?p=login">Login</a></li>
     <?php }else{ ?>
