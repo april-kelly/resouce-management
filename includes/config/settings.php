@@ -33,7 +33,7 @@ class settings {
             public $location        = NULL; //we'll set this in the constructor
             public $debug           = FALSE;
             public $logo            = './includes/images/logo.gif';
-            public $version         = '1.0.0';
+            public $version         = '1.0.0 beta';
 
     public function __construct(){
 

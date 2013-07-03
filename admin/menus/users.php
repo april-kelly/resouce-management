@@ -18,16 +18,21 @@ $settings = $set->fetch();
 $dbc = new db;
 $dbc->connect();
 $people = $dbc->query("SELECT * FROM people");
+if(isset($_REQUEST['ajax'])){
+    echo $_REQUEST['ajax'];
+}
 ?>
+<script>
 
+</script>
 <fieldset>
 
         <legend>Update a user</legend>
 
-        <form action="./admin/menus/user.php" method="post">
+
 
             <b>Select a user:</b><br />
-            <select name="userid">
+            <select id="select">
 
                 <option value="">Select One:</option>
 
@@ -41,9 +46,13 @@ $people = $dbc->query("SELECT * FROM people");
                 ?>
 
             </select>
+            <button onclick="document.location = './admin/menus/users.php?u='.document.write(document.getElementById('select').value)">Select</button><br /><br />
 
-            <input type="submit" value="Select" /><br /><br />
+    <div id="form">
 
+    </div>
+
+    <form action="./admin/menus/user.php" method="post">
             <input type="text" name="name"/><label>Name</label><br />
             <input type="text" name="email"/><label>Email</label><br />
             <input type="text" name="password"/><label>Password</label><br />

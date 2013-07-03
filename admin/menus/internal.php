@@ -39,6 +39,21 @@ $settings = $set->fetch();
     </form>
 
 </fieldset>
+
+<fieldset>
+
+    <legend>Settings Options:</legend>
+
+    <form action="./admin/save.php" method="post">
+        <b>Core Settings:</b><br />
+        <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings file from preset defaults</label><br />
+        <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br />
+        <input type="submit" value="Download" name="download" /><label>Download the settings file</label><br /><br />
+
+    </form>
+
+</fieldset>
+
 <fieldset>
 
     <legend>Debugging Mode:</legend>
