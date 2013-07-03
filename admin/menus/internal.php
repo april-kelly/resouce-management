@@ -14,6 +14,11 @@ require_once(ABSPATH.'includes/config/users.php');
 $set = new settings;
 $settings = $set->fetch();
 
+//make sure the user is logged in and is admin
+if(isset($_SESSION['userid'])){
+    if($_SESSION['admin'] >= 1){
+
+        //User is logged in
 ?>
 <fieldset>
 
@@ -69,3 +74,18 @@ $settings = $set->fetch();
     <br /><br />
 
 </fieldset>
+<?php
+
+    }else{
+
+    //User is not admin
+    ?><span class="error">You must be an administrator to access this page.</span><?php
+
+}
+
+}else{
+
+    //User is not logged in
+    ?><span class="error">You are not logged in, please login to access this page.</span><?php
+
+}

@@ -21,6 +21,12 @@ $people = $dbc->query("SELECT * FROM people");
 if(isset($_REQUEST['ajax'])){
     echo $_REQUEST['ajax'];
 }
+
+//make sure the user is logged in and is admin
+if(isset($_SESSION['userid'])){
+    if($_SESSION['admin'] >= 1){
+
+        //User is logged in
 ?>
 <script>
 
@@ -141,3 +147,17 @@ if(isset($_REQUEST['ajax'])){
     </form>
 
 </fieldset>
+<?php
+}else{
+
+    //User is not admin
+    ?><span class="error">You must be an administrator to access this page.</span><?php
+
+}
+
+}else{
+
+    //User is not logged in
+    ?><span class="error">You are not logged in, please login to access this page.</span><?php
+
+}
