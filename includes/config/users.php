@@ -7,6 +7,7 @@
 
 //includes
 require_once(ABSPATH.'includes/data.php');
+require_once(ABSPATH.'includes/config/settings.php');
 
 class users {
 
@@ -16,7 +17,18 @@ class users {
     public $password    = '';
     public $type        = '2';
     public $admin       = '0';
+    public $salt        = ''; //we'll set this in the constructor
 
+
+    //Constructor
+    public function __constructor(){
+
+        //We'll set the salt up here
+        $set = new settings;
+        $settings = $set->fetch();
+        $this->salt = $settings['salt'];
+
+    }
 
     //Checks a supplied username and password in the database
     public function login($username, $password){
@@ -27,7 +39,7 @@ class users {
 
         //sanitize user inputs
         $username = $dbc->sanitize($username);
-        $password = $dbc->sanitize(sha1($password));
+        $password = $dbc->sanitize(hash('SHA512', $password.$this->salt));
 
         //search for user
         $query = "SELECT * FROM people WHERE email='".$username."' AND password='".$password."'";
@@ -132,7 +144,7 @@ class users {
         //sanitize inputs
         $this->name     = $dbc->sanitize($this->name);
         $this->email    = $dbc->sanitize($this->email);
-        $this->password = $dbc->sanitize(sha1($this->password));
+        $this->password = $dbc->sanitize(hash('SHA512', $this->password.$this->salt));
         $this->type     = $dbc->sanitize($this->type);
         $this->admin    = $dbc->sanitize($this->admin);
 
