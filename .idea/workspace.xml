@@ -5,9 +5,10 @@
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="bd4d81c4-7425-4bbf-879b-bbc226b06a38" time="1373308044760" ignored="false" />
-    <file path="/path.php" changelist="bd4d81c4-7425-4bbf-879b-bbc226b06a38" time="1373308465671" ignored="false" />
+    <file path="/path.php" changelist="bd4d81c4-7425-4bbf-879b-bbc226b06a38" time="1373311905575" ignored="false" />
     <file path="/users.php" changelist="bd4d81c4-7425-4bbf-879b-bbc226b06a38" time="1373311506479" ignored="false" />
     <file path="/settings.php" changelist="bd4d81c4-7425-4bbf-879b-bbc226b06a38" time="1373311325271" ignored="false" />
+    <file path="/login.php" changelist="bd4d81c4-7425-4bbf-879b-bbc226b06a38" time="1373312097073" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,19 +28,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="path.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="path.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/path.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="2" selection-start="152" selection-end="152" vertical-scroll-proportion="-3.9230769">
+            <state line="8" column="0" selection-start="137" selection-end="137" vertical-scroll-proportion="0.10194903">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="users.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/config/users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="159" column="23" selection-start="4302" selection-end="4302" vertical-scroll-proportion="0.008995502">
+            <state line="159" column="23" selection-start="4302" selection-end="4302" vertical-scroll-proportion="-0.23076923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="40" selection-start="416" selection-end="416" vertical-scroll-proportion="-10.461538">
               <folding />
             </state>
           </provider>
@@ -72,9 +82,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/path.php" />
         <option value="$PROJECT_DIR$/includes/config/settings.php" />
         <option value="$PROJECT_DIR$/includes/config/users.php" />
+        <option value="$PROJECT_DIR$/admin/login.php" />
+        <option value="$PROJECT_DIR$/path.php" />
       </list>
     </option>
   </component>
@@ -158,6 +169,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -269,13 +294,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/path.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="2" selection-start="152" selection-end="152" vertical-scroll-proportion="-3.9230769">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="77" selection-start="1446" selection-end="1446" vertical-scroll-proportion="-17.423077">
@@ -285,7 +303,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/config/users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="23" selection-start="4302" selection-end="4302" vertical-scroll-proportion="0.008995502">
+        <state line="159" column="23" selection-start="4302" selection-end="4302" vertical-scroll-proportion="-0.23076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="40" selection-start="416" selection-end="416" vertical-scroll-proportion="-10.461538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/path.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="137" selection-end="137" vertical-scroll-proportion="0.10194903">
           <folding />
         </state>
       </provider>

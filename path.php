@@ -7,5 +7,3 @@
 
 define('ABSPATH', dirname(__FILE__).'/');
 
-//testing..
-//echo hash('SHA512', 'tetstaasldfj');
