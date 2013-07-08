@@ -12,6 +12,7 @@ session_start();
 require_once('../path.php'); //to set the ABSPATH constant
 require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH.'includes/config/settings.php');
+require_once(ABSPATH.'includes/config/users.php');
 
 //fetch the salt
 $set = new settings;
@@ -22,35 +23,20 @@ $salt = $settings['salt'];
 if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 {
 
-    //connect to the database
-    $dbc = new db;
-    $dbc->connect();
+    $users = new users;
+    $results = $users->login($_REQUEST['username'], $_REQUEST['password']);
 
-    //sanitize user inputs
-    $user = $dbc->sanitize($_REQUEST['username']);
-    $pass = $dbc->sanitize(hash('SHA512', $_REQUEST['password'].$salt));
+    if(!($results == FALSE)){
 
-    //search for user
-    $results = $dbc->query("SELECT * FROM people WHERE email='".$user."' AND password='".$pass."'");
+        //Good login
+        $_SESSION['userid'] = $results[0]['index'];
+        $_SESSION['name'] = $results[0]['name'];
+        $_SESSION['admin'] = $results[0]['admin'];
+        header('location: ../');
 
-    //close connection
-    $dbc->close();
+    }else{
 
-
-    if(count($results) == '1')
-    {
-
-       //valid login
-       $_SESSION['userid'] = $results[0]['index'];
-       $_SESSION['name'] = $results[0]['name'];
-       $_SESSION['admin'] = $results[0]['admin'];
-       header('location: ../');
-
-    }
-    else
-    {
-
-        //invalid login
+        //Bad login
         header('location: ../?p=badlogin');
 
     }
@@ -59,7 +45,7 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 else
 {
 
-    //use did not fill out both fields
+    //user did not fill out both fields
     header('location: ../?p=badlogin');
 
 }

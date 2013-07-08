@@ -34,9 +34,7 @@ class settings {
             public $debug           = FALSE;
             public $logo            = './includes/images/logo.gif';
             public $version         = '1.0.0 beta';
-            public $salt            = 'ce343c02029cb6cca0547404df5227acac213f45af4f5f
-                                       df4cb48ffb07964a08f887aa9a03fbe65d0f574be222b4
-                                       f809db324a7e8a282b618c28a9894b36d7e1';
+            public $salt            = 'cb317a4b863ecc5fc80a33e286671b3c317fafbee77e5ac1099fe45c0d06d95595e63df5f4a48d2fa8535e513817b175588bf62bbca4331a1d01b9cac088ae40';
 
     public function __construct(){
 

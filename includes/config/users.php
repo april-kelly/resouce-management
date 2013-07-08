@@ -17,13 +17,11 @@ class users {
     public $password    = '';
     public $type        = '2';
     public $admin       = '0';
-    public $salt        = ''; //we'll set this in the constructor
-
+    public $salt        = '';       //This will be set in the construtor
 
     //Constructor
-    public function __constructor(){
+    function __construct(){
 
-        //We'll set the salt up here
         $set = new settings;
         $settings = $set->fetch();
         $this->salt = $settings['salt'];
@@ -39,7 +37,7 @@ class users {
 
         //sanitize user inputs
         $username = $dbc->sanitize($username);
-        $password = $dbc->sanitize(hash('SHA512', $password.$this->salt));
+        $password = $dbc->sanitize(hash('SHA512',$password.$this->salt));
 
         //search for user
         $query = "SELECT * FROM people WHERE email='".$username."' AND password='".$password."'";
