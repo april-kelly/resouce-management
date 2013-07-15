@@ -60,6 +60,34 @@ body{
     box-shadow: 0 5px 24px #111;
 }
 
+#installer {
+    text-align: left;
+    background-color: white;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    width: 600px;
+    padding: 15px;
+    box-shadow: 0 5px 24px #111;
+}
+
+#installer form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#installer label, input {
+    /* in order to define widths */
+    display: inline-block;
+}
+
+#installer label {
+    width: 30%;
+    /* positions the label text beside the input */
+    text-align: left;
+}
+
 #admin {
     background-color: white;
     margin-left: auto;

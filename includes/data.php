@@ -74,7 +74,7 @@ class db
 			    $this->db_host     = $settings['db_host'];
 			    $this->db_user     = $settings['db_user'];
 			    $this->db_pass     = $settings['db_pass'];
-			    $this->db_database = '';//$settings['db_database'];
+			    $this->db_database = $settings['db_database'];
 
                 //Direct Access
                 /*
