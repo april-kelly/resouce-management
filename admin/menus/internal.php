@@ -74,6 +74,20 @@ if(isset($_SESSION['userid'])){
     <br /><br />
 
 </fieldset>
+
+        <fieldset>
+
+            <legend>Security:</legend>
+
+            <form action="./admin/save.php" method="post">
+                    <b>Salt:</b><br />
+                    <input type="text" name="salt" /><br />
+                    <input type="submit" value="Change salt" /><br /><br />
+                    <span class="info"><em>WARNING: Changing this field will invalidate all passwords in the database.</em></span>
+            </form>
+
+        </fieldset>
+
 <?php
 
     }else{

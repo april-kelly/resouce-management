@@ -179,7 +179,7 @@ if($_REQUEST['userid']){
         if(isset($_REQUEST['new_pass_II'])  && !(empty($_REQUEST['new_pass']))){
             if($_REQUEST['new_pass'] == $_REQUEST['new_pass_II']){
                 echo '<br />Changeing password <br />';
-                $users->change('password', sha1($_REQUEST['new_pass']));
+                $users->change('password', hash('SHA512', $_REQUEST['new_pass'].$settings['salt']));
                 $users->update();
             }
         }

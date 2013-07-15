@@ -37,7 +37,7 @@ class users {
 
         //sanitize user inputs
         $username = $dbc->sanitize($username);
-        $password = $dbc->sanitize(hash('SHA512',$password.$this->salt));
+        $password = hash('SHA512', $password.$this->salt);
 
         //search for user
         $query = "SELECT * FROM people WHERE email='".$username."' AND password='".$password."'";
