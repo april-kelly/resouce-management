@@ -146,7 +146,7 @@ class users {
 
 
         //search for user
-        $query = "SELECT * FROM people WHERE index = '".$userid."'";
+        $query = "SELECT * FROM people WHERE `index` = '".$userid."'";
         $results = $dbc->query($query);
 
         //close connection

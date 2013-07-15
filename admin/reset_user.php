@@ -66,8 +66,9 @@ if(isset($_SESSION['reset_code'])){
     //echo out the input form
     ?>
 
-    <form action="./admin/reset_code.php" method="post">
+    <form action="./" method="get">
         <b>Please input your reset code.</b>
+        <input type="hidden" name="p" value="reset" />
         <input type="text" name="c" />
         <input type="submit">
     </form>

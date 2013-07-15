@@ -199,6 +199,13 @@ if(isset($_REQUEST['userid'])){
     header('location: ../?p=user');
 }
 
+
+
+//end of login check
+}else{
+    ?><span class="error">You must be logged in to view this page.</span><?php
+}
+
 //Password reset
 if(isset($_REQUEST['reset_code'])){
 
@@ -218,10 +225,5 @@ if(isset($_REQUEST['reset_code'])){
         }
     }
 
-    //header('location: ../');
-}
-
-//end of login check
-}else{
-    ?><span class="error">You must be logged in to view this page.</span><?php
+    header('location: ../');
 }
