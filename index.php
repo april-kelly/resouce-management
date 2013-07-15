@@ -38,6 +38,17 @@ if(!(file_exists('./includes/config/settings.json'))){
 //determine what page to show
 switch($request){
 
+    //Recover Passwords
+    case "reset":
+        $page = './admin/reset_user.php';
+        $main_id = 'login';
+
+        //pass reset code (if set)
+        if(isset($_REQUEST['c'])){
+            $_SESSION['reset_code'] = $_REQUEST['c'];
+        }
+    break;
+
     //this is for temporary debugging (to be removed)
     case "test":
         $page = '/admin/test.php';

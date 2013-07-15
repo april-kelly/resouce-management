@@ -163,7 +163,7 @@ if($save == TRUE){ //prevent unnecessary updates
 //Begin user section
 
 //User profile updates
-if($_REQUEST['userid']){
+if(isset($_REQUEST['userid'])){
     echo "<br />Entered user mode<br />";
 
     $users = new users();
@@ -184,7 +184,7 @@ if($_REQUEST['userid']){
             }
         }
     }
-var_dump($status);
+
     //name change
     if(!($_REQUEST['name'] == $status[0]['name'])){
         echo '<br />Changing name <br />';
@@ -199,7 +199,27 @@ var_dump($status);
     header('location: ../?p=user');
 }
 
+//Password reset
+if(isset($_REQUEST['reset_code'])){
 
+    $users = new users();
+    $users->reset_code($_REQUEST['reset_code']);
+
+    //password change
+    if(isset($_REQUEST['new_pass']) && !(empty($_REQUEST['new_pass']))){
+        if(isset($_REQUEST['new_pass_II'])  && !(empty($_REQUEST['new_pass']))){
+            if($_REQUEST['new_pass'] == $_REQUEST['new_pass_II']){
+                echo '<br />Changeing password <br />';
+                $users->change('password', hash('SHA512', $_REQUEST['new_pass'].$settings['salt']));
+                $users->change('reset_code', '');
+                var_dump($users);
+                $users->update();
+            }
+        }
+    }
+
+    //header('location: ../');
+}
 
 //end of login check
 }else{
