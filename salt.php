@@ -19,7 +19,7 @@ $salt = '60b448a4b93f07d724baecc1975b00e4b822efa4f6cb997ae0ec92f9f3580e981fe1d7f
 echo 'Salt: '.$salt.'</br>';
 
 //salt and hash a password
-$password_raw = 'basalt22';
+$password_raw = '';
 
 
 echo 'Password: '.hash('SHA512', $password_raw.$salt).'<br />';

@@ -103,6 +103,16 @@ switch($request){
             $_SESSION['a'] = $_REQUEST['a'];
         }
 
+        //pass reset code (if set)
+        if(isset($_REQUEST['c'])){
+            $_SESSION['reset_code'] = $_REQUEST['c'];
+        }
+
+        //pass the userid to look up (if set)
+        if(isset($_REQUEST['u'])){
+            $_SESSION['user_lookup'] = $_REQUEST['u'];
+        }
+
     break;
 
     case "login":

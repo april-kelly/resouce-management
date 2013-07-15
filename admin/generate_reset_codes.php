@@ -6,13 +6,13 @@
  */
 
 //includes
-require_once('../path.php');
+//require_once('../path.php');
 require_once(ABSPATH.'includes/config/settings.php');
 require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH.'includes/config/users.php');
 
 
-function create(){
+function create_reset_code(){
 
     //The following based off of http://stackoverflow.com/questions/853813/how-to-create-a-random-string-using-php
 
@@ -48,13 +48,11 @@ function create(){
 }
 
 
-function insert($userid){
-    $reset_code = create();
+function insert_reset_code($userid){
+    $reset_code = create_reset_code();
     $users = new users;
     $users->select($userid);
     $users->change('reset_code', $reset_code);
     $users->update();
     return $reset_code;
 }
-
-echo insert(44);

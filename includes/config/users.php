@@ -187,7 +187,7 @@ class users {
         $this->reset_code = $dbc->sanitize($this->reset_code);
 
         //define query
-        $query = "INSERT INTO people (`index`, `name`, `email`, `password`, `type`, `admin`)
+        $query = "INSERT INTO people (`index`, `name`, `email`, `password`, `type`, `admin`, `reset_code`)
                 VALUES (NULL,
                  '".$this->name."',
                  '".$this->email."',
@@ -197,6 +197,7 @@ class users {
                  '".$this->reset_code."')";
 
         //run the query
+        echo $query;
         $dbc->insert($query);
 
         //close connection
@@ -243,7 +244,6 @@ class users {
                  WHERE `index` = '".$this->index."'";
 
         //run the query
-        echo $query;
         $dbc->insert($query);
 
         //close connection

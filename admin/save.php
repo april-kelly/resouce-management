@@ -70,6 +70,12 @@ if(isset($_REQUEST['download'])){
     $save = FALSE;
 }
 
+    //Make sure the salt is saved as a hash
+    if(isset($_REQUEST['salt'])){
+        $_REQUEST['salt'] = hash('SHA512', $_REQUEST['salt']);
+    }
+
+
 //update each of the settings
 foreach($_REQUEST as $key => $value){
 
@@ -225,5 +231,5 @@ if(isset($_REQUEST['reset_code'])){
         }
     }
 
-    header('location: ../');
+    header('location: ../?p=login');
 }
