@@ -197,7 +197,8 @@ if(isset($_SESSION['userid'])){
 
                 <?php
                 if(isset($_SESSION['reset_code'])){
-                    echo '<span class="success">The reset code is '.$_SESSION['reset_code'].'</a></span>';
+                    echo '<span class="success">The reset code is: '.$_SESSION['reset_code'].'';
+                    echo '<br /> The link is: <a href="'.$settings['url'].'?p=reset&c='.$_SESSION['reset_code'].'">'.$settings['url'].'?p=reset&c='.$_SESSION['reset_code'].'</a></span>';
                     unset($_SESSION['reset_code']);
                 }
                 ?>
