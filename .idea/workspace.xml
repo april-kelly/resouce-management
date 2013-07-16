@@ -3,14 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ecf5cb68-73e3-4c51-a198-db77c48ea405" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/month.xls" afterPath="$PROJECT_DIR$/month.xls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menus/user_save.php" afterPath="$PROJECT_DIR$/admin/menus/user_save.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/login_form.php" afterPath="$PROJECT_DIR$/admin/login_form.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374005032333" ignored="false" />
+    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374007682906" ignored="false" />
     <file path="/create_db.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374004046810" ignored="false" />
-    <file path="/index.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373998347372" ignored="false" />
+    <file path="/index.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374007795725" ignored="false" />
     <file path="/styles.css" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373930262924" ignored="false" />
     <file path="/step1.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373992099846" ignored="false" />
     <file path="/data.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374002364192" ignored="false" />
@@ -20,6 +21,7 @@
     <file path="/break.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374002724480" ignored="false" />
     <file path="/pwn.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374007247586" ignored="false" />
     <file path="/user_save.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374007568992" ignored="false" />
+    <file path="/login_form.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374007824170" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,27 +41,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="request.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/request.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="49" selection-start="257" selection-end="257" vertical-scroll-proportion="-8.75">
-              <folding>
-                <marker date="1374003061541" expanded="false" signature="3574:3584" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="3728:3738" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="3887:3897" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="4034:4044" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="4184:4194" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="4346:4356" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="4483:4493" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="4616:4626" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="4757:4767" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="4948:4958" placeholder="..." />
-                <marker date="1374003061541" expanded="false" signature="5118:5128" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="create_db.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/install/create_db.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -89,10 +70,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_save.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="user_save.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="11" selection-start="2672" selection-end="2672" vertical-scroll-proportion="0.805915">
+            <state line="85" column="11" selection-start="2672" selection-end="2672" vertical-scroll-proportion="-18.166666">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login_form.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/login_form.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="127" selection-start="407" selection-end="407" vertical-scroll-proportion="-3.125">
               <folding />
             </state>
           </provider>
@@ -103,6 +93,17 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="908" vertical-scroll-proportion="-0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="125" column="29" selection-start="2818" selection-end="2818" vertical-scroll-proportion="0.62274367">
+              <folding>
+                <element signature="e#6#111#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -156,12 +157,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/includes/install/index.php" />
         <option value="$PROJECT_DIR$/includes/config/step1.php" />
         <option value="$PROJECT_DIR$/includes/styles/styles.css" />
         <option value="$PROJECT_DIR$/includes/install/step2.php" />
         <option value="$PROJECT_DIR$/includes/install/step1.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/includes/data.php" />
         <option value="$PROJECT_DIR$/break.php" />
         <option value="$PROJECT_DIR$/includes/request.php" />
@@ -172,6 +171,8 @@
         <option value="$PROJECT_DIR$/includes/config/settings.php" />
         <option value="$PROJECT_DIR$/includes/install/pwn.php" />
         <option value="$PROJECT_DIR$/admin/menus/user_save.php" />
+        <option value="$PROJECT_DIR$/admin/login_form.php" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
@@ -357,7 +358,11 @@
       <created>1374005034785</created>
       <updated>1374005034785</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed issue where user's password was lost upon update.">
+      <created>1374007687912</created>
+      <updated>1374007687912</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -426,7 +431,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated version number. /includes/config/reset.php no longer dumps settings." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed issue where user's password was lost upon update." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -445,6 +450,7 @@
     <MESSAGE value="Rewrote installer and data.php to support database installation." />
     <MESSAGE value="Installer is now works." />
     <MESSAGE value="Updated version number. /includes/config/reset.php no longer dumps settings." />
+    <MESSAGE value="Fixed issue where user's password was lost upon update." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -471,15 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="555" selection-end="555" vertical-scroll-proportion="-2.4034781">
-          <folding>
-            <element signature="e#6#111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/data.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="0" selection-start="663" selection-end="663" vertical-scroll-proportion="0.9391304">
@@ -498,17 +495,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="49" selection-start="257" selection-end="257" vertical-scroll-proportion="-8.75">
           <folding>
-            <marker date="1374003061541" expanded="false" signature="3574:3584" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="3728:3738" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="3887:3897" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="4034:4044" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="4184:4194" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="4346:4356" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="4483:4493" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="4616:4626" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="4757:4767" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="4948:4958" placeholder="..." />
-            <marker date="1374003061541" expanded="false" signature="5118:5128" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -545,6 +542,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/install/pwn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="27" selection-start="874" selection-end="874" vertical-scroll-proportion="-7.5">
+          <folding>
+            <element signature="e#6#100#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/includes/install/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="908" vertical-scroll-proportion="-0.0">
@@ -559,19 +565,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/install/pwn.php">
+    <entry file="file://$PROJECT_DIR$/admin/login_form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="27" selection-start="874" selection-end="874" vertical-scroll-proportion="-7.5">
-          <folding>
-            <element signature="e#6#100#0" expanded="true" />
-          </folding>
+        <state line="5" column="127" selection-start="407" selection-end="407" vertical-scroll-proportion="-3.125">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="11" selection-start="2672" selection-end="2672" vertical-scroll-proportion="0.805915">
+        <state line="85" column="11" selection-start="2672" selection-end="2672" vertical-scroll-proportion="-18.166666">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="29" selection-start="2818" selection-end="2818" vertical-scroll-proportion="0.62274367">
+          <folding>
+            <element signature="e#6#111#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

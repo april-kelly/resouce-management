@@ -122,6 +122,8 @@ switch($request){
     case "badlogin":
         $page = './admin/login_form.php';
         $main_id = 'login';
+
+        $_SESSION['bad'] = '';
     break;
 
     case "user":

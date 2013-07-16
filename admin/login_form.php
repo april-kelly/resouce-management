@@ -3,7 +3,7 @@
            <label>Password: </label><input type="password" name="password"><br />
            <input type="submit" value="login">
         </form>
-        <span class="error"><?php if(isset($_REQUEST['bad'])){ echo 'Incorrect username or password.'; } ?></span>
+        <span class="error"><?php if(isset($_SESSION['bad'])){ echo 'Incorrect username or password.'; unset($_SESSION['bad']);} ?></span>
 <?php
 
         if(isset($_SESSION['logout']) && $_SESSION['logout'] == true){
