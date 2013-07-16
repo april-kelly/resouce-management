@@ -2,29 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecf5cb68-73e3-4c51-a198-db77c48ea405" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/install/step3.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/config/settings.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/config/welcome.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/month.xls" afterPath="$PROJECT_DIR$/month.xls" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/install/create_db.php" afterPath="$PROJECT_DIR$/includes/install/create_db.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/data.php" afterPath="$PROJECT_DIR$/includes/data.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/settings.php" afterPath="$PROJECT_DIR$/includes/config/settings.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/install/step1.php" afterPath="$PROJECT_DIR$/includes/install/step1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/install/step2.php" afterPath="$PROJECT_DIR$/includes/install/step2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/request.php" afterPath="$PROJECT_DIR$/includes/request.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/install/step3.php" afterPath="$PROJECT_DIR$/includes/install/step3.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menus/user_save.php" afterPath="$PROJECT_DIR$/admin/menus/user_save.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/users.php" afterPath="$PROJECT_DIR$/includes/config/users.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373930854602" ignored="false" />
-    <file path="/create_db.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373995397344" ignored="false" />
+    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373998442593" ignored="false" />
+    <file path="/create_db.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374004046810" ignored="false" />
     <file path="/index.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373998347372" ignored="false" />
     <file path="/styles.css" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373930262924" ignored="false" />
     <file path="/step1.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373992099846" ignored="false" />
-    <file path="/data.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373997962110" ignored="false" />
+    <file path="/data.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374002364192" ignored="false" />
     <file path="/step2.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373992181811" ignored="false" />
-    <file path="/step3.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373995358563" ignored="false" />
+    <file path="/step3.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374001286176" ignored="false" />
+    <file path="/users.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374004567636" ignored="false" />
+    <file path="/break.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374002724480" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,11 +42,72 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.php">
+      <file leaf-file-name="request.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/request.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="54" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.57391304">
+            <state line="14" column="49" selection-start="257" selection-end="257" vertical-scroll-proportion="-8.75">
+              <folding>
+                <marker date="1374003061541" expanded="false" signature="3574:3584" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="3728:3738" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="3887:3897" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="4034:4044" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="4184:4194" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="4346:4356" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="4483:4493" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="4616:4626" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="4757:4767" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="4948:4958" placeholder="..." />
+                <marker date="1374003061541" expanded="false" signature="5118:5128" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_db.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/install/create_db.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="28" selection-start="1954" selection-end="1954" vertical-scroll-proportion="-18.958334">
+              <folding>
+                <element signature="e#6#120#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/config/users.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="154" column="43" selection-start="3984" selection-end="3984" vertical-scroll-proportion="0.73913044">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_save.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="12" selection-start="1292" selection-end="1292" vertical-scroll-proportion="8.333333">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="39" selection-start="726" selection-end="726" vertical-scroll-proportion="15.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="step3.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/install/step3.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="45" selection-start="1121" selection-end="1121" vertical-scroll-proportion="-12.5">
+              <folding>
+                <element signature="e#6#122#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,12 +135,15 @@
         <option value="$PROJECT_DIR$/includes/styles/styles.css" />
         <option value="$PROJECT_DIR$/includes/install/step2.php" />
         <option value="$PROJECT_DIR$/includes/install/step1.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/includes/data.php" />
+        <option value="$PROJECT_DIR$/break.php" />
+        <option value="$PROJECT_DIR$/includes/request.php" />
         <option value="$PROJECT_DIR$/includes/install/step3.php" />
         <option value="$PROJECT_DIR$/includes/config/settings.php" />
         <option value="$PROJECT_DIR$/includes/install/create_db.php" />
         <option value="$PROJECT_DIR$/admin/menus/user_save.php" />
-        <option value="$PROJECT_DIR$/includes/data.php" />
-        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/includes/config/users.php" />
       </list>
     </option>
   </component>
@@ -164,6 +226,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="install" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -179,6 +259,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menus" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -215,7 +313,11 @@
       <created>1373930860813</created>
       <updated>1373930860813</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Rewrote installer and data.php to support database installation.">
+      <created>1373998448019</created>
+      <updated>1373998448019</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -284,7 +386,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started work on a new setup script." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rewrote installer and data.php to support database installation." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -300,89 +402,16 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Added a database creation tool. Also add a direct query function to data.php." />
     <MESSAGE value="Started work on a new setup script." />
+    <MESSAGE value="Rewrote installer and data.php to support database installation." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/includes/install/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="908" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/styles/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="11" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/install/create_db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="37" selection-start="530" selection-end="530" vertical-scroll-proportion="-13.125">
-          <folding>
-            <element signature="e#6#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="16" selection-start="1555" selection-end="1555" vertical-scroll-proportion="1.868231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="39" selection-start="726" selection-end="726" vertical-scroll-proportion="0.58225507">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.15652174">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.2347826">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="14" selection-start="2640" selection-end="2640" vertical-scroll-proportion="0.72064054">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/install/step1.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="20" selection-start="78" selection-end="78" vertical-scroll-proportion="-0.20869565">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/install/step2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="24" selection-start="57" selection-end="57" vertical-scroll-proportion="-0.017391304">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/install/step3.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="51" selection-start="972" selection-end="972" vertical-scroll-proportion="0.8956522">
-          <folding>
-            <element signature="e#6#95#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -393,9 +422,113 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/menus/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.3202847">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="54" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.57391304">
+        <state line="31" column="0" selection-start="555" selection-end="555" vertical-scroll-proportion="-2.4034781">
+          <folding>
+            <element signature="e#6#111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="689" selection-end="840" vertical-scroll-proportion="-9.583333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/break.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="23" selection-start="194" selection-end="194" vertical-scroll-proportion="-6.875">
+          <folding>
+            <element signature="e#6#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="663" selection-end="663" vertical-scroll-proportion="0.9391304">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/install/step2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="24" selection-start="57" selection-end="57" vertical-scroll-proportion="0.07826087">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/install/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="19" selection-start="271" selection-end="271" vertical-scroll-proportion="0.37391305">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="49" selection-start="257" selection-end="257" vertical-scroll-proportion="-8.75">
+          <folding>
+            <marker date="1374003061541" expanded="false" signature="3574:3584" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="3728:3738" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="3887:3897" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="4034:4044" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="4184:4194" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="4346:4356" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="4483:4493" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="4616:4626" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="4757:4767" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="4948:4958" placeholder="..." />
+            <marker date="1374003061541" expanded="false" signature="5118:5128" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/install/step3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="45" selection-start="1121" selection-end="1121" vertical-scroll-proportion="-12.5">
+          <folding>
+            <element signature="e#6#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="39" selection-start="726" selection-end="726" vertical-scroll-proportion="15.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/install/create_db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="28" selection-start="1954" selection-end="1954" vertical-scroll-proportion="-18.958334">
+          <folding>
+            <element signature="e#6#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="12" selection-start="1292" selection-end="1292" vertical-scroll-proportion="8.333333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="43" selection-start="3984" selection-end="3984" vertical-scroll-proportion="0.73913044">
           <folding />
         </state>
       </provider>

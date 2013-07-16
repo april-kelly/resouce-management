@@ -197,7 +197,6 @@ class users {
                  '".$this->reset_code."')";
 
         //run the query
-        echo $query;
         $dbc->insert($query);
 
         //close connection

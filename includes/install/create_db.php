@@ -11,8 +11,10 @@ if(!(defined('ABSPATH'))){
 require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH.'includes/config/settings.php');
 
-function create_settings($user, $host, $pass, $name){
 
+function create_settings($user, $host, $pass){
+
+    //Set up the settings
     $set = new settings;
     $set->create();
     $settings = $set->fetch();
@@ -20,17 +22,13 @@ function create_settings($user, $host, $pass, $name){
     $settings['db_user']     = $user;
     $settings['db_host']     = $host;
     $settings['db_pass']     = $pass;
-    $settings['db_database'] = $name;
 
     $set->update($settings);
-
 }
 
 function create_db($name){
 
     $dbc = new db;
-    //$dbc->credentials($user, $host, $pass, $name);
-    //$dbc->update_creds();
     $dbc->connect();
     $dbc->direct('CREATE DATABASE '.$name);
 
@@ -64,8 +62,15 @@ function create_db($name){
     //insert the tables
     $dbc->direct($table_people);
     $dbc->direct($table_jobs);
-    //*/
+
     //close the connection
     $dbc->close();
 
+    //Set up the settings
+    $set = new settings;
+    $settings = $set->fetch();
+
+    //save the database name
+    $settings['db_database'] = $name;
+    $set->update($settings);
 }

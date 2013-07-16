@@ -12,7 +12,7 @@
 	$dbc = new db;
 	$dbc->connect();
 
-	$result = $dbc->query('SELECT * FROM people');
+	$result = $dbc->query('SELECT * FROM `people`');
 
 
 	unset($result[0]);

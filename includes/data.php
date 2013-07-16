@@ -34,6 +34,7 @@ class db
                 //Access Via JSON
 			    $this->settings = new settings;
 			    $settings = $this->settings->fetch();
+
 			    $this->db_host     = $settings['db_host'];
 			    $this->db_user     = $settings['db_user'];
 			    $this->db_pass     = $settings['db_pass'];
@@ -98,7 +99,7 @@ class db
 	}
 
     public function direct($db_query){
-        $this->dbc->query($db_query);
+        return $this->dbc->query($db_query);
     }
 
 	//delete from the database

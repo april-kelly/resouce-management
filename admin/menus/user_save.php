@@ -41,7 +41,7 @@ if(isset($_SESSION['userid'])){
             $users->update();
             echo 'attemped password reset';
 
-            //header('Location: ../../?p=admin&a=users&c='.$reset_code);
+            header('Location: ../../?p=admin&a=users&c='.$reset_code);
         }
 
         //Delete a user
@@ -50,7 +50,7 @@ if(isset($_SESSION['userid'])){
             $users->delete();
             echo 'attempted delete';
 
-            //header('Location: ../../?p=admin&a=users');
+            header('Location: ../../?p=admin&a=users');
         }
 
         //add a user
@@ -66,7 +66,7 @@ if(isset($_SESSION['userid'])){
             $users->create();
             echo 'attempted add';
 
-            //header('Location: ../../?p=admin&a=users');
+            header('Location: ../../?p=admin&a=users');
         }
 
         //update user
@@ -83,7 +83,7 @@ if(isset($_SESSION['userid'])){
             $users->update();
             echo 'attempted update';
 
-            //header('Location: ../../?p=admin&a=users');
+            header('Location: ../../?p=admin&a=users');
         }
 
 
