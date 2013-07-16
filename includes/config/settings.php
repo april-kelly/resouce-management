@@ -33,7 +33,7 @@ class settings {
             public $location        = NULL; //we'll set this in the constructor
             public $debug           = FALSE;
             public $logo            = './includes/images/logo.gif';
-            public $version         = '1.0.1 beta';
+            public $version         = '1.0.2 beta';
             public $salt            = '60b448a4b93f07d724baecc1975b00e4b822efa4f6cb997ae0ec92f9f3580e981fe1d7f56f356d16f1451565fcf39929b0c157206fc9522cdc0caefc7b1945d2';
             public $url             = 'http://localhost/resouce-management/';
 

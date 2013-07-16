@@ -9,4 +9,3 @@ include_once(ABSPATH.'includes/config/settings.php');
 
 $set = new settings;
 $set->create();
-var_dump($set->fetch());

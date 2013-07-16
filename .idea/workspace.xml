@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecf5cb68-73e3-4c51-a198-db77c48ea405" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/month.xls" afterPath="$PROJECT_DIR$/month.xls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/install/create_db.php" afterPath="$PROJECT_DIR$/includes/install/create_db.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/data.php" afterPath="$PROJECT_DIR$/includes/data.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/request.php" afterPath="$PROJECT_DIR$/includes/request.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/install/step3.php" afterPath="$PROJECT_DIR$/includes/install/step3.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menus/user_save.php" afterPath="$PROJECT_DIR$/admin/menus/user_save.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/users.php" afterPath="$PROJECT_DIR$/includes/config/users.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/reset.php" afterPath="$PROJECT_DIR$/includes/config/reset.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/settings.php" afterPath="$PROJECT_DIR$/includes/config/settings.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373998442593" ignored="false" />
+    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374004859490" ignored="false" />
     <file path="/create_db.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374004046810" ignored="false" />
     <file path="/index.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373998347372" ignored="false" />
     <file path="/styles.css" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373930262924" ignored="false" />
@@ -74,10 +69,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="users.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/config/users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="43" selection-start="3984" selection-end="3984" vertical-scroll-proportion="0.73913044">
+            <state line="154" column="43" selection-start="3984" selection-end="3984" vertical-scroll-proportion="-17.708334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reset.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/config/reset.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="207" selection-end="207" vertical-scroll-proportion="-6.875">
               <folding />
             </state>
           </provider>
@@ -92,10 +96,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="settings.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="39" selection-start="726" selection-end="726" vertical-scroll-proportion="15.0">
+            <state line="35" column="44" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.6672598">
               <folding />
             </state>
           </provider>
@@ -140,10 +144,11 @@
         <option value="$PROJECT_DIR$/break.php" />
         <option value="$PROJECT_DIR$/includes/request.php" />
         <option value="$PROJECT_DIR$/includes/install/step3.php" />
-        <option value="$PROJECT_DIR$/includes/config/settings.php" />
         <option value="$PROJECT_DIR$/includes/install/create_db.php" />
         <option value="$PROJECT_DIR$/admin/menus/user_save.php" />
         <option value="$PROJECT_DIR$/includes/config/users.php" />
+        <option value="$PROJECT_DIR$/includes/config/reset.php" />
+        <option value="$PROJECT_DIR$/includes/config/settings.php" />
       </list>
     </option>
   </component>
@@ -317,19 +322,23 @@
       <created>1373998448019</created>
       <updated>1373998448019</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Installer is now works.">
+      <created>1374004863414</created>
+      <updated>1374004863414</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-4" width="1368" height="773" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6704" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6704" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -386,7 +395,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rewrote installer and data.php to support database installation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Installer is now works." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -403,6 +412,7 @@
     <MESSAGE value="Added a database creation tool. Also add a direct query function to data.php." />
     <MESSAGE value="Started work on a new setup script." />
     <MESSAGE value="Rewrote installer and data.php to support database installation." />
+    <MESSAGE value="Installer is now works." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -442,15 +452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="0" selection-start="689" selection-end="840" vertical-scroll-proportion="-9.583333">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/break.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="23" selection-start="194" selection-end="194" vertical-scroll-proportion="-6.875">
-          <folding>
-            <element signature="e#6#95#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -503,13 +504,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="39" selection-start="726" selection-end="726" vertical-scroll-proportion="15.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/install/create_db.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="74" column="28" selection-start="1954" selection-end="1954" vertical-scroll-proportion="-18.958334">
@@ -528,7 +522,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/config/users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="43" selection-start="3984" selection-end="3984" vertical-scroll-proportion="0.73913044">
+        <state line="154" column="43" selection-start="3984" selection-end="3984" vertical-scroll-proportion="-17.708334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config/reset.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="207" selection-end="207" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="44" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.6672598">
           <folding />
         </state>
       </provider>
