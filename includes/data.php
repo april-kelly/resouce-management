@@ -23,43 +23,6 @@ class db
 	//Fail
 	private $fail = '0';
 
-	//change database login info temporarily
-	public function credentials($new_host, $new_user, $new_pass, $new_database)
-	{
-	
-		if(isset($new_host)){
-			$this->db_host = $new_host;
-		}
-		
-		if(isset($new_user)){
-			$this->db_user = $new_user;
-		}
-		
-		if(isset($new_pass)){
-			$this->db_pass = $new_pass;
-		}
-		
-		if(isset($new_host)){
-			$this->db_database = $new_database;
-		}
-		
-		$this->user_defined = true;
-	
-	}
-	
-	//change the database login info permently
-	public function update_creds()
-	{
-		
-		$this->settings['db_host']      = $this->db_host;
-		$this->settings['db_user']      = $this->db_user;
-		$this->settings['db_pass']      = $this->db_pass;
-		$this->settings['db_database']  = $this->db_database;
-		
-		file_put_contents($this->settings_location, serialize($this->settings));
-		
-	}
-	
 	//connect to the database
 	public function connect()
 	{
@@ -113,7 +76,7 @@ class db
 				return $array;	//return results
 			}
 			
-			return;
+			return false;
 
 		}
 		

@@ -23,10 +23,10 @@ class settings {
             public $colors = array();
 
         //Settings for data.php
-            public $db_host         = 'localhost';
-            public $db_user         = 'root';
-            public $db_pass         = 'kd0hdf';
-            public $db_database     = 'resources';
+            public $db_host         = '';
+            public $db_user         = '';
+            public $db_pass         = '';
+            public $db_database     = '';
 
         //Global Settings
             public $weeks           = 12;

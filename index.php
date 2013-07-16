@@ -35,6 +35,11 @@ if(!(file_exists('./includes/config/settings.json'))){
     $request = "config";
 }
 
+//make sure that the database credinitals are defined
+if(!(isset($settings['db_database']))){
+    $request = "config";
+}
+
 //determine what page to show
 switch($request){
 
@@ -56,14 +61,8 @@ switch($request){
     break;
 
     case "config":
-        $page = './includes/config/welcome.php';
-        $main_id = 'profile';
-
-        //pass extra values to welcome.php (if set)
-        if(isset($_REQUEST['c'])){
-            $_SESSION['c'] = $_REQUEST['c'];
-        }
-
+        //Because things break when dependencies are not installed we will just redirect
+        header('location: ./includes/install/index.php');
     break;
 
     case "home":

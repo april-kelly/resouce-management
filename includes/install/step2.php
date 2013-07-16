@@ -1,4 +1,14 @@
+<?php
 
+//start the users session
+if(!(isset($_SESSION))){
+session_start();
+}
+
+//Fetch data from step 1
+$_SESSION['step1'] = $_REQUEST;
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
