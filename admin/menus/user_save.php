@@ -71,12 +71,12 @@ if(isset($_SESSION['userid'])){
 
         //update user
         if(isset($_REQUEST['update'])){
-
+            $users->select($_REQUEST['userid']);
             $users->change('index', $_REQUEST['userid']);
 
             $users->change('name', $_REQUEST['name']);
             $users->change('email', $_REQUEST['email']);
-            //$users->change('password', $_REQUEST['password']);
+            $users->change('password', $users->password);
             $users->change('type', $_REQUEST['type']);
             $users->change('admin', $_REQUEST['admin']);
 
