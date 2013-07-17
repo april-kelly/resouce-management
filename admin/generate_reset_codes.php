@@ -49,10 +49,30 @@ function create_reset_code(){
 
 
 function insert_reset_code($userid){
-    $reset_code = create_reset_code();
+
+        a:
+
+        //Generate Reset Code
+        $reset_code = create_reset_code();
+
+        //Make sure the reset code does not exist already in the database
+        $dbc = new db;
+        $dbc->connect();
+        $results = $dbc->query('SELECT * FROM people WHERE reset_code = \''.$reset_code.'\'');
+        $dbc->close();
+
+        var_dump($results);
+
+        if(!(count($results) == '0')){
+            //goto a;
+        }
+
+
+    //Set user's reset code
     $users = new users;
     $users->select($userid);
     $users->change('reset_code', $reset_code);
     $users->update();
     return $reset_code;
 }
+

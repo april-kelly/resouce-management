@@ -21,7 +21,9 @@ if(isset($_SESSION['userid'])){
             <ul>
                 <li><a href="./?p=admin&a=status">System Status</a></li>
                 <li><a href="./?p=admin&a=general">General</a></li>
-                <li><a href="./?p=admin&a=internal">Internal</a></li>
+                <?php if($_SESSION['admin'] >= '2'){ ?>
+                    <li><a href="./?p=admin&a=internal">Internal</a></li>
+                <?php } ?>
                 <li><a href="./?p=admin&a=users">Users</a></li>
                 <?php if($settings['debug'] == true && $_SESSION['admin'] >= '2'){ ?>
                     <li><a href="./?p=debug">Debug</a></li>

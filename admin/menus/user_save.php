@@ -41,7 +41,7 @@ if(isset($_SESSION['userid'])){
             $users->update();
             echo 'attemped password reset';
 
-            header('Location: ../../?p=admin&a=users&c='.$reset_code);
+            //header('Location: ../../?p=admin&a=users&c='.$reset_code);
         }
 
         //Delete a user

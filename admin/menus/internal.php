@@ -16,7 +16,7 @@ $settings = $set->fetch();
 
 //make sure the user is logged in and is admin
 if(isset($_SESSION['userid'])){
-    if($_SESSION['admin'] >= 1){
+    if($_SESSION['admin'] >= 2){
 
         //User is logged in
 ?>
@@ -92,8 +92,8 @@ if(isset($_SESSION['userid'])){
 
     }else{
 
-    //User is not admin
-    ?><span class="error">You must be an administrator to access this page.</span><?php
+    //User is not admin or not a high enough admin
+    ?><span class="error">You must be a class 2 administrator to access this page.</span><?php
 
 }
 
