@@ -4,3 +4,6 @@
  * Programmer: Liam Kelly
  * Date:       6/28/13
  */
+
+?>
+<p><i>(C) Copyright Bluetent Marketing 2012-<?php echo date('Y');?><br /> All rights reserved.</i></p>
