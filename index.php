@@ -202,6 +202,8 @@ switch($request){
     <link rel="stylesheet" href="./includes/styles/styles.css" type="text/css" />
     <link rel="icon" href="./includes/images/btm_favicon.ico" />
 
+    <meta charset="UTF-8">
+    
     <?php
 
     if(isset($extras)){
@@ -217,7 +219,7 @@ switch($request){
 
     <div id="header">
 
-        <img src="<?php echo $settings['logo']; ?>" style="center"/>
+        <img src="<?php echo $settings['logo']; ?>" style="center" alt="Bluetent Marketing"/>
 
         <?php
 

@@ -175,18 +175,18 @@ if($excel_enable == true){
 foreach($table as $table){
 	
 	echo "\t".'<tr>'."\r\n";
-	echo "\t\t".'<td><a href="./?p=week&w='.$table['id'].'">'.$table['name'].'</a></td>'."\r\n";
+	echo "\t\t".'<td><a href="./?p=week&amp;w='.$table['id'].'">'.$table['name'].'</a></td>'."\r\n";
 	
 	for($i = 1; $i <= $count; $i++){
 		echo "\t\t".'<td>';
 		
 		if($color_enable == true){
 			
-		   if($table[$i] == 0) { echo '<span id="colors" class="zero" >'.$table[$i].'</span>'; }
-		   if($table[$i] <= '15' && $table[$i] >= '1') { echo '<span id="colors" class="low" >'.$table[$i].'</span>'; }
-		   if($table[$i] <= '25' && $table[$i] >= '16') { echo '<span id="colors" class="medium" >'.$table[$i].'</span>'; }
-		   if($table[$i] <= '40' && $table[$i] >= '26') { echo '<span id="colors" class="high" >'.$table[$i].'</span>'; }
-		   if($table[$i] >= '41') { echo '<span id="colors" class="veryhigh" >'.$table[$i].'</span>'; }
+		   if($table[$i] == 0) { echo '<span class="colors zero" >'.$table[$i].'</span>'; }
+		   if($table[$i] <= '15' && $table[$i] >= '1') { echo '<span class="colors low" >'.$table[$i].'</span>'; }
+		   if($table[$i] <= '25' && $table[$i] >= '16') { echo '<span class="colors medium" >'.$table[$i].'</span>'; }
+		   if($table[$i] <= '40' && $table[$i] >= '26') { echo '<span class="colors high" >'.$table[$i].'</span>'; }
+		   if($table[$i] >= '41') { echo '<span class="colors veryhigh" >'.$table[$i].'</span>'; }
 		
 		}else{
 			echo $table[$i];
