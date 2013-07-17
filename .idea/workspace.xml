@@ -3,16 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="ecf5cb68-73e3-4c51-a198-db77c48ea405" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/month.xls" afterPath="$PROJECT_DIR$/month.xls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/footer.php" afterPath="$PROJECT_DIR$/includes/footer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/tools/fill.php" afterPath="$PROJECT_DIR$/admin/tools/fill.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menu2.php" afterPath="$PROJECT_DIR$/admin/menu2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/month.php" afterPath="$PROJECT_DIR$/includes/month.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/request.php" afterPath="$PROJECT_DIR$/includes/request.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/styles/styles.css" afterPath="$PROJECT_DIR$/includes/styles/styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374094821663" ignored="false" />
+    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374095701824" ignored="false" />
     <file path="/create_db.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374004046810" ignored="false" />
     <file path="/index.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374092777354" ignored="false" />
-    <file path="/styles.css" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374095597569" ignored="false" />
+    <file path="/styles.css" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374097592564" ignored="false" />
     <file path="/step1.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373992099846" ignored="false" />
     <file path="/data.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374002364192" ignored="false" />
     <file path="/step2.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1373992181811" ignored="false" />
@@ -33,6 +36,10 @@
     <file path="/418.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374093513061" ignored="false" />
     <file path="/500.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374091443769" ignored="false" />
     <file path="/footer.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374095351706" ignored="false" />
+    <file path="/request.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374096027436" ignored="false" />
+    <file path="/menu2.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374097142396" ignored="false" />
+    <file path="/fill.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374097690391" ignored="false" />
+    <file path="/month.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374100453385" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,11 +70,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/styles/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="24" selection-start="320" selection-end="320" vertical-scroll-proportion="0.4006678">
+            <state line="212" column="24" selection-start="3476" selection-end="3476" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fill.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/tools/fill.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="month.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/month.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="177" column="28" selection-start="3732" selection-end="3732" vertical-scroll-proportion="0.9466192">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu2.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/menu2.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="63" selection-end="63" vertical-scroll-proportion="-2.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="request.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/request.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="59" column="62" selection-start="1333" selection-end="1333" vertical-scroll-proportion="-18.125">
+              <folding>
+                <marker date="1374096047652" expanded="false" signature="3526:3536" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="3680:3690" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="3839:3849" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="3986:3996" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="4136:4146" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="4298:4308" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="4435:4445" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="4568:4578" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="4709:4719" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="4900:4910" placeholder="..." />
+                <marker date="1374096047652" expanded="false" signature="5070:5080" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,10 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/admin/generate_reset_codes.php" />
-        <option value="$PROJECT_DIR$/includes/api/core.php" />
-        <option value="$PROJECT_DIR$/includes/month.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/includes/templates/main.php" />
         <option value="$PROJECT_DIR$/admin/login.php" />
         <option value="$PROJECT_DIR$/includes/templates/nav.php" />
@@ -105,7 +156,11 @@
         <option value="$PROJECT_DIR$/includes/templates/index.php" />
         <option value="$PROJECT_DIR$/includes/templates/footer.php" />
         <option value="$PROJECT_DIR$/includes/footer.php" />
+        <option value="$PROJECT_DIR$/includes/request.php" />
+        <option value="$PROJECT_DIR$/admin/menu2.php" />
         <option value="$PROJECT_DIR$/includes/styles/styles.css" />
+        <option value="$PROJECT_DIR$/admin/tools/fill.php" />
+        <option value="$PROJECT_DIR$/includes/month.php" />
       </list>
     </option>
   </component>
@@ -185,11 +240,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -261,7 +330,11 @@
       <created>1374094826725</created>
       <updated>1374094826725</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added a copy right notice and rounded corners.">
+      <created>1374095705360</created>
+      <updated>1374095705360</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -330,7 +403,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Continued work on redesigned template system." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a copy right notice and rounded corners." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -354,39 +427,12 @@
     <MESSAGE value="Created file stubs for the new api and output buffering template system" />
     <MESSAGE value="The overview page is now valid HTML5" />
     <MESSAGE value="Continued work on redesigned template system." />
+    <MESSAGE value="Added a copy right notice and rounded corners." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="10" selection-start="2741" selection-end="2741" vertical-scroll-proportion="0.5212766">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/email/text.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="13" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/api/core.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="3" selection-start="136" selection-end="136" vertical-scroll-proportion="0.12998267">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/month.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="44" selection-start="3692" selection-end="3692" vertical-scroll-proportion="-84.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="65" selection-start="906" selection-end="906" vertical-scroll-proportion="-11.458333">
@@ -398,7 +444,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="209" column="0" selection-start="4637" selection-end="4637" vertical-scroll-proportion="-130.625">
           <folding>
-            <element signature="e#6#111#0" expanded="true" />
+            <element signature="e#6#111#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -428,7 +474,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="63" column="48" selection-start="1674" selection-end="1674" vertical-scroll-proportion="-13.125">
           <folding>
-            <element signature="e#6#152#0" expanded="true" />
+            <element signature="e#6#152#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -458,9 +504,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="0" selection-start="841" selection-end="841" vertical-scroll-proportion="0.14234875">
           <folding>
-            <element signature="e#7#131#0" expanded="true" />
+            <element signature="e#7#131#0" expanded="false" />
             <element signature="n#style#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <marker date="1374093351090" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/tools/fill.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/menu2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="63" selection-end="63" vertical-scroll-proportion="-2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="62" selection-start="1333" selection-end="1333" vertical-scroll-proportion="-18.125">
+          <folding>
+            <marker date="1374096047652" expanded="false" signature="3526:3536" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="3680:3690" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="3839:3849" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="3986:3996" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="4136:4146" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="4298:4308" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="4435:4445" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="4568:4578" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="4709:4719" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="4900:4910" placeholder="..." />
+            <marker date="1374096047652" expanded="false" signature="5070:5080" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -476,7 +555,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/styles/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="24" selection-start="320" selection-end="320" vertical-scroll-proportion="0.4006678">
+        <state line="212" column="24" selection-start="3476" selection-end="3476" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/month.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="28" selection-start="3732" selection-end="3732" vertical-scroll-proportion="0.9466192">
           <folding />
         </state>
       </provider>

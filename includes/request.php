@@ -31,13 +31,13 @@
 
   <form action="./includes/insert.php" method="post" onsubmit="return validate()" name="form" class="request">
 	
-    <span id="error"><label for="sales_status">Sales Status: </label>
+    <label for="sales_status">Sales Status: </label>
 	
 	 <select name="sales_status">
 	  <option value="">Select One:</option>
 	  <option value="1">Sold</option>
 	  <option value="0">Opportunity</option>
-	 </select><b id="error2"></b></span>
+	 </select><b id="error2"></b>
 	 <br />
 	 
     <label for="manager">Project Manager: </label> 
@@ -55,9 +55,9 @@
 	</select>
 	<br />
 	
-    <span id="error"><label for="project_id">Project ID: </label>
+    <label for="project_id">Project ID: </label>
 	
-	<input type="text" name="project_id" /><b id="error2"></b></span>
+	<input type="text" name="project_id" /><b id="error2"></b>
 	<br />
 	
     <label for="resource">Desired Resource: </label>

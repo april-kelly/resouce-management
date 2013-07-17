@@ -14,10 +14,10 @@ if($status['debug'] == true && $_SESSION['admin'] >= '2'){
 $dbc = new db;			//set up object
 $dbc->connect();		//connect using defaults
 
-$people = $dbc->query('SSELECT * FROM people WHERE `type` != 3');
+$people = $dbc->query('SELECT * FROM people WHERE `type` != 3');
 
-$current = '2013-06-23'; //date('Y-m-d');
-$show = 12;
+$current = date('Y-m-d');
+$show = 1000;
 $weeks = array();
 $weeks[1] = $current;
 for($i = 2; $i <= $show; $i++){

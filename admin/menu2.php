@@ -1,6 +1,12 @@
 <?php
 
-///includes
+//Start the users session (if not set)
+session_start();
+
+//includes
+if(!(defined('ABSPATH'))){
+    require_once('../path.php');
+}
 require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH.'includes/config/settings.php');
 require_once(ABSPATH.'includes/config/users.php');

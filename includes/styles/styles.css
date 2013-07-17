@@ -182,8 +182,8 @@ body{
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    min-width: 300px;
-    width: 35%;
+    min-width: 400px;
+    width: 45%;
     box-shadow: 0 5px 24px #111;
     -moz-border-radius: 15px;
     border-radius: 15px;
@@ -209,6 +209,8 @@ body{
     width: 43%;
     padding: 15px;
     box-shadow: 0 5px 24px #111;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 }
 
 /**

@@ -74,7 +74,8 @@ foreach($people as $people)
 	}
 	
 	//Get the list of projects for each person
-	$project = $dbc->query("SELECT * FROM jobs WHERE resource='".$people['index']."' ");
+    $query = "SELECT * FROM jobs WHERE resource='".$people['index']."' AND week_of BETWEEN '".$weeks[1]."' AND '".$weeks[$count]."' ";
+	$project = $dbc->query($query);
 
 
 	//Make sure the person actually has projects
