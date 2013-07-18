@@ -18,20 +18,7 @@ if($status['debug'] == true && $_SESSION['admin'] >= '2'){
     header("Content-disposition: attachment; filename=\"".$file."\"");
    }else{
 ?>
-<html>
-<head>
-	<title>Bluetent Resource Management Program</title>
-</head>
-<body>
-<style>
-body{
-	text-align: center;
-}
-table{
-	margin-left: auto;
-	margin-right: auto;
-}
-</style>
+
 
 <table border="1">
 <tr>
@@ -312,22 +299,9 @@ table{
 
 	}
 
-	//Don't echo out the table if the user is downloading a csv version
-	if(!(isset($_REQUEST['csv']))){
 ?>
-<table>
-<!--
-<form action="?&" method="get">
-	<label><b>Download: </b></label>
-	<input type="submit" value="Download as csv" name="csv">
-	<label><b>Edit: </b></label>
-	<input type="submit" value="<?php if(isset($_REQUEST['edit'])){ echo 'Done'; }else{ echo 'Edit Records'; } ?>" name="<?php if(isset($_REQUEST['edit'])){ echo ''; }else{ echo 'edit'; } ?>">
-</form>
--->
-</body>
-</html>
+    </table>
 <?php
-	}
 }else{
     ?><span class="error">You do not enough have permission to view this page or debug mode is not enabled.</span><?php
 }

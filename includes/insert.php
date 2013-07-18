@@ -37,6 +37,14 @@ $sanitize    = $settings['insert_sanitize'];	//flag to enable user data sanitati
 $fail        = $settings['insert_fail'];		//flag to terminate the insert if something fails   Default: false
 $location    = '../';                           //where we will redirect the use upon completion    Default: ../
 
+//Make sure the user has premission to view debugging info
+if(!($_SESSION['admin'] >= 2)){
+
+    //If not disable it
+    $debug = FALSE;
+
+}
+
 //connect to the database	
 $dbc = new db;
 $dbc->connect();
@@ -50,7 +58,7 @@ if(isset($_SESSION['userid'])){
     $requestor = '0';
 }
 
-//...and yes, requestor is spell correctly, I user -or because were dealing with computers
+//...and yes, requestor is spell correctly, I used -or because were dealing with computers
 
 //Debugging title
 echo '<h1>Debugging info:</h1><hr />';

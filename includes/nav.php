@@ -10,15 +10,15 @@ $settings = $set->fetch();
 
 ?>
 <ul>
-    <li><a href="./?p=home">Overview</a></li>
-    <!--<li><a href="./?p=search">Search</a></li>-->
-    <li><a href="./?p=request">Request</a></li>
+    <li class="outside-left"><a href="./?p=home">Overview</a></li>
+    <!--<li class="middle"><a href="./?p=search">Search</a></li>-->
+    <li class="middle"><a href="./?p=request">Request</a></li>
     <?php if($_SESSION['admin'] >= '1'){ ?>
-    <li><a href="./?p=admin">Settings</a></li>
+    <li class="middle"><a href="./?p=admin">Settings</a></li>
     <?php } ?>
     <?php if(!(isset($_SESSION['name']))){ ?>
-    <li><a href="./?p=login">Login</a></li>
+    <li class="outside-right"><a href="./?p=login">Login</a></li>
     <?php }else{ ?>
-    <li><a href="./?p=user">Hi, <?php echo $_SESSION['name']; ?></a></li>
+    <li class="outside-right"><a href="./?p=user">Hi, <?php echo $_SESSION['name']; ?></a></li>
     <?php } ?>
 </ul>
