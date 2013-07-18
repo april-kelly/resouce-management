@@ -251,6 +251,9 @@ body{
     color: white;
 }
 
+/**
+*The following is for the search page.
+*/
 
 input[type=search] {
     border: 1px solid gray;
@@ -282,4 +285,18 @@ input[type=search] {
     height: 30px;
     width: 50px;
     border-radius: 5px;
+}
+
+#results {
+    position: relative;
+    float: left;
+    border: 1px solid #aaa;
+    text-align: left;
+    background-color: lightgray;
+    border-radius: 15px;
+    padding: 5px;
+}
+#results img {
+    position: relative;
+    float: left;
 }
