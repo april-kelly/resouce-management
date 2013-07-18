@@ -109,36 +109,39 @@ require_once(ABSPATH.'includes/config/settings.php');
 
     //Display Results
     if($type == 'name'){
-        ?>
-        <div id="person">
-            <p>
-            <img src="./includes/images/blank.jpg" alt="An image" />
-            <b class="name"><?php echo $people[0]["name"]; ?></b><br />
-        <?php
-            if($people[0]["type"] == '0'){
-                echo 'Project Manager/Resource';
-            }elseif($people[0]["type"] == '1'){
-                echo 'Project Manager';
-            }elseif($people[0]["type"] == '2'){
-                echo 'Project Resource';
-            }
-        echo '<br>Request(s): '.count($results["requestor"]);
-        echo '<br>Managing: '.count($results["manager"]);
-        echo '<br>Resource on: '.count($results["resource"]);
-        ?>
-            </p>
-        </div>
-        <div id="spacer"><p> </p></div>
-        <?php
+        foreach($results as $result){
 
-        //Display the persons projects
-        $_SESSION['person'] = $user_id;
-        $_SESSION['show_type'] = 'person';
+            ?>
+            <span id="person">
+                <p>
+                <img src="./includes/images/blank.jpg" alt="An image" />
+                <b class="name"><?php echo $people[0]["name"]; ?></b><br />
+            <?php
+                if($people[0]["type"] == '0'){
+                    echo 'Project Manager/Resource';
+                }elseif($people[0]["type"] == '1'){
+                    echo 'Project Manager';
+                }elseif($people[0]["type"] == '2'){
+                    echo 'Project Resource';
+                }
+            echo '<br>Request(s): '.count($results["requestor"]);
+            echo '<br>Managing: '.count($results["manager"]);
+            echo '<br>Resource on: '.count($results["resource"]);
+            ?>
+                </p>
+            </span>
+            <div id="spacer"><p> </p></div>
+            <?php
 
-        echo '<div id="results">';
-        include_once('week.php');
-        echo '</div>';
+            //Display the persons projects
+            $_SESSION['person'] = $user_id;
+            $_SESSION['show_type'] = 'person';
 
+            echo '<div id="results">';
+            include_once('week.php');
+            echo '</div>';
+
+        }
     }
 
     if($type == 'project'){

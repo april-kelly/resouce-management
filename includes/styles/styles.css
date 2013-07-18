@@ -1,6 +1,8 @@
 body{
     background-color: #4FABFF;
     text-align: center;
+    speak: normal; /* This will probably never be used..... */
+    stress: 100;
 }
 .sans-serif {
     font-family: sans-serif;
@@ -181,10 +183,12 @@ body{
 */
 .error {
     color: red;
+    stress: 100; /* Make the voice browser sound stressed*/
 }
 
 .info {
     color: gray;
+    stress: 0; /* Make the voice browser sound chill*/
 }
 
 .success {
@@ -291,7 +295,7 @@ input[type=search] {
     padding-bottom: 15px;
 }
 
-#person {
+.person {
     position: absolute;
     float: left;
     border: 1px solid #aaa;
