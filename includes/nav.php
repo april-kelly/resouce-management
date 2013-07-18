@@ -11,7 +11,7 @@ $settings = $set->fetch();
 ?>
 <ul>
     <li class="outside-left"><a href="./?p=home">Overview</a></li>
-    <!--<li class="middle"><a href="./?p=search">Search</a></li>-->
+    <li class="middle"><a href="./?p=search">Search</a></li>
     <li class="middle"><a href="./?p=request">Request</a></li>
     <?php if($_SESSION['admin'] >= '1'){ ?>
     <li class="middle"><a href="./?p=admin">Settings</a></li>
