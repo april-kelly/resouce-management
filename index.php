@@ -73,7 +73,7 @@ switch($request){
 
     case "search":
         $page = './includes/search.php';
-        $main_id = 'main';
+        $main_id = 'search';
     break;
 
     case "request":

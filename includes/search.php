@@ -66,68 +66,99 @@ require_once(ABSPATH.'includes/config/settings.php');
         //Algorithm
 
             //Step 1: Determine if the search is only numbers
-            if(!(is_numeric($search))){
+            if(!(empty($search))){
+                if(!(is_numeric($search))){
 
-                //Lets see if it is a name
-                $people = $dbc->query('SELECT * FROM people WHERE name = \''.$search.'\'');
+                    //Lets see if it is a name
+                    $people = $dbc->query('SELECT * FROM people WHERE name = \''.$search.'\'');
 
-                if(count($people) > '0'){
+                    if(count($people) > '0'){
 
-                    //Okay it's a name, let's pull up their assigned projects, requests, and assignees projects
-                    $user_id = $people[0]['index'];
+                        //Okay it's a name, let's pull up their assigned projects, requests, and assignees projects
+                        $user_id = $people[0]['index'];
 
-                    $results["resource"]  = $dbc->query('SELECT * FROM jobs WHERE resource  = \''.$people[0]["index"].'\' AND week_of BETWEEN \''.$weeks[1].'\' AND \''.$weeks[$count].'\'');
-                    $results["manager"]   = $dbc->query('SELECT * FROM jobs WHERE manager   = \''.$people[0]["index"].'\' AND week_of BETWEEN \''.$weeks[1].'\' AND \''.$weeks[$count].'\'');
-                    $results["requestor"] = $dbc->query('SELECT * FROM jobs WHERE requestor = \''.$people[0]["index"].'\' AND week_of BETWEEN \''.$weeks[1].'\' AND \''.$weeks[$count].'\'');
+                        $results["resource"]  = $dbc->query('SELECT * FROM jobs WHERE resource  = \''.$people[0]["index"].'\' AND week_of BETWEEN \''.$weeks[1].'\' AND \''.$weeks[$count].'\'');
+                        $results["manager"]   = $dbc->query('SELECT * FROM jobs WHERE manager   = \''.$people[0]["index"].'\' AND week_of BETWEEN \''.$weeks[1].'\' AND \''.$weeks[$count].'\'');
+                        $results["requestor"] = $dbc->query('SELECT * FROM jobs WHERE requestor = \''.$people[0]["index"].'\' AND week_of BETWEEN \''.$weeks[1].'\' AND \''.$weeks[$count].'\'');
 
-                    //Get rid of empty results
-                    if($results["resource"] == false){
-                        unset($results["resource"]);
+                        //Get rid of empty results
+                        if($results["resource"] == false){
+                            unset($results["resource"]);
+                        }
+                        if($results["manager"] == false){
+                            unset($results["manager"]);
+                        }
+                        if($results["requestor"] == false){
+                            unset($results["requestor"]);
+                        }
+
+                        //While were at it we'll let the rest of the script know how to display this
+                        $type = 'name';
                     }
-                    if($results["manager"] == false){
-                        unset($results["manager"]);
-                    }
-                    if($results["requestor"] == false){
-                        unset($results["requestor"]);
-                    }
+                }else{
 
-                    //While were at it we'll let the rest of the script know how to display this
-                    $type = 'name';
+                    //Search is a number therefore it must be a project id
+                    $query = 'SELECT * FROM jobs WHERE project_id = \''.$search.'\' AND week_of BETWEEN \''.$weeks[1].'\' AND \''.$weeks[$count].'\'';
+                    $results = $dbc->query($query);
+
+                    //Let the display section know this is a project
+                    $type = 'project';
                 }
-            }else{
-
-                //Search is a number therefore it must be a project id
-                $query = 'SELECT * FROM jobs WHERE project_id = \''.$search.'\' AND week_of BETWEEN \''.$weeks[1].'\' AND \''.$weeks[$count].'\'';
-                $results = $dbc->query($query);
-
-                //Let the display section know this is a project
-                $type = 'project';
             }
 
 
-
     //Display Results
-
     if($type == 'name'){
         ?>
-        <div id="results">
-            <img src="adsfasdf" alt="An image" />
-            <b class="name"><?php echo $people[0]["name"]; ?></b>
+        <div id="person">
+            <p>
+            <img src="./includes/images/blank.jpg" alt="An image" />
+            <b class="name"><?php echo $people[0]["name"]; ?></b><br />
         <?php
-        echo '<br> Has made '.count($results["requestor"]).' requests.';
-        echo '<br> Is a manager on '.count($results["manager"]).' projects.';
-        echo '<br> Is a resource on '.count($results["resource"]).' projects.';
+            if($people[0]["type"] == '0'){
+                echo 'Project Manager/Resource';
+            }elseif($people[0]["type"] == '1'){
+                echo 'Project Manager';
+            }elseif($people[0]["type"] == '2'){
+                echo 'Project Resource';
+            }
+        echo '<br>Request(s): '.count($results["requestor"]);
+        echo '<br>Managing: '.count($results["manager"]);
+        echo '<br>Resource on: '.count($results["resource"]);
         ?>
+            </p>
         </div>
+        <div id="spacer"><p> </p></div>
         <?php
+
+        //Display the persons projects
+        $_SESSION['person'] = $user_id;
+        $_SESSION['show_type'] = 'person';
+
+        echo '<div id="results">';
+        include_once('week.php');
+        echo '</div>';
+
     }
 
     if($type == 'project'){
 
         //Display a project
+        $_SESSION['project'] = $search;
+        $_SESSION['show_type'] = 'person';
+
+        echo '<div id="results">';
+        include_once('week.php');
+        echo '</div>';
 
     }
-echo '<pre>'.$query.var_dump($results).'</pre>';
+
+    if($type == ''){
+
+        //Either no results found or user has not entered a query
+        echo '<p class="info">No results were found.</p>';
+
+    }
 
     //Close the connection
     $dbc->close();

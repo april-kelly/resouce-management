@@ -287,16 +287,45 @@ input[type=search] {
     border-radius: 5px;
 }
 
-#results {
-    position: relative;
+.search {
+    padding-bottom: 15px;
+}
+
+#person {
+    position: absolute;
     float: left;
     border: 1px solid #aaa;
     text-align: left;
     background-color: lightgray;
     border-radius: 15px;
     padding: 5px;
+    width:300px;
+    margin-bottom: 15px;
 }
-#results img {
+#person img {
     position: relative;
     float: left;
+}
+
+#spacer {
+    width: 100%;
+    padding: 5px;
+}
+
+#results {
+    margin-top: 150px;
+}
+
+#search {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    min-width: 800px;
+    min-height: 200px;
+    width: 10%;
+    padding: 15px;
+    box-shadow: 0 5px 24px #111;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 }
