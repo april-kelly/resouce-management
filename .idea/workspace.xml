@@ -7,7 +7,7 @@
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374266383312" ignored="false" />
+    <file path="/Dummy.txt" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374267531553" ignored="false" />
     <file path="/create_db.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374004046810" ignored="false" />
     <file path="/index.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374265441782" ignored="false" />
     <file path="/styles.css" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374264446203" ignored="false" />
@@ -34,7 +34,7 @@
     <file path="/request.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374096027436" ignored="false" />
     <file path="/menu2.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374097142396" ignored="false" />
     <file path="/fill.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374097690391" ignored="false" />
-    <file path="/month.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374267101927" ignored="false" />
+    <file path="/month.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374274773997" ignored="false" />
     <file path="/insert.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374102048519" ignored="false" />
     <file path="/list.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374163964818" ignored="false" />
     <file path="/test.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374164073903" ignored="false" />
@@ -89,7 +89,7 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="24" selection-start="365" selection-end="365" vertical-scroll-proportion="129.375">
+            <state line="19" column="24" selection-start="365" selection-end="365" vertical-scroll-proportion="120.0">
               <folding />
             </state>
           </provider>
@@ -98,7 +98,16 @@
       <file leaf-file-name="month.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/includes/month.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="9" selection-start="4095" selection-end="4095" vertical-scroll-proportion="0.519573">
+            <state line="71" column="0" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.3068392">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/config/settings.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="104" selection-start="104" selection-end="104" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -375,7 +384,11 @@
       <created>1374266389373</created>
       <updated>1374266389373</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added basic csv support in month.php">
+      <created>1374267539763</created>
+      <updated>1374267539763</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -444,7 +457,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug where month.php would break without excel output class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added basic csv support in month.php" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -475,6 +488,7 @@
     <MESSAGE value="Continued work on search.php." />
     <MESSAGE value="Name based search has basic functionality." />
     <MESSAGE value="Fixed bug where month.php would break without excel output class." />
+    <MESSAGE value="Added basic csv support in month.php" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -543,16 +557,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.json">
+    <entry file="file://$PROJECT_DIR$/includes/excel/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="104" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="24" selection-start="365" selection-end="365" vertical-scroll-proportion="129.375">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -566,16 +573,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/excel/readme.txt">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="19" column="24" selection-start="365" selection-end="365" vertical-scroll-proportion="120.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config/settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="104" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/month.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="9" selection-start="4095" selection-end="4095" vertical-scroll-proportion="0.519573">
+        <state line="71" column="0" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.3068392">
           <folding />
         </state>
       </provider>

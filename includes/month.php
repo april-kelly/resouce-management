@@ -1,7 +1,8 @@
 <table border="1" class="data">
 <?php
-//Includes
 
+//Includes
+error_reporting(E_STRICT);
     //Make sure the ABSPATH constant is defined
     if(!(defined('ABSPATH'))){
         require_once('../path.php');
@@ -81,10 +82,10 @@ foreach($people as $people)
 		$table[$people['index']][$i] = '0';
 		
 	}
-	
+
 	//Get the list of projects for each person
     $query = "SELECT * FROM jobs WHERE resource='".$people['index']."' AND week_of BETWEEN '".$weeks[1]."' AND '".$weeks[$count]."' ";
-	$project = $dbc->query($query);
+    $project = $dbc->query($query);
 
 
 	//Make sure the person actually has projects
@@ -100,7 +101,7 @@ foreach($people as $people)
 					
 					//unserialize the hours array
 					$time = unserialize($project['time']);
-					
+
 					//add everything up
                     $hours = $hours + $time['sunday']
 							+ $time['monday']
@@ -124,12 +125,13 @@ foreach($people as $people)
 		
 		
 	}
-	
 }
 //close the database connection
 $dbc->close();
 
-if($output == true){
+
+
+    if($output == true){
 //Echo out the table header
 echo "\t".'<tr class="header">'."\r\n\r\n";
 echo "\t\t".'<td>Resource: </td>'."\r\n";
@@ -178,12 +180,14 @@ echo "\t".'</tr>'."\r\n\r\n";
     }else{
 
         //Fail over to CSV output
+        $csv = '';
         foreach($excel as $excel){
             $csv = $csv.implode(',', $excel)."\r\n";
         }
         file_put_contents('month.csv', $csv);
 
     }
+
 
 //echo out each of the rows in the table
 foreach($table as $table){
@@ -223,7 +227,7 @@ foreach($table as $table){
 <?php
  echo 'Page last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy
  echo ' at '.date('g:ia T'); //outputs the hour:minute am/pm and the timezone
- if($excel_enable == TRUE){
+ if($excel_enable = TRUE){
 ?>
 <br />
     You can also <a href="./month.xls">download</a> this in excel format.
