@@ -112,7 +112,7 @@ require_once(ABSPATH.'includes/config/settings.php');
         foreach($results as $result){
 
             ?>
-            <span id="person">
+            <div id="person">
                 <p>
                 <img src="./includes/images/blank.jpg" alt="An image" />
                 <b class="name"><?php echo $people[0]["name"]; ?></b><br />
@@ -129,7 +129,7 @@ require_once(ABSPATH.'includes/config/settings.php');
             echo '<br>Resource on: '.count($results["resource"]);
             ?>
                 </p>
-            </span>
+            </div>
             <div id="spacer"><p> </p></div>
             <?php
 

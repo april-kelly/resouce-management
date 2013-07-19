@@ -295,7 +295,7 @@ input[type=search] {
     padding-bottom: 15px;
 }
 
-.person {
+#person {
     position: absolute;
     float: left;
     border: 1px solid #aaa;

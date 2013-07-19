@@ -2,12 +2,14 @@
 <?php
 //Includes
 
-    //needed to execute
+    //Make sure the ABSPATH constant is defined
+    if(!(defined('ABSPATH'))){
+        require_once('../path.php');
+    }
+
+    //Needed to execute
     require_once(ABSPATH.'includes/data.php');
     require_once(ABSPATH . 'includes/config/settings.php');
-
-    //optional
-    include_once(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php');
 
 //Settings
 $set = new settings;
@@ -19,6 +21,13 @@ $excel_enable = $settings['month_excel'];
 $show	      = $settings['weeks'];
 $output       = $settings['month_output'];
 //$colors       = $settings['colors'];
+
+//Optionally include the excel output class
+if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php')){
+    include_once(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php');
+}else{
+    $excel_enable = FALSE;
+}
 
 //Define variables
 $hours = '';
@@ -211,11 +220,13 @@ foreach($table as $table){
  echo 'Page last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy
  echo ' at '.date('g:ia T'); //outputs the hour:minute am/pm and the timezone
  $today =  date('md');
+ if($excel_enable == TRUE){
 ?>
 <br />
     You can also <a href="./month.xls">download</a> this in excel format.
 </p>
 <?php
+ }
  if($today == '0225'){
      echo base64_decode('PGJyIC8+PHAgY2xhc3M9ImluZm8iPjxpPiJXaGVuIGdvaW5nIHRocm91Z2ggaGVsbCwganVzdCBr
                          ZWVwIGdvaW5nLiI8L2k+IC1XaW5zdG9uIENodXJjaGlsbDxiciAvPiAxICZhbmQ7IDEgPSAmZW1w
