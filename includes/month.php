@@ -144,10 +144,7 @@ foreach($weeks as $weeks){
 echo "\t".'</tr>'."\r\n\r\n";
 
 
-
-//Excel output:
-if($excel_enable == true){
-	
+    //Excel/CSV output:
 	$copy = $table;
 
     //figure out where the end of the table is
@@ -167,20 +164,27 @@ if($excel_enable == true){
 		$i++;
 	}
 
+    //Excel output
+    if($excel_enable == true){
 
-	try{
-		$PhpToXls = new ABG_PhpToXls($excel, null, 'month', true);
-		$PhpToXls->SaveFile();
-	}
-	catch(Exception $Except){ 
-	
-	}
-	
-}
+        try{
+            $PhpToXls = new ABG_PhpToXls($excel, null, 'month', true);
+            $PhpToXls->SaveFile();
+        }
+        catch(Exception $Except){
 
+        }
 
-  
-  
+    }else{
+
+        //Fail over to CSV output
+        foreach($excel as $excel){
+            $csv = $csv.implode(',', $excel)."\r\n";
+        }
+        file_put_contents('month.csv', $csv);
+
+    }
+
 //echo out each of the rows in the table
 foreach($table as $table){
 	
@@ -219,15 +223,21 @@ foreach($table as $table){
 <?php
  echo 'Page last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy
  echo ' at '.date('g:ia T'); //outputs the hour:minute am/pm and the timezone
- $today =  date('md');
  if($excel_enable == TRUE){
 ?>
 <br />
     You can also <a href="./month.xls">download</a> this in excel format.
 </p>
 <?php
- }
- if($today == '0225'){
+}else{
+?>
+<br />
+    You can also <a href="./month.csv">download</a> this in csv format.
+</p>
+<?php
+}
+ //Easter egg
+ if(date('md') == '0225'){
      echo base64_decode('PGJyIC8+PHAgY2xhc3M9ImluZm8iPjxpPiJXaGVuIGdvaW5nIHRocm91Z2ggaGVsbCwganVzdCBr
                          ZWVwIGdvaW5nLiI8L2k+IC1XaW5zdG9uIENodXJjaGlsbDxiciAvPiAxICZhbmQ7IDEgPSAmZW1w
                          dHk7PC9wPg==');
