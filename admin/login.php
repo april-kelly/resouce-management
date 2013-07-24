@@ -19,25 +19,35 @@ $set = new settings;
 $settings = $set->fetch();
 $salt = $settings['salt'];
 
-//ensure the user filled out both inputs
+//Make sure both fields exist
 if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 {
 
-    $users = new users;
-    $results = $users->login($_REQUEST['username'], $_REQUEST['password']);
+    //Make sure both fields are NOT empty
+    if(!(empty($_REQUEST['username'])) && !(empty($_REQUEST['password']))){
 
-    if(!($results == FALSE)){
+        $users = new users;
+        $results = $users->login($_REQUEST['username'], $_REQUEST['password']);
 
-        //Good login
-        $_SESSION['userid'] = $results[0]['index'];
-        $_SESSION['name'] = $results[0]['name'];
-        $_SESSION['admin'] = $results[0]['admin'];
-        $_SESSION['security_class'] = $results[0]['security_class'];
-        header('location: ../');
+        if(!($results == FALSE)){
+
+            //Good login
+            $_SESSION['userid'] = $results[0]['index'];
+            $_SESSION['name'] = $results[0]['name'];
+            $_SESSION['admin'] = $results[0]['admin'];
+            $_SESSION['security_class'] = $results[0]['security_class'];
+            header('location: ../');
+
+        }else{
+
+            //Bad login
+            header('location: ../?p=badlogin');
+
+        }
 
     }else{
 
-        //Bad login
+        //One or more fields is empty
         header('location: ../?p=badlogin');
 
     }
@@ -46,7 +56,7 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 else
 {
 
-    //user did not fill out both fields
+    //Both fields do not exist
     header('location: ../?p=badlogin');
 
 }

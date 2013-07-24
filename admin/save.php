@@ -227,7 +227,8 @@ if(isset($_REQUEST['reset_code'])){
 
     header('location: ../?p=login');
 }
-//Make sure the salt is saved as a hash
+
+//Change the salt
 if(isset($_REQUEST['salt'])){
 
     //Change the salt
@@ -237,13 +238,25 @@ if(isset($_REQUEST['salt'])){
     $settings['salt'] = hash('SHA512', fread($fp, 256));
     $set->update($settings);
 
-    //Reset the current user's password
-    $code = insert_reset_code($_SESSION['userid']);
+    //Reset everyone in the database's password
+    $dbc = new db;
+    $dbc->connect();
+    $people = $dbc->query('SELECT * FROM people');
+    $dbc->close();
 
-    if(!(isset($_SESSION['userid']))){
-        $_SESSION['userid'] = '1';
+    foreach($people as $person){
+
+        $code = insert_reset_code($person['index']);
+
+        if($person['index'] == $_SESSION['userid']){
+            $_SESSION['reset_code'] = $code;
+        }
+
     }
-    $_SESSION['reset_code'] = $code;
-   // header('location: ../?p=reset');
+
+    //Redirect the current user to the password reset script
+    header('location: ../?p=reset');
+
+    //Prevent anything from being save on accident
     $save = FALSE;
 }
