@@ -3,6 +3,8 @@
  * Name: Salt Generator
  * Programmer: Liam Kelly
  * Date: 7/8/13
+ * Note: This file should be removed before production
+ * Note: Most functionality in this file has been added to save.php
  */
 
 //includes
@@ -24,4 +26,6 @@ $password_raw = '';
 
 echo 'Password: '.hash('SHA512', $password_raw.$salt).'<br />';
 
+$fp = fopen('/dev/urandom', 'r');
 
+echo '<br />New Salt: '.hash('SHA512', fread($fp, 256));

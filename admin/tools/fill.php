@@ -20,8 +20,8 @@ $current = date('Y-m-d');
 $show = 1000;
 $weeks = array();
 $weeks[1] = $current;
-for($i = 2; $i <= $show; $i++){
-	$weeks[$i] = $current = date('Y-m-d',strtotime($current) + (24*3600*7));
+for($week = 2; $week <= $show; $week++){
+	$weeks[$week] = $current = date('Y-m-d',strtotime($current) + (24*3600*7));
 }
 //var_dump($weeks);
 

@@ -12,6 +12,11 @@ if(isset($_REQUEST['c'])){
     }
 }
 
+//Make sure the ABSPATH constant is defined
+if(!(defined('ABSPATH'))){
+    require_once('../path.php');
+}
+
 //includes
 require_once(ABSPATH.'includes/config/settings.php');
 require_once(ABSPATH.'includes/data.php');

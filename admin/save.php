@@ -10,8 +10,9 @@ require_once('../path.php');
 require_once(ABSPATH.'includes/config/settings.php');
 require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH.'includes/config/users.php');
+require_once(ABSPATH.'admin/generate_reset_codes.php');
 
-//Start the users session if nessary
+//Start the users session if necessary
 if(!(isset($_SESSION))){
     session_start();
 }
@@ -70,12 +71,6 @@ if(isset($_REQUEST['download'])){
     $save = FALSE;
 }
 
-    //Make sure the salt is saved as a hash
-    if(isset($_REQUEST['salt'])){
-        $_REQUEST['salt'] = hash('SHA512', $_REQUEST['salt']);
-    }
-
-
 //update each of the settings
 foreach($_REQUEST as $key => $value){
 
@@ -105,7 +100,6 @@ foreach($_REQUEST as $key => $value){
     }
 
 }
-
 
 //Debug mode enable/disable
 if(isset($_REQUEST['d'])){
@@ -232,4 +226,24 @@ if(isset($_REQUEST['reset_code'])){
     }
 
     header('location: ../?p=login');
+}
+//Make sure the salt is saved as a hash
+if(isset($_REQUEST['salt'])){
+
+    //Change the salt
+    $fp = fopen('/dev/urandom', 'r');
+    $set = new settings;
+    $settings = $set->fetch();
+    $settings['salt'] = hash('SHA512', fread($fp, 256));
+    $set->update($settings);
+
+    //Reset the current user's password
+    $code = insert_reset_code($_SESSION['userid']);
+
+    if(!(isset($_SESSION['userid']))){
+        $_SESSION['userid'] = '1';
+    }
+    $_SESSION['reset_code'] = $code;
+   // header('location: ../?p=reset');
+    $save = FALSE;
 }

@@ -43,12 +43,6 @@ if(!(isset($settings['db_database']))){
 //determine what page to show
 switch($request){
 
-    case "view":
-        $page = './includes/overview.php';
-        $main_id = 'main';
-        $title = '<h3>Current Resource Utilization:</h3>';
-        break;
-
     //Recover Passwords
     case "reset":
         $page = './admin/reset_user.php';
@@ -72,7 +66,7 @@ switch($request){
     break;
 
     case "home":
-        $page = './includes/month.php';
+        $page = './includes/overview.php';
         $main_id = 'main';
         $title = '<h3>Current Resource Utilization:</h3>';
     break;
@@ -192,7 +186,7 @@ switch($request){
     break;
 
     default:
-        $page = './includes/month.php';
+        $page = './includes/overview.php';
         $main_id = 'main';
     break;
 
