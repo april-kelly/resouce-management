@@ -22,3 +22,6 @@ $settings = $set->fetch();
     <li class="outside-right"><a href="./?p=user">Hi, <?php echo $_SESSION['name']; ?></a></li>
     <?php } ?>
 </ul>
+<?php if($setting["salt_changed"] == TRUE){?>
+<p class="error">Alert: The administrator has reset your password. Click <a href="./?p=reset">here</a> to reset it.</p>
+<?php } ?>

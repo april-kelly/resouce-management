@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ecf5cb68-73e3-4c51-a198-db77c48ea405" name="Default" comment="Started working on preformance issues in month.php">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/month.xls" afterPath="$PROJECT_DIR$/month.xls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/login.php" afterPath="$PROJECT_DIR$/admin/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/save.php" afterPath="$PROJECT_DIR$/admin/save.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/nav.php" afterPath="$PROJECT_DIR$/includes/nav.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/settings.php" afterPath="$PROJECT_DIR$/includes/config/settings.php" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +27,7 @@
     <file path="/html.html" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374010595612" ignored="false" />
     <file path="/generate_reset_codes.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374016975701" ignored="false" />
     <file path="/template.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374093320154" ignored="false" />
-    <file path="/nav.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374163572423" ignored="false" />
+    <file path="/nav.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374708355173" ignored="false" />
     <file path="/404.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374093507647" ignored="false" />
     <file path="/418.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374093513061" ignored="false" />
     <file path="/500.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374091443769" ignored="false" />
@@ -51,6 +50,8 @@
     <file path="/salt.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374697033961" ignored="false" />
     <file path="/save.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374706267250" ignored="false" />
     <file path="/login.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374707750951" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374708449593" ignored="false" />
+    <file path="/settings.php" changelist="ecf5cb68-73e3-4c51-a198-db77c48ea405" time="1374708298998" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,19 +79,8 @@
       <file leaf-file-name="settings.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="34" selection-start="1066" selection-end="1066" vertical-scroll-proportion="-18.125">
+            <state line="49" column="0" selection-start="1723" selection-end="1723" vertical-scroll-proportion="-22.166666">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="save.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/save.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="493" selection-end="493" vertical-scroll-proportion="-3.9583333">
-              <folding>
-                <element signature="e#6#89#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -98,46 +88,19 @@
       <file leaf-file-name="reset_user.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/reset_user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="38" selection-start="1865" selection-end="1865" vertical-scroll-proportion="-45.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="43" selection-start="1281" selection-end="1281" vertical-scroll-proportion="0.6086956">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="salt.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/salt.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="67" selection-start="198" selection-end="198" vertical-scroll-proportion="-3.75">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="12" selection-start="1094" selection-end="1094" vertical-scroll-proportion="-4.5833335">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="188" column="36" selection-start="4302" selection-end="4302" vertical-scroll-proportion="-38.666668">
+            <state line="1" column="3" selection-start="9" selection-end="9" vertical-scroll-proportion="-0.625">
               <folding>
-                <element signature="e#6#111#0" expanded="true" />
+                <element signature="e#6#104#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/nav.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="41" selection-start="758" selection-end="758" vertical-scroll-proportion="0.62608695">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -160,8 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/includes/search.php" />
-        <option value="$PROJECT_DIR$/includes/config/settings.json" />
         <option value="$PROJECT_DIR$/includes/views.php" />
         <option value="$PROJECT_DIR$/includes/month.php" />
         <option value="$PROJECT_DIR$/includes/test.php" />
@@ -176,6 +137,8 @@
         <option value="$PROJECT_DIR$/admin/save.php" />
         <option value="$PROJECT_DIR$/includes/config/users.php" />
         <option value="$PROJECT_DIR$/admin/login.php" />
+        <option value="$PROJECT_DIR$/includes/config/settings.php" />
+        <option value="$PROJECT_DIR$/includes/nav.php" />
       </list>
     </option>
   </component>
@@ -520,13 +483,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="104" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="35" selection-start="325" selection-end="325" vertical-scroll-proportion="-7.5">
@@ -588,13 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="34" selection-start="1066" selection-end="1066" vertical-scroll-proportion="-18.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="12" selection-start="1094" selection-end="1094" vertical-scroll-proportion="-4.5833335">
@@ -625,16 +574,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/reset_user.php">
+    <entry file="file://$PROJECT_DIR$/admin/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="38" selection-start="1865" selection-end="1865" vertical-scroll-proportion="-45.0">
+        <state line="50" column="43" selection-start="1281" selection-end="1281" vertical-scroll-proportion="1.0782609">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/login.php">
+    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="43" selection-start="1281" selection-end="1281" vertical-scroll-proportion="0.6086956">
+        <state line="49" column="0" selection-start="1723" selection-end="1723" vertical-scroll-proportion="-22.166666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/reset_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="3" selection-start="9" selection-end="9" vertical-scroll-proportion="-0.625">
+          <folding>
+            <element signature="e#6#104#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="41" selection-start="758" selection-end="758" vertical-scroll-proportion="0.62608695">
           <folding />
         </state>
       </provider>

@@ -35,6 +35,7 @@ class settings {
             public $logo            = './includes/images/logo.gif';
             public $version         = '1.0.2 beta';
             public $salt            = '60b448a4b93f07d724baecc1975b00e4b822efa4f6cb997ae0ec92f9f3580e981fe1d7f56f356d16f1451565fcf39929b0c157206fc9522cdc0caefc7b1945d2';
+            public $salt_changed    = TRUE;
             public $url             = 'http://localhost/resouce-management/';
 
     public function __construct(){
