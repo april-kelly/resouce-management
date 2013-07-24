@@ -13,19 +13,27 @@ if(!(defined('ABSPATH'))){
 
 //Needed to execute
 require_once(ABSPATH.'includes/data.php');
-require_once(ABSPATH . 'includes/config/settings.php');
+require_once(ABSPATH.'includes/config/settings.php');
+
 
 //Views Class
-public class views {
+class views {
 
         //Variable Definitions
         public $weeks = array();
         public $show  = '';
+        public $hours;
 
         function __construct(){
 
-            //build a list of weeks
-            $show = 12;
+            //Get the settings
+            $set = new settings;
+            $settings = $set->fetch();
+
+            //Define settings
+            $this->show	      = $settings['weeks'];
+
+            //Build a list of weeks
             //get the current or last sunday
             if(date( "w", date("U")) == '0'){
                 $current = date('Y-m-d');
@@ -33,10 +41,10 @@ public class views {
                 $current = date('Y-m-d', strtotime('Last Sunday', time()));
             }
 
-            $weeks = array();
-            $weeks[1] = $current;
-            for($i = 2; $i <= $show; $i++){
-                $weeks[$i] = $current = date('Y-m-d',strtotime($current) + (24*3600*7));
+            $this->weeks = array();
+            $this->weeks[1] = $current;
+            for($i = 2; $i <=  $this->show; $i++){
+                $this->weeks[$i] = $current = date('Y-m-d',strtotime($current) + (24*3600*7));
             }
 
         }
@@ -48,8 +56,8 @@ public class views {
             $dbc = new db;
             $dbc->connect();
             $people = $dbc->query('SELECT * FROM people');
-            $jobs = $dbc->query("SELECT * FROM jobs WHERE week_of BETWEEN '".$weeks[1]."' AND '".$weeks[count($weeks)]."' ");
-
+            $query = "SELECT * FROM jobs WHERE week_of BETWEEN '". $this->weeks[1]."' AND '". $this->weeks[count($this->weeks)]."' ";
+            $jobs = $dbc->query($query);
 
             foreach($people as $person){
 
@@ -59,7 +67,7 @@ public class views {
 
                 foreach($jobs as $job){
 
-                    foreach($weeks as $week){
+                    foreach($this->weeks as $week){
 
                         if($job['resource'] == $person['index']){
 
@@ -71,7 +79,7 @@ public class views {
                                     $time = unserialize($job['time']);
 
                                     //add everything up
-                                    $hours = $hours + $time['sunday']
+                                    $this->hours =  $this->hours + $time['sunday']
                                         + $time['monday']
                                         + $time['tuesday']
                                         + $time['wednesday']
@@ -79,9 +87,9 @@ public class views {
                                         + $time['friday']
                                         + $time['saturday'];
 
-                                    if($hours > 0){
+                                    if($this->hours > 0){
 
-                                        $table[$person['index']][$week] = $hours;
+                                        $table[$person['index']][$week] = $this->hours;
 
                                     }else{
 
@@ -90,7 +98,7 @@ public class views {
                                     }
 
                                     //empty the hours variable
-                                    $hours = 0;
+                                    $this->hours = 0;
 
                                 }else{
 
@@ -134,8 +142,8 @@ public class views {
             $dbc->connect();
 
             //Query the database
-            $query = "SELECT * FROM people WHERE index = '".$person."' AND week_of BETWEEN '".$weeks[1]."' AND '".$weeks[$count]."' ";
-            $dbc->query($query);
+            $query = "SELECT * FROM people WHERE index = '".$person."' AND week_of BETWEEN '".$this->weeks[1]."' AND '".$this->weeks[count($this->weeks)]."' ";
+            $results = $dbc->query($query);
 
             //close the connection
             $dbc->close();
@@ -144,3 +152,4 @@ public class views {
         }
 
 }
+

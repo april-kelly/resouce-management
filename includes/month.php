@@ -11,6 +11,7 @@ error_reporting(E_STRICT);
     //Needed to execute
     require_once(ABSPATH.'includes/data.php');
     require_once(ABSPATH . 'includes/config/settings.php');
+    require_once(ABSPATH.'includes/view.php');
 
 //Settings
 $set = new settings;
@@ -31,6 +32,7 @@ if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php')){
     $excel_enable = FALSE;
 }
 
+/*
 //Define variables
 $hours = '';
 
@@ -138,6 +140,9 @@ foreach($people as $people)
 $dbc->close();
 
     var_dump($table);
+*/
+$test = new views;
+$table = $test->build_table();
 
 
     if($output == true){
@@ -224,7 +229,7 @@ foreach($table as $table){
 	echo "\t".'</tr>'."\r\n\r\n";
 	
 }
-}
+
 }else{
     echo '<span class="error"><b>Error</b>: <em>Database connection failed.</em></span>';
 }
