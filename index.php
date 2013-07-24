@@ -56,7 +56,7 @@ switch($request){
 
     //this is for temporary debugging (to be removed)
     case "test":
-        $page = '/admin/test.php';
+        $page = './includes/test.php';
         $main_id = 'main';
     break;
 

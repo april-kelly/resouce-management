@@ -22,6 +22,7 @@ $excel_enable = $settings['month_excel'];
 $show	      = $settings['weeks'];
 $output       = $settings['month_output'];
 //$colors       = $settings['colors'];
+$i = 0;
 
 //Optionally include the excel output class
 if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php')){
@@ -66,6 +67,11 @@ if(is_bool($connection)){
 if($fail = TRUE){
 //Fetch the list of resources
 $people = $dbc->query('SELECT * FROM people WHERE `type` != 3');	//Get the table of people
+$rd = "SELECT * FROM jobs WHERE week_of BETWEEN '".$weeks[1]."' AND '".$weeks[$count]."' ";
+    $test = $dbc->query($rd);
+    echo $rd;
+
+    $i++;
 
 //create the table
 $i = 0;
@@ -85,6 +91,8 @@ foreach($people as $people)
 
 	//Get the list of projects for each person
     $query = "SELECT * FROM jobs WHERE resource='".$people['index']."' AND week_of BETWEEN '".$weeks[1]."' AND '".$weeks[$count]."' ";
+    $i++;
+
     $project = $dbc->query($query);
 
 
@@ -129,6 +137,7 @@ foreach($people as $people)
 //close the database connection
 $dbc->close();
 
+    var_dump($table);
 
 
     if($output == true){
@@ -146,7 +155,7 @@ foreach($weeks as $weeks){
 echo "\t".'</tr>'."\r\n\r\n";
 
 
-    //Excel/CSV output:
+    /*//Excel/CSV output:
 	$copy = $table;
 
     //figure out where the end of the table is
@@ -186,7 +195,7 @@ echo "\t".'</tr>'."\r\n\r\n";
         }
         file_put_contents('month.csv', $csv);
 
-    }
+    }*/
 
 
 //echo out each of the rows in the table
@@ -225,6 +234,7 @@ foreach($table as $table){
 </table>
 <p>
 <?php
+ echo 'Queried the database '.$i.' times. <br />';
  echo 'Page last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy
  echo ' at '.date('g:ia T'); //outputs the hour:minute am/pm and the timezone
  if($excel_enable = TRUE){
@@ -246,4 +256,5 @@ foreach($table as $table){
                          ZWVwIGdvaW5nLiI8L2k+IC1XaW5zdG9uIENodXJjaGlsbDxiciAvPiAxICZhbmQ7IDEgPSAmZW1w
                          dHk7PC9wPg==');
  }
+
 ?>
