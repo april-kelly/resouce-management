@@ -38,6 +38,7 @@ if(isset($_SESSION['userid'])){
         <input type="checkbox" name="insert_fail" value="TRUE" <?php if($settings['insert_fail'] == TRUE){ echo "checked"; } ?> />
         <label>Force insert to fail</label><br />
 
+
         <br />
         <input type="submit" value="Update" />
 
@@ -50,11 +51,20 @@ if(isset($_SESSION['userid'])){
     <legend>Settings Options:</legend>
 
     <form action="./admin/save.php" method="post">
-        <b>Core Settings:</b><br />
+        <b>Core Settings File:</b><br />
         <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings file from preset defaults</label><br />
         <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br />
         <input type="submit" value="Download" name="download" /><label>Download the settings file</label><br /><br />
-
+        <b>Core Settings:</b><br />
+        <?php if($settings['production'] == FALSE){ ?>
+        <input type="hidden" name="production_alert" value="FALSE" />
+        <input type="checkbox" name="production_alert" value="TRUE" <?php if($settings['production_alert'] == TRUE){ echo "checked"; } ?> />
+        <label>Developmental version alert</label><br />
+        <?php } ?>
+        <input type="hidden" name="maintenance" value="FALSE" />
+        <input type="checkbox" name="maintenance" value="TRUE" <?php if($settings['maintenance'] == TRUE){ echo "checked"; } ?> />
+        <label>Maintenance mode</label><br />
+        <input type="submit" value="Update" />
     </form>
 
 </fieldset>

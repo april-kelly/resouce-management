@@ -40,8 +40,49 @@ if(!(isset($settings['db_database']))){
     $request = "config";
 }
 
+//Maintenance mode
+if($settings['maintenance'] == TRUE && $_SESSION['admin'] <= 0){
+
+  if(!($request == 'login')){
+      $request = 'down';
+  }
+
+}
+
+//Beta mode
+if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta']))){
+
+    $request = 'beta';
+
+}
+
+
 //determine what page to show
 switch($request){
+
+    //If the server is down
+    case "beta":
+
+        //if the server is in beta mode
+        if($settings['production'] == FALSE){
+
+            $page = './includes/errors/beta.php';
+
+        }
+        $main_id = 'profile';
+
+    break;
+
+    case "down":
+        //if the server is in maintenance mode
+        if($settings['maintenance'] == TRUE){
+
+            $page = './includes/errors/503.php';
+
+        }
+
+        $main_id = 'main';
+    break;
 
     //Recover Passwords
     case "reset":
@@ -188,6 +229,7 @@ switch($request){
     default:
         $page = './includes/overview.php';
         $main_id = 'main';
+        $title = '<h3>Current Resource Utilization:</h3>';
     break;
 
 }

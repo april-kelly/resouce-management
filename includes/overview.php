@@ -35,7 +35,7 @@ if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php')){
 //Fetch the table
 $view = new views;
 $table = $view->build_table();
-
+$weeks = $view->weeks;
 
 //Excel/CSV output:
 $copy = $table;
@@ -50,25 +50,6 @@ $copy[$space_location]['name'] = "";
 $copy[$date_location]['name'] = "Last updated: ";
 $copy[$date_location]['1'] = date('g:ia T');
 
-
-$i = 1;		//Must be set to the first row after the header
-foreach($copy as $copy_row){
-    $excel[$i] = $copy_row;
-    $i++;
-}
-
-//Excel output
-if($excel_enable == true){
-
-    try{
-        $PhpToXls = new ABG_PhpToXls($excel, null, 'month', true);
-        $PhpToXls->SaveFile();
-    }
-    catch(Exception $Except){
-        echo $Except;
-    }
-
-}
 
 //Output as csv (regardless to excel output)
 $csv = '';
