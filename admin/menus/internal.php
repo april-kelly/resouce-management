@@ -64,6 +64,9 @@ if(isset($_SESSION['userid'])){
         <input type="hidden" name="maintenance" value="FALSE" />
         <input type="checkbox" name="maintenance" value="TRUE" <?php if($settings['maintenance'] == TRUE){ echo "checked"; } ?> />
         <label>Maintenance mode</label><br />
+        <input type="hidden" name="gopher" value="FALSE" />
+        <input type="checkbox" name="gopher" value="TRUE" <?php if($settings['gopher'] == TRUE){ echo "checked"; } ?> />
+        <label>Allow <a href="http://en.wikipedia.org/wiki/Gopher_(protocol)">Gopher</a> access</label><br />
         <input type="submit" value="Update" />
     </form>
 
