@@ -1,5 +1,9 @@
 <?php
-# server.php
+/**
+ *  Name:       Basic Gopher Server
+ *  Programmer: Liam Kelly
+ *  Date: 
+ */
 
 set_time_limit(0);
 
@@ -10,6 +14,7 @@ if ($server === false) {
 }
 
 a:
+echo "Gopher server ready...\r\n";
 
 for (;;) {
     $client = @stream_socket_accept($server);
@@ -17,13 +22,11 @@ for (;;) {
     if ($client) {
         echo "Client connected\r\n";
         stream_socket_sendto($client, file_get_contents('./gophermap'));
-        //stream_socket_sendto($client, "<b>Testing</b>");
         stream_socket_sendto($client, "\r\n.");
         echo "Disconnected \r\n";
-        //stream_copy_to_stream($client, $client);
         break;
     }
 }
 fclose($client);
-//goto a;
-//gopher://localhost/resouce-management/test.php
+goto a;
+

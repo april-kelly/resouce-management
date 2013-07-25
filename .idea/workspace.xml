@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa167fb5-e54c-4f40-af97-281d5782a6e1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menus/internal.php" afterPath="$PROJECT_DIR$/admin/menus/internal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/overview.php" afterPath="$PROJECT_DIR$/includes/overview.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gopher_server.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/settings.php" afterPath="$PROJECT_DIR$/includes/config/settings.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="resouce-management.iws" />
@@ -12,10 +12,11 @@
     <file path="/Dummy.txt" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374781933295" ignored="false" />
     <file path="/404.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374781157165" ignored="false" />
     <file path="/internal.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374782155088" ignored="false" />
-    <file path="/settings.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374781821312" ignored="false" />
+    <file path="/settings.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374792085733" ignored="false" />
     <file path="/test.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374787964533" ignored="false" />
     <file path="/gophermap" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374789991265" ignored="false" />
     <file path="/overview.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374791867427" ignored="false" />
+    <file path="/gopher_server.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374792179773" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,19 +47,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="59" selection-start="406" selection-end="406" vertical-scroll-proportion="-11.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="overview.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="overview.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/overview.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="29" selection-start="3316" selection-end="3316" vertical-scroll-proportion="0.37366548">
+            <state line="116" column="29" selection-start="3316" selection-end="3316" vertical-scroll-proportion="-35.0">
               <folding>
                 <element signature="e#6#129#0" expanded="true" />
               </folding>
@@ -66,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gophermap" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gophermap">
+      <file leaf-file-name="gopher_server.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gopher_server.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="12" selection-start="1682" selection-end="1682" vertical-scroll-proportion="0.0">
+            <state line="4" column="10" selection-start="83" selection-end="83" vertical-scroll-proportion="0.104347825">
               <folding />
             </state>
           </provider>
@@ -78,7 +70,7 @@
       <file leaf-file-name="settings.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="44" selection-start="1216" selection-end="1216" vertical-scroll-proportion="-10.0">
+            <state line="43" column="78" selection-start="1780" selection-end="1780" vertical-scroll-proportion="-15.0">
               <folding />
             </state>
           </provider>
@@ -105,11 +97,12 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/includes/errors/404.php" />
         <option value="$PROJECT_DIR$/includes/errors/503.php" />
-        <option value="$PROJECT_DIR$/includes/config/settings.php" />
         <option value="$PROJECT_DIR$/admin/menus/internal.php" />
         <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/gophermap" />
         <option value="$PROJECT_DIR$/includes/overview.php" />
+        <option value="$PROJECT_DIR$/includes/config/settings.php" />
+        <option value="$PROJECT_DIR$/gopher_server.php" />
       </list>
     </option>
   </component>
@@ -342,13 +335,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="44" selection-start="1216" selection-end="1216" vertical-scroll-proportion="-10.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gophermap">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="12" selection-start="1682" selection-end="1682" vertical-scroll-proportion="0.0">
@@ -356,19 +342,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
+    <entry file="file://$PROJECT_DIR$/includes/overview.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="59" selection-start="406" selection-end="406" vertical-scroll-proportion="-11.25">
+        <state line="116" column="29" selection-start="3316" selection-end="3316" vertical-scroll-proportion="-35.0">
+          <folding>
+            <element signature="e#6#129#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="78" selection-start="1780" selection-end="1780" vertical-scroll-proportion="-15.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/overview.php">
+    <entry file="file://$PROJECT_DIR$/gopher_server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="29" selection-start="3316" selection-end="3316" vertical-scroll-proportion="0.37366548">
-          <folding>
-            <element signature="e#6#129#0" expanded="true" />
-          </folding>
+        <state line="4" column="10" selection-start="83" selection-end="83" vertical-scroll-proportion="0.104347825">
+          <folding />
         </state>
       </provider>
     </entry>

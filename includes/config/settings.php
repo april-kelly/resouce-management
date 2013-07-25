@@ -41,6 +41,7 @@ class settings {
             public $production      = FALSE;
             public $production_alert= TRUE;
             public $gopher          = TRUE; //Yes, really.
+            public $server_ip       = '127.0.0.1'; //needed for gopher to work
 
     public function __construct(){
 
