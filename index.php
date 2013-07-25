@@ -227,9 +227,8 @@ switch($request){
     break;
 
     default:
-        $page = './includes/overview.php';
+        $page = './includes/errors/404.php';
         $main_id = 'main';
-        $title = '<h3>Current Resource Utilization:</h3>';
     break;
 
 }
