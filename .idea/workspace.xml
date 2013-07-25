@@ -2,16 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa167fb5-e54c-4f40-af97-281d5782a6e1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/errors/503.php" afterPath="$PROJECT_DIR$/includes/errors/503.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menus/internal.php" afterPath="$PROJECT_DIR$/admin/menus/internal.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/settings.php" afterPath="$PROJECT_DIR$/includes/config/settings.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/overview.php" afterPath="$PROJECT_DIR$/includes/overview.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374781933295" ignored="false" />
     <file path="/404.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374781157165" ignored="false" />
-    <file path="/internal.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374781748415" ignored="false" />
+    <file path="/internal.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374782155088" ignored="false" />
     <file path="/settings.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374781821312" ignored="false" />
+    <file path="/test.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374787964533" ignored="false" />
+    <file path="/gophermap" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374789991265" ignored="false" />
+    <file path="/overview.php" changelist="fa167fb5-e54c-4f40-af97-281d5782a6e1" time="1374791867427" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,34 +38,47 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="230" column="26" selection-start="5048" selection-end="5048" vertical-scroll-proportion="-12.5">
-              <folding />
+            <state line="230" column="26" selection-start="5048" selection-end="5048" vertical-scroll-proportion="-141.25">
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="503.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/errors/503.php">
+      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="4" selection-start="173" selection-end="173" vertical-scroll-proportion="-1.875">
+            <state line="18" column="59" selection-start="406" selection-end="406" vertical-scroll-proportion="-11.25">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="internal.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/menus/internal.php">
+      <file leaf-file-name="overview.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/overview.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="109" selection-start="2906" selection-end="2906" vertical-scroll-proportion="-16.25">
+            <state line="116" column="29" selection-start="3316" selection-end="3316" vertical-scroll-proportion="0.37366548">
+              <folding>
+                <element signature="e#6#129#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gophermap" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gophermap">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="12" selection-start="1682" selection-end="1682" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="settings.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="44" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.9269663">
+            <state line="35" column="44" selection-start="1216" selection-end="1216" vertical-scroll-proportion="-10.0">
               <folding />
             </state>
           </provider>
@@ -88,8 +105,11 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/includes/errors/404.php" />
         <option value="$PROJECT_DIR$/includes/errors/503.php" />
-        <option value="$PROJECT_DIR$/admin/menus/internal.php" />
         <option value="$PROJECT_DIR$/includes/config/settings.php" />
+        <option value="$PROJECT_DIR$/admin/menus/internal.php" />
+        <option value="$PROJECT_DIR$/test.php" />
+        <option value="$PROJECT_DIR$/gophermap" />
+        <option value="$PROJECT_DIR$/includes/overview.php" />
       </list>
     </option>
   </component>
@@ -177,56 +197,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -253,7 +223,7 @@
     <frame x="-1" y="764" width="1368" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3296" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -342,13 +312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="230" column="26" selection-start="5048" selection-end="5048" vertical-scroll-proportion="-12.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/errors/503.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="4" selection-start="173" selection-end="173" vertical-scroll-proportion="-1.875">
@@ -356,17 +319,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/phrase.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="21" selection-start="1732" selection-end="1732" vertical-scroll-proportion="0.21869783">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/menus/internal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="109" selection-start="2906" selection-end="2906" vertical-scroll-proportion="-16.25">
+        <state line="69" column="0" selection-start="2943" selection-end="2943" vertical-scroll-proportion="0.16014235">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="230" column="26" selection-start="5048" selection-end="5048" vertical-scroll-proportion="-141.25">
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="44" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.9269663">
+        <state line="35" column="44" selection-start="1216" selection-end="1216" vertical-scroll-proportion="-10.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gophermap">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="12" selection-start="1682" selection-end="1682" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="59" selection-start="406" selection-end="406" vertical-scroll-proportion="-11.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/overview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="29" selection-start="3316" selection-end="3316" vertical-scroll-proportion="0.37366548">
+          <folding>
+            <element signature="e#6#129#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

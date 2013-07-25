@@ -65,7 +65,7 @@ file_put_contents('month.csv', $csv);
     $indentI    = '   ';    //Indent the outputted source 5  spaces
     $indentII   = '      '; //Indent the outputted source 10 spaces
 
-    //Echo out the Header
+   //Echo out the Header
     echo '<table border="1" class="data">';
     echo $indentI.'<tr class="header">'."\r\n";
 
@@ -107,6 +107,44 @@ file_put_contents('month.csv', $csv);
     }
 
     echo '</table>';
+
+
+//output for gopher
+echo '<pre>';
+ob_start();
+echo '================';
+echo '||  Overview  ||';
+echo '================'."\r\n";
+echo '-------------------------------------------------------------------------------------------------------------------------------------'."\r\n";
+
+    foreach($weeks as $week){
+        echo '|'.$week.'';
+    }
+    echo '|'."\r\n";
+echo '-------------------------------------------------------------------------------------------------------------------------------------'."\r\n";
+
+foreach($table as $table_row){
+    echo '-------------------------------------------------------------------------------------------------------------------------------------'."\r\n";
+    foreach($weeks as $week){
+        echo '|     ';
+        echo $table_row[$week];
+        $count = 5;
+        $test = strlen($table_row[$week]);
+        $count = $count-$test;
+        while($count > 0){
+            echo ' ';
+            $count--;
+        }
+        //echo '    ';
+    }
+    echo "|".$table_row["name"]."\r\n";
+    echo '-------------------------------------------------------------------------------------------------------------------------------------'."\r\n";
+}
+$gopher = ob_get_contents();
+ob_end_clean();
+file_put_contents('../gophermap', $gopher);
+
+echo '</pre>';
 
     //Echo out the bottom of the page
     echo 'Page last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy
