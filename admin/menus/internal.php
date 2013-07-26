@@ -22,11 +22,11 @@ if(isset($_SESSION['userid'])){
 ?>
 <fieldset>
 
-    <legend>Display Options:</legend>
+    <legend>Insert Options:</legend>
 
     <form action="./admin/save.php" method="post"><br />
 
-        <b>insert.php</b><br /><br />
+        <b>Insert.php</b><br /><br />
 
         <input type="hidden" name="insert_valid" value="FALSE" />
         <input type="checkbox" name="insert_valid" value="TRUE" <?php if($settings['insert_valid'] == TRUE){ echo "checked"; } ?> />
@@ -64,12 +64,27 @@ if(isset($_SESSION['userid'])){
         <input type="hidden" name="maintenance" value="FALSE" />
         <input type="checkbox" name="maintenance" value="TRUE" <?php if($settings['maintenance'] == TRUE){ echo "checked"; } ?> />
         <label>Maintenance mode</label><br />
-        <input type="hidden" name="gopher" value="FALSE" />
-        <input type="checkbox" name="gopher" value="TRUE" <?php if($settings['gopher'] == TRUE){ echo "checked"; } ?> />
-        <label>Allow <a href="http://en.wikipedia.org/wiki/Gopher_(protocol)">gopher</a> access <em class="info">(yes, really)</em></label><br />
 
         <br /><input type="submit" value="Update" />
     </form>
+
+</fieldset>
+
+<fieldset>
+
+    <legend>Gopher: (experimental)</legend>
+
+    <?php
+
+        //See if the gopher server is online
+        echo '<b>Gopher server: </b>';
+        if($settings['gopher'] == TRUE){
+            echo '<span class="success">Online</span><br /><br />To stop the gopher server run: <pre>telnet localhost 70</pre> and the type: <pre>stop</pre>';
+        }else{
+            echo '<span class="error">Offline</span><br /><br />To start the gopher server run: <pre>sudo screen php ./gopher_server</pre>';
+        }
+
+    ?>
 
 </fieldset>
 

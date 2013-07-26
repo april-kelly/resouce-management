@@ -32,21 +32,21 @@ class db
             //Fetch the settings
 
                 //Access Via JSON
-			    $this->settings = new settings;
-			    $settings = $this->settings->fetch();
-
+			    //$this->settings = new settings;
+			    //$settings = $this->settings->fetch();
+/*
 			    $this->db_host     = $settings['db_host'];
 			    $this->db_user     = $settings['db_user'];
 			    $this->db_pass     = $settings['db_pass'];
 			    $this->db_database = $settings['db_database'];
-
+*/
                 //Direct Access
-                /*
-                $this->db_host     = '';
-                $this->db_user     = '';
-                $this->db_pass     = '';
-                $this->db_database = '';
-                */
+
+                $this->db_host     = 'localhost';
+                $this->db_user     = 'root';
+                $this->db_pass     = 'kd0hdf';
+                $this->db_database = 'resources';
+
 		}
 
             $this->dbc = new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_database)

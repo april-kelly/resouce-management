@@ -131,7 +131,9 @@ class views {
             }
 
             $dbc->close();
-
+            if(empty($table)){
+                $table = false;
+            }
             return $table;
         }
 

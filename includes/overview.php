@@ -50,13 +50,13 @@ $copy[$space_location]['name'] = "";
 $copy[$date_location]['name'] = "Last updated: ";
 $copy[$date_location]['1'] = date('g:ia T');
 
-
+$excel = $copy;
 //Output as csv (regardless to excel output)
 $csv = '';
 foreach($excel as $excel){
     $csv = $csv.implode(',', $excel)."\r\n";
 }
-file_put_contents('month.csv', $csv);
+file_put_contents('./month.csv', $csv);
 
 
 //Echo out the table
@@ -112,19 +112,26 @@ file_put_contents('month.csv', $csv);
 //output for gopher
 echo '<pre>';
 ob_start();
-echo '================';
-echo '||  Overview  ||';
-echo '================'."\r\n";
-echo '-------------------------------------------------------------------------------------------------------------------------------------'."\r\n";
+echo '+-------------------------------------------+'."\r\n";
+echo '|   Bluetent Resource Tracking Overview:    |'."\r\n";
+echo '+-------------------------------------------+'."\r\n"."\r\n";
+echo '+----------+----------+----------+----------+'."\r\n";
 
+$max_weeks = 4;
+$i = 0;
     foreach($weeks as $week){
         echo '|'.$week.'';
+        $i++;
+        if($max_weeks == $i){
+            break;
+        }
     }
     echo '|'."\r\n";
-echo '-------------------------------------------------------------------------------------------------------------------------------------'."\r\n";
 
 foreach($table as $table_row){
-    echo '-------------------------------------------------------------------------------------------------------------------------------------'."\r\n";
+    $max_weeks = 4;
+    $i = 0;
+    echo '+----------+----------+----------+----------+'."\r\n";
     foreach($weeks as $week){
         echo '|     ';
         echo $table_row[$week];
@@ -135,11 +142,19 @@ foreach($table as $table_row){
             echo ' ';
             $count--;
         }
+        $i++;
+        if($max_weeks == $i){
+            break;
+        }
         //echo '    ';
     }
     echo "|".$table_row["name"]."\r\n";
-    echo '-------------------------------------------------------------------------------------------------------------------------------------'."\r\n";
+
 }
+echo '+----------+----------+----------+----------+'."\r\n"."\r\n";
+echo '+-------------------------------------------+'."\r\n";
+echo '|  Last updated: '.date('m-d-Y').' at '.date('g:ia T').'  |'."\r\n";
+echo '+-------------------------------------------+'."\r\n"."\r\n";
 $gopher = ob_get_contents();
 ob_end_clean();
 file_put_contents('../gophermap', $gopher);

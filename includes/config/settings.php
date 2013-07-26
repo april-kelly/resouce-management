@@ -12,36 +12,46 @@ class settings {
         //Note: DO NOT use private or protected variables, it will cause json_decode generate a fatal exception.
 
         //Settings for insert.php
-            public $insert_valid    = TRUE;
-            public $insert_sanitize = TRUE;
-            public $insert_fail     = FALSE;
+            public $insert_valid    = TRUE;                                     //Make sure all inputs are set
+            public $insert_sanitize = TRUE;                                     //Sanitize data before sending to the database
+            public $insert_fail     = FALSE;                                    //Fail instead of inserterting
 
-        //Settings for month.php
-            public $month_colors    = FALSE;
-            public $month_excel     = FALSE; //This will be deprecated
-            public $month_output    = TRUE;
-            public $colors = array();
+        //Settings for overview.php
+            public $month_colors    = FALSE;                                    //Enable output coloration
+            public $month_excel     = FALSE;                                    //This will be deprecated
+            public $month_output    = TRUE;                                     //Enable output via web and/or csv/excel
+            public $colors = array();                                           //Deprecated
 
         //Settings for data.php
-            public $db_host         = 'localhost';
-            public $db_user         = 'root';
-            public $db_pass         = 'kd0hdf';
-            public $db_database     = 'resources';
+            public $db_host         = 'localhost';                              //MySQL host
+            public $db_user         = 'root';                                   //MySQL user
+            public $db_pass         = 'kd0hdf';                                 //MySQL password
+            public $db_database     = 'resources';                              //MySQL Database
+
+        //Server Settings
+            public $server_ip       = '127.0.0.1';                              //The Static IP address of the sever
+            public $url             = 'localhost/resouce-management/';          //The url of the server (w/out http://)
+            public $maintenance     = FALSE;                                    //Prevents users from accessing during maintenance
+
+        //Basic
+            public $logo            = './includes/images/logo.gif';             //Path to the logo in the nav bar
+            public $title           = 'Bluetent Marketing Resource Management'; //Title to display
 
         //Global Settings
-            public $weeks           = 12;
-            public $location        = NULL; //we'll set this in the constructor
-            public $debug           = FALSE;
-            public $logo            = './includes/images/logo.gif';
-            public $version         = '1.0.3 beta';
+            public $weeks           = 12;                                       //Number of weeks to show in all outputs
+            public $location        = NULL;                                     //Location of settings.json file (set in constructor)
+            public $debug           = FALSE;                                    //Debugging mode
+            public $version         = '1.0.3 beta';                             //Version number
+            public $production      = FALSE;                                    //Production status of this version beta/normal
+            public $production_alert= TRUE;                                     //Alert users if this is a beta release
+
+        //Security
             public $salt            = '60b448a4b93f07d724baecc1975b00e4b822efa4f6cb997ae0ec92f9f3580e981fe1d7f56f356d16f1451565fcf39929b0c157206fc9522cdc0caefc7b1945d2';
-            public $salt_changed    = TRUE;
-            public $url             = 'localhost/resouce-management/';
-            public $maintenance     = FALSE;
-            public $production      = FALSE;
-            public $production_alert= TRUE;
-            public $gopher          = TRUE; //Yes, really.
-            public $server_ip       = '127.0.0.1'; //needed for gopher to work
+            public $salt_changed    = TRUE;                                     //Deprecated
+
+        //Gopher Server (Experimental)
+            public $gopher          = TRUE;                                     //Enables/Disables Gopher server
+            public $gopher_port     = '70';                                     //Port to run gopher on
 
     public function __construct(){
 
