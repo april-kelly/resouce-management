@@ -8,8 +8,23 @@
  */
 
 //includes
-include_once('path.php');
+if(!(defined('ABSPATH')){
+    include_once('../../path.php');
+}
+require_once(ABSPATH.'includes/data.php');
+require_once(ABSPATH.'includes/config/settings.php');
 
+//Make sure the session is set
+if(!(isset($_SESSION))){
+    session_start();
+}
+
+//fetch the debug status
+$set = new settings;
+$status = $set->fetch();
+
+
+if($status['debug'] == true && $_SESSION['admin'] >= '2'){
 
 //salt unhashed
 $salt_raw = 'This is a salt.';
@@ -29,3 +44,7 @@ echo 'Password: '.hash('SHA512', $password_raw.$salt).'<br />';
 $fp = fopen('/dev/urandom', 'r');
 
 echo '<br />New Salt: '.hash('SHA512', fread($fp, 256));
+
+}else{
+    ?><span class="error">You do not enough have permission to view this page or debug mode is not enabled.</span><?php
+}

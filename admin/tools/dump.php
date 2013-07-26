@@ -5,10 +5,18 @@
  * Date:       6/28/13
  */
 
-//include the data object
-require_once('path.php');
+//includes
+if(!(defined('ABSPATH')){
+    require_once('../../path.php');
+}
 require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH.'includes/config/settings.php');
+
+//Make sure the session is set
+if(!(isset($_SESSION))){
+    session_start();
+}
+
 
 //fetch the debug status
 $set = new settings;

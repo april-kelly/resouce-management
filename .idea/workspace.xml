@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4a8e2b8-07a8-4744-887f-0c49345f2261" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/api/core.php" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin/tools/salt.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/salt.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/tools/dump.php" afterPath="$PROJECT_DIR$/admin/tools/dump.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -11,8 +14,8 @@
     <file path="/overview.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374864690768" ignored="false" />
     <file path="/gopher_server.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374867576043" ignored="false" />
     <file path="/internal.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374868721831" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374868396672" ignored="false" />
     <file path="/menu2.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374868843272" ignored="false" />
+    <file path="/dump.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374873781177" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,13 +57,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="9" selection-start="2652" selection-end="2652" vertical-scroll-proportion="0.2322357">
+            <state line="136" column="34" selection-start="2823" selection-end="2823" vertical-scroll-proportion="85.958336">
               <folding>
                 <element signature="e#6#111#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/templates/template.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="31.583334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/templates/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="3" selection-start="9" selection-end="9" vertical-scroll-proportion="-0.625">
+              <folding>
+                <element signature="e#6#152#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="salt.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/tools/salt.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="4" selection-start="245" selection-end="245" vertical-scroll-proportion="-3.125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dump.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/tools/dump.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="1" selection-start="694" selection-end="694" vertical-scroll-proportion="0.70143884">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,6 +150,8 @@
         <option value="$PROJECT_DIR$/admin/menu2.php" />
         <option value="$PROJECT_DIR$/gopher_server.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/admin/tools/salt.php" />
+        <option value="$PROJECT_DIR$/admin/tools/dump.php" />
       </list>
     </option>
   </component>
@@ -173,7 +216,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -320,10 +395,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="9" selection-start="2652" selection-end="2652" vertical-scroll-proportion="0.2322357">
+        <state line="136" column="34" selection-start="2823" selection-end="2823" vertical-scroll-proportion="85.958336">
           <folding>
             <element signature="e#6#111#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/templates/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="31.583334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/templates/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="3" selection-start="9" selection-end="9" vertical-scroll-proportion="-0.625">
+          <folding>
+            <element signature="e#6#152#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/tools/salt.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="4" selection-start="245" selection-end="245" vertical-scroll-proportion="-3.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/tools/dump.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="1" selection-start="694" selection-end="694" vertical-scroll-proportion="0.70143884">
+          <folding />
         </state>
       </provider>
     </entry>
