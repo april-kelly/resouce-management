@@ -2,7 +2,7 @@
 /**
  *  Name:       Basic Gopher Server
  *  Programmer: Liam Kelly
- *  Date: 
+ *  Date:       7/26/13
  */
 
 //includes
@@ -64,11 +64,10 @@ for (;;) {
             echo 'Telnet client disconnected';
             stream_socket_sendto($client, "PHP Gopher Server v1.0.\r\n");
             stream_socket_sendto($client, "By: Liam Kelly\r\n");
-            stream_socket_sendto($client, "(c) Copyright 2013 Bluetent Marketing\r\n");
+            stream_socket_sendto($client, "(C) Copyright 2013 Bluetent Marketing\r\n");
+            stream_socket_sendto($client, "ALL RIGHTS RESERVED\r\n");
             break;
         }
-
-
 
 
     }

@@ -75,13 +75,22 @@ if(isset($_SESSION['userid'])){
     <legend>Gopher: (experimental)</legend>
 
     <?php
+        //Make sure that php is running on linux
+        if(php_uname('s') == 'Linux'){
 
-        //See if the gopher server is online
-        echo '<b>Gopher server: </b>';
-        if($settings['gopher'] == TRUE){
-            echo '<span class="success">Online</span><br /><br />To stop the gopher server run: <pre>telnet localhost 70</pre> and the type: <pre>stop</pre>';
+            //See if the gopher server is online
+            echo '<b>Gopher server: </b>';
+            if($settings['gopher'] == TRUE){
+                echo '<span class="success">Online</span><br /><br />To stop the gopher server run: <pre>telnet localhost 70</pre> and the type: <pre>stop</pre>';
+            }else{
+                echo '<span class="error">Offline</span><br /><br />To start the gopher server run: <pre>sudo screen php ./gopher_server.php</pre>';
+            }
+
         }else{
-            echo '<span class="error">Offline</span><br /><br />To start the gopher server run: <pre>sudo screen php ./gopher_server</pre>';
+
+            //Let the user know that this feature is not available
+            echo "<span class='info'>Were sorry this feature is not available on your platform!</span>";
+
         }
 
     ?>

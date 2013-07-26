@@ -130,7 +130,7 @@ switch($request){
 
     case "admin":
 
-        $page = './admin/menu2.php';
+        $page = './admin/menu.php';
         $main_id = 'admin';
 
         //pass the save status (if set)
