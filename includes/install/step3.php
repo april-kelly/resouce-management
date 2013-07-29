@@ -108,7 +108,7 @@ $_SESSION['step2'] = $_REQUEST;
             $users->change('email',     $_SESSION['step2']['email']);
             $users->change('password',  $_SESSION['step2']['password']);
             $users->change('type',      '2');
-            $users->change('admin',     '1');
+            $users->change('admin',     '2');
 
             $users->create();
             echo '<span class="success">Added user: '.$_SESSION['step2']['first_name'].'.</span><br />';
