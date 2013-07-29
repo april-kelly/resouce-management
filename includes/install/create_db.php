@@ -12,7 +12,7 @@ require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH.'includes/config/settings.php');
 
 
-function create_settings($user, $host, $pass){
+function create_settings_json($user, $host, $pass){
 
     //Set up the settings
     $set = new settings;

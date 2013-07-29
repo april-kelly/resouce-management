@@ -13,7 +13,11 @@ require_once(ABSPATH.'includes/config/settings.php');
 
 set_time_limit(0);
 
-$server = stream_socket_server("tcp://127.0.0.1:70", $errno, $errorMessage);
+//Fetch settings
+$set = new settings;
+$settings = $set->fetch();
+
+$server = stream_socket_server("tcp://".$settings['domain'].":70", $errno, $errorMessage);
 
 if ($server === false) {
     throw new UnexpectedValueException("Could not bind to socket: $errorMessage");

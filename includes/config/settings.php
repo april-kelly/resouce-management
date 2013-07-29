@@ -29,8 +29,9 @@ class settings {
             public $db_database     = 'resources';                              //MySQL Database
 
         //Server Settings
-            public $server_ip       = '127.0.0.1';                              //The Static IP address of the sever
-            public $url             = 'localhost/resouce-management/';          //The url of the server (w/out http://)
+            public $domain          = 'serverdomain';
+            public $dir             = 'serverdir';
+            public $url             = NULL;
             public $maintenance     = FALSE;                                    //Prevents users from accessing during maintenance
 
         //Basic
@@ -50,7 +51,7 @@ class settings {
             public $salt_changed    = TRUE;                                     //Deprecated
 
         //Gopher Server (Experimental)
-            public $gopher          = TRUE;                                     //Enables/Disables Gopher server
+            public $gopher          = FALSE;                                     //Enables/Disables Gopher server
             public $gopher_port     = '70';                                     //Port to run gopher on
 
     public function __construct(){

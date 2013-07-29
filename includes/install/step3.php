@@ -12,7 +12,6 @@ session_start();
 
 //includes
 require_once('../../path.php');
-require_once('../config/settings.php');
 require_once('./create_db.php');
 require_once('../config/users.php');
 
@@ -47,12 +46,54 @@ $_SESSION['step2'] = $_REQUEST;
         //Ensure the system is not already installed
         if(!(file_exists('../config/settings.json'))){
 
-            //Create the settings file
-            create_settings(
-                $_SESSION['step1']['db_user'],
-                $_SESSION['step1']['db_host'],
-                $_SESSION['step1']['db_pass']
-            );
+            //Create the Settings.php file
+
+                //Define settings to change
+
+                            $settings = file_get_contents('./settings.php');
+
+
+                //Create the salt
+                            //Get some random
+                            $fp = fopen('/dev/urandom', 'r');
+
+                            //Hash the randomness
+                            $salt = hash('SHA512', fread($fp, 512));
+
+                            //What to look for
+                            $patterns = array(
+                                1 => '/sqlhost/',
+                                2 => '/sqluser/',
+                                3 => '/sqlpass/',
+                                4 => '/sqldb/',
+                                5 => '/serverdomain/',
+                                6 => '/serversalt/',
+                                7 => '/This is a sample for mod.php do not modify \(to edit settings change ..\/config\/settings.php\)/',
+                                8 => '/serverdir/',
+                            );
+
+                            $replacements = array(
+                                1 => $_SESSION['step1']['db_host'],
+                                2 => $_SESSION['step1']['db_user'],
+                                3 => $_SESSION['step1']['db_pass'],
+                                4 => $_SESSION['step1']['db_database'],
+                                5 => $_SESSION['step1']['server_domain'],
+                                6 => $salt,
+                                7 => '',
+                                8 => $_SESSION['step1']['server_dir'],
+                            );
+
+
+            $new_settings = preg_replace($patterns, $replacements,  $settings);
+
+            file_put_contents('../config/settings.php', $new_settings);
+
+            //Create the settings.json file
+            require_once('../config/settings.php');
+            $set = new settings;
+            $set->create();
+
+
             echo '<span class="success">Created settings file.</span><br />';
 
             //...and for the database
@@ -71,6 +112,8 @@ $_SESSION['step2'] = $_REQUEST;
 
             $users->create();
             echo '<span class="success">Added user: '.$_SESSION['step2']['first_name'].'.</span><br />';
+
+
 
         }else{
             ?><span class="error">It appears that you have already installed. Did you mean to preform a <a href="../config/reset.php">repair</a> instead?</span><?php
