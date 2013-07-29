@@ -50,7 +50,7 @@ $_SESSION['step2'] = $_REQUEST;
 
                 //Define settings to change
 
-                            $settings = file_get_contents('./settings.php');
+                            $settings = file_get_contents('../config/settings.template');
 
 
                 //Create the salt
