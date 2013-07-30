@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4a8e2b8-07a8-4744-887f-0c49345f2261" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/templates/404.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/templates/418.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/templates/500.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/templates/footer.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/templates/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/templates/nav.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/templates/template.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/install/step3.php" afterPath="$PROJECT_DIR$/includes/install/step3.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/config/settings.template" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375127629863" ignored="false" />
+    <file path="/Dummy.txt" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375201712880" ignored="false" />
     <file path="/gophermap" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374863593661" ignored="false" />
     <file path="/overview.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374864690768" ignored="false" />
     <file path="/gopher_server.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375124922328" ignored="false" />
@@ -45,30 +38,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="step3.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/includes/install/step3.php">
+      <file leaf-file-name="insert.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/insert.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="42" selection-start="3508" selection-end="3508" vertical-scroll-proportion="0.5319149">
-              <folding>
-                <element signature="e#6#122#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="0" selection-start="3845" selection-end="3845" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.375">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/install/settings.php">
+      <file leaf-file-name="create_db.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/install/create_db.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="1642" selection-end="1948" vertical-scroll-proportion="0.0">
+            <state line="14" column="29" selection-start="315" selection-end="315" vertical-scroll-proportion="-0.10298103">
               <folding />
             </state>
           </provider>
@@ -208,39 +190,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="errors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -269,13 +219,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="764" width="1368" height="773" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3296" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.275" sideWeight="0.6704" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -332,7 +283,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added settings file template" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -346,6 +297,7 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="Added settings file template" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -381,11 +333,6 @@
         <state line="237" column="39" selection-start="5169" selection-end="5184" vertical-scroll-proportion="-4.5306125" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/install/create_db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="29" selection-start="315" selection-end="315" vertical-scroll-proportion="-6.25" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/install/mod.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="337" selection-end="628" vertical-scroll-proportion="-4.4166665" />
@@ -408,20 +355,6 @@
         <state line="19" column="59" selection-start="425" selection-end="425" vertical-scroll-proportion="-9.375" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="0" selection-start="3845" selection-end="3845" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/install/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1642" selection-end="1948" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/data.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="16" selection-start="625" selection-end="625" vertical-scroll-proportion="0.05199307">
@@ -436,12 +369,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="13" selection-start="3982" selection-end="3982" vertical-scroll-proportion="0.21276596">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/includes/install/step3.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="42" selection-start="3508" selection-end="3508" vertical-scroll-proportion="0.5319149">
+        <state line="110" column="42" selection-start="3508" selection-end="3508" vertical-scroll-proportion="0.45212767">
           <folding>
             <element signature="e#6#122#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/insert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="9.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/install/create_db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="29" selection-start="315" selection-end="315" vertical-scroll-proportion="-0.10298103">
+          <folding />
         </state>
       </provider>
     </entry>
