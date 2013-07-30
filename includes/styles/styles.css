@@ -89,7 +89,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2%;
-    width: 600px;
+    width: 800px;
     padding: 15px;
     box-shadow: 0 5px 24px #111;
     -moz-border-radius: 15px;
@@ -99,6 +99,11 @@ body{
 #installer form {
     width: 80%;
     margin: 0 auto;
+}
+
+#installer textarea{
+    width:100%;
+    height: 200px;
 }
 
 #installer label, input {

@@ -10,10 +10,11 @@ if(!(isset($_SESSION))){
 session_start();
 }
 
-//includes
+//Includes
 require_once('../../path.php');
-require_once('./create_db.php');
-require_once('../config/users.php');
+
+//Variables
+$fail = false;
 
 //Fetch data from step 2
 $_SESSION['step2'] = $_REQUEST;
@@ -44,7 +45,7 @@ $_SESSION['step2'] = $_REQUEST;
     <?php
 
         //Ensure the system is not already installed
-        if(!(file_exists('../config/settings.json'))){
+        //if(!(file_exists('../config/settings.json'))){
 
             //Create the Settings.php file
 
@@ -86,45 +87,77 @@ $_SESSION['step2'] = $_REQUEST;
 
             $new_settings = preg_replace($patterns, $replacements,  $settings);
 
-            chmod('../config/settings.php', 777);
-            chmod('../config/settings.json', 777);
+                if(!(is_writable(ABSPATH.'includes/config'))){
 
-            file_put_contents('../config/settings.php', $new_settings);
+                    //PHP cannot write the settings.php file
+                    ?>
+                        <span class="error">Unable to create settings.php file.</span><br />
+                        <span class="info">It appears that php does not have enough permission to write/create files. Please fix this or, copy and paste this
+                        copy of the configuration file into includes/config/settings.php.</span>
+                        <textarea>
+                            <?php echo $new_settings; ?>
+                        </textarea>
+                        <p>
+                            <a href="./step3.php?o=">Continue</a>
+                        </p>
 
-            //Create the settings.json file
-            require_once('../config/settings.php');
-            $set = new settings;
-            $set->create();
+                    <?php
 
+                    $fail = true;
 
-            echo '<span class="success">Created settings file.</span><br />';
+                    if(isset($_REQUEST['f'])){
 
-            //...and for the database
-            create_db($_SESSION['step1']['db_database']);
-            echo '<span class="success">Created database.</span><br />';
+                        //Override if necessary
+                        $fail = false;
 
-            //...Finally the user
-            $users = new users;
+                    }
 
-            $users->change('index', null);
-            $users->change('name',      $_SESSION['step2']['first_name']);
-            $users->change('email',     $_SESSION['step2']['email']);
-            $users->change('password',  $_SESSION['step2']['password']);
-            $users->change('type',      '2');
-            $users->change('admin',     '2');
+                }else{
 
-            $users->create();
-            echo '<span class="success">Added user: '.$_SESSION['step2']['first_name'].'.</span><br />';
+                    //PHP can write the settings.php file
+                    file_put_contents(ABSPATH.'includes/config/settings.php', $new_settings);
+                    echo '<span class="success">Created settings file.</span><br />';
 
 
 
-        }else{
-            ?><span class="error">It appears that you have already installed. Did you mean to preform a <a href="../config/reset.php">repair</a> instead?</span><?php
-        }
+                }
+
+            if($fail == false){
+
+                //include dependencies which require settings.php
+                require_once(ABSPATH.'includes/config/settings.php');
+                require_once('./create_db.php');
+                require_once('../config/users.php');
+
+
+                //Create the settings.json file
+                $set = new settings;
+                $set->create();
+
+                //...and for the database
+                create_db($_SESSION['step1']['db_database']);
+                echo '<span class="success">Created database.</span><br />';
+
+                //...Finally the user
+                $users = new users;
+
+                $users->change('index', null);
+                $users->change('name',      $_SESSION['step2']['first_name']);
+                $users->change('email',     $_SESSION['step2']['email']);
+                $users->change('password',  $_SESSION['step2']['password']);
+                $users->change('type',      '2');
+                $users->change('admin',     '2');
+
+                $users->create();
+                echo '<span class="success">Added user: '.$_SESSION['step2']['first_name'].'.</span><br />';
+
+            }
+
+
+        /*}else{
+           ?><span class="error">It appears that you have already installed. Did you mean to preform a <a href="../config/reset.php">repair</a> instead?</span><?php
+        }*/
     ?>
-    <p>
-        <a href="../../">Continue</a>
-    </p>
 
 </div>
 

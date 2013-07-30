@@ -1,7 +1,8 @@
 <?php
 /**
  * Name:       Settings creation and fetch class
- * Programmer: liam
+ * Notes:      
+ * Programmer: Liam Kelly
  * Date:       5/23/13
  */
 
@@ -24,14 +25,14 @@ class settings {
 
         //Settings for data.php
             public $db_host         = 'localhost';                              //MySQL host
-            public $db_user         = 'root';                                   //MySQL user
-            public $db_pass         = 'kd0hdf';                                 //MySQL password
-            public $db_database     = 'resources';                              //MySQL Database
+            public $db_user         = 'root';                              //MySQL user
+            public $db_pass         = 'kd0hdf';                              //MySQL password
+            public $db_database     = 'resources';                                //MySQL Database
 
         //Server Settings
-            public $domain          = 'serverdomain';
-            public $dir             = 'serverdir';
-            public $url             = NULL;
+            public $domain          = 'localhost';
+            public $dir             = '/resource-management/';
+            public $url             = NULL;                                     
             public $maintenance     = FALSE;                                    //Prevents users from accessing during maintenance
 
         //Basic
@@ -47,7 +48,7 @@ class settings {
             public $production_alert= TRUE;                                     //Alert users if this is a beta release
 
         //Security
-            public $salt            = '60b448a4b93f07d724baecc1975b00e4b822efa4f6cb997ae0ec92f9f3580e981fe1d7f56f356d16f1451565fcf39929b0c157206fc9522cdc0caefc7b1945d2';
+            public $salt            = '566ca74fae257a037e2718b8d3560ba1ab8b8a06f54f107a07865f1327c3b42493c127059c930dd3542a42b7c5c1ba869dcc4d5de78ce1cb8615961368806eaf';
             public $salt_changed    = TRUE;                                     //Deprecated
 
         //Gopher Server (Experimental)
@@ -68,6 +69,9 @@ class settings {
 
         }
 
+        //Define $url
+        $this->url = $this->domain.$this->dir;
+
     }
 
     //Create a json settings file
@@ -75,6 +79,12 @@ class settings {
     {
 
         $array = (array) $this;
+
+        //Throw away database creds
+        unset($array['db_host']);
+        unset($array['db_user']);
+        unset($array['db_pass']);
+        unset($array['db_database']);
 
         $json = json_encode($array);
 
@@ -100,11 +110,20 @@ class settings {
     public function fetch()
     {
 
+        //Fetch the json
         $file = file_get_contents($this->location);
 
+        //Decode it
         $json = json_decode($file);
 
+        //Create an array
         $array = (array) $json;
+
+        //Add in the database creds
+        $array['db_host'] = $this->db_host;
+        $array['db_user'] = $this->db_user;
+        $array['db_pass'] = $this->db_pass;
+        $array['db_database'] = $this->db_database;
 
         return $array;
 
