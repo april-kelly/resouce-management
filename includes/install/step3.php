@@ -86,6 +86,9 @@ $_SESSION['step2'] = $_REQUEST;
 
             $new_settings = preg_replace($patterns, $replacements,  $settings);
 
+            chmod('../config/settings.php', 777);
+            chmod('../config/settings.json', 777);
+
             file_put_contents('../config/settings.php', $new_settings);
 
             //Create the settings.json file
