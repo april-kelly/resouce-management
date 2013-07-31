@@ -49,11 +49,11 @@ class settings {
 
         //Security
             public $salt            = 'serversalt';
-            public $salt_changed    = TRUE;                                     //Deprecated
+            public $salt_changed    = TRUE;                                      //Deprecated
 
         //Gopher Server (Experimental)
             public $gopher          = FALSE;                                     //Enables/Disables Gopher server
-            public $gopher_port     = '70';                                     //Port to run gopher on
+            public $gopher_port     = '70';                                      //Port to run gopher on
 
     public function __construct(){
 

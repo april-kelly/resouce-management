@@ -48,7 +48,7 @@ class settings {
             public $production_alert= TRUE;                                     //Alert users if this is a beta release
 
         //Security
-            public $salt            = '566ca74fae257a037e2718b8d3560ba1ab8b8a06f54f107a07865f1327c3b42493c127059c930dd3542a42b7c5c1ba869dcc4d5de78ce1cb8615961368806eaf';
+            public $salt            = 'cfc8f21aa94415bdca4c7422b006cb689c37332ee3013519a54b62f8f786ebbf9ce08ba8162cedb7be5fe46f2a12731ba0d44e892daddc2d409694907f20976f';
             public $salt_changed    = TRUE;                                     //Deprecated
 
         //Gopher Server (Experimental)

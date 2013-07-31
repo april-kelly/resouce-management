@@ -144,11 +144,14 @@ class views {
             $dbc->connect();
 
             //Query the database
-            $query = "SELECT * FROM people WHERE index = '".$person."' AND week_of BETWEEN '".$this->weeks[1]."' AND '".$this->weeks[count($this->weeks)]."' ";
+            $query = "SELECT * FROM jobs WHERE `index` = ".$person." AND week_of BETWEEN '".$this->weeks[1]."' AND '".$this->weeks[count($this->weeks)]."' ";
             $results = $dbc->query($query);
+
 
             //close the connection
             $dbc->close();
+
+            return $list;
 
 
         }

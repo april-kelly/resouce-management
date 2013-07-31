@@ -37,27 +37,6 @@ $view = new views;
 $table = $view->build_table();
 $weeks = $view->weeks;
 
-//Excel/CSV output:
-$copy = $table;
-
-//figure out where the end of the table is
-$end = end($copy);
-$date_location = $end['id'] + 2;
-$space_location = $end['id'] + 1;
-
-//add the "Last updated:" notice to the array
-$copy[$space_location]['name'] = "";
-$copy[$date_location]['name'] = "Last updated: ";
-$copy[$date_location]['1'] = date('g:ia T');
-
-$excel = $copy;
-//Output as csv (regardless to excel output)
-$csv = '';
-foreach($excel as $excel){
-    $csv = $csv.implode(',', $excel)."\r\n";
-}
-file_put_contents('./month.csv', $csv);
-
 
 //Echo out the table
 
@@ -167,7 +146,7 @@ echo '</pre>';
     if($excel_enable = TRUE){
         ?>
        <br />
-       You can also <a href="./month.xls">download</a> this in excel format.
+       You can also <a href="./includes/excel.php">download</a> this in excel format.
     <?php
     }else{
        ?>
