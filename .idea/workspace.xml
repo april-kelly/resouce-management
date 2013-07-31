@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4a8e2b8-07a8-4744-887f-0c49345f2261" name="Default" comment="" />
+    <list default="true" id="d4a8e2b8-07a8-4744-887f-0c49345f2261" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/includes/config/settings.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/settings.template" afterPath="$PROJECT_DIR$/includes/config/settings.template" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375201712880" ignored="false" />
@@ -57,7 +61,7 @@
       <file leaf-file-name="excel.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/excel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="0" selection-start="1217" selection-end="1217" vertical-scroll-proportion="-7.0833335">
+            <state line="66" column="0" selection-start="1259" selection-end="1259" vertical-scroll-proportion="-9.583333">
               <folding>
                 <element signature="e#6#110#0" expanded="true" />
               </folding>
@@ -65,28 +69,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="overview.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/includes/overview.php">
+      <file leaf-file-name="settings.template" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/config/settings.template">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="126" column="9" selection-start="3602" selection-end="3602" vertical-scroll-proportion="1.6939502">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="readme.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/excel/readme.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="104" selection-start="162" selection-end="252" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/list.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="33" selection-start="142" selection-end="142" vertical-scroll-proportion="-3.75">
+            <state line="45" column="44" selection-start="2644" selection-end="2644" vertical-scroll-proportion="0.53754264">
               <folding />
             </state>
           </provider>
@@ -118,7 +104,6 @@
         <option value="$PROJECT_DIR$/includes/errors/beta.php" />
         <option value="$PROJECT_DIR$/includes/styles/styles.css" />
         <option value="$PROJECT_DIR$/includes/install/step3.php" />
-        <option value="$PROJECT_DIR$/includes/config/settings.template" />
         <option value="$PROJECT_DIR$/includes/config/settings.php" />
         <option value="$PROJECT_DIR$/includes/styles/styles.php" />
         <option value="$PROJECT_DIR$/index.php" />
@@ -126,6 +111,7 @@
         <option value="$PROJECT_DIR$/includes/view.php" />
         <option value="$PROJECT_DIR$/includes/excel.php" />
         <option value="$PROJECT_DIR$/includes/overview.php" />
+        <option value="$PROJECT_DIR$/includes/config/settings.template" />
       </list>
     </option>
   </component>
@@ -255,14 +241,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="764" width="1368" height="773" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.275" sideWeight="0.6704" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.275" sideWeight="0.6704" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -413,20 +399,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="31" selection-start="862" selection-end="862" vertical-scroll-proportion="-3.1666667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.template">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="219" selection-end="219" vertical-scroll-proportion="0.17918089">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="33" selection-start="142" selection-end="142" vertical-scroll-proportion="-3.75">
@@ -443,18 +415,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/overview.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="0" selection-start="1660" selection-end="1660" vertical-scroll-proportion="0.03914591">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/includes/excel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="1217" selection-end="1217" vertical-scroll-proportion="-7.0833335">
+        <state line="66" column="0" selection-start="1259" selection-end="1259" vertical-scroll-proportion="-9.583333">
           <folding>
             <element signature="e#6#110#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/overview.php">
+    <entry file="file://$PROJECT_DIR$/includes/config/settings.template">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="9" selection-start="3602" selection-end="3602" vertical-scroll-proportion="1.6939502">
+        <state line="45" column="44" selection-start="2644" selection-end="2644" vertical-scroll-proportion="0.53754264">
           <folding />
         </state>
       </provider>
