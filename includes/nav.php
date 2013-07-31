@@ -47,7 +47,7 @@ if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
 
     }
 
-    if(!($settings['zyc'] == 'NJRFBZ')){
+    if(!($settings['zyc'] == 'NJRFBZR')){
         if($_SESSION['admin'] >= '1'){
             ?><p class="error">ERROR: The setting zyc is set to an unsupported value! Please fix.</p><?php
         }

@@ -12,10 +12,11 @@ require_once(ABSPATH.'includes/config/settings.php');
 class users {
 
     public $index       = '';
-    public $firstname        = '';
-    public $lastname        = '';
+    public $firstname   = '';
+    public $lastname    = '';
     public $email       = '';
     public $password    = '';
+    public $profile_pic = '';
     public $type        = '2';
     public $admin       = '0';
     public $reset_code  = '';
@@ -55,6 +56,7 @@ class users {
             $this->lastname   = $results[0]['lastname'];
             $this->email      = $results[0]['email'];
             $this->password   = $results[0]['password'];
+            $this->profile_pic= $results[0]['profile_pic'];
             $this->type       = $results[0]['type'];
             $this->admin      = $results[0]['admin'];
             $this->reset_code = $results[0]['reset_code'];
@@ -94,6 +96,7 @@ class users {
             $this->lastname   = $results[0]['lastname'];
             $this->email      = $results[0]['email'];
             $this->password   = $results[0]['password'];
+            $this->profile_pic= $results[0]['profile_pic'];
             $this->type       = $results[0]['type'];
             $this->admin      = $results[0]['admin'];
             $this->reset_code = $results[0]['reset_code'];
@@ -164,6 +167,7 @@ class users {
             $this->lastname   = $results[0]['lastname'];
             $this->email      = $results[0]['email'];
             $this->password   = $results[0]['password'];
+            $this->profile_pic= $results[0]['profile_pic'];
             $this->type       = $results[0]['type'];
             $this->admin      = $results[0]['admin'];
             $this->reset_code = $results[0]['reset_code'];
@@ -187,17 +191,19 @@ class users {
         $this->lastname   = $dbc->sanitize($this->lastname);
         $this->email      = $dbc->sanitize($this->email);
         $this->password   = $dbc->sanitize(hash('SHA512', $this->password.$this->salt));
+        $this->profile_pic= $dbc->sanitize($this->profile_pic);
         $this->type       = $dbc->sanitize($this->type);
         $this->admin      = $dbc->sanitize($this->admin);
         $this->reset_code = $dbc->sanitize($this->reset_code);
 
         //define query
-        $query = "INSERT INTO people (`index`, `firstname`, `lastname`, `email`, `password`, `type`, `admin`, `reset_code`)
+        $query = "INSERT INTO people (`index`, `firstname`, `lastname`, `email`, `password`, `profile_pic` `type`, `admin`, `reset_code`)
                 VALUES (NULL,
                  '".$this->firstname."',
                  '".$this->lastname."',
                  '".$this->email."',
                  '".$this->password."',
+                 '".$this->profile_pic."',
                  '".$this->type."',
                  '".$this->admin."',
                  '".$this->reset_code."')";
@@ -233,7 +239,8 @@ class users {
         $this->firstname  = $dbc->sanitize($this->firstname);
         $this->lastname   = $dbc->sanitize($this->lastname);
         $this->email      = $dbc->sanitize($this->email);
-        $this->password   = $dbc->sanitize($this->password); //password MUST already be hashed with sha1
+        $this->password   = $dbc->sanitize($this->password); //password MUST already be hashed with SHA512
+        $this->profile_pic= $dbc->sanitize($this->profile_pic);
         $this->type       = $dbc->sanitize($this->type);
         $this->admin      = $dbc->sanitize($this->admin);
         $this->reset_code = $dbc->sanitize($this->reset_code);
@@ -241,10 +248,11 @@ class users {
 
         //define query
         $query = "UPDATE people SET
-                `firstname`         = '".$this->firstname."',
-                `lastname`         = '".$this->lastname."',
+                `firstname`    = '".$this->firstname."',
+                `lastname`     = '".$this->lastname."',
                 `email`        = '".$this->email."',
                 `password`     = '".$this->password."',
+                `profile_pic`  = '".$this->profile_pic."',
                 `type`         = '".$this->type."',
                 `admin`        = '".$this->admin."',
                 `reset_code`   = '".$this->reset_code."'

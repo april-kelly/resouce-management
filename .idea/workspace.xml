@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4a8e2b8-07a8-4744-887f-0c49345f2261" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menus/user_save.php" afterPath="$PROJECT_DIR$/admin/menus/user_save.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menus/users.php" afterPath="$PROJECT_DIR$/admin/menus/users.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/uploads/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/uploads/upload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/nav.php" afterPath="$PROJECT_DIR$/includes/nav.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/users.php" afterPath="$PROJECT_DIR$/includes/config/users.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,12 +26,13 @@
     <file path="/styles.css" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375206571506" ignored="false" />
     <file path="/settings.template" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375295478758" ignored="false" />
     <file path="/styles.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375217269862" ignored="false" />
-    <file path="/index.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375295273456" ignored="false" />
+    <file path="/index.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375299257669" ignored="false" />
     <file path="/view.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375218865292" ignored="false" />
     <file path="/list.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375218813879" ignored="false" />
     <file path="/excel.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375289942318" ignored="false" />
     <file path="/nav.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375296912033" ignored="false" />
-    <file path="/users.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375297823525" ignored="false" />
+    <file path="/users.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375302070819" ignored="false" />
+    <file path="/upload.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375301398459" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,30 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user_save.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
+      <file leaf-file-name="users.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/config/users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="27" selection-start="2477" selection-end="2477" vertical-scroll-proportion="0.9341637">
+            <state line="199" column="106" selection-start="5847" selection-end="5847" vertical-scroll-proportion="5.2046266">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/menus/users.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="106" selection-start="2346" selection-end="2346" vertical-scroll-proportion="-4.6666665">
-              <folding>
-                <marker date="1375298048763" expanded="true" signature="2020:2098" placeholder="..." />
-                <marker date="1375298048763" expanded="true" signature="3030:3086" placeholder="..." />
-                <marker date="1375298048763" expanded="true" signature="3684:4825" placeholder="..." />
-                <marker date="1375298048763" expanded="true" signature="4837:5138" placeholder="..." />
-                <marker date="1375298048763" expanded="true" signature="4936:5138" placeholder="..." />
-                <marker date="1375298048763" expanded="true" signature="5003:5138" placeholder="..." />
-                <marker date="1375298048763" expanded="true" signature="5403:5768" placeholder="..." />
-                <marker date="1375298048763" expanded="true" signature="5517:5768" placeholder="..." />
-                <marker date="1375298048763" expanded="true" signature="5601:5768" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -94,8 +79,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/includes/config/settings.php" />
-        <option value="$PROJECT_DIR$/includes/styles/styles.php" />
         <option value="$PROJECT_DIR$/includes/list.php" />
         <option value="$PROJECT_DIR$/includes/excel.php" />
         <option value="$PROJECT_DIR$/includes/overview.php" />
@@ -104,19 +87,21 @@
         <option value="$PROJECT_DIR$/includes/install/step3.php" />
         <option value="$PROJECT_DIR$/includes/config/settings.template" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/includes/nav.php" />
         <option value="$PROJECT_DIR$/includes/view.php" />
-        <option value="$PROJECT_DIR$/includes/config/users.php" />
         <option value="$PROJECT_DIR$/includes/week.php" />
         <option value="$PROJECT_DIR$/admin/menus/users.php" />
         <option value="$PROJECT_DIR$/admin/menus/user_save.php" />
+        <option value="$PROJECT_DIR$/includes/nav.php" />
+        <option value="$PROJECT_DIR$/includes/uploads/index.php" />
+        <option value="$PROJECT_DIR$/includes/uploads/upload.php" />
+        <option value="$PROJECT_DIR$/includes/config/users.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1365" />
-    <option name="y" value="-4" />
+    <option name="x" value="-1" />
+    <option name="y" value="764" />
     <option name="width" value="1368" />
     <option name="height" value="773" />
   </component>
@@ -188,6 +173,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resouce-management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -234,7 +255,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1365" y="-4" width="1368" height="773" extended-state="6" />
+    <frame x="-1" y="764" width="1368" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -321,27 +342,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/includes/excel/readme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="104" selection-start="162" selection-end="252" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="16" selection-start="625" selection-end="625" vertical-scroll-proportion="-1.947826">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="33" selection-start="142" selection-end="142" vertical-scroll-proportion="-3.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/overview.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="64" column="0" selection-start="1660" selection-end="1660" vertical-scroll-proportion="0.03914591">
@@ -395,26 +395,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/nav.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="8" selection-start="1693" selection-end="1693" vertical-scroll-proportion="0.79130435">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="65" selection-start="1823" selection-end="1823" vertical-scroll-proportion="0.4822064">
           <folding>
             <element signature="e#7#97#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="70" selection-start="5546" selection-end="5546" vertical-scroll-proportion="0.060869563">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -425,26 +411,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/uploads/106c6b8d-7dc5-458a-a084-6b912080a8ae_5.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/uploads/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="7" selection-start="261" selection-end="261" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/menus/users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="106" selection-start="2346" selection-end="2346" vertical-scroll-proportion="-4.6666665">
+        <state line="86" column="106" selection-start="2346" selection-end="2346" vertical-scroll-proportion="2.0409253">
           <folding>
-            <marker date="1375298048763" expanded="true" signature="2020:2098" placeholder="..." />
-            <marker date="1375298048763" expanded="true" signature="3030:3086" placeholder="..." />
-            <marker date="1375298048763" expanded="true" signature="3684:4825" placeholder="..." />
-            <marker date="1375298048763" expanded="true" signature="4837:5138" placeholder="..." />
-            <marker date="1375298048763" expanded="true" signature="4936:5138" placeholder="..." />
-            <marker date="1375298048763" expanded="true" signature="5003:5138" placeholder="..." />
-            <marker date="1375298048763" expanded="true" signature="5403:5768" placeholder="..." />
-            <marker date="1375298048763" expanded="true" signature="5517:5768" placeholder="..." />
-            <marker date="1375298048763" expanded="true" signature="5601:5768" placeholder="..." />
+            <marker date="1375298048763" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1375298048763" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1375298048763" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1375298048763" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1375298048763" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1375298048763" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1375298048763" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1375298048763" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1375298048763" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/uploads/upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="31" selection-start="155" selection-end="155" vertical-scroll-proportion="0.20869565">
+          <folding>
+            <element signature="e#6#111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="37" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.7547826">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="27" selection-start="2477" selection-end="2477" vertical-scroll-proportion="0.9341637">
+        <state line="78" column="27" selection-start="2477" selection-end="2477" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="106" selection-start="5847" selection-end="5847" vertical-scroll-proportion="5.2046266">
           <folding />
         </state>
       </provider>
