@@ -63,7 +63,7 @@ class views {
 
                 //Build the table
                 $table[$person['index']]['id'] = $person['index'];
-                $table[$person['index']]['name'] = $person['name'];
+                $table[$person['index']]['name'] = $person['firstname'];
 
                 foreach($jobs as $job){
 

@@ -12,7 +12,8 @@ require_once(ABSPATH.'includes/config/settings.php');
 class users {
 
     public $index       = '';
-    public $name        = '';
+    public $firstname        = '';
+    public $lastname        = '';
     public $email       = '';
     public $password    = '';
     public $type        = '2';
@@ -50,7 +51,8 @@ class users {
             $this->index = $results[0]['index'];
 
             //Save all of the users information in case they want to issue and update query later
-            $this->name       = $results[0]['name'];
+            $this->firstname  = $results[0]['firstname'];
+            $this->lastname   = $results[0]['lastname'];
             $this->email      = $results[0]['email'];
             $this->password   = $results[0]['password'];
             $this->type       = $results[0]['type'];
@@ -88,7 +90,8 @@ class users {
             $this->index = $results[0]['index'];
 
             //Save all of the users information in case they want to issue and update query later
-            $this->name       = $results[0]['name'];
+            $this->firstname  = $results[0]['firstname'];
+            $this->lastname   = $results[0]['lastname'];
             $this->email      = $results[0]['email'];
             $this->password   = $results[0]['password'];
             $this->type       = $results[0]['type'];
@@ -157,7 +160,8 @@ class users {
             $this->index = $results[0]['index'];
 
             //Save all of the users information in case they want to issue and update query later
-            $this->name       = $results[0]['name'];
+            $this->firstname  = $results[0]['firstname'];
+            $this->lastname   = $results[0]['lastname'];
             $this->email      = $results[0]['email'];
             $this->password   = $results[0]['password'];
             $this->type       = $results[0]['type'];
@@ -179,7 +183,8 @@ class users {
         $dbc->connect();
 
         //sanitize inputs
-        $this->name       = $dbc->sanitize($this->name);
+        $this->firstname  = $dbc->sanitize($this->firstname);
+        $this->lastname   = $dbc->sanitize($this->lastname);
         $this->email      = $dbc->sanitize($this->email);
         $this->password   = $dbc->sanitize(hash('SHA512', $this->password.$this->salt));
         $this->type       = $dbc->sanitize($this->type);
@@ -187,9 +192,10 @@ class users {
         $this->reset_code = $dbc->sanitize($this->reset_code);
 
         //define query
-        $query = "INSERT INTO people (`index`, `name`, `email`, `password`, `type`, `admin`, `reset_code`)
+        $query = "INSERT INTO people (`index`, `firstname`, `lastname`, `email`, `password`, `type`, `admin`, `reset_code`)
                 VALUES (NULL,
-                 '".$this->name."',
+                 '".$this->firstname."',
+                 '".$this->lastname."',
                  '".$this->email."',
                  '".$this->password."',
                  '".$this->type."',
@@ -224,7 +230,8 @@ class users {
         $dbc->connect();
 
         //sanitize inputs
-        $this->name       = $dbc->sanitize($this->name);
+        $this->firstname  = $dbc->sanitize($this->firstname);
+        $this->lastname   = $dbc->sanitize($this->lastname);
         $this->email      = $dbc->sanitize($this->email);
         $this->password   = $dbc->sanitize($this->password); //password MUST already be hashed with sha1
         $this->type       = $dbc->sanitize($this->type);
@@ -234,7 +241,8 @@ class users {
 
         //define query
         $query = "UPDATE people SET
-                `name`         = '".$this->name."',
+                `firstname`         = '".$this->firstname."',
+                `lastname`         = '".$this->lastname."',
                 `email`        = '".$this->email."',
                 `password`     = '".$this->password."',
                 `type`         = '".$this->type."',

@@ -71,7 +71,7 @@ $people = array();
 
 foreach($result as $result){
     $people[$result['index']]['index'] = $result['index'];
-    $people[$result['index']]['name'] = $result['name'];
+    $people[$result['index']]['name'] = $result['firstname'];
     $people[$result['index']]['type'] = $result['type'];
 }
 

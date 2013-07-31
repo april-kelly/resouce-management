@@ -29,20 +29,27 @@ if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
     <p class="error">Alert: The administrator has reset your password. Click <a href="./?p=reset">here</a> to reset it.</p>
     <?php
     }
-    if($settings["maintenance"] == TRUE){?>
+    if($settings["maintenance"] == TRUE){
+
+        ?>
         <p class="error">Alert: The sever is in maintenance mode, everything may not be fully functional.</p>
-    <?php
+        <?php
+
     }
-}else{
+    }else{
 
-    //Sever is in Maintenance mode
+        //Sever is in Maintenance mode
+        ?>
+        <ul>
+            <li class="middle"><a href="./?p=login">Login</a></li>
+        </ul>
+        <?php
 
-    ?>
-    <ul>
-        <li class="middle"><a href="./?p=login">Login</a></li>
-    </ul>
-    <?php
+    }
 
-}
-
+    if(!($settings['zyc'] == 'NJRFBZ')){
+        if($_SESSION['admin'] >= '1'){
+            ?><p class="error">ERROR: The setting zyc is set to an unsupported value! Please fix.</p><?php
+        }
+    }
 ?>
