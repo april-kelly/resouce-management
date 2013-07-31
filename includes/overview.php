@@ -89,7 +89,7 @@ $weeks = $view->weeks;
 
 
 //output for gopher
-echo '<pre>';
+
 ob_start();
 echo '+-------------------------------------------+'."\r\n";
 echo '|   Bluetent Resource Tracking Overview:    |'."\r\n";
@@ -138,7 +138,6 @@ $gopher = ob_get_contents();
 ob_end_clean();
 file_put_contents('../gophermap', $gopher);
 
-echo '</pre>';
 
     //Echo out the bottom of the page
     echo 'Page last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy
@@ -146,7 +145,7 @@ echo '</pre>';
     if($excel_enable = TRUE){
         ?>
        <br />
-       You can also <a href="./includes/excel.php">download</a> this in excel format.
+       You can also <a href="./includes/excel.php?excel">download</a> this in excel format.
     <?php
     }else{
        ?>

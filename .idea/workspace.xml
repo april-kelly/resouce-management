@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4a8e2b8-07a8-4744-887f-0c49345f2261" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/excel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/excel.php" afterPath="$PROJECT_DIR$/includes/excel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/overview.php" afterPath="$PROJECT_DIR$/includes/overview.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/settings.php" afterPath="$PROJECT_DIR$/includes/config/settings.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/settings.template" afterPath="$PROJECT_DIR$/includes/config/settings.template" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/view.php" afterPath="$PROJECT_DIR$/includes/view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375201712880" ignored="false" />
     <file path="/gophermap" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374863593661" ignored="false" />
-    <file path="/overview.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375289167557" ignored="false" />
+    <file path="/overview.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375289997029" ignored="false" />
     <file path="/gopher_server.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375124922328" ignored="false" />
     <file path="/internal.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374868721831" ignored="false" />
     <file path="/menu2.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1374868843272" ignored="false" />
@@ -30,7 +26,7 @@
     <file path="/index.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375217940335" ignored="false" />
     <file path="/view.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375218865292" ignored="false" />
     <file path="/list.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375218813879" ignored="false" />
-    <file path="/excel.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375288860910" ignored="false" />
+    <file path="/excel.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375289942318" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,13 +46,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="view.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="view.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="148" column="0" selection-start="4393" selection-end="4393" vertical-scroll-proportion="0.62633455">
+            <state line="141" column="33" selection-start="4096" selection-end="4096" vertical-scroll-proportion="-86.791664">
               <folding>
                 <element signature="e#7#97#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="excel.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/excel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="0" selection-start="1217" selection-end="1217" vertical-scroll-proportion="-7.0833335">
+              <folding>
+                <element signature="e#6#110#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="overview.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/overview.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="126" column="9" selection-start="3602" selection-end="3602" vertical-scroll-proportion="1.6939502">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,8 +127,8 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/includes/list.php" />
         <option value="$PROJECT_DIR$/includes/view.php" />
-        <option value="$PROJECT_DIR$/includes/overview.php" />
         <option value="$PROJECT_DIR$/includes/excel.php" />
+        <option value="$PROJECT_DIR$/includes/overview.php" />
       </list>
     </option>
   </component>
@@ -421,9 +437,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="33" selection-start="4096" selection-end="4096" vertical-scroll-proportion="-86.791664">
+          <folding>
+            <element signature="e#7#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/includes/excel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="20" selection-start="1343" selection-end="1343" vertical-scroll-proportion="0.8956522">
+        <state line="62" column="0" selection-start="1217" selection-end="1217" vertical-scroll-proportion="-7.0833335">
           <folding>
             <element signature="e#6#110#0" expanded="true" />
           </folding>
@@ -432,17 +457,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/overview.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="29" selection-start="4293" selection-end="4293" vertical-scroll-proportion="0.33274022">
+        <state line="126" column="9" selection-start="3602" selection-end="3602" vertical-scroll-proportion="1.6939502">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="0" selection-start="4393" selection-end="4393" vertical-scroll-proportion="0.62633455">
-          <folding>
-            <element signature="e#7#97#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

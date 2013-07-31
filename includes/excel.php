@@ -8,68 +8,76 @@
 //Includes
 require_once('../path.php');
 require_once(ABSPATH.'includes/view.php');
-require_once(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php');
+include_once(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php'); //we include instead to allow us to fail more gracefully
 
 $views = new views;
 $table = $views->build_table();
 $weeks = $views->weeks;
 
+$copy = $table;
 
-//var_dump($table);
 
-$excel_enable = true;
+//rebuild the table for excel or csv
+$excel[0]["name"] = 'Resource';
+$i = 1;
+foreach($weeks as $week){
 
-//Excel output:
-if($excel_enable == true){
 
-    $copy = $table;
+    $excel[0][$i] = $week;
+    $i++;
+}
 
-    $excel[0]["name"] = 'Resource';
-    $i = 1;
+$i = 1;
+foreach($copy as $copy_row){
+
+    //Remove the user id
+    unset($copy_row["id"]);
+
+    //Replace week key with number key (the week keys make the excel class break)
+    $w = 1;
     foreach($weeks as $week){
 
+        if(isset($copy_row[$week])){
 
-        $excel[0][$i] = $week;
-        $i++;
-    }
+            $excel[$i]["name"] = $copy_row["name"];
+            $excel[$i][$w] = $copy_row[$week];
+            $w++;
 
-    $i = 1;
-    foreach($copy as $copy_row){
-
-        //Remove the user id
-        unset($copy_row["id"]);
-
-        //Replace week key with number key (the week keys make the excel class break)
-        $w = 1;
-        foreach($weeks as $week){
-
-            if(isset($copy_row[$week])){
-
-                $excel[$i]["name"] = $copy_row["name"];
-                $excel[$i][$w] = $copy_row[$week];
-                $w++;
-
-            }
         }
-
-        $i++;
     }
+
+    $i++;
+}
+
+//Excel output:
+if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php') && isset($_REQUEST['excel'])){
 
     try{
+
         $PhpToXls = new ABG_PhpToXls($excel, null, 'month', true);
         $PhpToXls->SendFile();
-    }
-    catch(Exception $Except){
 
     }
 
-}
+        catch(Exception $Except){
 
-//Output as csv (regardless to excel output)
-$csv = '';
-foreach($excel as $excel){
-    $csv = $csv.implode(',', $excel)."\r\n";
+    }
+
+}elseif(isset($_REQUEST['csv'])){
+
+    $csv = array();
+
+    foreach($excel as $excel){
+
+        $csv = $csv.implode(',', $excel)."\r\n";
+
+    }
+
+    header('Content-disposition: attachment; filename=month.csv');
+    header('Content-type: application/csv');
+
+    echo $csv;
+
 }
-file_put_contents('../month.csv', $csv);
 
 
