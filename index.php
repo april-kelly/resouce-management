@@ -10,24 +10,33 @@ session_start();
 
 //includes
 require_once('path.php');
-require_once(ABSPATH.'includes/config/settings.php');
+include_once(ABSPATH.'includes/config/settings.php'); //We include to allow more graceful failing
 
-//fetch the debug status
-$set = new settings;
-$settings = $set->fetch();
+//make sure that the settings file exists
+if(!(file_exists('./includes/config/settings.php'))){
 
-//error reporting
-if($settings['debug'] == TRUE){
-    error_reporting(E_STRICT);
+    $request = 'config';
+
 }else{
-    error_reporting(0);
-}
 
-//fetch the user's request
-if(isset($_REQUEST['p'])){
-    $request = $_REQUEST['p'];
-}else{
-    $request = 'home';
+    //fetch the debug status
+    $set = new settings;
+    $settings = $set->fetch();
+    //error reporting
+    if($settings['debug'] == TRUE){
+        error_reporting(E_STRICT);
+    }else{
+        error_reporting(0);
+    }
+    var_dump($settings['salt']);
+
+    //fetch the user's request
+    if(isset($_REQUEST['p'])){
+        $request = $_REQUEST['p'];
+    }else{
+        $request = 'home';
+    }
+
 }
 
 //make sure that the settings file exists

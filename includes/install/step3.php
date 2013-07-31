@@ -152,6 +152,7 @@ $_SESSION['step2'] = $_REQUEST;
                 echo '<span class="success">Added user: '.$_SESSION['step2']['first_name'].'.</span><br />';
 
             }
+        echo '<br /><a href="../../?p=home">Continue</a>'
 
 
         /*}else{
