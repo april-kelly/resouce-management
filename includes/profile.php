@@ -9,6 +9,9 @@ if(!(isset($_SESSION))){
 require_once('path.php');
 require_once(ABSPATH.'/includes/data.php');
 
+//Get rid of user_lookup so that update_pic.php show the correct user
+unset($_SESSION['user_lookup']);
+
 //see if the user is logged in
 if(!(isset($_SESSION['userid']))){
 ?>

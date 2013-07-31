@@ -78,10 +78,18 @@ if(isset($_SESSION['userid'])){
     if(isset($_SESSION['user_lookup'])){
         $users = new users;
         $request = $users->select($_SESSION['user_lookup']);
-        unset($_SESSION['user_lookup']);
+        //unset($_SESSION['user_lookup']);
     ?>
 
     <form action="./admin/menus/user_save.php" method="post">
+        Profile Picture <a href="./?p=edit_pic">(edit)</a><br />
+        <img src="<?php
+        if(!(empty($request[0]["profile_pic"]))){
+            echo './includes/images/uploads/'.$request[0]["profile_pic"];
+        }else{
+            echo './includes/images/default.jpg';
+        }
+        ?>" alt="User Profile Image" title="User Profile Image" class="profile_pic"/><br />
             <input type="hidden" name="userid" value="<?php echo $request[0]['index']; ?>" />
             <input type="text" name="firstname" value="<?php echo $request[0]['firstname']; ?>"/><label>First</label><br />
             <input type="text" name="lastname" value="<?php echo $request[0]['lastname']; ?>"/><label>Last</label><br />

@@ -2,31 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4a8e2b8-07a8-4744-887f-0c49345f2261" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/images/default.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/old/templates/404.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/old/templates/418.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/old/templates/500.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/old/templates/footer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gophermap" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/old/templates/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/old/menu.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/old/month.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/old/templates/nav.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/config/settings.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/config/settings.php.bak" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/config/settings.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/old/templates/template.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/update_pic.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/images/uploads/upload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/login.php" afterPath="$PROJECT_DIR$/admin/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/nav.php" afterPath="$PROJECT_DIR$/includes/nav.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/profile.php" afterPath="$PROJECT_DIR$/includes/profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/save.php" afterPath="$PROJECT_DIR$/admin/save.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/config/settings.template" afterPath="$PROJECT_DIR$/includes/config/settings.template" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/styles/styles.css" afterPath="$PROJECT_DIR$/includes/styles/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menus/user_save.php" afterPath="$PROJECT_DIR$/admin/menus/user_save.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/update_pic.php" afterPath="$PROJECT_DIR$/includes/update_pic.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/images/uploads/upload.php" afterPath="$PROJECT_DIR$/includes/images/uploads/upload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/menus/users.php" afterPath="$PROJECT_DIR$/admin/menus/users.php" />
     </list>
     <ignored path="resouce-management.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,10 +30,10 @@
     <file path="/list.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375218813879" ignored="false" />
     <file path="/excel.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375289942318" ignored="false" />
     <file path="/nav.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375304766519" ignored="false" />
-    <file path="/users.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375302070819" ignored="false" />
-    <file path="/upload.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375306894226" ignored="false" />
-    <file path="/profile.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375306754381" ignored="false" />
-    <file path="/update_pic.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375307043589" ignored="false" />
+    <file path="/users.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375307233909" ignored="false" />
+    <file path="/upload.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375308461958" ignored="false" />
+    <file path="/profile.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375308949180" ignored="false" />
+    <file path="/update_pic.php" changelist="d4a8e2b8-07a8-4744-887f-0c49345f2261" time="1375308806699" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,28 +54,41 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="users.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/config/users.php">
+        <entry file="file://$PROJECT_DIR$/admin/menus/users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="28" selection-start="654" selection-end="654" vertical-scroll-proportion="-10.0">
+            <state line="80" column="10" selection-start="1921" selection-end="1921" vertical-scroll-proportion="-13.125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="upload.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/images/uploads/upload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="39" selection-start="377" selection-end="377" vertical-scroll-proportion="-9.666667">
+              <folding>
+                <element signature="e#6#95#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/includes/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="82" selection-start="1262" selection-end="1262" vertical-scroll-proportion="-15.0">
+            <state line="12" column="32" selection-start="267" selection-end="267" vertical-scroll-proportion="0.31914893">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.php">
+      <file leaf-file-name="update_pic.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/update_pic.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="168" selection-end="193" vertical-scroll-proportion="0.18197574">
-              <folding />
+            <state line="51" column="44" selection-start="1388" selection-end="1388" vertical-scroll-proportion="-17.791666">
+              <folding>
+                <element signature="e#7#127#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,7 +112,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/includes/week.php" />
-        <option value="$PROJECT_DIR$/admin/menus/users.php" />
         <option value="$PROJECT_DIR$/includes/uploads/index.php" />
         <option value="$PROJECT_DIR$/includes/uploads/upload.php" />
         <option value="$PROJECT_DIR$/includes/config/users.php" />
@@ -132,16 +123,17 @@
         <option value="$PROJECT_DIR$/admin/login.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/includes/styles/styles.css" />
-        <option value="$PROJECT_DIR$/includes/profile.php" />
-        <option value="$PROJECT_DIR$/includes/images/uploads/upload.php" />
+        <option value="$PROJECT_DIR$/admin/menus/users.php" />
         <option value="$PROJECT_DIR$/includes/update_pic.php" />
+        <option value="$PROJECT_DIR$/includes/images/uploads/upload.php" />
+        <option value="$PROJECT_DIR$/includes/profile.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="764" />
+    <option name="x" value="1365" />
+    <option name="y" value="-4" />
     <option name="width" value="1368" />
     <option name="height" value="773" />
   </component>
@@ -218,42 +210,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -277,24 +233,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resouce-management" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -353,7 +291,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="764" width="1368" height="773" extended-state="6" />
+    <frame x="1365" y="-4" width="1368" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -440,33 +378,14 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/includes/config/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="31" selection-start="4074" selection-end="4074" vertical-scroll-proportion="0.83179295" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/config/settings.template">
       <provider selected="true" editor-type-id="text-editor">
         <state line="74" column="21" selection-start="4029" selection-end="4039" vertical-scroll-proportion="0.51194537" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="12" selection-start="1292" selection-end="1292" vertical-scroll-proportion="0.3594306">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/generate_reset_codes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.0869565" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/menus/users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="57" selection-start="6248" selection-end="6248" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/save.php">
@@ -488,13 +407,6 @@
     <entry file="file://$PROJECT_DIR$/admin/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="50" selection-start="919" selection-end="919" vertical-scroll-proportion="-8.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config/users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="28" selection-start="654" selection-end="654" vertical-scroll-proportion="-10.0">
           <folding />
         </state>
       </provider>
@@ -522,34 +434,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/profile.php">
+    <entry file="file://$PROJECT_DIR$/admin/menus/internal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="82" selection-start="1262" selection-end="1262" vertical-scroll-proportion="-15.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/images/uploads/upload.php">
+    <entry file="file://$PROJECT_DIR$/admin/menus/user_save.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="32" selection-start="828" selection-end="828" vertical-scroll-proportion="-15.916667">
-          <folding>
-            <element signature="e#6#95#0" expanded="true" />
-          </folding>
+        <state line="43" column="12" selection-start="1292" selection-end="1292" vertical-scroll-proportion="4.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="28" selection-start="654" selection-end="654" vertical-scroll-proportion="-10.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="168" selection-end="193" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/menus/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="10" selection-start="1921" selection-end="1921" vertical-scroll-proportion="-13.125">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/update_pic.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="18" selection-start="986" selection-end="986" vertical-scroll-proportion="0.89601386">
+        <state line="51" column="44" selection-start="1388" selection-end="1388" vertical-scroll-proportion="-17.791666">
           <folding>
             <element signature="e#7#127#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/includes/images/uploads/upload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="168" selection-end="193" vertical-scroll-proportion="0.18197574">
+        <state line="17" column="39" selection-start="377" selection-end="377" vertical-scroll-proportion="-9.666667">
+          <folding>
+            <element signature="e#6#95#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="32" selection-start="267" selection-end="267" vertical-scroll-proportion="0.31914893">
           <folding />
         </state>
       </provider>
