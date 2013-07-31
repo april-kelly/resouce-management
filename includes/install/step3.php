@@ -60,6 +60,7 @@ $_SESSION['step2'] = $_REQUEST;
                             if(php_uname('s') == 'Linux'){
 
                                 //Okay, were running on linux so, use /dev/urandom
+                                //This is more secure (f.y.i)
 
                                 //Get some random
                                 $fp = fopen('/dev/urandom', 'r');
@@ -84,6 +85,7 @@ $_SESSION['step2'] = $_REQUEST;
                                 6 => '/serversalt/',
                                 7 => '/This is a sample for mod.php do not modify \(to edit settings change ..\/config\/settings.php\)/',
                                 8 => '/serverdir/',
+                                9 => '/serveros/',
                             );
 
                             $replacements = array(
@@ -95,11 +97,12 @@ $_SESSION['step2'] = $_REQUEST;
                                 6 => $salt,
                                 7 => '',
                                 8 => $_SESSION['step1']['server_dir'],
+                                9 => php_uname('s'),
                             );
 
 
             $new_settings = preg_replace($patterns, $replacements,  $settings);
-
+    echo $new_settings;
                 if(!(is_writable(ABSPATH.'includes/config'))){
 
                     //PHP cannot write the settings.php file

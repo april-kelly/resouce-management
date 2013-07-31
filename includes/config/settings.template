@@ -46,6 +46,7 @@ class settings {
             public $version         = '1.0.4 beta';                             //Version number
             public $production      = FALSE;                                    //Production status of this version beta/normal
             public $production_alert= TRUE;                                     //Alert users if this is a beta release
+            public $platform        = 'serveros';                                //Server os
 
         //Security
             public $salt            = 'serversalt';
@@ -80,11 +81,12 @@ class settings {
 
         $array = (array) $this;
 
-        //Throw away database creds
+        //Throw away database creds and the salt
         unset($array['db_host']);
         unset($array['db_user']);
         unset($array['db_pass']);
         unset($array['db_database']);
+        unset($array['salt']);
 
         $json = json_encode($array);
 
@@ -119,11 +121,12 @@ class settings {
         //Create an array
         $array = (array) $json;
 
-        //Add in the database creds
+        //Add in the database creds and the salt
         $array['db_host'] = $this->db_host;
         $array['db_user'] = $this->db_user;
         $array['db_pass'] = $this->db_pass;
         $array['db_database'] = $this->db_database;
+        $array['salt'] = $this->salt;
 
         return $array;
 
