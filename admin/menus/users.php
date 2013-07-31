@@ -63,7 +63,7 @@ if(isset($_SESSION['userid'])){
                     }
 
 
-                    echo '<option value="',$person['index'],'" '.$selected.' >',$person['name'],'</option>';
+                    echo '<option value="',$person['index'],'" '.$selected.' >',$person['firstname'],' ',$person['lastname'],'</option>';
 
                 }
                 ?>
@@ -83,7 +83,8 @@ if(isset($_SESSION['userid'])){
 
     <form action="./admin/menus/user_save.php" method="post">
             <input type="hidden" name="userid" value="<?php echo $request[0]['index']; ?>" />
-            <input type="text" name="name" value="<?php echo $request[0]['name']; ?>"/><label>Name</label><br />
+            <input type="text" name="firstname" value="<?php echo $request[0]['firstname']; ?>"/><label>First</label><br />
+            <input type="text" name="lastname" value="<?php echo $request[0]['lastname']; ?>"/><label>Last</label><br />
             <input type="text" name="email" value="<?php echo $request[0]['email']; ?>"/><label>Email</label><br />
             <select name="type" value="<?php echo $request[0]['type']; ?>">
                 <option value="2" <?php if($request[0]['admin'] =='2'){ echo ' selected '; }?> >Project Resource</option>
@@ -117,7 +118,8 @@ if(isset($_SESSION['userid'])){
 
         <b>Add a user:</b><br />
 
-        <input type="text" name="name"/><label>Name</label><br />
+        <input type="text" name="firstname" value="<?php echo $request[0]['firstname']; ?>"/><label>First</label><br />
+        <input type="text" name="lastname" value="<?php echo $request[0]['lastname']; ?>"/><label>Last</label><br />
         <input type="text" name="email"/><label>Email</label><br />
         <input type="password" name="password"/><label>Password</label><br />
         <select name="type">
@@ -158,7 +160,7 @@ if(isset($_SESSION['userid'])){
 
             foreach($people as $person){
 
-                echo '<option value="',$person['index'],'">',$person['name'],'</option>';
+                echo '<option value="',$person['index'],'">',$person['firstname'],' ',$person['lastname'],'</option>';
 
             }
             ?>
@@ -186,7 +188,7 @@ if(isset($_SESSION['userid'])){
 
                     foreach($people as $person){
 
-                        echo '<option value="',$person['index'],'">',$person['name'],'</option>';
+                        echo '<option value="',$person['index'],'">',$person['firstname'],' ',$person['lastname'],'</option>';
 
                     }
                     ?>

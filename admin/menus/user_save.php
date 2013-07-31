@@ -57,7 +57,8 @@ if(isset($_SESSION['userid'])){
         if(isset($_REQUEST['add'])){
 
             $users->change('index', null);
-            $users->change('name', $_REQUEST['name']);
+            $users->change('firstname', $_REQUEST['firstname']);
+            $users->change('lastname', $_REQUEST['lastname']);
             $users->change('email', $_REQUEST['email']);
             $users->change('password', $_REQUEST['password']);
             $users->change('type', $_REQUEST['type']);
@@ -74,7 +75,8 @@ if(isset($_SESSION['userid'])){
             $users->select($_REQUEST['userid']);
             $users->change('index', $_REQUEST['userid']);
 
-            $users->change('name', $_REQUEST['name']);
+            $users->change('firstname', $_REQUEST['firstname']);
+            $users->change('lastname', $_REQUEST['lastname']);
             $users->change('email', $_REQUEST['email']);
             $users->change('password', $users->password);
             $users->change('type', $_REQUEST['type']);
