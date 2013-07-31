@@ -114,8 +114,14 @@ require_once(ABSPATH.'includes/config/settings.php');
             ?>
             <div id="person">
                 <p>
-                <img src="./includes/images/blank.jpg" alt="An image" />
-                <b class="name"><?php echo $people[0]["name"]; ?></b><br />
+                    <img src="<?php
+                    if(!(empty($people[0]["profile_pic"]))){
+                        echo './includes/images/uploads/'.$people[0]["profile_pic"];
+                    }else{
+                        echo './includes/images/default.jpg';
+                    }
+                    ?>" alt="User Profile Image" title="User Profile Image" class="profile_pic"/><br />
+                <b class="name"><?php echo $people[0]["firstname"]; ?></b><br />
             <?php
                 if($people[0]["type"] == '0'){
                     echo 'Project Manager/Resource';

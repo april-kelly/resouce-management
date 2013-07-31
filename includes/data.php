@@ -148,40 +148,9 @@ class db
 	public function sanitize($input)
 	{
 		
-		//Working but deprecated
 		return $this->dbc->real_escape_string($input);
 
 	}
-
-    /*
-    //allow user to verify that a piece of data is in the database
-    public function verify($table, $field, $string)
-    {
-
-        $data = new db;
-
-        $data->connect();
-
-        //sanitize the user inputs
-        $table = $data->sanitize($table);
-        $field = $data->sanitize($field);
-        $data  = $data->sanitize($string);
-
-        $query = "SELECT * FROM ".$table." WHERE `".$field."` = ".$data."";
-
-        $result = $data->query($query);	//run the query
-        $data->close();			//close the database connection
-
-        if(count($result) >= '1'){
-            return true;
-        }else{
-            return false;
-        }
-
-
-        return false;
-    }
-    */
 
 }
 

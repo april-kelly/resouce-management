@@ -158,11 +158,6 @@ body{
     border-radius: 15px;
 }
 
-.profile_pic {
-    max-height: 320px;
-    max-width: 240px;
-}
-
 #status{
     text-align: center;
     -moz-border-radius: 15px;
@@ -309,17 +304,30 @@ input[type=search] {
     position: absolute;
     float: left;
     border: 1px solid #aaa;
-    text-align: left;
     background-color: lightgray;
     border-radius: 15px;
-    padding: 5px;
     width:300px;
     margin-bottom: 15px;
+    text-align: left;
 }
+
+#person li {
+    list-style-type: none;
+    display: inline;
+}
+
 #person img {
     position: relative;
     float: left;
+    padding: 2px;
 }
+
+.profile_pic {
+    max-height: 170px;
+    max-width: 120px;
+}
+
+
 
 #spacer {
     width: 100%;

@@ -48,7 +48,7 @@
 		foreach($result as $result){
 			//print_r($result);
 			if($result['type'] == '0' or $result['type'] == '1'){
-		 	 echo '<option value="',$result['index'],'">',$result['name'],'</option>';
+		 	 echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
 		 	}
 		}
 	  ?>
@@ -68,7 +68,7 @@
 	  	$result = $dbc->query('SELECT * FROM people');
 	  	foreach($result as $result){
 	  		if($result['type'] == '0' or $result['type'] == '2'){
-	  			echo '<option value="',$result['index'],'">',$result['name'],'</option>';
+	  			echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
             }
 		}
 		$dbc->close();
