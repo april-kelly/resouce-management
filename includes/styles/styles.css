@@ -158,6 +158,11 @@ body{
     border-radius: 15px;
 }
 
+.profile_pic {
+    max-height: 320px;
+    max-width: 240px;
+}
+
 #status{
     text-align: center;
     -moz-border-radius: 15px;

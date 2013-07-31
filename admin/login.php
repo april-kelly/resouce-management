@@ -33,7 +33,7 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 
             //Good login
             $_SESSION['userid'] = $results[0]['index'];
-            $_SESSION['name'] = $results[0]['name'];
+            $_SESSION['name'] = $results[0]['firstname'];
             $_SESSION['admin'] = $results[0]['admin'];
             $_SESSION['security_class'] = $results[0]['security_class'];
             header('location: ../');

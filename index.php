@@ -68,7 +68,21 @@ if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta']))){
 //determine what page to show
 switch($request){
 
-    //If the server is down
+    //Edit profile pic
+    //If the server is a beta release
+    case "edit_pic":
+
+        //if the server is in beta mode
+        if($settings['production'] == FALSE){
+
+            $page = './includes/update_pic.php';
+
+        }
+        $main_id = 'profile';
+
+        break;
+
+    //If the server is a beta release
     case "beta":
 
         //if the server is in beta mode

@@ -1,5 +1,10 @@
 <?php
 
+//Start the user's session
+if(!(isset($_SESSION))){
+    session_start();
+}
+
 //includes
 require_once('path.php');
 require_once(ABSPATH.'/includes/data.php');
@@ -25,10 +30,19 @@ if(!(isset($_SESSION['userid']))){
     <a href="./?p=logout">Log out</a>
     <h3>Your profile:</h3>
     <form action="./admin/save.php" method="post">
+        Profile Picture <a href="./?p=edit_pic">(edit)</a><br />
+        <img src="<?php
+        if(!(empty($user[0]["profile_pic"]))){
+            echo './includes/images/uploads/'.$user[0]["profile_pic"];
+        }else{
+            echo './includes/images/default.jpg';
+        }
+        ?>" alt="User Profile Image" title="User Profile Image" class="profile_pic"/><br />
         <input type="hidden" value="<?php echo $user[0]["index"]; ?>" name="userid" />
         <input type="hidden" value="<?php echo $user[0]["email"]; ?>" name="email" />
         <label>Email:  </label><?php echo $user[0]["email"] ?><br />
-        <label>Name:  </label><input type="text" name="name" value="<?php echo $user[0]["name"] ?>"><br />
+        <label>First:  </label><input type="text" name="firstname" value="<?php echo $user[0]["firstname"] ?>"><br />
+        <label>Last:  </label><input type="text" name="lastname" value="<?php echo $user[0]["lastname"] ?>"><br />
         <label>Current Password: </label><input type="password" name="password"><br />
         <label>New Password: </label><input type="password" name="new_pass"><br />
         <label>Retype Password: </label><input type="password" name="new_pass_II"><br />

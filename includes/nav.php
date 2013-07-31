@@ -32,19 +32,10 @@ if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
     if($settings["maintenance"] == TRUE){
 
         ?>
-        <p class="error">Alert: The sever is in maintenance mode, everything may not be fully functional.</p>
+        <p class="info">Alert: The sever is in maintenance mode, everything may not be fully functional.</p>
         <?php
 
     }
-    }else{
-
-        //Sever is in Maintenance mode
-        ?>
-        <ul>
-            <li class="middle"><a href="./?p=login">Login</a></li>
-        </ul>
-        <?php
-
     }
 
     if(!($settings['zyc'] == 'NJRFBZR')){

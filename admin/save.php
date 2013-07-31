@@ -128,7 +128,9 @@ if(isset($_REQUEST['d'])){
 
     if(isset($_REQUEST['Add'])){
 
-        $users->change('name', $_REQUEST['name']);
+        $users->change('firstname', $_REQUEST['firstname']);
+        $users->change('lastname', $_REQUEST['lastname']);
+
         $users->change('name', $_REQUEST['email']);
         $users->change('name', sha1($_REQUEST['password']));
 
@@ -186,9 +188,10 @@ if(isset($_REQUEST['userid'])){
     }
 
     //name change
-    if(!($_REQUEST['name'] == $status[0]['name'])){
+    if(!($_REQUEST['firstname'] == $status[0]['firstname'])){
         echo '<br />Changing name <br />';
-        $users->change('name', $_REQUEST['name']);
+        $users->change('firstname', $_REQUEST['firstname']);
+        $users->change('lastname', $_REQUEST['lastname']);
         $users->update();
     }
 

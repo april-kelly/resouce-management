@@ -1,7 +1,7 @@
 <?php
 /**
  * Name:       Settings creation and fetch class
- * Notes:      This is a sample for mod.php do not modify (to edit settings change ../config/settings.php)
+ * Notes:      
  * Programmer: Liam Kelly
  * Date:       5/23/13
  */
@@ -24,14 +24,14 @@ class settings {
             public $colors = array();                                           //Deprecated
 
         //Settings for data.php
-            public $db_host         = 'sqlhost';                              //MySQL host
-            public $db_user         = 'sqluser';                              //MySQL user
-            public $db_pass         = 'sqlpass';                              //MySQL password
-            public $db_database     = 'sqldb';                                //MySQL Database
+            public $db_host         = 'localhost';                              //MySQL host
+            public $db_user         = 'root';                              //MySQL user
+            public $db_pass         = 'kd0hdf';                              //MySQL password
+            public $db_database     = 'resources';                                //MySQL Database
 
         //Server Settings
-            public $domain          = 'serverdomain';
-            public $dir             = 'serverdir';
+            public $domain          = 'localhost';
+            public $dir             = '/resource-management/';
             public $url             = NULL;                                     
             public $maintenance     = FALSE;                                    //Prevents users from accessing during maintenance
 
@@ -46,11 +46,11 @@ class settings {
             public $version         = '1.0.4 beta';                             //Version number
             public $production      = FALSE;                                    //Production status of this version beta/normal
             public $production_alert= TRUE;                                     //Alert users if this is a beta release
-            public $platform        = 'serveros';                               //Server os
+            public $platform        = 'Linux';                               //Server os
             public $zyc             = 'NJRFBZR';                                //Don't you agree?
 
         //Security
-            public $salt            = 'serversalt';
+            public $salt            = '613c0873b8430f6a4440464361f1ee696d2448d4b02f58096642bfc1f01c7646bbb01f8c7c2a7a0b9b403f848d35fcea47550d1cfdff22d12478f5c915b47fc3';
             public $salt_changed    = TRUE;                                      //Deprecated
 
         //Gopher Server (Experimental)
