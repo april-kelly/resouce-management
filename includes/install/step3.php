@@ -54,12 +54,25 @@ $_SESSION['step2'] = $_REQUEST;
                             $settings = file_get_contents('../config/settings.template');
 
 
-                //Create the salt
-                            //Get some random
-                            $fp = fopen('/dev/urandom', 'r');
+                            //Create the salt
 
-                            //Hash the randomness
-                            $salt = hash('SHA512', fread($fp, 512));
+                            //Check for the platform
+                            if(php_uname('s') == 'Linux'){
+
+                                //Okay, were running on linux so, use /dev/urandom
+
+                                //Get some random
+                                $fp = fopen('/dev/urandom', 'r');
+
+                                //Hash the randomness
+                                $salt = hash('SHA512', fread($fp, 512));
+
+                            }else{
+
+                                //Were not on linux so, well use the less secure mt_rand() function
+                                $salt = hash('SHA512', mt_rand());
+
+                            }
 
                             //What to look for
                             $patterns = array(

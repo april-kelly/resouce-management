@@ -76,14 +76,14 @@ if(isset($_SESSION['userid'])){
 
     <?php
         //Make sure that php is running on linux
-        if(php_uname('s') == 'Linux'){
+        if(php_uname('s') == 'Linux' || php_uname('s') == 'Unix' || php_uname('s') == 'Darwin' ){
 
             //See if the gopher server is online
             echo '<b>Gopher server: </b>';
             if($settings['gopher'] == TRUE){
                 echo '<span class="success">Online</span><br /><br />To stop the gopher server run: <pre>telnet localhost 70</pre> and the type: <pre>stop</pre>';
             }else{
-                echo '<span class="error">Offline</span><br /><br />To start the gopher server run: <pre>sudo screen php ./gopher_server.php</pre>';
+                echo '<span class="error">Offline</span><br /><br />To start the gopher server run: <pre>sudo screen php '.ABSPATH.'includes/gopher_server.php</pre>';
             }
 
         }else{
@@ -113,6 +113,8 @@ if(isset($_SESSION['userid'])){
 
 </fieldset>
 
+        <!--
+        To be removed.
         <fieldset>
 
             <legend>Security:</legend>
@@ -124,6 +126,7 @@ if(isset($_SESSION['userid'])){
             </form>
 
         </fieldset>
+        -->
 
 <?php
 

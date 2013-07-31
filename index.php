@@ -28,7 +28,6 @@ if(!(file_exists('./includes/config/settings.php'))){
     }else{
         error_reporting(0);
     }
-    var_dump($settings['salt']);
 
     //fetch the user's request
     if(isset($_REQUEST['p'])){
