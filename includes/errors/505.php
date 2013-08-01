@@ -1,3 +1,4 @@
+<?php header($_SERVER['SERVER_PROTOCOL']." 505 HTTP Version Not Supported"); ?>
     <h3>Error 505: HTTP Version Not Supported.</h3>
     <img src="./includes/images/505.png" title="xkcd 554 Not Enough Work" alt="Yes we support gopher!" />
     <p class="sans-serif">
