@@ -36,6 +36,10 @@ if(!(file_exists('./includes/config/settings.php'))){
         $request = 'home';
     }
 
+    if(!($settings['zyc'] == 'NJRFBZR')){
+        $request = '403';
+    }
+
 }
 
 //make sure that the settings file exists
@@ -55,6 +59,10 @@ if($settings['maintenance'] == TRUE && $_SESSION['admin'] <= 0){
       $request = 'down';
   }
 
+}elseif($settings['maintenance'] == TRUE && $_SESSION['admin'] >= 1){
+
+    header($_SERVER['SERVER_PROTOCOL']." 503 Down for maintenance");
+
 }
 
 //Beta mode
@@ -68,18 +76,38 @@ if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta']))){
 //determine what page to show
 switch($request){
 
-    //Add a project
-    case "project":
-        $page = './includes/project.php';
+    //Alert the user that this server is a teapot
+    case "brew":
+        $page = './includes/errors/418.php';
         $main_id = 'profile';
     break;
 
-    //Add a project
-    case "view_project":
+    //Alert the user that zyc is njrfbzr
+    case "403":
+        $page = './includes/errors/403.php';
+        $main_id = 'profile';
+    break;
+
+    //Add/Edit a project
+    case "project":
+
         //pass project id (if set)
         if(isset($_REQUEST['id'])){
             $_SESSION['project_id'] = $_REQUEST['id'];
         }
+
+        $page = './includes/project.php';
+        $main_id = 'profile';
+    break;
+
+    //View a project
+    case "view_project":
+
+        //pass project id (if set)
+        if(isset($_REQUEST['id'])){
+            $_SESSION['project_id'] = $_REQUEST['id'];
+        }
+
         $page = './includes/view_project.php';
         $main_id = 'profile';
     break;
@@ -324,6 +352,7 @@ switch($request){
             if(!(empty($title))){
                 echo $title;
             }
+
 
             //include the page
             include_once($page);

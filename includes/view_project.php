@@ -25,9 +25,11 @@ echo '<b>Description: </b>';
 echo '<p>'.$project['description'].'</p>';
 echo '<b>Hours assigned to this project: </b>'.$project['assigned_hours'].'<br />';
 echo '<b>Budgeted hours: </b>'.$project['max_hours'].'<br />';
+
 if($project['overage'] == false){
     echo '<em>You cannot request more than the budgeted hours for this project.</em><br />';
 }else{
     echo '<em>You can request more hours than are budgeted for this project</em><br />';
 }
 
+echo '<br /><a href="./?p=project&id='.$project_id.'">Edit</a>';
