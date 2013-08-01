@@ -37,6 +37,9 @@ $sanitize    = $settings['insert_sanitize'];	//flag to enable user data sanitati
 $fail        = $settings['insert_fail'];		//flag to terminate the insert if something fails   Default: false
 $location    = '../';                           //where we will redirect the use upon completion    Default: ../
 
+//Predefined Variables
+$total = 0;
+
 //Make sure the user has premission to view debugging info
 if(!($_SESSION['admin'] >= 2)){
 
@@ -86,17 +89,111 @@ if($sanitize = TRUE){
 	$sales_status 		= $dbc->sanitize($_REQUEST['sales_status']);
 	$priority     		= $dbc->sanitize($_REQUEST['priority']);
 	
-	//sanitize, fill and serialize the hours array
-	$hours = serialize(array( 
+	//sanitize, fill and the hours array
+	$hours = array(
 		"sunday"    	=> $dbc->sanitize($_REQUEST['sunday']),
 		"monday"   	    => $dbc->sanitize($_REQUEST['monday']),
 		"tuesday"   	=> $dbc->sanitize($_REQUEST['tuesday']),
 		"wednesday" 	=> $dbc->sanitize($_REQUEST['wednesday']),
 		"thursday"  	=> $dbc->sanitize($_REQUEST['thursday']),
-		"friday"    	=> $dbc->sanitize($_REQUEST['friday']),
-		"saturday"  	=> $dbc->sanitize($_REQUEST['saturday']),
-		));
+		"friday"    	=> '12:20', /*$dbc->sanitize($_REQUEST['friday']),*/
+		"saturday"  	=> '5.5',/*$dbc->sanitize($_REQUEST['saturday']),*/
+		);
 }
+
+    //Fix any fractional times
+    foreach($hours as $key => $value){
+
+        if(preg_match('/\./', $value)){
+            //This means the user enter a fractional time like 5.5 instead of 5:30
+            $hour = floor($value);
+            $min = round(60*($value-$hour));
+            $value = $hour.':'.$min;
+            $hours[$key] = $value;
+        }
+
+    }
+
+    foreach($hours as $key => $value){
+
+        if(preg_match('/^[0-9]$/', $value)){
+            $hours[$key] = '0'.$value;
+        }
+
+    }
+
+    //Make sure all times are HH:MM:SS
+    foreach($hours as $key => $value){
+
+        if(preg_match('/[0-9][0-9]:[0-9][0-9]:[0-9][0-9]/', $value)){
+
+            //String is perfect
+
+        }else{
+
+            if(preg_match('/[0-9][0-9]:[0-9][0-9]/', $value)){
+
+                //String is HH:MM
+                $hours[$key] = $value.':99';
+
+            }else{
+
+                if(preg_match('/[0-9][0-9]/', $value)){
+
+                    //String is HH
+                    $hours[$key] = $value.':00:66';
+
+                }else{
+
+                    if(preg_match('/[0-9]/', $value)){
+
+                        //String is H
+                        $hours[$key] = '0'.$value.':00:33';
+
+                    }
+
+                }
+
+
+
+
+            }
+
+
+
+        }
+
+
+
+        /*if(preg_match('/^[\d]|[\d\d]:[\d]|[\d\d]', $value)){
+
+            //The time is in HH:MM
+            $hours[$key] = $value.':00'; //add the seconds
+
+        }
+
+        if(preg_match('/(?!:\b)\b\w+/', $value)){
+
+            //The time is in HH:MM
+            $hours[$key] = $value.':00:00'; //add the seconds
+
+        }*/
+
+
+    }
+
+var_dump($hours);
+//Add up all the hours
+$total = $total +
+$_REQUEST['sunday'] +
+$_REQUEST['monday'] +
+$_REQUEST['tuesday'] +
+$_REQUEST['wednesday'] +
+$_REQUEST['thursday'] +
+$_REQUEST['friday'] +
+$_REQUEST['saturday'];
+
+$total = $total.':00:00';
 
 //If the week_of is not in Y-m-d format fix it
 $week_of = date("Y-m-d", strtotime($week_of));
@@ -157,7 +254,47 @@ if($valid == TRUE){
 
 if($fail == TRUE){ echo '<i class="error">Validation issues</i><br />'; }
 
-//Query(new)
+//Verify project
+$project = $dbc->query('SELECT * FROM projects WHERE project_id = '.$project_id.' ');
+
+if(!(empty($project))){
+
+    //The project exists
+    if($test > $project[0]['max_hours']){
+
+        //Project is over budget
+        if($project[0]['overage'] == true){
+
+            //This project is allowed to be over budget
+            echo '<br />The project is over budget, but overage is enabled<br />';
+            $fail = false;
+
+        }else{
+
+            //This project is not allowed to be over budget
+            $fail = true;
+            echo '<br />Overage not allowed<br />';
+            $location = "../?p=request&r=manager";
+
+        }
+
+    }else{
+
+        //The requested number of hours does not create overage
+        $fail = false;
+    }
+
+
+
+}else{
+
+    //The project does not exist, fail
+    $fail = true;
+
+}
+
+
+//Insert Query
 $query = "INSERT INTO `jobs`
 		(`index`,
 		`project_id`,

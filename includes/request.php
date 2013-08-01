@@ -137,37 +137,37 @@
         case 'bool':
 		    echo '<span style="color: red">You must input a valid Sales Status.</span>';
         break;
-	
+
 	    //Project Manager issues
         case 'manager':
 		    echo '<span style="color: red">You must input a valid Manager.</span>';
 	    break;
-	
+
 	    //Project Manager existance issues
         case 'manager_db':
 		    echo '<span style="color: red">Manager does not exist in database.</span>';
 	    break;
-	
+
 	    //Project_id issues
         case 'projectid':
 		    echo '<span style="color: red">You must input a valid Project ID.</span>';
 	    break;
-	
+
 	    //Project Resource Issues
         case'resource':
 		    echo '<span style="color: red">You must input a valid Resource.</span>';
 	    break;
-	
+
 	    //Project Resource existance issues
         case 'resource_db':
 		    echo '<span style="color: red">Resource does not exist in database.</span>';
 	    break;
-	
+
 	    //Time issues
         case 'time':
 		    echo '<span style="color: red">You must input a valid Time.</span>';
 	    break;
-	
+
 	    //No Start Date
         case 'nodate':
 		    echo '<span style="color: red">You must input a Start Date.</span>';
@@ -177,12 +177,12 @@
         case 'priority':
 		    echo '<span style="color: red">You must input a Priority Level.</span>';
 	    break;
-	
+
         //The day selected is not a sunday (ie start of the week)
         case 'weekstart':
             echo '<span style="color: red">The date you selected is not the start of a week.</span>';
         break;
-        
+
         //SQL Injection alert
         case 'sql':
 		    echo '<span style="color: red">You are going to have to try harder than that. ;)</span>';
@@ -201,3 +201,5 @@
 	?>
 
   </form>
+
+<br /><a href="?p=project">Or create a new project here</a>

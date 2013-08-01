@@ -185,7 +185,7 @@ foreach($week as $week){
                 $time = unserialize($project['time']);
 
                 //echo out the rest of the table
-                echo '<td>',$project['project_id'],'</td>';
+                echo '<td><a href="./?p=view_project&id='.$project['project_id'].'">',$project['project_id'],'</a></td>';
                 echo '<td>',$priority,'</td>';
                 echo '<td>',$time['sunday'],'</td>';
                 echo '<td>',$time['monday'],'</td>';

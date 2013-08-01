@@ -68,6 +68,23 @@ if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta']))){
 //determine what page to show
 switch($request){
 
+    //Add a project
+    case "project":
+        $page = './includes/project.php';
+        $main_id = 'profile';
+    break;
+
+    //Add a project
+    case "view_project":
+        //pass project id (if set)
+        if(isset($_REQUEST['id'])){
+            $_SESSION['project_id'] = $_REQUEST['id'];
+        }
+        $page = './includes/view_project.php';
+        $main_id = 'profile';
+    break;
+
+
     //Edit profile pic
     //If the server is a beta release
     case "edit_pic":
