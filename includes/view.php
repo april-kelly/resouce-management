@@ -137,20 +137,20 @@ class views {
             return $table;
         }
 
-        public function build_list_weeks($person){
+        public function build_list_weeks($person, $sort){
 
             //connect to the database
             $dbc = new db;
             $dbc->connect();
 
             //Query the database
-            $query = "SELECT * FROM jobs WHERE `index` = ".$person." AND week_of BETWEEN '".$this->weeks[1]."' AND '".$this->weeks[count($this->weeks)]."' ";
-            $results = $dbc->query($query);
-
+            $query = "SELECT * FROM jobs WHERE `resource` = ".$person." AND week_of BETWEEN '".$this->weeks[1]."' AND '".$this->weeks[count($this->weeks)]."' ".$sort;
+            $list = $dbc->query($query);
 
             //close the connection
             $dbc->close();
 
+            var_dump($this->weeks);
             return $list;
 
 
@@ -161,6 +161,7 @@ class views {
             if(preg_match('/[0-9][0-9][:][0-9][0-9]/', $value)){
 
                 //String is perfect, Do nothing
+                $time = $value;
 
             }else{
 
@@ -170,12 +171,15 @@ class views {
                     //String is H, Add :00
                     $time = $value.':00';
 
-                    return $time;
                 }
 
             }
 
+            return $time;
+
         }
+
+
 
 }
 

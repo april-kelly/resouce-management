@@ -67,7 +67,7 @@ if($settings['maintenance'] == TRUE && $_SESSION['admin'] <= 0){
 }
 
 //Beta mode
-if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta']))){
+if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta'])) && $settings['production'] == false){
 
     $request = 'beta';
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Name:       Settings updater.
- * Programmer: liam
+ * Programmer: Liam Kelly
  * Date:       5/21/13
  */
 
@@ -60,7 +60,7 @@ if(isset($_REQUEST['rebuild'])){
 
     $set->create();
 
-    header('location: ../?p=admin?s=3');
+    header('location: ../?p=admin');
 
     $save = FALSE;
 }
@@ -151,9 +151,9 @@ if($save == TRUE){ //prevent unnecessary updates
 
     //Redirect the user back to the settings menu
     if($fail == TRUE){
-        header('location: ../?p=admin&s=1');
+        header('location: ../?p=admin');
     }else{
-        header('location: ../?p=admin&s=0');
+        header('location: ../?p=admin');
     }
 }
 

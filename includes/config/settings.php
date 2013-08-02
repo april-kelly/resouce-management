@@ -17,8 +17,8 @@ class settings {
             public $weeks           = 12;                                       //Number of weeks to show in all outputs
             public $location        = NULL;                                     //Location of settings.json file (set in constructor)
             public $debug           = FALSE;                                    //Debugging mode
-            public $version         = '1.0.4 beta';                             //Version number
-            public $production      = FALSE;                                    //Production status of this version beta/normal
+            public $version         = '1.0.4';                                  //Version number
+            public $production      = TRUE;                                    //Production status of this version beta/normal
             public $production_alert= TRUE;                                     //Alert users if this is a beta release
             public $platform        = 'Linux';                               //Server os
 
