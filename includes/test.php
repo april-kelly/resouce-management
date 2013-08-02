@@ -9,6 +9,5 @@ require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH .'includes/config/settings.php');
 require_once(ABSPATH.'includes/view.php');
 
-$test = new views;
-$table = $test->build_list_weeks('2', ' ');
-var_dump($table);
+$set = new settings();
+$set->add('new', 'setting', 'This is a comment');
