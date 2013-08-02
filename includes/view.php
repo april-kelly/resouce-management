@@ -156,5 +156,26 @@ class views {
 
         }
 
+        public function fix_times($value){
+
+            if(preg_match('/[0-9][0-9][:][0-9][0-9]/', $value)){
+
+                //String is perfect, Do nothing
+
+            }else{
+
+                //Make sure that the string does not contain :
+                if(!(preg_match('/[:]/', $value))){
+
+                    //String is H, Add :00
+                    $time = $value.':00';
+
+                    return $time;
+                }
+
+            }
+
+        }
+
 }
 

@@ -6,7 +6,7 @@
  */
 
 //includes
-require_once('path.php');
+require_once('../path.php');
 require_once(ABSPATH.'includes/view.php');
 require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH.'includes/config/settings.php');

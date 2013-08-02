@@ -24,6 +24,7 @@ session_start();
 require_once('../path.php');
 require_once('./data.php');
 require_once('./config/settings.php');
+require_once('./view.php');
 
 //Fetch Settings
 $set = new settings;
@@ -96,10 +97,22 @@ if($sanitize = TRUE){
 		"tuesday"   	=> $dbc->sanitize($_REQUEST['tuesday']),
 		"wednesday" 	=> $dbc->sanitize($_REQUEST['wednesday']),
 		"thursday"  	=> $dbc->sanitize($_REQUEST['thursday']),
-		"friday"    	=> '12:20', /*$dbc->sanitize($_REQUEST['friday']),*/
-		"saturday"  	=> '5.5',/*$dbc->sanitize($_REQUEST['saturday']),*/
+		"friday"    	=> $dbc->sanitize($_REQUEST['friday']),
+		"saturday"  	=> $dbc->sanitize($_REQUEST['saturday']),
+        "total"         => '',
 		);
+
+    //Add up all the hours
+        $hours['total'] = $hours['total'] +
+        $hours['sunday'] +
+        $hours['monday'] +
+        $hours['tuesday'] +
+        $hours['wednesday'] +
+        $hours['thursday'] +
+        $hours['friday'] +
+        $hours['saturday'];
 }
+
 
     //Fix any fractional times
     foreach($hours as $key => $value){
@@ -114,39 +127,21 @@ if($sanitize = TRUE){
 
     }
 
+    //Setup the views class so we can call the time fixer
+    $view = new views;
+
     //Make sure all times are HH:MM
     foreach($hours as $key => $value){
 
-        if(preg_match('/[0-9][0-9][:][0-9][0-9]/', $value)){
-
-            //String is perfect, Do nothing
-
-        }else{
-
-            //Make sure that the string does not contain :
-            if(!(preg_match('/[:]/', $value))){
-
-                //String is H, Add :00
-                $hours[$key] = $value.':00';
-            }
-
-        }
-
+        $hours[$key] = $view->fix_times($value);
 
     }
 
-var_dump($hours);
-//Add up all the hours
-$total = $total +
-$_REQUEST['sunday'] +
-$_REQUEST['monday'] +
-$_REQUEST['tuesday'] +
-$_REQUEST['wednesday'] +
-$_REQUEST['thursday'] +
-$_REQUEST['friday'] +
-$_REQUEST['saturday'];
+    //Get rid of the 'total' key before we serialize
+    $total = $hours['total'];
+    unset($hours['total']);
+    $hours = serialize($hours);
 
-$total = $total.':00:00';
 
 //If the week_of is not in Y-m-d format fix it
 $week_of = date("Y-m-d", strtotime($week_of));
@@ -212,8 +207,11 @@ $project = $dbc->query('SELECT * FROM projects WHERE project_id = '.$project_id.
 
 if(!(empty($project))){
 
+    //Add the total for this request to the project's already assigned hours
+    $total = $total + $project[0]['assigned_hours'];
+
     //The project exists
-    if($test > $project[0]['max_hours']){
+    if($total > $project[0]['max_hours']){
 
         //Project is over budget
         if($project[0]['overage'] == true){
@@ -234,6 +232,7 @@ if(!(empty($project))){
     }else{
 
         //The requested number of hours does not create overage
+        echo "<br />The number of hours is okay<br />";
         $fail = false;
     }
 
@@ -245,6 +244,9 @@ if(!(empty($project))){
     $fail = true;
 
 }
+
+//Make sure $total is in HH:MM
+$total = $view->fix_times($total);
 
 
 //Insert Query
@@ -269,9 +271,13 @@ $query = "INSERT INTO `jobs`
 		'".$priority."',
 		'".$sales_status."')";
 
+//Project update query
+$update = "UPDATE `projects` SET `assigned_hours` = '".$total."' WHERE `index` = ".$project[0]['index']."";
+
 //Query
 if($fail == false){
     $dbc->insert($query);
+    $dbc->insert($update);
     echo '<br /><i class="success">Attempted to insert. </i><br />';
 }else{
     echo '<br /><i class="error">Insert not attempted. </i><br />';
