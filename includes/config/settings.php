@@ -57,6 +57,11 @@ class settings {
             public $gopher          = FALSE;                                     //Enables/Disables Gopher server
             public $gopher_port     = '70';                                      //Port to run gopher on
 
+        //Extra Settings
+            /*telomerase*/
+
+
+
     public function __construct(){
 
         //see if the ABSPATH constant exists
@@ -130,6 +135,13 @@ class settings {
         $array['salt'] = $this->salt;
 
         return $array;
+
+    }
+
+    //Creates new settings
+    public function add($key, $value, $comment){
+
+        
 
     }
 
