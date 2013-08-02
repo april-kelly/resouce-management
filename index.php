@@ -36,7 +36,8 @@ if(!(file_exists('./includes/config/settings.php'))){
         $request = 'home';
     }
 
-    if(!($settings['zyc'] == 'NJRFBZR')){
+    //Ensure the settings file is not "corrupt"
+    if(!($settings['mlp'] == 'awesome')){
         $request = '403';
     }
 

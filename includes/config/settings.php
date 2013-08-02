@@ -8,9 +8,19 @@
 
 class settings {
 
-    //Prefine the settings, with defaults
+    //Predefine the settings, with defaults
 
         //Note: DO NOT use private or protected variables, it will cause json_decode generate a fatal exception.
+
+        //Global Settings
+            public $mlp             = 'awesome';                                //Deal with it.
+            public $weeks           = 12;                                       //Number of weeks to show in all outputs
+            public $location        = NULL;                                     //Location of settings.json file (set in constructor)
+            public $debug           = FALSE;                                    //Debugging mode
+            public $version         = '1.0.4 beta';                             //Version number
+            public $production      = FALSE;                                    //Production status of this version beta/normal
+            public $production_alert= TRUE;                                     //Alert users if this is a beta release
+            public $platform        = 'Linux';                               //Server os
 
         //Settings for insert.php
             public $insert_valid    = TRUE;                                     //Make sure all inputs are set
@@ -38,16 +48,6 @@ class settings {
         //Basic
             public $logo            = './includes/images/logo.gif';             //Path to the logo in the nav bar
             public $title           = 'Bluetent Marketing Resource Management'; //Title to display
-
-        //Global Settings
-            public $weeks           = 12;                                       //Number of weeks to show in all outputs
-            public $location        = NULL;                                     //Location of settings.json file (set in constructor)
-            public $debug           = FALSE;                                    //Debugging mode
-            public $version         = '1.0.4 beta';                             //Version number
-            public $production      = FALSE;                                    //Production status of this version beta/normal
-            public $production_alert= TRUE;                                     //Alert users if this is a beta release
-            public $platform        = 'Linux';                               //Server os
-            public $zyc             = 'NJRFBZR';                                //Don't you agree?
 
         //Security
             public $salt            = '613c0873b8430f6a4440464361f1ee696d2448d4b02f58096642bfc1f01c7646bbb01f8c7c2a7a0b9b403f848d35fcea47550d1cfdff22d12478f5c915b47fc3';

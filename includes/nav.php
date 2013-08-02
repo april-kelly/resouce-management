@@ -38,6 +38,7 @@ if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
     }
     }
 
+    //Make sure that the settings files have not become corrupted
     if(!($settings['zyc'] == 'NJRFBZR')){
         if($_SESSION['admin'] >= '1'){
             ?><p class="error">ERROR: The setting zyc is set to an unsupported value! Please fix.</p><?php
