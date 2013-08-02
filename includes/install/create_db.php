@@ -62,9 +62,21 @@ function create_db($name){
       PRIMARY KEY (`index`)
     ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0';
 
+    $table_projects = 'CREATE TABLE IF NOT EXISTS `'.$name.'`.`projects` (
+    `index` smallint(6) NOT NULL AUTO_INCREMENT,
+      `project_id` int(11) NOT NULL,
+      `title` varchar(255) NOT NULL,
+      `description` varchar(255) NOT NULL,
+      `max_hours` time NOT NULL,
+      `assigned_hours` time NOT NULL,
+      `overage` tinyint(1) NOT NULL,
+      PRIMARY KEY (`index`)
+    ) ENGINE=InnoDB  DEFAULT CHARSET=latin1';
+
     //insert the tables
     $dbc->direct($table_people);
     $dbc->direct($table_jobs);
+    $dbc->direct($table_projects);
 
     //close the connection
     $dbc->close();

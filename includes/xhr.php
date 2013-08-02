@@ -14,7 +14,7 @@ $projects = $dbc->query("SELECT * FROM projects WHERE project_id LIKE '%".$q."%'
 echo '<br />';
 echo '<label>Suggestions: </label>';
 echo '<br />';
-
+echo '<span class="info">';
 if(!(empty($projects))){
 
     $i = 1;
@@ -33,3 +33,4 @@ if(!(empty($projects))){
     echo "Could not find project.";
 
 }
+echo '</span>';

@@ -366,6 +366,13 @@ switch($request){
 
         <?php
 
+            //Destroy old form data
+            if(isset($_SESSION['input'])){
+
+                unset($_SESSION['input']);
+
+            }
+
             include_once(ABSPATH.'includes/footer.php');
 
         ?>

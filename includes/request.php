@@ -111,8 +111,8 @@
 	
     <label for="project_id">Project ID: </label>
 	
-	<input type="text" id="txt1" name="project_id" onkeyup="showHint(this.value)" <?php if(isset($_SESSION['input']['project_id'])){ echo 'value="'.$_SESSION['input']['project_id'].'" '; }?>/><b id="error2"></b>
-    <span id="txtHint" class='info'></span>
+	<input type="text" id="txt1" name="project_id" autocomplete="off" onkeyup="showHint(this.value)" <?php if(isset($_SESSION['input']['project_id'])){ echo 'value="'.$_SESSION['input']['project_id'].'" '; }?>/><b id="error2"></b>
+    <span id="txtHint" ></span>
     <br />
 	
     <label for="resource">Desired Resource: </label>
@@ -156,7 +156,7 @@
 
 	<label>Priority</label>
   	<select name="priority">
-  	   <option <?php if(empty($_SESSION['input']['priority'])){ echo "selected='1'"; }?>>>Select One:</option>
+  	   <option <?php if(empty($_SESSION['input']['priority'])){ echo "selected='1'"; }?>>Select One:</option>
   	   <option value="3" <?php if($_SESSION['input']['priority'] == 3){ echo "selected='1'"; }?>>Low</option>
   	   <option value="2" <?php if($_SESSION['input']['priority'] == 2){ echo "selected='1'"; }?>>Medium</option>
   	   <option value="1" <?php if($_SESSION['input']['priority'] == 1){ echo "selected='1'"; }?>>High</option>
@@ -280,9 +280,6 @@
 
     //make sure to unset the error so it does not continue to be displayed
     unset($_SESSION['form']);
-
-    //We will also unset the $_SESSION['input'] variable so data does not persist for to long
-    unset($_SESSION['input']);
 
     }
 
