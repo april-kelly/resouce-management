@@ -16,20 +16,29 @@ $dbc->connect();
 $query = 'SELECT * FROM projects WHERE project_id = '.$project_id.' ';
 $project = $dbc->query($query);
 
-//Throw out everything but the first result;
-$project = $project[0];
+//Make sure there are actually results
+if(!(empty($project))){
 
-echo '<h3>'.$project['title'].'</h3>';
-echo '<b>Project id: </b>'.$project['project_id'].'<br />';
-echo '<b>Description: </b>';
-echo '<p>'.$project['description'].'</p>';
-echo '<b>Hours assigned to this project: </b>'.$project['assigned_hours'].'<br />';
-echo '<b>Budgeted hours: </b>'.$project['max_hours'].'<br />';
+    //Throw out everything but the first result
+    $project = $project[0];
 
-if($project['overage'] == false){
-    echo '<em>You cannot request more than the budgeted hours for this project.</em><br />';
+    echo '<h3>'.$project['title'].'</h3>';
+    echo '<b>Project id: </b>'.$project['project_id'].'<br />';
+    echo '<b>Description: </b>';
+    echo '<p>'.$project['description'].'</p>';
+    echo '<b>Hours assigned to this project: </b>'.$project['assigned_hours'].'<br />';
+    echo '<b>Budgeted hours: </b>'.$project['max_hours'].'<br />';
+
+    if($project['overage'] == false){
+        echo '<em>You cannot request more than the budgeted hours for this project.</em><br />';
+    }else{
+        echo '<em>You can request more hours than are budgeted for this project</em><br />';
+    }
+
+    echo '<br /><a href="./?p=project&id='.$project_id.'">Edit</a>';
+
 }else{
-    echo '<em>You can request more hours than are budgeted for this project</em><br />';
-}
 
-echo '<br /><a href="./?p=project&id='.$project_id.'">Edit</a>';
+    echo '<h3>Could not find the requested project.</h3>';
+
+}

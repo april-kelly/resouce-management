@@ -6,7 +6,7 @@
  */
 
 //includes
-if(!(defined('ABSPATH')){
+if(!(defined('ABSPATH'))){
     require_once('../../path.php');
 }
 require_once(ABSPATH.'includes/data.php');

@@ -34,9 +34,9 @@
     <label for="sales_status">Sales Status: </label>
 	
 	 <select name="sales_status">
-	  <option value="">Select One:</option>
-	  <option value="1">Sold</option>
-	  <option value="0">Opportunity</option>
+	  <option value="" <?php if(empty($_SESSION['input']['sales_status'])){ echo "selected='1'"; }?>>Select One:</option>
+	  <option value="1" <?php if($_SESSION['input']['sales_status'] == 1){ echo "selected='1'"; }?>>Sold</option>
+	  <option value="0" <?php if($_SESSION['input']['sales_status'] == 0){ echo "selected='1'"; }?>>Opportunity</option>
 	 </select><b id="error2"></b>
 	 <br />
 	 
@@ -45,19 +45,42 @@
 	<select name="manager" id="manager">
 	  <option value="">Select One:</option>
 	  <?php
-		foreach($result as $result){
-			//print_r($result);
-			if($result['type'] == '0' or $result['type'] == '1'){
-		 	 echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
-		 	}
-		}
-	  ?>
+      foreach($result as $result){
+
+          if($result['type'] == '0' or $result['type'] == '1'){
+
+              if(isset($_SESSION['input']['manager'])){
+
+                  if($_SESSION['input']['manager'] == $result['index']){
+
+                      if($result['index'] == $_SESSION['input']['manager']){
+
+                          echo '<option value="',$result['index'],'" selected="1">',$result['firstname'],' ',$result['lastname'],'</option>';
+
+                      }
+
+                  }else{
+
+                      echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
+
+                  }
+
+              }else{
+
+                  echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
+
+              }
+
+          }
+
+      }
+      ?>
 	</select>
 	<br />
 	
     <label for="project_id">Project ID: </label>
 	
-	<input type="text" name="project_id" /><b id="error2"></b>
+	<input type="text" name="project_id" <?php if(isset($_SESSION['input']['project_id'])){ echo 'value="'.$_SESSION['input']['project_id'].'" '; }?>/><b id="error2"></b>
 	<br />
 	
     <label for="resource">Desired Resource: </label>
@@ -65,34 +88,52 @@
 	<select name="resource" id="resource">
 	  <option value="">Select One:</option>
 	  <?php
-	  	$result = $dbc->query('SELECT * FROM people');
-	  	foreach($result as $result){
-	  		if($result['type'] == '0' or $result['type'] == '2'){
-	  			echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
-            }
-		}
-		$dbc->close();
-	  ?>
-	</select>
-    <br />
+        $result = $dbc->query('SELECT * FROM people');
+		foreach($result as $result){
 
-    <!--
+            if($result['type'] == '2'){
+
+                if(isset($_SESSION['input']['manager'])){
+
+                    if($_SESSION['input']['manager'] == $result['index']){
+
+                        if($result['index'] == $_SESSION['input']['manager']){
+
+                            echo '<option value="',$result['index'],'" selected="1">',$result['firstname'],' ',$result['lastname'],'</option>';
+
+                        }
+
+                    }else{
+
+                        echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
+
+                    }
+
+                }else{
+
+                    echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
+
+                }
+
+            }
+
+        }
+	  ?>
+    </select>
     <br />
-    <label>Requesting: </label>
-    <input type="text" value="<?php if(isset($_SESSION['name'])){ echo $_SESSION['name']; }else{ echo 'Anonymous'; } ?>" />
-    <br />
-    -->
 
 	<label>Priority</label>
   	<select name="priority">
-  	   <option>Select One:</option>
-  	   <option value="3">Low</option>
-  	   <option value="2">Medium</option>
-  	   <option value="1">High</option>
-  	   <option value="0">Very High</option>
+  	   <option <?php if(empty($_SESSION['input']['priority'])){ echo "selected='1'"; }?>>>Select One:</option>
+  	   <option value="3" <?php if($_SESSION['input']['priority'] == 3){ echo "selected='1'"; }?>>Low</option>
+  	   <option value="2" <?php if($_SESSION['input']['priority'] == 2){ echo "selected='1'"; }?>>Medium</option>
+  	   <option value="1" <?php if($_SESSION['input']['priority'] == 1){ echo "selected='1'"; }?>>High</option>
+  	   <option value="0" <?php if($_SESSION['input']['priority'] == 0){ echo "selected='1'"; }?>>Very High</option>
   	</select>
   	<br />
-  	<label>Week of: </label><input type="text" id="start_date" name="start_date" /><br />
+
+  	<label>Week of: </label>
+    <input type="text" id="start_date" name="start_date" <?php if(isset($_SESSION['input']['start_date'])){ echo 'value="'.$_SESSION['input']['start_date'].'" '; }?>/><br />
 
 	 
 	
@@ -111,13 +152,13 @@
 	 </tr>
 	
 	 <tr>
-	  <td><input type="text" name="sunday"    id="sunday" value="0" size="4" maxlength="4" /><br /></td>
-	  <td><input type="text" name="monday"    id="monday" value="0" size="4" maxlength="4" /><br /></td>
-	  <td><input type="text" name="tuesday"   id="tuesday" value="0" size="4" maxlength="4" /><br /></td>
-	  <td><input type="text" name="wednesday" id="wed" value="0" size="4" maxlength="4" /><br /></td>
-	  <td><input type="text" name="thursday"  id="thur" value="0" size="4" maxlength="4" /><br /></td>
-	  <td><input type="text" name="friday"    id="fri" value="0" size="4" maxlength="4" /><br /></td>
-	  <td><input type="text" name="saturday"  id="sat" value="0" size="4" maxlength="4" /><br /></td>
+	  <td><input type="text" name="sunday"    id="sunday"  <?php if(isset($_SESSION['input']['sunday'])){ echo 'value="'.$_SESSION['input']['sunday'].'" '; }else{ echo 'value="0"'; }?>        size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="monday"    id="monday"  <?php if(isset($_SESSION['input']['monday'])){ echo 'value="'.$_SESSION['input']['monday'].'" '; }else{ echo 'value="0"'; }?>        size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="tuesday"   id="tuesday" <?php if(isset($_SESSION['input']['tuesday'])){ echo 'value="'.$_SESSION['input']['tuesday'].'" '; }else{ echo 'value="0"'; }?>      size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="wednesday" id="wed"     <?php if(isset($_SESSION['input']['wednesday'])){ echo 'value="'.$_SESSION['input']['wednesday'].'" '; }else{ echo 'value="0"'; }?>  size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="thursday"  id="thur"    <?php if(isset($_SESSION['input']['thursday'])){ echo 'value="'.$_SESSION['input']['thursday'].'" '; }else{ echo 'value="0"'; }?>    size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="friday"    id="fri"     <?php if(isset($_SESSION['input']['friday'])){ echo 'value="'.$_SESSION['input']['friday'].'" '; }else{ echo 'value="0"'; }?>        size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="saturday"  id="sat"     <?php if(isset($_SESSION['input']['saturday'])){ echo 'value="'.$_SESSION['input']['saturday'].'" '; }else{ echo 'value="0"'; }?>    size="5" maxlength="5" /><br /></td>
 	 </tr>
 	 
 	 </table>
@@ -183,6 +224,17 @@
             echo '<span style="color: red">The date you selected is not the start of a week.</span>';
         break;
 
+        //Project Overage alert
+        case 'nooverage':
+            echo '<span style="color: red">This project is overbudget, and you can\'t request any more hours.</span>';
+        break;
+
+        //Project does not exist
+        case 'badproject':
+            echo '<span style="color: red">That project id does not exist.</span>';
+        break;
+
+
         //SQL Injection alert
         case 'sql':
 		    echo '<span style="color: red">You are going to have to try harder than that. ;)</span>';
@@ -196,6 +248,10 @@
 
     //make sure to unset the error so it does not continue to be displayed
     unset($_SESSION['form']);
+
+    //We will also unset the $_SESSION['input'] variable so data does not persist for to long
+    unset($_SESSION['input']);
+
     }
 
 	?>

@@ -41,6 +41,9 @@ $location    = '../';                           //where we will redirect the use
 //Predefined Variables
 $total = 0;
 
+//Catch the users input so it can be sent back if necessary
+$_SESSION['input'] = $_REQUEST;
+
 //Make sure the user has premission to view debugging info
 if(!($_SESSION['admin'] >= 2)){
 
@@ -225,7 +228,7 @@ if(!(empty($project))){
             //This project is not allowed to be over budget
             $fail = true;
             echo '<br />Overage not allowed<br />';
-            $location = "../?p=request&r=manager";
+            $location = "../?p=request&r=nooverage";
 
         }
 
@@ -241,6 +244,7 @@ if(!(empty($project))){
 }else{
 
     //The project does not exist, fail
+    $location = "../?p=request&r=badproject";
     $fail = true;
 
 }
