@@ -29,6 +29,37 @@
 
     ?>
 
+<!-- from http://www.w3schools.com/ajax/ajax_aspphp.asp -->
+<script>
+    function showHint(str)
+    {
+        var xmlhttp;
+        if (str.length==0)
+        {
+            document.getElementById("txtHint").innerHTML="";
+            return;
+        }
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET","./includes/xhr.php?q="+str,true);
+        xmlhttp.send();
+    }
+</script>
+<!-- end from w3schools -->
+
   <form action="./includes/insert.php" method="post" onsubmit="return validate()" name="form" class="request">
 	
     <label for="sales_status">Sales Status: </label>
@@ -80,8 +111,9 @@
 	
     <label for="project_id">Project ID: </label>
 	
-	<input type="text" name="project_id" <?php if(isset($_SESSION['input']['project_id'])){ echo 'value="'.$_SESSION['input']['project_id'].'" '; }?>/><b id="error2"></b>
-	<br />
+	<input type="text" id="txt1" name="project_id" onkeyup="showHint(this.value)" <?php if(isset($_SESSION['input']['project_id'])){ echo 'value="'.$_SESSION['input']['project_id'].'" '; }?>/><b id="error2"></b>
+    <span id="txtHint" class='info'></span>
+    <br />
 	
     <label for="resource">Desired Resource: </label>
 	
