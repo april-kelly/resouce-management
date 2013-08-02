@@ -114,70 +114,23 @@ if($sanitize = TRUE){
 
     }
 
+    //Make sure all times are HH:MM
     foreach($hours as $key => $value){
 
-        if(preg_match('/^[0-9]$/', $value)){
-            $hours[$key] = '0'.$value;
-        }
+        if(preg_match('/[0-9][0-9][:][0-9][0-9]/', $value)){
 
-    }
-
-    //Make sure all times are HH:MM:SS
-    foreach($hours as $key => $value){
-
-        if(preg_match('/[0-9][0-9]:[0-9][0-9]:[0-9][0-9]/', $value)){
-
-            //String is perfect
+            //String is perfect, Do nothing
 
         }else{
 
-            if(preg_match('/[0-9][0-9]:[0-9][0-9]/', $value)){
+            //Make sure that the string does not contain :
+            if(!(preg_match('/[:]/', $value))){
 
-                //String is HH:MM
-                $hours[$key] = $value.':99';
-
-            }else{
-
-                if(preg_match('/[0-9][0-9]/', $value)){
-
-                    //String is HH
-                    $hours[$key] = $value.':00:66';
-
-                }else{
-
-                    if(preg_match('/[0-9]/', $value)){
-
-                        //String is H
-                        $hours[$key] = '0'.$value.':00:33';
-
-                    }
-
-                }
-
-
-
-
+                //String is H, Add :00
+                $hours[$key] = $value.':00';
             }
 
-
-
         }
-
-
-
-        /*if(preg_match('/^[\d]|[\d\d]:[\d]|[\d\d]', $value)){
-
-            //The time is in HH:MM
-            $hours[$key] = $value.':00'; //add the seconds
-
-        }
-
-        if(preg_match('/(?!:\b)\b\w+/', $value)){
-
-            //The time is in HH:MM
-            $hours[$key] = $value.':00:00'; //add the seconds
-
-        }*/
 
 
     }
