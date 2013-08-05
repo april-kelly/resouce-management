@@ -267,6 +267,7 @@ class users {
                  WHERE `index` = '".$this->index."'";
 
         //run the query
+        var_dump($query);
         $dbc->insert($query);
 
         //close connection

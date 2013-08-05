@@ -23,6 +23,8 @@ $salt = $settings['salt'];
 if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 {
 
+    error_reporting(E_STRICT);
+
     //Make sure both fields are NOT empty
     if(!(empty($_REQUEST['username'])) && !(empty($_REQUEST['password']))){
 

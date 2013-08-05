@@ -57,8 +57,8 @@ class settings {
             public $gopher          = FALSE;                                     //Enables/Disables Gopher server
             public $gopher_port     = '70';                                      //Port to run gopher on
 
-        //Extra Settings
-            //hunter
+        //User Created Settings
+            /*telomerase*/
 
 
 
@@ -143,11 +143,10 @@ class settings {
 
         $self = file_get_contents(ABSPATH.'includes/config/settings.php');
 
+        $new = 'public $'.$key.' = \''.$value.'\'; //'.$comment."\r\n".'            '.base64_decode('Lyp0ZWxvbWVyYXNlKi8=');
+        $self = preg_replace('/\/\*telomerase\*\//', $new, $self);
 
-        $new = 'public $'.$key.' = \''.$value.'\' //'.$comment."\r\n".'/*telomerase*/';
-        preg_replace('/hunter/', $new, $self);
-
-        echo $self;
+        file_put_contents(ABSPATH.'includes/config/settings.php', $self);
 
     }
 

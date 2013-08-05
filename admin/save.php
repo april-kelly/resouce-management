@@ -195,11 +195,13 @@ if(isset($_REQUEST['userid'])){
         $users->update();
     }
 
+    var_dump($users);
+
     }else{
         echo "<br />Bad user info supplied (probably password).<br />";
     }
 
-    header('location: ../?p=user');
+   // header('location: ../?p=user');
 }
 
 
