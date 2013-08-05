@@ -50,17 +50,23 @@ function create_db($name){
 
     //The jobs table
     $table_jobs   = 'CREATE TABLE IF NOT EXISTS `'.$name.'`.`jobs` (
-      `index` int(11) NOT NULL AUTO_INCREMENT,
-      `project_id` int(11) NOT NULL,
-      `manager` int(11) NOT NULL,
-      `resource` int(11) NOT NULL,
-      `requestor` int(11) NOT NULL,
+      `index` mediumint(9) NOT NULL AUTO_INCREMENT,
+      `project_id` varchar(10) NOT NULL,
+      `manager` smallint(6) NOT NULL,
+      `resource` smallint(6) NOT NULL,
+      `requestor` smallint(6) NOT NULL,
       `week_of` date NOT NULL,
-      `time` blob NOT NULL,
+      `sunday` time NOT NULL,
+      `monday` time NOT NULL,
+      `tuesday` time NOT NULL,
+      `wednesday` time NOT NULL,
+      `thursday` time NOT NULL,
+      `friday` time NOT NULL,
+      `saturday` time NOT NULL,
       `sales_status` tinyint(1) NOT NULL,
-      `priority` int(2) NOT NULL,
+      `priority` tinyint(1) NOT NULL,
       PRIMARY KEY (`index`)
-    ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0';
+    ) ENGINE=InnoDB  DEFAULT CHARSET=latin1';
 
     $table_projects = 'CREATE TABLE IF NOT EXISTS `'.$name.'`.`projects` (
     `index` smallint(6) NOT NULL AUTO_INCREMENT,
