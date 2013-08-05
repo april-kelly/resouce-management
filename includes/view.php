@@ -59,7 +59,6 @@ class views {
             $query = "SELECT * FROM jobs WHERE week_of BETWEEN '". $this->weeks[1]."' AND '". $this->weeks[count($this->weeks)]."' ";
             $jobs = $dbc->query($query);
 
-            var_dump($jobs);
             foreach($people as $person){
 
                 //Build the table

@@ -182,18 +182,18 @@ foreach($week as $week){
                 }
 
                 //Unserialize the time
-                $time = unserialize($project['time']);
+                //$time = unserialize($project['time']);
 
                 //echo out the rest of the table
                 echo '<td><a href="./?p=view_project&id='.$project['project_id'].'">',$project['project_id'],'</a></td>';
                 echo '<td>',$priority,'</td>';
-                echo '<td>',$time['sunday'],'</td>';
-                echo '<td>',$time['monday'],'</td>';
-                echo '<td>',$time['tuesday'],'</td>';
-                echo '<td>',$time['wednesday'],'</td>';
-                echo '<td>',$time['thursday'],'</td>';
-                echo '<td>',$time['friday'],'</td>';
-                echo '<td>',$time['saturday'],'</td>';
+                echo '<td>',$project['sunday'],'</td>';
+                echo '<td>',$project['monday'],'</td>';
+                echo '<td>',$project['tuesday'],'</td>';
+                echo '<td>',$project['wednesday'],'</td>';
+                echo '<td>',$project['thursday'],'</td>';
+                echo '<td>',$project['friday'],'</td>';
+                echo '<td>',$project['saturday'],'</td>';
                 echo '<td>',$status,'</td>';
 
                 if(isset($_SESSION['edit'])){
