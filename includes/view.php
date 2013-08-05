@@ -59,6 +59,7 @@ class views {
             $query = "SELECT * FROM jobs WHERE week_of BETWEEN '". $this->weeks[1]."' AND '". $this->weeks[count($this->weeks)]."' ";
             $jobs = $dbc->query($query);
 
+            var_dump($jobs);
             foreach($people as $person){
 
                 //Build the table
@@ -75,17 +76,14 @@ class views {
 
                                     //Process the hours
 
-                                    //unserialize the hours array
-                                    $time = unserialize($job['time']);
-
                                     //add everything up
-                                    $this->hours =  $this->hours + $time['sunday']
-                                        + $time['monday']
-                                        + $time['tuesday']
-                                        + $time['wednesday']
-                                        + $time['thursday']
-                                        + $time['friday']
-                                        + $time['saturday'];
+                                    $this->hours =  $this->hours + $job['sunday']
+                                        + $job['monday']
+                                        + $job['tuesday']
+                                        + $job['wednesday']
+                                        + $job['thursday']
+                                        + $job['friday']
+                                        + $job['saturday'];
 
                                     if($this->hours > 0){
 
@@ -130,6 +128,7 @@ class views {
 
             }
 
+
             $dbc->close();
             if(empty($table)){
                 $table = false;
@@ -157,6 +156,8 @@ class views {
         }
 
         public function fix_times($value){
+
+            $time = '0:00';
 
             if(preg_match('/[0-9][0-9][:][0-9][0-9]/', $value)){
 

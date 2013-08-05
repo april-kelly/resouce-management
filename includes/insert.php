@@ -143,7 +143,7 @@ if($sanitize = TRUE){
     //Get rid of the 'total' key before we serialize
     $total = $hours['total'];
     unset($hours['total']);
-    $hours = serialize($hours);
+    $time = serialize($hours);
 
 
 //If the week_of is not in Y-m-d format fix it
@@ -261,7 +261,13 @@ $query = "INSERT INTO `jobs`
 		`resource`,
 		`requestor`,
 		`week_of`,
-		`time`,
+		`sunday`,
+		`monday`,
+		`tuesday`,
+		`wednesday`,
+		`thursday`,
+		`friday`,
+		`saturday`,
 		`priority`,
 		`sales_status`)
 		VALUES
@@ -270,8 +276,14 @@ $query = "INSERT INTO `jobs`
 		'".$manager."',
 		'".$resource."',
 		'".$requestor."',
-		'".$week_of."',   
-		'".$hours."',
+		'".$week_of."',
+		'".$hours['sunday']."',
+		'".$hours['monday']."',
+		'".$hours['tuesday']."',
+		'".$hours['wednesday']."',
+		'".$hours['thursday']."',
+		'".$hours['friday']."',
+		'".$hours['saturday']."',
 		'".$priority."',
 		'".$sales_status."')";
 
