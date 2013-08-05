@@ -36,6 +36,7 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
             $_SESSION['name'] = $results[0]['firstname'];
             $_SESSION['admin'] = $results[0]['admin'];
             $_SESSION['security_class'] = $results[0]['security_class'];
+            $_SESSION['colorization'] = $results[0]['colorization'];
             header('location: ../');
 
         }else{

@@ -43,6 +43,10 @@ if(!(isset($_SESSION['userid']))){
         ?>" alt="User Profile Image" title="User Profile Image" class="profile_pic"/><br />
         <input type="hidden" value="<?php echo $user[0]["index"]; ?>" name="userid" />
         <input type="hidden" value="<?php echo $user[0]["email"]; ?>" name="email" />
+        <label>Colorize Results</label>
+        <input type="hidden" name="month_colors" value="FALSE" />
+        <input type="checkbox" name="month_colors" value="TRUE" <?php if($user[0]["colorization"] == TRUE){ echo "checked"; } ?> />
+        <br />
         <label>Email:  </label><?php echo $user[0]["email"] ?><br />
         <label>First:  </label><input type="text" name="firstname" value="<?php echo $user[0]["firstname"] ?>"><br />
         <label>Last:  </label><input type="text" name="lastname" value="<?php echo $user[0]["lastname"] ?>"><br />

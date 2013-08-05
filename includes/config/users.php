@@ -19,6 +19,7 @@ class users {
     public $profile_pic = '';
     public $type        = '2';
     public $admin       = '0';
+    public $colorization= '0';
     public $reset_code  = '';
     public $salt        = '';       //This will be set in the construtor
 
@@ -59,6 +60,7 @@ class users {
             $this->profile_pic= $results[0]['profile_pic'];
             $this->type       = $results[0]['type'];
             $this->admin      = $results[0]['admin'];
+            $this->colorization= $results[0]['colorization'];
             $this->reset_code = $results[0]['reset_code'];
 
             return $results;
@@ -99,6 +101,7 @@ class users {
             $this->profile_pic= $results[0]['profile_pic'];
             $this->type       = $results[0]['type'];
             $this->admin      = $results[0]['admin'];
+            $this->colorization= $results[0]['colorization'];
             $this->reset_code = $results[0]['reset_code'];
 
             return $results;
@@ -170,6 +173,7 @@ class users {
             $this->profile_pic= $results[0]['profile_pic'];
             $this->type       = $results[0]['type'];
             $this->admin      = $results[0]['admin'];
+            $this->colorization= $results[0]['colorization'];
             $this->reset_code = $results[0]['reset_code'];
 
             return $results;
@@ -194,10 +198,11 @@ class users {
         $this->profile_pic= $dbc->sanitize($this->profile_pic);
         $this->type       = $dbc->sanitize($this->type);
         $this->admin      = $dbc->sanitize($this->admin);
+        $this->colorization= $dbc->sanitize($this->colorization);
         $this->reset_code = $dbc->sanitize($this->reset_code);
 
         //define query
-        $query = "INSERT INTO people (`index`, `firstname`, `lastname`, `email`, `password`, `profile_pic` `type`, `admin`, `reset_code`)
+        $query = "INSERT INTO people (`index`, `firstname`, `lastname`, `email`, `password`, `profile_pic` `type`, `admin`, `colorization`, `reset_code`)
                 VALUES (NULL,
                  '".$this->firstname."',
                  '".$this->lastname."',
@@ -206,6 +211,7 @@ class users {
                  '".$this->profile_pic."',
                  '".$this->type."',
                  '".$this->admin."',
+                 '".$this->colorization."',
                  '".$this->reset_code."')";
 
         //run the query
@@ -243,6 +249,7 @@ class users {
         $this->profile_pic= $dbc->sanitize($this->profile_pic);
         $this->type       = $dbc->sanitize($this->type);
         $this->admin      = $dbc->sanitize($this->admin);
+        $this->colorization= $dbc->sanitize($this->colorization);
         $this->reset_code = $dbc->sanitize($this->reset_code);
 
 
@@ -255,6 +262,7 @@ class users {
                 `profile_pic`  = '".$this->profile_pic."',
                 `type`         = '".$this->type."',
                 `admin`        = '".$this->admin."',
+                `colorization` = '".$this->colorization."',
                 `reset_code`   = '".$this->reset_code."'
                  WHERE `index` = '".$this->index."'";
 

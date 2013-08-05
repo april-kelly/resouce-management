@@ -19,11 +19,12 @@ require_once(ABSPATH.'includes/view.php');
 $set = new settings;
 $settings = $set->fetch();
 
-//Others
-$color_enable = $settings['month_colors'];
 $excel_enable = $settings['month_excel'];
 $show	      = $settings['weeks'];
 $output       = $settings['month_output'];
+
+//User customization
+$color_enable = $_SESSION['month_colors'];
 
 //Optionally include the excel output class
 if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php')){
