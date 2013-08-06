@@ -2,10 +2,21 @@
 
 //includes
 include_once(ABSPATH.'includes/config/settings.php');
+require_once(ABSPATH.'includes/config/users.php');
 
 //fetch the debug status
 $set = new settings;
 $settings = $set->fetch();
+
+//Refresh Settings (allows changes to take effect on next page load)
+$users = new users;
+$users->select($_SESSION['userid']);
+
+$_SESSION['userid']         = $users->index;
+$_SESSION['name']           = $users->firstname;
+$_SESSION['admin']          = $users->admin;
+//$_SESSION['security_class'] = $users->security_class
+$_SESSION['colorization']   = $users->colorization;
 
 //Make sure the server is NOT in Maintenance mode
 if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){

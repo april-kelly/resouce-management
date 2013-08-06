@@ -49,6 +49,7 @@ $dbc->connect();
 $result		 = $dbc->query('SELECT * FROM people');
 $person 	 = $dbc->sanitize($_SESSION['person']);
 $project_id  = $dbc->sanitize($_SESSION['project_id']);
+$color_enable= $_SESSION['colorization'];
 
 unset($_SESSION['person']);
 unset($_SESSION['project_id']);
@@ -187,6 +188,7 @@ foreach($week as $week){
                 //echo out the rest of the table
                 echo '<td><a href="./?p=view_project&id='.$project['project_id'].'">',$project['project_id'],'</a></td>';
                 echo '<td>',$priority,'</td>';
+/*
                 echo '<td>',$project['sunday'],'</td>';
                 echo '<td>',$project['monday'],'</td>';
                 echo '<td>',$project['tuesday'],'</td>';
@@ -194,6 +196,36 @@ foreach($week as $week){
                 echo '<td>',$project['thursday'],'</td>';
                 echo '<td>',$project['friday'],'</td>';
                 echo '<td>',$project['saturday'],'</td>';
+*/
+                //Put all of the hours into an array
+                $time = array($project['sunday'],
+                             $project['monday'],
+                             $project['tuesday'],
+                             $project['wednesday'],
+                             $project['thursday'],
+                             $project['friday'],
+                             $project['saturday'],
+                             );
+
+                foreach($time as $day){
+
+                    echo '<td>';
+
+                    if($color_enable == true){
+
+                        if($day == 0) { echo '<span class="colors zero" >'.$day.'</span>'; }
+                        if($day <= "15" && $day >= "01") { echo '<span class="colors low" >'.$day.'</span>'; }
+                        if($day <= "25" && $day >= "16") { echo '<span class="colors medium" >'.$day.'</span>'; }
+                        if($day <= "40" && $day >= "26") { echo '<span class="colors high" >'.$day.'</span>'; }
+                        if($day >= "41") { echo '<span class="colors veryhigh" >'.$day.'</span>'; }
+
+                    }else{
+                       echo $day;
+                    }
+
+                    echo '</td>';
+
+                }
                 echo '<td>',$status,'</td>';
 
                 if(isset($_SESSION['edit'])){

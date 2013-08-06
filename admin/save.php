@@ -193,6 +193,7 @@ if(isset($_REQUEST['userid'])){
         echo '<br />Changing name <br />';
         $users->change('firstname', $_REQUEST['firstname']);
         $users->change('lastname', $_REQUEST['lastname']);
+        $users->change('colorization', $_REQUEST['month_colors']);
         $users->update();
     }
 
@@ -201,7 +202,7 @@ if(isset($_REQUEST['userid'])){
         echo "<br />Bad user info supplied (probably password).<br />";
     }
 
-   // header('location: ../?p=user');
+    header('location: ../?p=user');
 }
 
 

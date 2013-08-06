@@ -24,7 +24,7 @@ $show	      = $settings['weeks'];
 $output       = $settings['month_output'];
 
 //User customization
-$color_enable = $_SESSION['month_colors'];
+$color_enable = $_SESSION['colorization'];
 
 //Optionally include the excel output class
 if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php')){
@@ -58,25 +58,25 @@ $weeks = $view->weeks;
     echo $indentI.'</tr>'."\r\n";
 
     //Echo out the body of the table
-    foreach($table as $table_row){
+    foreach($table as $key){
 
         echo $indentI.'<tr>'."\r\n";
 
-            echo $indentII.'<td><a href="./?p=week&amp;w='.$table_row["id"].'"> '.$table_row["name"].'</a></td>'."\r\n";
+            echo $indentII.'<td><a href="./?p=week&amp;w='.$key["id"].'"> '.$key["name"].'</a></td>'."\r\n";
 
             foreach($view->weeks as $week){
 
                 echo $indentII.'<td>';
                 if($color_enable == true){
 
-                    if($table_row[$week] == 0) { echo '<span class="colors zero" >'.$table_row[$week].'</span>'; }
-                    if($table_row[$week] <= '15' && $table_row[$week] >= '1') { echo '<span class="colors low" >'.$table_row[$week].'</span>'; }
-                    if($table_row[$week] <= '25' && $table_row[$week] >= '16') { echo '<span class="colors medium" >'.$table_row[$week].'</span>'; }
-                    if($table_row[$week] <= '40' && $table_row[$week] >= '26') { echo '<span class="colors high" >'.$table_row[$week].'</span>'; }
-                    if($table_row[$week] >= '41') { echo '<span class="colors veryhigh" >'.$table_row[$week].'</span>'; }
+                    if($key[$week] == 0) { echo '<span class="colors zero" >'.$key[$week].'</span>'; }
+                    if($key[$week] <= '15' && $key[$week] >= '1') { echo '<span class="colors low" >'.$key[$week].'</span>'; }
+                    if($key[$week] <= '25' && $key[$week] >= '16') { echo '<span class="colors medium" >'.$key[$week].'</span>'; }
+                    if($key[$week] <= '40' && $key[$week] >= '26') { echo '<span class="colors high" >'.$key[$week].'</span>'; }
+                    if($key[$week] >= '41') { echo '<span class="colors veryhigh" >'.$key[$week].'</span>'; }
 
                 }else{
-                    echo $table_row[$week];
+                    echo $key[$week];
                 }
                 echo '</td>'."\r\n";
 
@@ -108,15 +108,15 @@ $i = 0;
     }
     echo '|'."\r\n";
 
-foreach($table as $table_row){
+foreach($table as $key){
     $max_weeks = 4;
     $i = 0;
     echo '+----------+----------+----------+----------+'."\r\n";
     foreach($weeks as $week){
         echo '|     ';
-        echo $table_row[$week];
+        echo $key[$week];
         $count = 5;
-        $test = strlen($table_row[$week]);
+        $test = strlen($key[$week]);
         $count = $count-$test;
         while($count > 0){
             echo ' ';
@@ -128,7 +128,7 @@ foreach($table as $table_row){
         }
         //echo '    ';
     }
-    echo "|".$table_row["name"]."\r\n";
+    echo "|".$key["name"]."\r\n";
 
 }
 echo '+----------+----------+----------+----------+'."\r\n"."\r\n";
