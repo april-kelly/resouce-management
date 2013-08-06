@@ -172,9 +172,10 @@ if(isset($_REQUEST['userid'])){
 
     $status = $users->login($_REQUEST['email'], $_REQUEST['password']);
 
+
+
     //make sure the users info checked out
     if(!($status == false)){
-
 
     //password change
     if(isset($_REQUEST['new_pass']) && !(empty($_REQUEST['new_pass']))){
@@ -188,14 +189,13 @@ if(isset($_REQUEST['userid'])){
     }
 
     //name change
-    if(!($_REQUEST['firstname'] == $status[0]['firstname'])){
+    if(isset($_REQUEST['firstname']) && isset($_REQUEST['lastname'])){
         echo '<br />Changing name <br />';
         $users->change('firstname', $_REQUEST['firstname']);
         $users->change('lastname', $_REQUEST['lastname']);
         $users->update();
     }
 
-    var_dump($users);
 
     }else{
         echo "<br />Bad user info supplied (probably password).<br />";
