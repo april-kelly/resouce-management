@@ -260,6 +260,9 @@ body{
     background-color: darkred;
     color: white;
 }
+#txtHint {
+    text-align: left;
+}
 
 /**
 *The following is for the search page.

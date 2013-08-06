@@ -181,8 +181,13 @@ switch($request){
     break;
 
     case "search":
-        $page = './includes/search.php';
+        $page = './includes/test.php';
         $main_id = 'search';
+
+        //pass any searches (if set)
+        if(isset($_REQUEST['q'])){
+            $_SESSION['q'] = $_REQUEST['q'];
+        }
     break;
 
     case "request":
