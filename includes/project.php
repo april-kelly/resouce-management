@@ -52,7 +52,7 @@ if(!(empty($project))){
 //var_dump($_REQUEST);
 
 if(isset($_REQUEST['submit'])){
-    
+
 //Sanitize inputs
 $title        = $dbc->sanitize($_REQUEST['title']);
 $project_id   = $dbc->sanitize($_REQUEST['project_id']);
