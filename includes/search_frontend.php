@@ -4,7 +4,7 @@
         var xmlhttp;
         if (str.length==0)
         {
-            document.getElementById("txtHint").innerHTML="";
+            document.getElementById("search_results").innerHTML="";
             return;
         }
         if (window.XMLHttpRequest)
@@ -22,7 +22,7 @@
                 document.getElementById("search_results").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","./includes/search.php?q="+str,true);
+        xmlhttp.open("GET","./includes/search_backend.php?q="+str,true);
         xmlhttp.send();
         var search = document.getElementById("search");
         search.style.width = "800px";
@@ -42,7 +42,4 @@
         />
     <input type="button" name="submit" value=" " />
 </form>
-<div id="search_results" >
-
-
-</div>
+<div id="search_results" ><!--This is where the search results will be populated--></div>

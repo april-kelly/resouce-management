@@ -174,7 +174,7 @@ switch($request){
     break;
 
     case "search":
-        $page = './includes/test.php';
+        $page = './includes/search_frontend.php';
         $main_id = 'search';
 
         //pass any searches (if set)
