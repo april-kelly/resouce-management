@@ -341,20 +341,24 @@ switch($request){
 
         <?php
 
-            //if debug mode is enabled let the user know
-            //This is commented out because it is annoying.
-            /*if($settings['debug'] == true && $_SESSION['admin'] == '2'){
-                echo '<br /><span class="info">Debug mode has been enabled.</span><br />';
-            }*/
+            //Make sure that the user's session has not timed out
+            if($_SESSION['timeout'] == false || !(isset($_SESSION['timeout']))){
 
-            //if a title is set echo it out
-            if(!(empty($title))){
-                echo $title;
+                //if a title is set echo it out
+                if(!(empty($title))){
+                    echo $title;
+                }
+
+
+                //include the page
+                include_once($page);
+
+            }else{
+
+                include_once('./admin/login.php');
+
             }
 
-
-            //include the page
-            include_once($page);
 
         ?>
 

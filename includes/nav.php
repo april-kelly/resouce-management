@@ -18,6 +18,28 @@ $_SESSION['admin']          = $users->admin;
 //$_SESSION['security_class'] = $users->security_class
 $_SESSION['colorization']   = $users->colorization;
 
+//Session Timing
+$current = time();
+if(!($_SESSION['timestamp'])){
+
+    //The user has just logged in, set the timestamp
+    $_SESSION['timestamp'] = $current;
+    $_SESSION['timeout'] = false;
+
+}else{
+
+    //Verifiy that it has not been more than 30 mins since last action
+    $diff = $current - $_SESSION['timestamp'] ;
+    if($diff >= 1800){
+        $_SESSION['timeout'] = true;
+    }else{
+
+        $_SESSION['timestamp'] = $current;
+
+    }
+
+}
+
 //Make sure the server is NOT in Maintenance mode
 if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
 

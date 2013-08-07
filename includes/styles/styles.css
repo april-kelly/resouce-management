@@ -3,6 +3,8 @@ body{
     text-align: center;
     speak: normal; /* This will probably never be used..... */
     stress: 100;
+    font-family: Times New Roman, serif;
+
 }
 
 @media only screen
