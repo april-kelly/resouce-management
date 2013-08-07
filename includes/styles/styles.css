@@ -333,13 +333,24 @@ and (max-device-width : 480px) {
     #people{
         background-color: lightgray;
         width: 150px;
-        position: relative;
         float: right;
+        position: static;
+
         padding: 10px;
         max-height: 275px;
         -moz-border-radius: 15px;
         border-radius: 15px;
     }
+
+    #people a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #people a:hover {
+        color: gray;
+    }
+
 
     /**
     *The following is for the search page.
@@ -354,7 +365,7 @@ and (max-device-width : 480px) {
         -webkit-appearance: none;
     }
 
-    .search input[type=submit]{
+    .search input[name=submit]{
         /* Code from google.com (look for the .gbqfb class) */
         background-color: #4d90fe;
 
@@ -380,8 +391,13 @@ and (max-device-width : 480px) {
     .search {
         padding-bottom: 15px;
     }
-    /*
-    #person {
+
+    .profile_pic {
+        max-height: 170px;
+        max-width: 120px;
+    }
+
+    #quick {
         position: absolute;
         float: left;
         border: 1px solid #aaa;
@@ -392,16 +408,16 @@ and (max-device-width : 480px) {
         text-align: left;
     }
 
-    #person li {
+    #quick li {
         list-style-type: none;
         display: inline;
     }
 
-    #person img {
+    #quick img {
         position: relative;
         float: left;
         padding: 2px;
-    }*/
+    }
 
     .profile_pic {
         max-height: 170px;
@@ -409,6 +425,9 @@ and (max-device-width : 480px) {
     }
 
 
+    #projects{
+        max-width: 650px;
+    }
 
     #spacer {
         width: 100%;
@@ -424,9 +443,9 @@ and (max-device-width : 480px) {
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 2%;
-        min-width: 800px;
+        min-width: 400px;
         width: 10%;
-        padding: 15px;
+        padding-top: 15px;
         box-shadow: 0 5px 24px #111;
         -moz-border-radius: 15px;
         border-radius: 15px;

@@ -74,5 +74,5 @@ $dbc->insert($insert);
 
 $dbc->close();
 
-    header('location: ./?p=project&id='.$project_id);
+    header('location: ./?p=view_project&id='.$project_id);
 }

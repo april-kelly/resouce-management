@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" href="./styles/styles.css" type="text/css" />
 
-<div id="person">
+<div id="profile">
         <ul>
 
                 <img src="./images/uploads/106c6b8d-7dc5-458a-a084-6b912080a8ae_5.jpg" alt="User Profile Image" title="User Profile Image" class="profile_pic"/>

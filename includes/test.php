@@ -24,6 +24,10 @@
         }
         xmlhttp.open("GET","./includes/search.php?q="+str,true);
         xmlhttp.send();
+        var search = document.getElementById("search");
+        search.style.width = "800px";
+        search.style.padding = "15px";
+        search.style.minHeight = "200px";
     }
 </script>
 
@@ -36,7 +40,7 @@
            onkeyup="showHint(this.value)"
            autocomplete="off"
         />
-    <input type="submit" value=" " />
+    <input type="button" name="submit" value=" " />
 </form>
 <div id="search_results" >
 

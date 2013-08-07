@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Name:       Resource Management Application Search
@@ -24,29 +23,37 @@ $people = $dbc->query($query_p);
 
 echo '<br />';
 
+
+
+echo '<div id="people">';
+echo '<b>People:</b><br /><br />';
+
 if(!(empty($people))){
 
-    echo '<div id="people">';
-    echo '<b>People:</b><br /><br />';
+   foreach($people as $person){
 
-    foreach($people as $person){
+       echo '<a href="?p=week&w='.$person['index'].'">'.$person['firstname'].' '.$person['lastname'].'</a><br />';
 
-        echo $person['firstname'].' '.$person['lastname'].'<br />';
-
-    }
-
-    echo '</div>';
-
-}
-
-
-if(empty($results)){
-
-   echo 'No results found';
+   }
 
 }else{
 
-    echo '<br />';
+    echo 'No people found';
+
+}
+
+echo '</div>';
+
+
+echo '<div id="projects">';
+echo '<br /><b>Projects: </b><br /><br />';
+
+if(empty($results)){
+
+
+   echo 'No projects found';
+
+}else{
 
     foreach($results as $result){
 
@@ -56,6 +63,8 @@ if(empty($results)){
     }
 
 }
+
+echo '</div>';
 
 //Close the Database connection
 $dbc->close();
