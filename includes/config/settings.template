@@ -1,7 +1,7 @@
 <?php
 /**
  * Name:       Settings creation and fetch class
- * Notes:      This is a sample for mod.php do not modify (to edit settings change ../config/settings.php)
+ * Notes:      This is a sample for the installer, do not modify (to edit settings change ../config/settings.php)
  * Programmer: Liam Kelly
  * Date:       5/23/13
  */
@@ -13,14 +13,14 @@ class settings {
         //Note: DO NOT use private or protected variables, it will cause json_decode generate a fatal exception.
 
         //Global Settings
-            public $mlp             = 'awesome';                                //Deal with it.
+            public $mlp             = 'awesome';                                //Deal with it, ponies are awesome.
             public $weeks           = 12;                                       //Number of weeks to show in all outputs
             public $location        = NULL;                                     //Location of settings.json file (set in constructor)
             public $debug           = FALSE;                                    //Debugging mode
-            public $version         = '1.0.4 beta';                             //Version number
+            public $version         = '1.0.5 beta';                             //Version number
             public $production      = FALSE;                                    //Production status of this version beta/normal
             public $production_alert= TRUE;                                     //Alert users if this is a beta release
-            public $platform        = 'serveros';                               //Server os
+            public $platform        = 'serveros';                                  //The server os
 
         //Settings for insert.php
             public $insert_valid    = TRUE;                                     //Make sure all inputs are set
@@ -145,6 +145,65 @@ class settings {
         $self = preg_replace('/\/\*telomerase\*\//', $new, $self);
 
         file_put_contents(ABSPATH.'includes/config/settings.php', $self);
+
+    }
+
+    //Rebuild the settings.php file
+    public function rebuild($rebuild){
+
+        $settings = file_get_contents(ABSPATH.'includes/config/settings.template');
+
+        //Create the salt
+
+        //Check for the platform
+        if(php_uname('s') == 'Linux'){
+
+            //Okay, were running on linux so, use /dev/urandom
+            //This is more secure (f.y.i)
+
+            //Get some random
+            $fp = fopen('/dev/urandom', 'r');
+
+            //Hash the randomness
+            $salt = hash('SHA512', fread($fp, 512));
+
+        }else{
+
+            //Were not on linux so, well use the less secure mt_rand() function
+            $salt = hash('SHA512', mt_rand());
+
+        }
+
+        //What to look for
+        $patterns = array(
+            1 => '/sqlhost/',
+            2 => '/sqluser/',
+            3 => '/sqlpass/',
+            4 => '/sqldb/',
+            5 => '/serverdomain/',
+            6 => '/serversalt/',
+            7 => '/This is a sample for the installer, do not modify \(to edit settings change ..\/config\/settings.php\)/',
+            8 => '/serverdir/',
+            9 => '/serveros/',
+        );
+
+        $replacements = array(
+            1 => $rebuild['db_host'],
+            2 => $rebuild['db_user'],
+            3 => $rebuild['db_pass'],
+            4 => $rebuild['db_database'],
+            5 => $rebuild['server_domain'],
+            6 => $salt,
+            7 => '',
+            8 => $rebuild['server_dir'],
+            9 => php_uname('s'),
+        );
+
+
+        $new_settings = preg_replace($patterns, $replacements,  $settings);
+        echo $new_settings;
+        //Write the new settings
+        //file_put_contents(ABSPATH.'includes/config/settings.php', $new_settings);
 
     }
 

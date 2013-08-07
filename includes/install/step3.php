@@ -83,7 +83,7 @@ $_SESSION['step2'] = $_REQUEST;
                                 4 => '/sqldb/',
                                 5 => '/serverdomain/',
                                 6 => '/serversalt/',
-                                7 => '/This is a sample for mod.php do not modify \(to edit settings change ..\/config\/settings.php\)/',
+                                7 => '/This is a sample for the installer, do not modify \(to edit settings change ..\/config\/settings.php\)/',
                                 8 => '/serverdir/',
                                 9 => '/serveros/',
                             );
@@ -102,7 +102,7 @@ $_SESSION['step2'] = $_REQUEST;
 
 
             $new_settings = preg_replace($patterns, $replacements,  $settings);
-    echo $new_settings;
+                echo $new_settings;
                 if(!(is_writable(ABSPATH.'includes/config'))){
 
                     //PHP cannot write the settings.php file

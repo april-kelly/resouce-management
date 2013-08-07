@@ -150,4 +150,64 @@ class settings {
 
     }
 
+    //Rebuild the settings.php file
+    public function rebuild($rebuild){
+
+        $settings = file_get_contents(ABSPATH.'includes/config/settings.template');
+
+        //Create the salt
+
+        //Check for the platform
+        if(php_uname('s') == 'Linux'){
+
+            //Okay, were running on linux so, use /dev/urandom
+            //This is more secure (f.y.i)
+
+            //Get some random
+            $fp = fopen('/dev/urandom', 'r');
+
+            //Hash the randomness
+            $salt = hash('SHA512', fread($fp, 512));
+
+        }else{
+
+            //Were not on linux so, well use the less secure mt_rand() function
+            $salt = hash('SHA512', mt_rand());
+
+        }
+
+        //What to look for
+        $patterns = array(
+            1 => '/sqlhost/',
+            2 => '/sqluser/',
+            3 => '/sqlpass/',
+            4 => '/sqldb/',
+            5 => '/serverdomain/',
+            6 => '/serversalt/',
+            7 => '/This is a sample for the installer, do not modify \(to edit settings change ..\/config\/settings.php\)/',
+            8 => '/serverdir/',
+            9 => '/serveros/',
+        );
+
+        $replacements = array(
+            1 => $rebuild['db_host'],
+            2 => $rebuild['db_user'],
+            3 => $rebuild['db_pass'],
+            4 => $rebuild['db_database'],
+            5 => $rebuild['server_domain'],
+            6 => $salt,
+            7 => '',
+            8 => $rebuild['server_dir'],
+            9 => php_uname('s'),
+        );
+
+
+        $new_settings = preg_replace($patterns, $replacements,  $settings);
+        echo $new_settings;
+        //Write the new settings
+        //file_put_contents(ABSPATH.'includes/config/settings.php', $new_settings);
+
+    }
+
+
 }
