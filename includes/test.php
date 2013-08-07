@@ -19,7 +19,7 @@
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-                document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                document.getElementById("search_results").innerHTML=xmlhttp.responseText;
             }
         }
         xmlhttp.open("GET","./includes/search.php?q="+str,true);
@@ -38,7 +38,7 @@
         />
     <input type="submit" value=" " />
 </form>
-<div id="txtHint" >
+<div id="search_results" >
 
 
 </div>

@@ -9,7 +9,7 @@
 require_once(ABSPATH.'includes/data.php');
 
 $project_id = $_SESSION['project_id'];
-unset($_SESSION['project_id']);
+//unset($_SESSION['project_id']);
 
 $dbc = new db;
 $dbc->connect();

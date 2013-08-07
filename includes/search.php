@@ -19,12 +19,23 @@ $search = $dbc->sanitize($_REQUEST['q']);
 $query = "SELECT * FROM `projects` WHERE `title` LIKE '%".$search."%'  OR `project_id` LIKE '%".$search."%'  OR `description` LIKE '%".$search."%'  ";
 $results = $dbc->query($query);
 
-$query_p = "SELECT * FROM `people` WHERE `firstname` LIKE '%".$search."%'  OR `lastname` LIKE '%".$search."%'  OR `email` LIKE '%".$search."%'  ";
+$query_p = "SELECT * FROM `people` WHERE `firstname` LIKE '%".$search."%'  OR `lastname` LIKE '%".$search."%'  OR `email` LIKE '%".$search."%' LIMIT 0,12";
 $people = $dbc->query($query_p);
-echo $query_p;
+
+echo '<br />';
+
 if(!(empty($people))){
 
-    foreach()
+    echo '<div id="people">';
+    echo '<b>People:</b><br /><br />';
+
+    foreach($people as $person){
+
+        echo $person['firstname'].' '.$person['lastname'].'<br />';
+
+    }
+
+    echo '</div>';
 
 }
 
@@ -35,6 +46,8 @@ if(empty($results)){
 
 }else{
 
+    echo '<br />';
+
     foreach($results as $result){
 
         echo '<a href="?p=view_project&id='.$result['project_id'].'">'.$result['project_id'].' '.$result['title'].'</a><br />';
@@ -43,3 +56,6 @@ if(empty($results)){
     }
 
 }
+
+//Close the Database connection
+$dbc->close();
