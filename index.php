@@ -140,7 +140,7 @@ switch($request){
     break;
 
     //Recover Passwords
-    case "reset":
+    case "reset_code":
         $page = './admin/reset_user.php';
         $main_id = 'login';
 
@@ -148,6 +148,12 @@ switch($request){
         if(isset($_REQUEST['c'])){
             $_SESSION['reset_code'] = $_REQUEST['c'];
         }
+    break;
+
+    //Recover/Reset the settings
+    case "reset":
+        $page = './includes/config/reset.php';
+        $main_id = 'profile';
     break;
 
     //this is for temporary debugging (to be removed)
