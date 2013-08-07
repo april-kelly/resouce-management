@@ -57,7 +57,7 @@ if(empty($results)){
 
     foreach($results as $result){
 
-        echo '<a href="?p=view_project&id='.$result['project_id'].'">'.$result['project_id'].' '.$result['title'].'</a><br />';
+        echo '<a href="?p=project&id='.$result['project_id'].'">'.$result['project_id'].' '.$result['title'].'</a><br />';
         echo $result['description'].'<br /><br />';
 
     }

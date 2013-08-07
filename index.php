@@ -101,19 +101,6 @@ switch($request){
         $main_id = 'profile';
     break;
 
-    //View a project
-    case "view_project":
-
-        //pass project id (if set)
-        if(isset($_REQUEST['id'])){
-            $_SESSION['project_id'] = $_REQUEST['id'];
-        }
-
-        $page = './includes/view_project.php';
-        $main_id = 'profile';
-    break;
-
-
     //Edit profile pic
     //If the server is a beta release
     case "edit_pic":
