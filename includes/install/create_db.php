@@ -43,6 +43,7 @@ function create_db($name){
   `type` int(2) NOT NULL DEFAULT \'0\',
   `admin` int(1) NOT NULL,
   `security_class` tinyint(4) NOT NULL DEFAULT \'0\',
+  `colorization` tinyint(1) NOT NULL DEFAULT \'0\',
   `reset_code` text NOT NULL,
   PRIMARY KEY (`index`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1

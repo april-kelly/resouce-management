@@ -170,7 +170,7 @@ $_SESSION['step2'] = $_REQUEST;
                 $users->change('admin',     '2');
 
                 $users->create();
-                echo '<span class="success">Added user: '.$_SESSION['step2']['first_name'].'.</span><br />';
+                echo '<span class="success">Added user: '.$_SESSION['step2']['firstname'].' '.$_SESSION['step2']['lastname'].'.</span><br />';
 
             }
         echo '<br /><a href="../../?p=home">Continue</a>'
