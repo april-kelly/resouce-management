@@ -156,11 +156,11 @@
 
 	<label>Priority</label>
   	<select name="priority">
-  	   <option <?php if(empty($_SESSION['input']['priority'])){ echo "selected='1'"; }?>>Select One:</option>
+  	   <option <?php if(empty($_SESSION['input']['priority']) ||  !(isset($_SESSION['input']['priority']))){ echo "selected='1'"; }?>>Select One:</option>
   	   <option value="3" <?php if($_SESSION['input']['priority'] == 3){ echo "selected='1'"; }?>>Low</option>
   	   <option value="2" <?php if($_SESSION['input']['priority'] == 2){ echo "selected='1'"; }?>>Medium</option>
   	   <option value="1" <?php if($_SESSION['input']['priority'] == 1){ echo "selected='1'"; }?>>High</option>
-  	   <option value="0" <?php if($_SESSION['input']['priority'] == 0){ echo "selected='1'"; }?>>Very High</option>
+  	   <option value="0" <?php if($_SESSION['input']['priority'] == 0 && isset($_SESSION['input']['priority'])){ echo "selected='1'"; }?>>Very High</option>
   	</select>
   	<br />
 

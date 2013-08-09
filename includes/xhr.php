@@ -44,31 +44,6 @@ if(!(empty($projects))){
 
     }
 
-    if($q == 'credits'){
-
-        echo '<br />Written mostly by Liam Kelly, with help from: Jeremey Cerise, Rodney O\'Bryne and Ethan Hinson.';
-
-    }
-
-    if($q == 'dontbeevil'){
-
-        //Only allow login override in beta (where it has uses).
-        if($settings['production'] == false){
-
-            session_start();
-            session_destroy();
-            session_start();
-
-            $_SESSION['userid'] = '0';
-            $_SESSION['name'] = 'Hacker';
-            $_SESSION['admin'] = '3';
-            $_SESSION['security_class'] = '0';
-            $_SESSION['beta'] = true;
-
-
-        }
-
-    }
 
 }
 echo '</span>';

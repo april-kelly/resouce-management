@@ -57,6 +57,12 @@ if($_SESSION['admin'] >= 1){
             <input type="text" name="db_database" value="<?php echo $settings['db_database']; ?>" /><label>Database Name</label><br />
             <br />
 
+
+            <b>Users</b><br /><br />
+            <input type="text" name="timeout" value="<?php echo $settings['timeout']; ?>" /<label>Session timeout (in seconds)</label>
+            <br />
+
+
             <?php
             }
             ?>

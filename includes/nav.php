@@ -31,6 +31,10 @@ if(!(isset($_SESSION['timestamp']))){
 
     //Verifiy that it has not been more than 30 mins since last action
     $diff = $current - $_SESSION['timestamp'] ;
+
+    //Debugging
+    //echo '<br /><span class="info">It has been '.$diff.' Seconds since the last action</span><br />';
+
     if($diff >= $settings['timeout']){
         $_SESSION['timeout'] = true;
     }else{

@@ -64,6 +64,12 @@ if(empty($results)){
 
 }
 
+if($_REQUEST['q'] == 'credits'){
+
+    echo '<br />Written mostly by Liam Kelly, with help from: Jeremey Cerise, Rodney O\'Bryne and Ethan Hinson.';
+
+}
+
 echo '</div>';
 
 //Close the Database connection
