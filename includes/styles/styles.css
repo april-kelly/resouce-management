@@ -264,6 +264,9 @@ body{
         background-color: darkred;
         color: white;
     }
+    .highpriority{
+        background-color: #009bff;
+    }
 
 
     #search_results {

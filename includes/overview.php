@@ -69,14 +69,12 @@ $weeks = $view->weeks;
                 echo $indentII.'<td>';
                 if($color_enable == true){
 
-                    if($key[$week] == 0) { echo '<span class="colors zero" >'.$key[$week].'</span>'; }
-                    if($key[$week] <= '15' && $key[$week] >= '1') { echo '<span class="colors low" >'.$key[$week].'</span>'; }
-                    if($key[$week] <= '25' && $key[$week] >= '16') { echo '<span class="colors medium" >'.$key[$week].'</span>'; }
-                    if($key[$week] <= '40' && $key[$week] >= '26') { echo '<span class="colors high" >'.$key[$week].'</span>'; }
-                    if($key[$week] >= '41') { echo '<span class="colors veryhigh" >'.$key[$week].'</span>'; }
+                        $view->colors($key[$week]);
 
                 }else{
-                    echo $key[$week];
+
+                    echo trim($key[$week], 'h');
+
                 }
                 echo '</td>'."\r\n";
 
@@ -85,6 +83,9 @@ $weeks = $view->weeks;
         echo $indentI.'</tr>'."\r\n";
 
     }
+
+
+
 
     echo '</table>';
 
@@ -138,6 +139,17 @@ echo '+-------------------------------------------+'."\r\n"."\r\n";
 $gopher = ob_get_contents();
 ob_end_clean();
 file_put_contents('../gophermap', $gopher);
+
+    //If the user has colorization enabled display a guide for the colors
+    if($color_enable == true){
+
+        ?>
+
+        
+
+        <?
+
+    }
 
 
     //Echo out the bottom of the page

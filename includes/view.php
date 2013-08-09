@@ -88,7 +88,7 @@ class views {
                                         "saturday"  => $job['saturday']
                                     );
 
-                                    $this->hours = $this->add_times($times);
+                                    $this->hours = implode(':', $this->add_times($times));
 
 
                                     if($this->hours > 0){
@@ -98,6 +98,13 @@ class views {
                                     }else{
 
                                         $table[$person['index']][$week] = 0;
+
+                                    }
+
+                                    //This flags the item as high priority
+                                    if($job['priority'] == 0){
+
+                                       $table[$person['index']][$week] = $table[$person['index']][$week].'h';
 
                                     }
 
@@ -238,9 +245,69 @@ class views {
             //Throw away the seconds
             unset($totals[2]);
 
-            $total = implode(':', $totals);
+            //$total = implode(':', $totals);
 
-            return $total;
+            return $totals;
+
+        }
+
+        public function colors ($table_row){
+
+                    //Save the time before it is modified
+                    $temp = $table_row;
+
+                    //Get rid of the :00 (or other numbers) at the end of the time
+                    $table_row = rtrim($table_row, '0123456789');
+                    $table_row = rtrim($table_row, ':');
+
+
+                    //Echo out the style for the color
+
+                    if(preg_match('/h/', $table_row)){
+
+                        echo '<span class="colors highpriority" >';
+
+                    }else{
+
+                        if($table_row == 0) {
+
+                            echo '<span class="colors zero" >';
+
+                        }
+
+                        if($table_row <= '15' && $table_row >= '1'){
+
+                            echo '<span class="colors low" >';
+                        }
+
+                        if($table_row <= '25' && $table_row >= '16'){
+
+                            echo '<span class="colors medium" >';
+
+                        }
+
+                        if($table_row <= '40' && $table_row >= '26'){
+
+                            echo '<span class="colors high" >';
+
+                        }
+
+                        if($table_row >= '41'){
+
+                            echo '<span class="colors veryhigh" >';
+
+                        }
+
+                    }
+
+
+                    //echo out the time
+                    echo trim($temp, 'h');
+
+                    //end the span
+                    echo '</span>';
+                    echo "\r\n";
+
 
         }
 
