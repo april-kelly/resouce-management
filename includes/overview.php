@@ -156,7 +156,7 @@ file_put_contents('../gophermap', $gopher);
     <?php
     }
     //Easter egg
-    if(date('md') == '0225'){
+    if(date('md') == '0'){
         echo base64_decode('PGJyIC8+PHAgY2xhc3M9ImluZm8iPjxpPiJXaGVuIGdvaW5nIHRocm91Z2ggaGVsbCwganVzdCBr
                             ZWVwIGdvaW5nLiI8L2k+IC1XaW5zdG9uIENodXJjaGlsbDxiciAvPiAxICZhbmQ7IDEgPSAmZW1w
                             dHk7PC9wPg==');

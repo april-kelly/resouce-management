@@ -63,6 +63,7 @@ if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
         <li class="outside-right"><a href="./?p=user">Hi, <?php echo $_SESSION['name']; ?></a></li>
         <?php } ?>
     </ul>
+    <?php
     if($settings["maintenance"] == TRUE){
 
         ?>
