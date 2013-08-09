@@ -165,7 +165,7 @@
   	<br />
 
   	<label>Week of: </label>
-    <input type="text" id="start_date" name="start_date" <?php if(isset($_SESSION['input']['start_date'])){ echo 'value="'.$_SESSION['input']['start_date'].'" '; }?>/><br />
+    <input type="text" id="start_date" name="start_date" <?php if(isset($_SESSION['input']['start_date'])){ echo 'value="'.$_SESSION['input']['start_date'].'" '; }?> autocomplete="off" /><br />
 
 	 
 	
@@ -184,13 +184,13 @@
 	 </tr>
 	
 	 <tr>
-	  <td><input type="text" name="sunday"    id="sunday"  <?php if(isset($_SESSION['input']['sunday'])){ echo 'value="'.$_SESSION['input']['sunday'].'" '; }else{ echo 'value="0"'; }?>        size="5" maxlength="5" /><br /></td>
-	  <td><input type="text" name="monday"    id="monday"  <?php if(isset($_SESSION['input']['monday'])){ echo 'value="'.$_SESSION['input']['monday'].'" '; }else{ echo 'value="0"'; }?>        size="5" maxlength="5" /><br /></td>
-	  <td><input type="text" name="tuesday"   id="tuesday" <?php if(isset($_SESSION['input']['tuesday'])){ echo 'value="'.$_SESSION['input']['tuesday'].'" '; }else{ echo 'value="0"'; }?>      size="5" maxlength="5" /><br /></td>
-	  <td><input type="text" name="wednesday" id="wed"     <?php if(isset($_SESSION['input']['wednesday'])){ echo 'value="'.$_SESSION['input']['wednesday'].'" '; }else{ echo 'value="0"'; }?>  size="5" maxlength="5" /><br /></td>
-	  <td><input type="text" name="thursday"  id="thur"    <?php if(isset($_SESSION['input']['thursday'])){ echo 'value="'.$_SESSION['input']['thursday'].'" '; }else{ echo 'value="0"'; }?>    size="5" maxlength="5" /><br /></td>
-	  <td><input type="text" name="friday"    id="fri"     <?php if(isset($_SESSION['input']['friday'])){ echo 'value="'.$_SESSION['input']['friday'].'" '; }else{ echo 'value="0"'; }?>        size="5" maxlength="5" /><br /></td>
-	  <td><input type="text" name="saturday"  id="sat"     <?php if(isset($_SESSION['input']['saturday'])){ echo 'value="'.$_SESSION['input']['saturday'].'" '; }else{ echo 'value="0"'; }?>    size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="sunday"    id="sunday"  autocomplete="off" <?php if(isset($_SESSION['input']['sunday'])){ echo 'value="'.$_SESSION['input']['sunday'].'" '; }else{ echo 'value="0"'; }?>        size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="monday"    id="monday"  autocomplete="off" <?php if(isset($_SESSION['input']['monday'])){ echo 'value="'.$_SESSION['input']['monday'].'" '; }else{ echo 'value="0"'; }?>        size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="tuesday"   id="tuesday" autocomplete="off" <?php if(isset($_SESSION['input']['tuesday'])){ echo 'value="'.$_SESSION['input']['tuesday'].'" '; }else{ echo 'value="0"'; }?>      size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="wednesday" id="wed"     autocomplete="off" <?php if(isset($_SESSION['input']['wednesday'])){ echo 'value="'.$_SESSION['input']['wednesday'].'" '; }else{ echo 'value="0"'; }?>  size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="thursday"  id="thur"    autocomplete="off" <?php if(isset($_SESSION['input']['thursday'])){ echo 'value="'.$_SESSION['input']['thursday'].'" '; }else{ echo 'value="0"'; }?>    size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="friday"    id="fri"     autocomplete="off" <?php if(isset($_SESSION['input']['friday'])){ echo 'value="'.$_SESSION['input']['friday'].'" '; }else{ echo 'value="0"'; }?>        size="5" maxlength="5" /><br /></td>
+	  <td><input type="text" name="saturday"  id="sat"     autocomplete="off" <?php if(isset($_SESSION['input']['saturday'])){ echo 'value="'.$_SESSION['input']['saturday'].'" '; }else{ echo 'value="0"'; }?>    size="5" maxlength="5" /><br /></td>
 	 </tr>
 	 
 	 </table>
