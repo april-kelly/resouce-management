@@ -145,7 +145,21 @@ file_put_contents('../gophermap', $gopher);
 
         ?>
 
-        
+        <div id="colorguide">
+
+            <b>Colors:</b><br />
+            <ul>
+                <li class="zero">0</li>
+                <li class="low">1-15</li>
+                <li class="medium">16-25</li>
+                <li class="high">26-40</li>
+                <li class="veryhigh">>= 41</li>
+                <li class="highpriority">High Priority</li>
+                <br />
+            </ul>
+
+        </div>
+
 
         <?
 

@@ -269,10 +269,56 @@ body{
     }
 
 
+    #colorguide{
+
+        width: 100px;
+        float: left;
+        position: absolute;
+        border: 1px solid #aaa;
+        background-color: lightgray;
+        border-radius: 15px;
+
+    }
+
+    #colorguide ul {
+        list-style: none;
+        padding:0;
+        margin:0;
+    }
+
+    #colorguide li {
+        padding-left: 1em;
+        text-indent: -.7em;
+    }
+
+    .zero li:before{
+        content: "• ";
+        color: white;
+    }
+    .low li:before{
+        content: "• ";
+        color: green;
+    }
+    .medium li:before{
+        content: "• ";
+        color: yellow;
+    }
+    .high li:before{
+        content: "• ";
+        color: orangered;
+    }
+    .veryhigh li:before{
+        content: "• ";
+        color: darkred;
+    }
+    .highpriority li:before{
+       content: "• ";
+       color: #009bff;
+    }
+
     #search_results {
         text-align: left;
     }
-
 
 
 
