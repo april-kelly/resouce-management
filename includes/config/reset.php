@@ -9,7 +9,6 @@ include_once(ABSPATH.'includes/config/settings.php');
 
 $set = new settings;
 
-
 $rebuild = array();
 $rebuild['db_host']         = 'localhost';
 $rebuild['db_user']         = 'root';
@@ -25,6 +24,5 @@ $set->rebuild($rebuild);
 //Recreates the settings.json file
 $set->create();
 
-echo "Attempted settings rebuild/reset!";
+echo "<b>Attempted settings rebuild/reset!</b>";
 header('location: ../../?p=home');
-

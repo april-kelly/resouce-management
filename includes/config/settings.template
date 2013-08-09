@@ -203,7 +203,6 @@ class settings {
 
 
         $new_settings = preg_replace($patterns, $replacements,  $settings);
-        echo $new_settings;
 
         //Write the new settings
         file_put_contents(ABSPATH.'includes/config/cats.php', $new_settings);
