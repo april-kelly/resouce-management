@@ -44,7 +44,7 @@ if(isset($_REQUEST['id'])){
             echo '<textarea name="description">'.$project['description'].'</textarea><br />';
             echo '<label for="budget">Hours Budget: </label><input type="text" name="max_hours" value="'.$project['max_hours'].'"/><br />';
             echo '<input type="hidden" name="overage" value="FALSE" />';
-            echo '<label for="overage">All over budget? </label><input type="checkbox" name="overage" value="'.$project['overage'].'"/><br /><br />';
+            echo '<label for="overage">Allow over budget? </label><input type="checkbox" name="overage" value="'.$project['overage'].'"/><br /><br />';
             echo '<input type="submit" name="submit" value="Update" />';
             echo '</form>';
 
@@ -73,7 +73,7 @@ if(isset($_REQUEST['id'])){
             echo '<em>You can request more hours than are budgeted for this project</em><br />';
         }
 
-        echo '<br /><a href="./?p=project&id='.$project_id.'">Edit</a>';
+        echo '<br /><a href="./?p=project&e=&id='.$project_id.'">Edit</a>';
 
     }
 
@@ -91,7 +91,7 @@ if(isset($_REQUEST['id'])){
     echo '<textarea name="description"></textarea><br />';
     echo '<label for="budget">Hours Budget: </label><input type="text" name="max_hours" value=""/><br />';
     echo '<input type="hidden" name="overage" value="FALSE" />';
-    echo '<label for="overage">All over budget? </label><input type="checkbox" name="overage" value=""/><br /><br />';
+    echo '<label for="overage">Allow over budget? </label><input type="checkbox" name="overage" value=""/><br /><br />';
     echo '<input type="submit" name="submit" value="Add" />';
     echo '</form>';
 
@@ -124,7 +124,7 @@ if(isset($_REQUEST['submit'])){
         $dbc->insert($update);
 
 
-        header('location: ./?p=view_project&id='.$project_id);
+        header('location: ./?p=project&id='.$project_id);
 
     }
 
@@ -151,7 +151,7 @@ if(isset($_REQUEST['submit'])){
         $dbc->insert($insert);
 
         //Send the user to the view page for their project
-        header('location: ./?p=view_project&id='.$project_id);
+        header('location: ./?p=project&id='.$project_id);
 
     }
 

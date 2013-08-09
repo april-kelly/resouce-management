@@ -58,6 +58,7 @@ if(isset($_SESSION['reset_code'])){
 
         //Bad reset code
         echo '<span class="error">The reset code you provided is no longer valid.</span>';
+        echo '<br />Click <a href="./?p=reset_code">here</a> to go back';
 
     }
 

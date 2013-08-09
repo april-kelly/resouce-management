@@ -76,13 +76,20 @@ class views {
                                     //Process the hours
 
                                     //add everything up
-                                    $this->hours =  $this->hours + $job['sunday']
-                                        + $job['monday']
-                                        + $job['tuesday']
-                                        + $job['wednesday']
-                                        + $job['thursday']
-                                        + $job['friday']
-                                        + $job['saturday'];
+                                    $current = time();
+
+                                    $times = array(
+                                        "sunday"    => $job['sunday'],
+                                        "monday"    => $job['monday'],
+                                        "tuesday"   => $job['tuesday'],
+                                        "wednesday" => $job['wednesday'],
+                                        "thursday"  => $job['thursday'],
+                                        "friday"    => $job['friday'],
+                                        "saturday"  => $job['saturday']
+                                    );
+
+                                    $this->hours = $this->add_times($times);
+
 
                                     if($this->hours > 0){
 
@@ -94,8 +101,6 @@ class views {
 
                                     }
 
-                                    //empty the hours variable
-                                    $this->hours = 0;
 
                                 }else{
 
@@ -123,6 +128,9 @@ class views {
 
                     }
 
+                    //empty the hours variable
+                    $this->hours = 0;
+
                 }
 
             }
@@ -132,7 +140,9 @@ class views {
             if(empty($table)){
                 $table = false;
             }
+
             return $table;
+
         }
 
         public function build_list_weeks($person, $sort){
@@ -179,6 +189,60 @@ class views {
 
         }
 
+
+        public function add_times($hours){
+
+            $totals = array(0 => 00,1 => 00,2 => 00);
+
+            foreach($hours as $day){
+
+                $day = explode(':', $day);
+
+
+                if(isset($day[0])){
+
+                    $totals[0] = $totals[0] + $day[0];
+
+
+                }
+
+                if(isset($day[1])){
+
+                    $totals[1] = $totals[1] + $day[1];
+
+
+                }
+
+                if(isset($day[2])){
+
+                    $totals[2] = $totals[2] + $day[2];
+
+
+                }
+
+            }
+
+
+            if(!(strlen($totals[1]) == 2)){
+
+                $totals[1] = $totals[1].'0';
+
+            }
+
+            if(!(strlen($totals[2]) == 2)){
+
+                $totals[2] = $totals[2].'0';
+
+            }
+
+            //Throw away the seconds
+            unset($totals[2]);
+
+            $total = implode(':', $totals);
+
+            return $total;
+
+        }
 
 
 }

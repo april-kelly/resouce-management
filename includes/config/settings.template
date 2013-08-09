@@ -53,7 +53,6 @@ class settings {
 
         //Security
             public $salt            = 'serversalt';
-            public $salt_changed    = TRUE;                                      //Deprecated
 
         //Gopher Server (Experimental)
             public $gopher          = FALSE;                                     //Enables/Disables Gopher server
