@@ -41,6 +41,13 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
             $_SESSION['colorization'] = $results[0]['colorization'];
             header('location: ../');
 
+            //In case of time out
+            if(isset($_SESSION['timeout'])){
+                unset($_SESSION['timeout']);
+                unset($_SESSION['timestamp']);
+            }
+
+
         }else{
 
             //Bad login

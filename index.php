@@ -299,6 +299,16 @@ switch($request){
 
 }
 
+
+//Make sure that the user's session has not timed out
+if($_SESSION['timeout'] == true){
+
+    $page = './admin/login_form.php';
+    unset($title);
+    $main_id = "login";
+
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -341,8 +351,6 @@ switch($request){
 
         <?php
 
-            //Make sure that the user's session has not timed out
-            if($_SESSION['timeout'] == false || !(isset($_SESSION['timeout']))){
 
                 //if a title is set echo it out
                 if(!(empty($title))){
@@ -353,11 +361,7 @@ switch($request){
                 //include the page
                 include_once($page);
 
-            }else{
 
-                include_once('./admin/login.php');
-
-            }
 
 
         ?>

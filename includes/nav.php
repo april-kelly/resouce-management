@@ -8,6 +8,7 @@ require_once(ABSPATH.'includes/config/users.php');
 $set = new settings;
 $settings = $set->fetch();
 
+
 //Refresh Settings (allows changes to take effect on next page load)
 $users = new users;
 $users->select($_SESSION['userid']);
@@ -20,9 +21,9 @@ $_SESSION['colorization']   = $users->colorization;
 
 //Session Timing
 $current = time();
-if(!($_SESSION['timestamp'])){
+if(!(isset($_SESSION['timestamp']))){
 
-    //The user has just logged in, set the timestamp
+    //The user has just logged in or out, set the timestamp
     $_SESSION['timestamp'] = $current;
     $_SESSION['timeout'] = false;
 
@@ -30,7 +31,7 @@ if(!($_SESSION['timestamp'])){
 
     //Verifiy that it has not been more than 30 mins since last action
     $diff = $current - $_SESSION['timestamp'] ;
-    if($diff >= 1800){
+    if($diff >= $settings['timeout']){
         $_SESSION['timeout'] = true;
     }else{
 

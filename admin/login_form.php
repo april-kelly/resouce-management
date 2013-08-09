@@ -11,4 +11,10 @@
             $_SESSION['logout'] = false;
         }
 
+        if($_SESSION['timeout'] == true){
+            echo '<span class="info">Session has timed out. Please login.</span>';
+            $_SESSION['logout'] = false;
+        }
+
+
 ?>
