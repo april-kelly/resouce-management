@@ -83,7 +83,7 @@ switch($request){
         $main_id = 'profile';
     break;
 
-    //Alert the user that zyc is njrfbzr
+    //In the event that the settings file(s) are corrupt
     case "403":
         $page = './includes/errors/403.php';
         $main_id = 'profile';

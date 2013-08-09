@@ -67,7 +67,7 @@
 	 <select name="sales_status">
 	  <option value="" <?php if(empty($_SESSION['input']['sales_status'])){ echo "selected='1'"; }?>>Select One:</option>
 	  <option value="1" <?php if($_SESSION['input']['sales_status'] == 1){ echo "selected='1'"; }?>>Sold</option>
-	  <option value="0" <?php if($_SESSION['input']['sales_status'] == 0){ echo "selected='1'"; }?>>Opportunity</option>
+	  <option value="0" <?php if($_SESSION['input']['sales_status'] == 0  && isset($_SESSION['input']['sales_status'])){ echo "selected='1'"; }?>>Opportunity</option>
 	 </select><b id="error2"></b>
 	 <br />
 	 
