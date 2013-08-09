@@ -35,10 +35,24 @@ class db
 			    $this->settings = new settings;
 			    $settings = $this->settings->fetch();
 
-			    $this->db_host     = $settings['db_host'];
-			    $this->db_user     = $settings['db_user'];
-			    $this->db_pass     = $settings['db_pass'];
-			    $this->db_database = $settings['db_database'];
+                //See if we have installed or not
+                if($settings['setupdone'] == true){
+
+                    //Normal
+                    $this->db_host     = $settings['db_host'];
+                    $this->db_user     = $settings['db_user'];
+                    $this->db_pass     = $settings['db_pass'];
+                    $this->db_database = $settings['db_database'];
+
+                }else{
+
+                    //Install
+                    $this->db_host     = $settings['db_host'];
+                    $this->db_user     = $settings['db_user'];
+                    $this->db_pass     = $settings['db_pass'];
+                    $this->db_database = '';
+
+                }
 
                 //Direct Access
                 /*

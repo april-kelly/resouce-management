@@ -22,6 +22,7 @@ class settings {
             public $production_alert= TRUE;                                     //Alert users if this is a beta release
             public $platform        = 'serveros';                                  //The server os
             public $timeout         = '1800';                                   //Seconds before the session is timed out
+            public $setupdone       = FALSE;                                    //Lets data.php to throw out any database names
 
         //Settings for insert.php
             public $insert_valid    = TRUE;                                     //Make sure all inputs are set
