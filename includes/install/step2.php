@@ -33,8 +33,8 @@ $_SESSION['step1'] = $_REQUEST;
     <form action="step3.php" method="post">
 
         <label for="email">Email: </label>               <input type="text" name="email" /><br />
-        <label for="first_name">First name: </label>     <input type="text" name="first_name" /><br />
-        <label for="last_name">Last name: </label>       <input type="text" name="last_name" /><br />
+        <label for="firstname">First name: </label>     <input type="text" name="firstname" /><br />
+        <label for="lastname">Last name: </label>       <input type="text" name="lastname" /><br />
         <label for="password">Password </label>          <input type="password" name="password" /><br />
         <label for="passwordII">Re-type Password </label><input type="password" name="passwordII" /><br />
 

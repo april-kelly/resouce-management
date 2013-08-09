@@ -202,7 +202,7 @@ class users {
         $this->reset_code = $dbc->sanitize($this->reset_code);
 
         //define query
-        $query = "INSERT INTO people (`index`, `firstname`, `lastname`, `email`, `password`, `profile_pic` `type`, `admin`, `colorization`, `reset_code`)
+        $query = "INSERT INTO `people` (`index`, `firstname`, `lastname`, `email`, `password`, `profile_pic`, `type`, `admin`, `colorization`, `reset_code`)
                 VALUES (NULL,
                  '".$this->firstname."',
                  '".$this->lastname."',
@@ -254,7 +254,7 @@ class users {
 
 
         //define query
-        $query = "UPDATE people SET
+        $query = "UPDATE `people` SET
                 `firstname`    = '".$this->firstname."',
                 `lastname`     = '".$this->lastname."',
                 `email`        = '".$this->email."',

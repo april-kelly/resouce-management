@@ -100,9 +100,8 @@ $_SESSION['step2'] = $_REQUEST;
                                 9 => php_uname('s'),
                             );
 
+                $new_settings = preg_replace($patterns, $replacements,  $settings);
 
-            $new_settings = preg_replace($patterns, $replacements,  $settings);
-                echo $new_settings;
                 if(!(is_writable(ABSPATH.'includes/config'))){
 
                     //PHP cannot write the settings.php file
@@ -154,13 +153,19 @@ $_SESSION['step2'] = $_REQUEST;
                 create_db($_SESSION['step1']['db_database']);
                 echo '<span class="success">Created database.</span><br />';
 
+                //Change the setup done flag so we can use the db
+                $settings = $set->fetch();
+                $settings['setupdone'] = true;
+                $set->update($settings);
+
                 //...Finally the user
                 $users = new users;
 
                 $users->change('index', null);
-                $users->change('name',      $_SESSION['step2']['first_name']);
-                $users->change('email',     $_SESSION['step2']['email']);
-                $users->change('password',  $_SESSION['step2']['password']);
+                $users->change('firstname',     $_SESSION['step2']['firstname']);
+                $users->change('lastname',      $_SESSION['step2']['lastname']);
+                $users->change('email',         $_SESSION['step2']['email']);
+                $users->change('password',      $_SESSION['step2']['password']);
                 $users->change('type',      '2');
                 $users->change('admin',     '2');
 

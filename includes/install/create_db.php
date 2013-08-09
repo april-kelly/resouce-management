@@ -33,7 +33,7 @@ function create_db($name){
     $dbc->direct('CREATE DATABASE '.$name);
 
     //The people table
-    $table_people = 'CREATE TABLE IF NOT EXISTS `people` (
+    $table_people = 'CREATE TABLE IF NOT EXISTS `'.$name.'`.`people` (
     `index` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
