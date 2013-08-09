@@ -25,4 +25,6 @@ $set->rebuild($rebuild);
 $set->create();
 
 echo "<b>Attempted settings rebuild/reset!</b>";
-header('location: ../../?p=home');
+
+echo '<br />Click <a href="./?p=home">here</a> to continue';
+//header('location: ./?p=home');

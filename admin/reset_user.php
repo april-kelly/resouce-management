@@ -73,7 +73,7 @@ if(isset($_SESSION['reset_code'])){
 
     <form action="./" method="get">
         <b>Please input your reset code.</b>
-        <input type="hidden" name="p" value="reset" />
+        <input type="hidden" name="p" value="reset_code" />
         <input type="text" name="c" />
         <input type="submit">
     </form>
