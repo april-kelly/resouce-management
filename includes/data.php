@@ -15,6 +15,7 @@ class db
 	private $db_host;
 	private $db_user;
 	private $db_database;
+    private $user_defined;
 	
 	//mysqli object
 	private $dbc;

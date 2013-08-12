@@ -80,7 +80,11 @@ if(isset($_SESSION['userid'])){
             $users->change('email', $_REQUEST['email']);
             $users->change('password', $users->password);
             $users->change('type', $_REQUEST['type']);
-            $users->change('admin', $_REQUEST['admin']);
+
+            //Make sure the user is not editing themselves
+            if(!($_SESSION['userid'] == $_SESSION['user_lookup'])){
+                $users->change('admin', $_REQUEST['admin']);
+            }
 
             $users->update();
             echo 'attempted update';
@@ -88,6 +92,8 @@ if(isset($_SESSION['userid'])){
             header('Location: ../../?p=admin&a=users');
         }
 
+        //Throw out the user_lookup variable
+        unset($_SESSION['user_lookup']);
 
     }else{
 

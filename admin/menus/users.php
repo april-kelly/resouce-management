@@ -78,7 +78,6 @@ if(isset($_SESSION['userid'])){
     if(isset($_SESSION['user_lookup'])){
         $users = new users;
         $request = $users->select($_SESSION['user_lookup']);
-        //unset($_SESSION['user_lookup']);
     ?>
 
     <form action="./admin/menus/user_save.php" method="post">
@@ -101,15 +100,26 @@ if(isset($_SESSION['userid'])){
             </select>
             <label>Type of resource</label>
             <br />
+            <?php
+
+                if(!($_SESSION['userid'] == $_SESSION['user_lookup'])){
+
+            ?>
             <select name="admin" value="">
                 <option value="0" <?php if($request[0]['admin'] =='0'){ echo ' selected '; }?> >Normal</option>
                 <option value="1" <?php if($request[0]['admin'] =='1'){ echo ' selected '; }?> >Administrator</option>
                 <option value="2" <?php if($request[0]['admin'] =='2'){ echo ' selected '; }?> >Debugger</option>
                 <option value="3" <?php if($request[0]['admin'] =='3'){ echo ' selected '; }?> >Developer</option>
             </select>
-            <label>Type of user</label><br />
+            <label>Type of user</label>
+            <?php
 
-            <input type="submit" value="Update" name="update"/>
+                }else{
+                    echo '<span class="info">You cannot change your own admin class</span>';
+                }
+
+            ?>
+            <br /><input type="submit" value="Update" name="update"/>
 
     </form>
 
