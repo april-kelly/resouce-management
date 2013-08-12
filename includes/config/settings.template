@@ -27,7 +27,7 @@ class settings {
         //Settings for insert.php
             public $insert_valid    = TRUE;                                     //Make sure all inputs are set
             public $insert_sanitize = TRUE;                                     //Sanitize data before sending to the database
-            public $insert_fail     = FALSE;                                    //Fail instead of inserterting
+            public $insert_fail     = FALSE;                                    //Fail instead of inserting
 
         //Settings for overview.php
             public $month_colors    = FALSE;                                    //Enable output coloration

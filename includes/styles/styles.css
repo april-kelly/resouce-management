@@ -270,14 +270,11 @@ body{
 
 
     #colorguide{
-
         width: 100px;
         float: left;
-        position: absolute;
         border: 1px solid #aaa;
         background-color: lightgray;
         border-radius: 15px;
-
     }
 
     #colorguide ul {
