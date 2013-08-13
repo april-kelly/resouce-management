@@ -11,9 +11,22 @@ if(!(isset($_SESSION))){
     session_start();
 }
 
+$dbc = new db;
+$dbc->connect();
+
 
 if(isset($_REQUEST['id'])){
 
+    if(isset($_REQUEST['d'])){
+
+        //User is deleting project
+
+        $query = "DELETE FROM projects WHERE `project_id` = '".$_REQUEST['id']."'";
+        $dbc->delete($query);
+
+        header('location: ./');
+
+    }
 
     $project_id = $_SESSION['project_id'];
     //unset($_SESSION['project_id']);
@@ -47,6 +60,7 @@ if(isset($_REQUEST['id'])){
             echo '<label for="overage">Allow over budget? </label><input type="checkbox" name="overage" value="'.$project['overage'].'"/><br /><br />';
             echo '<input type="submit" name="submit" value="Update" />';
             echo '</form>';
+            echo '<br /><a href="?p=project&id='.$project_id.'&d=1">Or delete this project</a>';
 
 
         }else{

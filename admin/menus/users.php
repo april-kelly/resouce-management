@@ -35,7 +35,6 @@ if(isset($_SESSION['userid'])){
 
 </script>
 <fieldset>
-
         <legend>Update a user</legend>
 
         <form action="./" method="get">
