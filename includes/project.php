@@ -24,7 +24,7 @@ if(isset($_REQUEST['id'])){
         $query = "DELETE FROM projects WHERE `project_id` = '".$_REQUEST['id']."'";
         $dbc->delete($query);
 
-        header('location: ./');
+        header('location: ./?p=last_page');
 
     }
 

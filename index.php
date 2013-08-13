@@ -73,6 +73,13 @@ if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta'])) && $sett
 
 }
 
+//Deal with the last page
+if($request == "last_page"){
+
+    $request = $_SESSION['last_page'];
+
+}
+
 
 //determine what page to show
 switch($request){
@@ -81,12 +88,14 @@ switch($request){
     case "brew":
         $page = './includes/errors/418.php';
         $main_id = 'profile';
+        $last_page = 'brew';
     break;
 
     //In the event that the settings file(s) are corrupt
     case "403":
         $page = './includes/errors/403.php';
         $main_id = 'profile';
+        $last_page = '403';
     break;
 
     //Add/Edit a project
@@ -98,6 +107,7 @@ switch($request){
         }
 
         $page = './includes/project.php';
+        $last_page = 'project';
         $main_id = 'profile';
     break;
 
@@ -111,6 +121,7 @@ switch($request){
             $page = './includes/update_pic.php';
 
         }
+        $last_page = 'edit_pic';
         $main_id = 'profile';
 
         break;
@@ -124,6 +135,7 @@ switch($request){
             $page = './includes/errors/beta.php';
 
         }
+        $last_page = 'break';
         $main_id = 'profile';
 
     break;
@@ -135,13 +147,14 @@ switch($request){
             $page = './includes/errors/503.php';
 
         }
-
+        $last_page = 'down';
         $main_id = 'main';
     break;
 
     //Recover Passwords
     case "reset_code":
         $page = './admin/reset_user.php';
+        $last_page = 'reset_code';
         $main_id = 'login';
 
         //pass reset code (if set)
@@ -153,12 +166,14 @@ switch($request){
     //Recover/Reset the settings
     case "reset":
         $page = './includes/config/reset.php';
+        $last_page = 'reset';
         $main_id = 'profile';
     break;
 
     //this is for temporary debugging (to be removed)
     case "test":
         $page = './includes/test.php';
+        $last_page = 'test';
         $main_id = 'main';
     break;
 
@@ -170,11 +185,13 @@ switch($request){
     case "home":
         $page = './includes/overview.php';
         $main_id = 'main';
+        $last_page = 'home';
         $title = '<h3>Current Resource Utilization:</h3>';
     break;
 
     case "search":
         $page = './includes/search_frontend.php';
+        $last_page = 'search';
         $main_id = 'search';
 
         //pass any searches (if set)
@@ -185,6 +202,7 @@ switch($request){
 
     case "request":
         $page = './includes/request.php';
+        $last_page = 'request';
         $main_id = 'profile';
         $extras = TRUE;
 
@@ -197,6 +215,7 @@ switch($request){
     case "admin":
 
         $page = './admin/menu.php';
+        $last_page = 'admin';
         $main_id = 'admin';
 
         //pass the save status (if set)
@@ -223,11 +242,13 @@ switch($request){
 
     case "login":
         $page = './admin/login_form.php';
+        $last_page = 'login';
         $main_id = 'login';
     break;
 
     case "badlogin":
         $page = './admin/login_form.php';
+        $last_page = 'badlogin';
         $main_id = 'login';
 
         $_SESSION['bad'] = '';
@@ -235,11 +256,13 @@ switch($request){
 
     case "user":
         $page = './includes/profile.php';
+        $last_page = 'user';
         $main_id = 'profile';
     break;
 
     case "week":
         $page = './includes/week.php';
+        $last_page = 'week';
         $main_id = 'main';
 
         //pass the requested user id to week.php (if set)
@@ -260,6 +283,7 @@ switch($request){
 
     case "logout":
         $page = './admin/login_form.php';
+        $last_page = 'logout';
         $main_id = 'login';
 
         //Destroy and recreate the session
@@ -289,15 +313,21 @@ switch($request){
             header('location: ./');
 
         }
+        $last_page = 'debug';
 
     break;
 
     default:
         $page = './includes/errors/404.php';
+        $last_page = '';
         $main_id = 'main';
     break;
 
 }
+
+//More of the last_page
+$_SESSION['last_page'] = $_SESSION['current_page'];
+$_SESSION['current_page'] = $request;
 
 
 //Make sure that the user's session has not timed out
