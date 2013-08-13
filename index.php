@@ -4,9 +4,10 @@
  * Programmer: Liam Kelly
  * Date:       5/31/13
  */
-
+error_reporting(E_STRICT);
 //start the users session
 session_start();
+
 
 //includes
 require_once('path.php');
@@ -23,12 +24,12 @@ if(!(file_exists('./includes/config/settings.php'))){
     $set = new settings;
     $settings = $set->fetch();
     //error reporting
-    if($settings['debug'] == TRUE){
+    /*if($settings['debug'] == TRUE){
         error_reporting(E_STRICT);
     }else{
         error_reporting(0);
     }
-
+*/
     //fetch the user's request
     if(isset($_REQUEST['p'])){
         $request = $_REQUEST['p'];
