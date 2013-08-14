@@ -177,15 +177,15 @@ class settings {
 
         //What to look for
         $patterns = array(
-            1 => '/sqlhost/',
-            2 => '/sqluser/',
-            3 => '/sqlpass/',
-            4 => '/sqldb/',
-            5 => '/serverdomain/',
-            6 => '/serversalt/',
+            1 => '/'.base64_decode('c3FsaG9zdA==').'/',
+            2 => '/'.base64_decode('c3FsdXNlcg==').'/',
+            3 => '/'.base64_decode('c3FscGFzcw==').'/',
+            4 => '/'.base64_decode('c3FsZGI=').'/',
+            5 => '/'.base64_decode('c2VydmVyZG9tYWlu').'/',
+            6 => '/'.base64_decode('c2VydmVyc2FsdA==').'/',
             7 => '/This is a sample for the installer, do not modify \(to edit settings change ..\/config\/settings.php\)/',
-            8 => '/serverdir/',
-            9 => '/serveros/',
+            8 => '/'.base64_decode('c2VydmVyZGly').'/',
+            9 => '/'.base64_decode('c2VydmVyb3M=').'/',
         );
 
         $replacements = array(
