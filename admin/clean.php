@@ -27,14 +27,17 @@ if($_SESSION['admin'] >= 1){
 
     //Clean up the jobs table
 
+    //Make sure the date ranges have been saved
+    if(isset($_REQUEST['date1']) && isset($_REQUEST['date2'])){
+
         //Step 1: Determine the number of rows
         $query = "SELECT count(*) FROM jobs";
         $size = $dbc->query($query);
         $size = $size[0]['count(*)'];
 
         //Define the dates to search for
-        $date1 = '2013-08-11';
-        $date2 = '2013-08-25';
+        $date1 = $dbc->sanitize($_REQUEST['date1']);
+        $date2 = $dbc->sanitize($_REQUEST['date2']);
 
         //Create the array to hold the values
         //We are using a fixed array to allow us to hold roughly 3 times as many rows as a normal array would
@@ -42,6 +45,7 @@ if($_SESSION['admin'] >= 1){
 
         //Step 2: Fetch all rows which need to be deleted
         $query = "SELECT `index` FROM jobs WHERE `week_of` BETWEEN '".$date1."' AND '".$date2."'";
+        echo $query;
         $to_delete = $dbc->query($query);
 
         //Step 3: Delete each row
@@ -53,7 +57,12 @@ if($_SESSION['admin'] >= 1){
 
         }
 
+    }else{
 
+        //Both dates are not defined
+        echo '<span class="error">Missing date range(s).</span>';
+
+    }
 
     //Close the Database Connection
     $dbc->close();
