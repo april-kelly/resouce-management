@@ -15,15 +15,17 @@ require_once('../path.php');
 require_once(ABSPATH.'includes/view.php');
 include_once(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php'); //we include instead to allow us to fail more gracefully
 
+//This allows us to create a spreadsheet based on what the user was viewing
 $page_offset = $_SESSION['page_offset'];
 $page_count  = $_SESSION['page_count'];
 
+//Setup the views class
 $views = new views;
 $table = $views->build_table($page_offset, $page_count);
 $weeks = $views->weeks;
 
+//Make a copy of the table
 $copy = $table;
-
 
 //rebuild the table for excel or csv
 $excel[0]["name"] = 'Resource';
