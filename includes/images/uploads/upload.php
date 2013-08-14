@@ -38,11 +38,37 @@ if(isset($_REQUEST['delete'])){
 }else{
 
     if(isset($_FILES)){
-
+var_dump($_FILES);
         if($_FILES["file"]["size"] <= 8388608){
 
             if(!(file_exists($_FILES["file"]["name"]))){
 
+                switch($_FILES["file"]["type"]){
+
+                    case "image/png":
+                        goto a;
+                    break;
+
+                    case "image/jpeg":
+                        goto a;
+                    break;
+
+                    case "image/bmp":
+                        goto a;
+                    break;
+
+                    case "image/gif":
+                        goto a;
+                    break;
+
+                    default:
+                        header('location: ../../../?p=edit_pic&wrong_type');
+                        goto b;
+                    break;
+
+                }
+
+                a:
                 //No file exist by this name (yet) so save the upload
                 move_uploaded_file($_FILES["file"]["tmp_name"], './'.$_FILES["file"]['name']);
 
@@ -64,16 +90,20 @@ if(isset($_REQUEST['delete'])){
 
                 //There is already a file by this name
                 echo "A file already exists by this name on the server";
+                header('location: ../../../?p=edit_pic&wrong_type');
             }
 
         }else{
 
             //File is to big
             echo 'The file is to big, please upload a file less than 8 mb.';
+            header('location: ../../../?p=edit_pic&wrong_type');
 
         }
 
     }
+
+    b:
 
     header('location: ../../../?p=edit_pic');
 

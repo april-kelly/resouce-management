@@ -193,7 +193,7 @@ file_put_contents('gophermap', $gopher);
                 <li class="high">26-40</li>
                 <li class="veryhigh">>= 41</li>
                 <li class="highpriority">High Priority</li>
-                <li></li>
+                <li><br /></li>
             </ul>
 
         </div>

@@ -20,13 +20,17 @@ if(isset($_SESSION['user_lookup'])){
 //fetch the user's info
 $dbc = new db;
 $dbc->connect();
-$user = $dbc->query("SELECT * FROM people WHERE `index`='".$userid."'");
+$user = $dbc->query("SELECT `firstname` FROM people WHERE `index`='".$userid."'");
 $dbc->close();
 
+if(!($_SESSION['userid'] == $userid)){
+    echo '<h3>'.$user[0]['firstname']."'s";
+}else{
+    echo '<h3>My ';
+}
 
-echo '<h3>'.$user[0]['firstname'];
 ?>
-'s profile picture:</h3><br />
+ profile picture:</h3><br />
         <img src="<?php
         if(!(empty($user[0]["profile_pic"]))){
             echo './includes/images/uploads/'.$user[0]["profile_pic"];
@@ -41,6 +45,11 @@ echo '<h3>'.$user[0]['firstname'];
       enctype="multipart/form-data">
     <input type="file" name="file" id="file"><br>
     <input type="submit" name="submit" value="Upload">
+    <?php
+    if(isset($_SESSION['wrong_type'])){
+    echo '<span class="error">Wrong file type, size, or name, you may upload .jpg, .bmp, .gif, and .png files.</span>';
+    }
+    ?>
 </form>
 <form action="./includes/images/uploads/upload.php" method="post">
     <br /><b>Delete:</b><br />
@@ -53,4 +62,7 @@ if(isset($_SESSION['user_lookup'])){
 }else{
     echo '<a href="./?p=user">Go back</a>';
 }
+
+
+
 ?>

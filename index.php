@@ -123,6 +123,11 @@ switch($request){
             $page = './includes/update_pic.php';
 
         }
+
+        //pass pagination  (if set)
+        if(isset($_REQUEST['wrong_type'])){
+            $_SESSION['wrong_type'] = $_REQUEST['wrong_type'];
+        }
         $last_page = 'edit_pic';
         $main_id = 'profile';
 

@@ -2,11 +2,9 @@ body{
     background-color: #4FABFF;
     text-align: center;
     speak: normal; /* This will probably never be used..... */
-    stress: 100;
     font-family: Times New Roman, serif;
 
 }
-
 
     .sans-serif {
         font-family: sans-serif;
@@ -358,8 +356,9 @@ body{
         -webkit-appearance: none;
     }
 
+
     .search input[name=submit]{
-        /* Code from google.com (look for the .gbqfb class) */
+        /* Code from google.com (look for the .gbqfb class)*/
         background-color: #4d90fe;
 
         background-image: -webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#4787ed));
@@ -372,7 +371,7 @@ body{
         border: 1px solid #3079ed;
         color: #fff!important;
         margin: 0 0;
-        background-repeat: no-repeat;  /* make the background image appear only once */
+        background-repeat: no-repeat;  /* make the background image appear only once*/
         background-position: 17px 7px;
         background-image: url("../images/search.png");
         /* End code from google */
