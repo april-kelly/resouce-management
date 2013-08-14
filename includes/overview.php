@@ -38,15 +38,28 @@ if(!(isset($_SESSION['page_offset']))){
 
 $previous = $_SESSION['page'] - 1;
 $next = $_SESSION['page'] + 1;
-$last = 30;
+
+$dbc = new db;
+$dbc->connect();
+$count = $dbc->query('SELECT count(*) FROM people');
+$count = $count[0]['count(*)'];
+$dbc->close();
+
+$last = ($count-($count % 30))/30;
 
 $page_offset = $_SESSION['page_offset'];
 $page_count  = $_SESSION['page_count'];
 
-echo ' <a href="?p=home&page=0">First Page</a> ';
-echo ' <a href="?p=home&page='.$previous.'">Previous Page</a> ';
-echo ' <a href="?p=home&page='.$next.'">Next Page</a> ';
-echo ' <a href="?p=home&page='.$last.'">Last Page</a> ';
+if(!($count <= '30')){
+
+    echo ' <a href="?p=home&page=0">First Page</a> ';
+    echo ' <a href="?p=home&page='.$previous.'">Previous Page</a> ';
+    echo ' <a href="?p=home&page='.$next.'">Next Page</a> ';
+    echo ' <a href="?p=home&page='.$last.'">Last Page</a> ';
+
+}
+
+
 
 
 //User customization
@@ -165,7 +178,7 @@ echo '|  Last updated: '.date('m-d-Y').' at '.date('g:ia T').'  |'."\r\n";
 echo '+-------------------------------------------+'."\r\n"."\r\n";
 $gopher = ob_get_contents();
 ob_end_clean();
-file_put_contents('../gophermap', $gopher);
+file_put_contents('gophermap', $gopher);
 
     //If the user has colorization enabled display a guide for the colors
     if($color_enable == true){

@@ -11,9 +11,9 @@
     //database connection
 	$dbc = new db;
 	$dbc->connect();
-
-	$result = $dbc->query('SELECT * FROM `people`');
-
+    $query = 'SELECT `index`,`firstname`,`lastname` FROM `people` WHERE `type` = 2 or `type` = 0';
+	$resources = $dbc->query($query);
+    $managers  = $dbc->query('SELECT `index`,`firstname`,`lastname` FROM `people` WHERE `type` = 1 or `type` = 0');
 
 	unset($result[0]);
 
@@ -76,9 +76,9 @@
 	<select name="manager" id="manager">
 	  <option value="">Select One:</option>
 	  <?php
-      foreach($result as $result){
+      foreach($resources as $result){
 
-          if($result['type'] == '0' or $result['type'] == '1'){
+
 
               if(isset($_SESSION['input']['manager'])){
 
@@ -102,7 +102,6 @@
 
               }
 
-          }
 
       }
       ?>
@@ -120,10 +119,10 @@
 	<select name="resource" id="resource">
 	  <option value="">Select One:</option>
 	  <?php
-        $result = $dbc->query('SELECT * FROM people');
-		foreach($result as $result){
+        //$result = $dbc->query('SELECT * FROM people');
+		foreach($managers as $result){
 
-            if($result['type'] == '2'){
+
 
                 if(isset($_SESSION['input']['manager'])){
 
@@ -147,8 +146,8 @@
 
                 }
 
-            }
 
+            echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
         }
 	  ?>
     </select>
@@ -288,3 +287,4 @@
   </form>
 
 <br /><a href="?p=project">Or create a new project here</a>
+
