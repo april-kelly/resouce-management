@@ -61,10 +61,10 @@ if($status['debug'] == true){
         //show the normal page
         ?>
         <h3>Debugging tools:</h3>
-        <a href="./?p=debug&d=fill">fill.php</a> Fills the jobs table with random data. <br />
-        <a href="./?p=debug&d=list">list.php</a> Lists the contents of the database. <br />
-        <a href="./?p=debug&d=dump">dump.php</a> Dumps the contents of the $_SESSION variable. <br />
-        <a href="./?p=debug&d=test">test.php</a> Exactly as it sounds. <br />
+        <a href="./?p=debug&amp;d=fill">fill.php</a> Fills the jobs table with random data. <br />
+        <a href="./?p=debug&amp;d=list">list.php</a> Lists the contents of the database. <br />
+        <a href="./?p=debug&amp;d=dump">dump.php</a> Dumps the contents of the $_SESSION variable. <br />
+        <a href="./?p=debug&amp;d=test">test.php</a> Exactly as it sounds. <br />
         <a href="./admin/save.php?d=0">Disable debug mode</a>
         <br /><br /><i class="info">Please not these tools may not be fully functional and are for debugging and developement only.</i>
         <?php

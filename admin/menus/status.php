@@ -18,11 +18,10 @@ if(isset($_SESSION['userid'])){
 
         //User is logged in
         ?>
-        <div id="status">
             <p>
                 Hello and welcome to version <?php echo $settings['version']; if($setting['production'] == false){ echo ' beta'; }?> of the Bluetent Resource Management software.
             </p>
-        </div>
+
         <?php
 
     }else{

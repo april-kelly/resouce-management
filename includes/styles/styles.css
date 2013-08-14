@@ -100,6 +100,10 @@ body{
         border-radius: 15px;
     }
 
+    #hours {
+        border: 0;
+    }
+
     #installer form {
         width: 80%;
         margin: 0 auto;

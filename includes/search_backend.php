@@ -25,14 +25,14 @@ echo '<br />';
 
 
 
-echo '<div id="people">';
-echo '<b>People:</b><br /><br />';
+echo '<div id="people">'."\r\n";
+echo '<b>People:</b><br /><br />'."\r\n";
 
 if(!(empty($people))){
 
    foreach($people as $person){
 
-       echo '<a href="?p=week&w='.$person['index'].'">'.$person['firstname'].' '.$person['lastname'].'</a><br />';
+       echo '<a href="?p=week&amp;w='.$person['index'].'">'.$person['firstname'].' '.$person['lastname'].'</a><br />'."\r\n";
 
    }
 
@@ -42,11 +42,11 @@ if(!(empty($people))){
 
 }
 
-echo '</div>';
+echo '</div>'."\r\n";
 
 
-echo '<div id="projects">';
-echo '<br /><b>Projects: </b><br /><br />';
+echo '<div id="projects">'."\r\n";
+echo '<br /><b>Projects: </b><br /><br />'."\r\n";
 
 if(empty($results)){
 
@@ -57,7 +57,7 @@ if(empty($results)){
 
     foreach($results as $result){
 
-        echo '<a href="?p=project&id='.$result['project_id'].'">'.$result['project_id'].' '.$result['title'].'</a><br />';
+        echo '<a href="?p=project&amp;id='.$result['project_id'].'">'.$result['project_id'].' '.$result['title'].'</a><br />'."\r\n";
         echo $result['description'].'<br /><br />';
 
     }
@@ -66,11 +66,11 @@ if(empty($results)){
 
 if($_REQUEST['q'] == 'credits'){
 
-    echo '<br />Written mostly by Liam Kelly, with help from: Jeremey Cerise, Rodney O\'Bryne and Ethan Hinson.';
+    echo '<br />Written mostly by Liam Kelly, with help from: Jeremey Cerise, Rodney O\'Bryne and Ethan Hinson.'."\r\n";
 
 }
 
-echo '</div>';
+echo '</div>'."\r\n";
 
 //Close the Database connection
 $dbc->close();

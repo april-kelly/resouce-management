@@ -59,7 +59,7 @@ if($_SESSION['admin'] >= 1){
 
 
             <b>Users</b><br /><br />
-            <input type="text" name="timeout" value="<?php echo $settings['timeout']; ?>" /<label>Session timeout (in seconds)</label>
+            <input type="text" name="timeout" value="<?php echo $settings['timeout']; ?>" /><label>Session timeout (in seconds)</label>
             <br />
 
 

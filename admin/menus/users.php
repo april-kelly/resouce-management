@@ -40,7 +40,7 @@ if(isset($_SESSION['userid'])){
         <form action="./" method="get">
 
             <input type="hidden" name="p" value="admin" />
-            <input type="hidden" name="a" value="users"
+            <input type="hidden" name="a" value="users" />
             <b>Select a user:</b><br />
             <select name='u'>
 
@@ -139,14 +139,14 @@ if(isset($_SESSION['userid'])){
         <input type="text" name="lastname" value="" autocomplete="off" /><label>Last</label><br />
         <input type="text" name="email" autocomplete="off" /><label>Email</label><br />
         <input type="password" name="password" autocomplete="off"/><label>Password</label><br />
-        <select name="type" autocomplete="off">
+        <select name="type">
             <option value="2">Project Resource</option>
             <option value="1">Project Manager</option>
             <option value="0">Both</option>
         </select>
         <label>Type of resource</label>
         <br />
-        <select name="admin" autocomplete="off">
+        <select name="admin">
             <option value="0">Normal</option>
             <option value="1">Administrator</option>
             <option value="2">Debugger</option>

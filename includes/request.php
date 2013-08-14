@@ -64,17 +64,17 @@
 	
     <label for="sales_status">Sales Status: </label>
 	
-	 <select name="sales_status">
-	  <option value="" <?php if(empty($_SESSION['input']['sales_status'])){ echo "selected='1'"; }?>>Select One:</option>
+	 <select name="sales_status" id="sales_status">
+	  <option>Select One:</option>
 	  <option value="1" <?php if($_SESSION['input']['sales_status'] == 1){ echo "selected='1'"; }?>>Sold</option>
 	  <option value="0" <?php if($_SESSION['input']['sales_status'] == 0  && isset($_SESSION['input']['sales_status'])){ echo "selected='1'"; }?>>Opportunity</option>
-	 </select><b id="error2"></b>
+	 </select>
 	 <br />
 	 
     <label for="manager">Project Manager: </label> 
 	
 	<select name="manager" id="manager">
-	  <option value="">Select One:</option>
+	  <option>Select One:</option>
 	  <?php
       foreach($resources as $result){
 
@@ -101,7 +101,7 @@
                   echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
 
               }
-
+echo "\r\n";
 
       }
       ?>
@@ -110,7 +110,7 @@
 	
     <label for="project_id">Project ID: </label>
 	
-	<input type="text" id="txt1" name="project_id" autocomplete="off" onkeyup="showHint(this.value)" <?php if(isset($_SESSION['input']['project_id'])){ echo 'value="'.$_SESSION['input']['project_id'].'" '; }?>/><b id="error2"></b>
+	<input type="text" name="project_id" id="project_id" autocomplete="off" onkeyup="showHint(this.value)" <?php if(isset($_SESSION['input']['project_id'])){ echo 'value="'.$_SESSION['input']['project_id'].'" '; }?>/>
     <span id="txtHint" ></span>
     <br />
 	
@@ -148,6 +148,8 @@
 
 
             echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
+
+            echo "\r\n";
         }
 	  ?>
     </select>
@@ -155,7 +157,7 @@
 
 	<label>Priority</label>
   	<select name="priority">
-  	   <option <?php if(empty($_SESSION['input']['priority']) ||  !(isset($_SESSION['input']['priority']))){ echo "selected='1'"; }?>>Select One:</option>
+  	   <option>Select One:</option>
   	   <option value="3" <?php if($_SESSION['input']['priority'] == 3){ echo "selected='1'"; }?>>Low</option>
   	   <option value="2" <?php if($_SESSION['input']['priority'] == 2){ echo "selected='1'"; }?>>Medium</option>
   	   <option value="1" <?php if($_SESSION['input']['priority'] == 1){ echo "selected='1'"; }?>>High</option>
@@ -171,7 +173,7 @@
 	<p>   
 	<label>Hours:</label><br />
 	<br />
-	<table border="0">
+	<table id="hours">
 	 <tr>
 	  <td>Sun: </td>
 	  <td>Mon: </td>
@@ -194,9 +196,6 @@
 	 
 	 </table>
 	 <br />
-
-	 
-  	</p>
 
 	<input type="submit" value="Request" />
 	
