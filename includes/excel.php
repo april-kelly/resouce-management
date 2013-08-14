@@ -5,13 +5,21 @@
  * Date:        7/31/13
  */
 
+//Start the users session
+if(!(isset($_SESSION))){
+    session_start();
+}
+
 //Includes
 require_once('../path.php');
 require_once(ABSPATH.'includes/view.php');
 include_once(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php'); //we include instead to allow us to fail more gracefully
 
+$page_offset = $_SESSION['page_offset'];
+$page_count  = $_SESSION['page_count'];
+
 $views = new views;
-$table = $views->build_table();
+$table = $views->build_table($page_offset, $page_count);
 $weeks = $views->weeks;
 
 $copy = $table;
