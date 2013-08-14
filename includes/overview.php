@@ -59,9 +59,6 @@ if(!($count <= '30')){
 
 }
 
-
-
-
 //User customization
 $color_enable = $_SESSION['colorization'];
 
@@ -135,7 +132,8 @@ $weeks = $view->weeks;
 ob_start();
 echo '+-------------------------------------------+'."\r\n";
 echo '|   Bluetent Resource Tracking Overview:    |'."\r\n";
-echo '+-------------------------------------------+'."\r\n"."\r\n";
+echo '+-------------------------------------------+'."\r\n";
+echo "\r\n";
 echo '+----------+----------+----------+----------+'."\r\n";
 
 $max_weeks = 4;
