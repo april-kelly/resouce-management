@@ -50,12 +50,13 @@ class views {
         }
 
         //Table build function
-        public function build_table(){
+        public function build_table($page_offset, $page_count){
 
             //Setup the data object
             $dbc = new db;
             $dbc->connect();
-            $people = $dbc->query('SELECT * FROM people');
+            $people_query = 'SELECT * FROM people LIMIT '.$page_offset.','.$page_count;
+            $people = $dbc->query($people_query);
             $query = "SELECT * FROM jobs WHERE week_of BETWEEN '". $this->weeks[1]."' AND '". $this->weeks[count($this->weeks)]."' ";
             $jobs = $dbc->query($query);
 

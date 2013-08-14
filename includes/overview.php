@@ -18,10 +18,36 @@ require_once(ABSPATH.'includes/view.php');
 //Settings
 $set = new settings;
 $settings = $set->fetch();
-
 $excel_enable = $settings['month_excel'];
 $show	      = $settings['weeks'];
 $output       = $settings['month_output'];
+
+//Pagination
+if(!(isset($_SESSION['page_offset']))){
+    $_SESSION['page_offset'] = 0;
+    $_SESSION['page_count'] = 30;
+}elseif(isset($_SESSION['page'])){
+
+    if($_SESSION['page'] <= 0){
+        $_SESSION['page_offset'] = 0;
+    }else{
+        $_SESSION['page_offset'] = $_SESSION['page'] * 30;
+    }
+
+}
+
+$previous = $_SESSION['page'] - 1;
+$next = $_SESSION['page'] + 1;
+$last = 30;
+
+$page_offset = $_SESSION['page_offset'];
+$page_count  = $_SESSION['page_count'];
+
+echo ' <a href="?p=home&page=0">First Page</a> ';
+echo ' <a href="?p=home&page='.$previous.'">Previous Page</a> ';
+echo ' <a href="?p=home&page='.$next.'">Next Page</a> ';
+echo ' <a href="?p=home&page='.$last.'">Last Page</a> ';
+
 
 //User customization
 $color_enable = $_SESSION['colorization'];
@@ -33,9 +59,10 @@ if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php')){
     $excel_enable = FALSE;
 }
 
+
 //Fetch the table
 $view = new views;
-$table = $view->build_table();
+$table = $view->build_table($page_offset, $page_count);
 $weeks = $view->weeks;
 
 
@@ -165,6 +192,9 @@ file_put_contents('../gophermap', $gopher);
 
     }
 
+    //Unset the pagination
+    //unset($_SESSION['page_offset']);
+    //unset($_SESSION['page_count']);
 
     //Echo out the bottom of the page
     echo 'Page last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy

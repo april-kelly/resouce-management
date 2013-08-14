@@ -4,6 +4,9 @@
  * Programmer: Liam Kelly
  * Date:       5/31/13
  */
+
+$start = memory_get_usage();
+
 error_reporting(E_STRICT);
 //start the users session
 session_start();
@@ -187,6 +190,12 @@ switch($request){
         $page = './includes/overview.php';
         $main_id = 'main';
         $last_page = 'home';
+
+        //pass pagination  (if set)
+        if(isset($_REQUEST['page'])){
+            $_SESSION['page'] = $_REQUEST['page'];
+        }
+
         $title = '<h3>Current Resource Utilization:</h3>';
     break;
 
@@ -418,3 +427,8 @@ if($_SESSION['timeout'] == true){
 
 </body>
 </html>
+
+<?php
+$end = memory_get_usage();
+
+echo $end - $start;
