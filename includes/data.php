@@ -61,6 +61,7 @@ class db
                 $this->db_pass     = '';
                 $this->db_database = '';
                 */
+
 		}
 
             $this->dbc = new mysqli($this->db_host, $this->db_user, $this->db_pass, $this->db_database)
