@@ -175,9 +175,15 @@ body{
     }
 
     .data {
+        table-layout: fixed;
         border-collapse:collapse;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .data td{
+        min-width:  75px;
+        max-width: 150px;
     }
 
     .data a {
@@ -269,25 +275,38 @@ body{
     .highpriority{
         background-color: #009bff;
     }
-
+    .locked{
+        background-color: lightgray;
+        color: #777;
+    }
 
     #colorguide{
-        width: 100px;
-        float: right;
+        width: 620px;
         border: 1px solid #aaa;
+        margin-left: auto;
+        margin-right: auto;
         background-color: lightgray;
         border-radius: 15px;
     }
 
-    #colorguide ul {
-        list-style: none;
-        padding:0;
-        margin:0;
+    #colorguide table{
+        table-layout: fixed;
+        border-collapse:collapse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #colorguide td{
+        min-width: 100px;
     }
 
     #colorguide li {
         padding-left: 1em;
         text-indent: -.7em;
+    }
+
+    .width{
+        width: 50px;
     }
 
     .zero li:before{

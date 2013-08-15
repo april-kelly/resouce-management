@@ -110,6 +110,7 @@ class views {
                                     }
 
 
+
                                 }else{
 
                                     if(empty($table[$person['index']][$week])){
@@ -133,6 +134,42 @@ class views {
                             }
 
                         }
+
+                        //Handle user locking
+                        if(!($person['lock_start'] == '0000-00-00')){
+
+                            //Indefinite locking (e.g the person quit or was fired)
+                            if($person['lock_start'] <= $week && $person['lock_end'] == '0000-00-00'){
+
+                                if($table[$person['index']][$week] == '0'){
+
+                                    $table[$person['index']][$week] = '--';
+
+                                }
+                                echo "indefinite";
+
+                            }
+
+                            if($person['lock_start'] <= $week && $person['lock_end'] >= $week){
+
+                                //Temporary locking (e.g the person is on vacation)
+                                if($table[$person['index']][$week] == '0'){
+
+                                    $table[$person['index']][$week] = '--';
+
+                                }
+                                if($table[$person['index']][$week] > '0' && !(preg_match('/-/', $table[$person['index']][$week]))){
+
+                                    $table[$person['index']][$week] = $table[$person['index']][$week].'--';
+
+                                }
+
+
+                            }
+
+
+                        }
+
 
                     }
 
@@ -267,6 +304,14 @@ class views {
                     if(preg_match('/h/', $table_row)){
 
                         echo '<span class="colors highpriority" >';
+                        $temp = trim($temp, '-');
+
+                    }elseif(preg_match('/--/', $table_row)){
+
+                        echo '<span class="colors locked" >';
+                        if($temp > '0'){
+                            $temp = trim($temp, '-');
+                        }
 
                     }else{
 
@@ -298,6 +343,8 @@ class views {
                             echo '<span class="colors veryhigh" >';
 
                         }
+
+
 
                     }
 

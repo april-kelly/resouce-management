@@ -54,7 +54,7 @@
                 document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","./includes/search.php?q="+str,true);
+        xmlhttp.open("GET","./includes/search_project.php?q="+str,true);
         xmlhttp.send();
     }
 </script>
@@ -166,9 +166,13 @@ echo "\r\n";
   	<br />
 
   	<label>Week of: </label>
-    <input type="text" id="start_date" name="start_date" <?php if(isset($_SESSION['input']['start_date'])){ echo 'value="'.$_SESSION['input']['start_date'].'" '; }?> autocomplete="off" /><br />
 
-	 
+
+
+    <input type="text" class="week-picker" id="startDate" name="startDate" <?php if(isset($_SESSION['input']['start_date'])){ echo 'value="'.$_SESSION['input']['start_date'].'" '; }?> autocomplete="off" /><br />
+    <input type="text" id="endDate" />
+
+    <span id="startDate"></span> - <span id="endDate"></span>
 	
 	<p>   
 	<label>Hours:</label><br />

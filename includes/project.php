@@ -57,7 +57,10 @@ if(isset($_REQUEST['id'])){
             echo '<textarea name="description">'.$project['description'].'</textarea><br />';
             echo '<label for="budget">Hours Budget: </label><input type="text" name="max_hours" value="'.$project['max_hours'].'"/><br />';
             echo '<input type="hidden" name="overage" value="FALSE" />';
-            echo '<label for="overage">Allow over budget? </label><input type="checkbox" name="overage" value="'.$project['overage'].'"/><br /><br />';
+            echo '<label for="overage">Allow over budget? </label>';
+            echo '<input type="hidden" name="overage" value="FALSE"/>';
+            echo '<input type="checkbox" name="overage" value="TRUE"'; if($project['overage'] == TRUE){ echo "checked"; } echo '/>';
+            echo '<br /><br />';
             echo '<input type="submit" name="submit" value="Update" />';
             echo '</form>';
             echo '<br /><a href="?p=project&id='.$project_id.'&d=1">Or delete this project</a>';
@@ -121,6 +124,13 @@ if(isset($_REQUEST['submit'])){
     $description  = $dbc->sanitize($_REQUEST['description']);
     $max_hours    = $dbc->sanitize($_REQUEST['max_hours']);
     $overage      = $dbc->sanitize($_REQUEST['overage']);
+
+    //Make $overage numeric
+    if($overage = false){
+        $overage = 0;
+    }else{
+        $overage = 1;
+    }
 
     //Update an existing project
     if($_REQUEST['submit'] == 'Update'){

@@ -5,14 +5,12 @@
  * Date:       5/31/13
  */
 
-error_reporting(E_STRICT);
 //start the users session
 session_start();
 
-
 //includes
 require_once('path.php');
-include_once(ABSPATH.'includes/config/settings.php'); //We include to allow more graceful failing
+include_once(ABSPATH.'includes/config/settings.php');
 
 //make sure that the settings file exists
 if(!(file_exists('./includes/config/settings.php'))){
@@ -24,13 +22,14 @@ if(!(file_exists('./includes/config/settings.php'))){
     //fetch the debug status
     $set = new settings;
     $settings = $set->fetch();
+
     //error reporting
-    /*if($settings['debug'] == TRUE){
+    if($settings['debug'] == TRUE){
         error_reporting(E_STRICT);
     }else{
         error_reporting(0);
     }
-*/
+
     //fetch the user's request
     if(isset($_REQUEST['p'])){
         $request = $_REQUEST['p'];
@@ -82,9 +81,17 @@ if($request == "last_page"){
 
 }
 
-
 //determine what page to show
 switch($request){
+
+    //View Requests
+    case "view_requests":
+        $page = './includes/view_requests.php';
+        $main_id = 'profile';
+        $last_page = 'view_requests';
+        $title = '<h3>My Requests</h3>';
+    break;
+
 
     //Alert the user that this server is a teapot
     case "brew":

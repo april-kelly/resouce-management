@@ -83,6 +83,7 @@ if(isset($_SESSION['userid'])){
             DEFAULT:
                 //Just show the status page
                 $page = 'admin/menus/status.php';
+                $id = 'status';
             break;
 
         }

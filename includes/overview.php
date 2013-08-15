@@ -182,30 +182,43 @@ file_put_contents('gophermap', $gopher);
     if($color_enable == true){
 
         ?>
-
+        <br />
         <div id="colorguide">
 
             <b>Colors:</b><br />
-            <ul>
-                <li class="zero">0</li>
-                <li class="low">1-15</li>
-                <li class="medium">16-25</li>
-                <li class="high">26-40</li>
-                <li class="veryhigh">>= 41</li>
-                <li class="highpriority">High Priority</li>
-                <li><br /></li>
-            </ul>
-
+            <table>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span class="colors zero">0</span></td>
+                    <td>Zero</td>
+                    <td><span class="colors medium">16-25</span></td>
+                    <td>Medium</td>
+                    <td><span class="colors high">26-40</span></td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td><span class="colors highpriority">High Priority</span></td>
+                    <td>High Priority</td>
+                    <td><span class="colors low">1-15</span></td>
+                    <td>Low</td>
+                    <td><span class="colors veryhigh"> >= 41 </span></td>
+                    <td>Very High</td>
+                </tr>
+            </table>
+            <br/>
         </div>
 
     <p>
         <?
 
     }
-
-    //Unset the pagination
-    //unset($_SESSION['page_offset']);
-    //unset($_SESSION['page_count']);
 
     //Echo out the bottom of the page
     echo 'Page last updated: '.date('m-d-Y'); //outputs the date in mm-dd-yyyy
