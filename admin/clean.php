@@ -45,17 +45,25 @@ if($_SESSION['admin'] >= 1){
 
         //Step 2: Fetch all rows which need to be deleted
         $query = "SELECT `index` FROM jobs WHERE `week_of` BETWEEN '".$date1."' AND '".$date2."'";
-        echo $query;
         $to_delete = $dbc->query($query);
 
         //Step 3: Delete each row
-        foreach($to_delete as $delete){
+        if(!(empty($to_delete))){
 
-            $query = "DELETE FROM jobs WHERE `index` = ".$delete['index'];
-            echo $query."\r\n";
-            //$dbc->query($query);
+            foreach($to_delete as $delete){
+
+                $query = "DELETE FROM jobs WHERE `index` = ".$delete['index'];
+                echo $query."\r\n";
+                //$dbc->query($query);
+
+            }
+
+        }else{
+
+            echo '<span class="info">No records found for the date ranges you specified.</span>';
 
         }
+
 
     }else{
 

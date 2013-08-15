@@ -23,9 +23,13 @@ $_SESSION['colorization']   = $users->colorization;
 $current = time();
 if(!(isset($_SESSION['timestamp']))){
 
-    //The user has just logged in or out, set the timestamp
-    $_SESSION['timestamp'] = $current;
-    $_SESSION['timeout'] = false;
+    if(isset($_SESSION['userid'])){
+
+        //The user has just logged in, set the timestamp
+        $_SESSION['timestamp'] = $current;
+        $_SESSION['timeout'] = false;
+
+    }
 
 }else{
 
