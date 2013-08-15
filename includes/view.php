@@ -146,7 +146,6 @@ class views {
                                     $table[$person['index']][$week] = '--';
 
                                 }
-                                echo "indefinite";
 
                             }
 

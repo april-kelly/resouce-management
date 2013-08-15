@@ -16,5 +16,9 @@
             $_SESSION['logout'] = false;
         }
 
+        if(isset($_SESSION['banned'])){
+            echo '<span class="error">Alert you have been banned!<br /><em>This event has been logged.</em></span>';
+        }
+
 
 ?>

@@ -20,9 +20,13 @@ class settings {
             public $version         = '1.0.5 beta';                             //Version number
             public $production      = FALSE;                                    //Production status of this version beta/normal
             public $production_alert= TRUE;                                     //Alert users if this is a beta release
-            public $platform        = 'serveros';                                  //The server os
+            public $platform        = 'serveros';                               //The server os
             public $timeout         = '1800';                                   //Seconds before the session is timed out
             public $setupdone       = FALSE;                                    //Lets data.php to throw out any database names
+
+        //Security
+            public $logging         = TRUE;                                     //Tells the server to log certain events
+            public $IIstep          = FALSE;                                    //Enables Two Factor Authentication
 
         //Settings for insert.php
             public $insert_valid    = TRUE;                                     //Make sure all inputs are set
@@ -204,7 +208,7 @@ class settings {
         $new_settings = preg_replace($patterns, $replacements,  $settings);
 
         //Write the new settings
-        file_put_contents(ABSPATH.'includes/config/cats.php', $new_settings);
+        file_put_contents(ABSPATH.'includes/config/settings.php', $new_settings);
 
     }
 

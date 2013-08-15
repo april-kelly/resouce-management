@@ -70,7 +70,12 @@ if($settings['maintenance'] == TRUE && $_SESSION['admin'] <= 0){
 //Beta mode
 if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta'])) && $settings['production'] == false){
 
-    $request = 'beta';
+    if(!($request == 'badlogin' or $request == "banned" or $request == "login")){
+
+        $request = 'beta';
+
+    }
+
 
 }
 
@@ -272,6 +277,14 @@ switch($request){
         $main_id = 'login';
 
         $_SESSION['bad'] = '';
+    break;
+
+    case "banned":
+        $page = './admin/login_form.php';
+        $last_page = 'badlogin';
+        $main_id = 'login';
+
+        $_SESSION['banned'] = '';
     break;
 
     case "user":

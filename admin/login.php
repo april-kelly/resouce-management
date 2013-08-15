@@ -33,6 +33,30 @@ if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 
         if(!($results == FALSE)){
 
+            //Make sure user is not locked indefinitely
+            if($results[0]['lock_start'] > '0000-00-00' && $results[0]['lock_end'] == '0000-00-00'){
+
+                //Check to see if the lock has started or not
+                if(!($results[0]['lock_start'] > date('Y-m-d', time()))){
+
+                    //Block user (lock has started)
+                    header('location: ../?p=banned');
+
+                    //For logging purposes
+                    $banned = true;
+
+                }
+
+
+            }
+
+            //Logging
+            if($settings['logging'] == true){
+
+                $ip = $_SESSION['REMOTE_ADDR'];
+
+            }
+
             //Good login
             $_SESSION['userid'] = $results[0]['index'];
             $_SESSION['name'] = $results[0]['firstname'];

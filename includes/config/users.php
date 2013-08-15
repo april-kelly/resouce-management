@@ -229,7 +229,6 @@ class users {
                  )";
 
         //run the query
-        echo $query;
         $dbc->insert($query);
 
         //close connection
