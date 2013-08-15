@@ -67,7 +67,7 @@ if(isset($_SESSION['userid'])){
             $users->create();
             echo 'attempted add';
 
-            header('Location: ../../?p=admin&a=users');
+           // header('Location: ../../?p=admin&a=users');
         }
 
         //update user

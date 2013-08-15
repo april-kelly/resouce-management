@@ -223,12 +223,13 @@ class users {
                  '".$this->type."',
                  '".$this->admin."',
                  '".$this->colorization."',
-                 '".$this->reset_code."'
-                 '".$this->lock_start."'
+                 '".$this->reset_code."',
+                 '".$this->lock_start."',
                  '".$this->lock_end."'
                  )";
 
         //run the query
+        echo $query;
         $dbc->insert($query);
 
         //close connection
