@@ -28,6 +28,9 @@ if(isset($_SESSION['userid'])){
                 <li><a href="./?p=admin&amp;a=status">System Status</a></li>
                 <li><a href="./?p=admin&amp;a=general">General</a></li>
                 <?php if($_SESSION['admin'] >= '2'){ ?>
+                    <li><a href="./?p=admin&amp;a=security">Security</a></li>
+                <?php } ?>
+                <?php if($_SESSION['admin'] >= '2'){ ?>
                     <li><a href="./?p=admin&amp;a=internal">Internal</a></li>
                 <?php } ?>
                 <li><a href="./?p=admin&amp;a=users">Users</a></li>
@@ -65,6 +68,10 @@ if(isset($_SESSION['userid'])){
 
             CASE "general":
                 $page = 'admin/menus/main.php';
+            break;
+
+            CASE "security":
+                $page = 'admin/menus/security.php';
             break;
 
 
