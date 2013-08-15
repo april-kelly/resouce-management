@@ -273,7 +273,7 @@ body{
 
     #colorguide{
         width: 100px;
-        float: left;
+        float: right;
         border: 1px solid #aaa;
         background-color: lightgray;
         border-radius: 15px;

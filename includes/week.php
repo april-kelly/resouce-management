@@ -76,6 +76,7 @@ foreach($result as $result){
     $people[$result['index']]['type'] = $result['type'];
 }
 
+
 echo "<h3>Weekly expanded view for ".$people[$person]['name'].": </h3>";
 
 //sort by week
@@ -210,6 +211,9 @@ foreach($week as $week){
                 foreach($time as $day){
 
                     echo '<td>';
+
+                    //Disable colors
+                    $color_enable = false;
 
                     if($color_enable == true){
 
