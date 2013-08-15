@@ -26,7 +26,7 @@ class users {
     public $lock_end    = '0000-00-00';
 
     //System Related
-    public $salt        = '';       //This will be set in the construtor
+    public $salt        = '';       //This will be set in the constructor
 
     //Constructor
     function __construct(){

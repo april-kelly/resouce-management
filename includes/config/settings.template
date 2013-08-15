@@ -27,6 +27,7 @@ class settings {
         //Security
             public $logging         = TRUE;                                     //Tells the server to log certain events
             public $IIstep          = FALSE;                                    //Enables Two Factor Authentication
+            public $strict          = FALSE;                                    //Prevents anonymous users
 
         //Settings for insert.php
             public $insert_valid    = TRUE;                                     //Make sure all inputs are set

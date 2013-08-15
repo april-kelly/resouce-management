@@ -59,11 +59,22 @@ if($settings['maintenance'] == TRUE && $_SESSION['admin'] <= 0){
 
   if(!($request == 'login')){
       $request = 'down';
-  }
+}
 
 }elseif($settings['maintenance'] == TRUE && $_SESSION['admin'] >= 1){
 
     header($_SERVER['SERVER_PROTOCOL']." 503 Down for maintenance");
+
+}
+
+//Strict mode (no anonymous users)
+if($settings['strict'] == TRUE && !(isset($_SESSION['userid']))){
+
+    if(!($request == 'badlogin' or $request == "banned" or $request == "login")){
+
+        $request = 'login';
+
+    }
 
 }
 

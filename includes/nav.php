@@ -48,6 +48,9 @@ if(!(isset($_SESSION['timestamp']))){
     }
 
 }
+//Strict mode (no anonymous users)
+if(!($settings['strict'] == TRUE && !(isset($_SESSION['userid'])))){
+
 
 //Make sure the server is NOT in Maintenance mode
 if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
@@ -83,4 +86,10 @@ if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
             ?><p class="error">ERROR: The setting public $mlp is set to an unsupported value! Please fix.</p><?php
         }
     }
+}else{
+
+    ?>
+    <br /><br />
+    <?php
+}
 ?>
