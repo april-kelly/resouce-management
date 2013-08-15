@@ -11,6 +11,7 @@ require_once(ABSPATH.'includes/config/settings.php');
 
 class users {
 
+    //User Related
     public $index       = '';
     public $firstname   = '';
     public $lastname    = '';
@@ -21,6 +22,10 @@ class users {
     public $admin       = '0';
     public $colorization= '0';
     public $reset_code  = '';
+    public $lock_start  = '0000-00-00';
+    public $lock_end    = '0000-00-00';
+
+    //System Related
     public $salt        = '';       //This will be set in the construtor
 
     //Constructor
@@ -103,6 +108,8 @@ class users {
             $this->admin      = $results[0]['admin'];
             $this->colorization= $results[0]['colorization'];
             $this->reset_code = $results[0]['reset_code'];
+            $this->lock_start = $results[0]['lock_start'];
+            $this->lock_end   = $results[0]['lock_end'];
 
             return $results;
         }else{
@@ -175,6 +182,8 @@ class users {
             $this->admin      = $results[0]['admin'];
             $this->colorization= $results[0]['colorization'];
             $this->reset_code = $results[0]['reset_code'];
+            $this->lock_start = $results[0]['lock_start'];
+            $this->lock_end   = $results[0]['lock_end'];
 
             return $results;
         }else{
@@ -200,9 +209,11 @@ class users {
         $this->admin      = $dbc->sanitize($this->admin);
         $this->colorization= $dbc->sanitize($this->colorization);
         $this->reset_code = $dbc->sanitize($this->reset_code);
+        $this->lock_start = $dbc->sanitize($this->lock_start);
+        $this->lock_end   = $dbc->sanitize($this->lock_end);
 
         //define query
-        $query = "INSERT INTO `people` (`index`, `firstname`, `lastname`, `email`, `password`, `profile_pic`, `type`, `admin`, `colorization`, `reset_code`)
+        $query = "INSERT INTO `people` (`index`, `firstname`, `lastname`, `email`, `password`, `profile_pic`, `type`, `admin`, `colorization`, `reset_code`, `lock_start`, `lock_end`)
                 VALUES (NULL,
                  '".$this->firstname."',
                  '".$this->lastname."',
@@ -212,7 +223,10 @@ class users {
                  '".$this->type."',
                  '".$this->admin."',
                  '".$this->colorization."',
-                 '".$this->reset_code."')";
+                 '".$this->reset_code."'
+                 '".$this->lock_start."'
+                 '".$this->lock_end."'
+                 )";
 
         //run the query
         $dbc->insert($query);
@@ -251,6 +265,8 @@ class users {
         $this->admin      = $dbc->sanitize($this->admin);
         $this->colorization= $dbc->sanitize($this->colorization);
         $this->reset_code = $dbc->sanitize($this->reset_code);
+        $this->lock_start = $dbc->sanitize($this->lock_start);
+        $this->lock_end   = $dbc->sanitize($this->lock_end);
 
 
         //define query
@@ -263,7 +279,9 @@ class users {
                 `type`         = '".$this->type."',
                 `admin`        = '".$this->admin."',
                 `colorization` = '".$this->colorization."',
-                `reset_code`   = '".$this->reset_code."'
+                `reset_code`   = '".$this->reset_code."',
+                `lock_start`   = '".$this->lock_start."',
+                `lock_end`     = '".$this->lock_end."'
                  WHERE `index` = '".$this->index."'";
 
         //run the query
