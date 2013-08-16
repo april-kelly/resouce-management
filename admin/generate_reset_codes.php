@@ -61,7 +61,7 @@ function create_auth_code(){
     $num_chars = '36';
 
     //Well use the entire alphabet in upper case and digits 0-9
-    $valid_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $valid_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 
     for($i = 0; $i < $length; $i++ ){
 

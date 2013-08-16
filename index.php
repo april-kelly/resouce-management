@@ -90,8 +90,9 @@ if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta'])) && $sett
 
 }
 
+/*
 //Two Step Authentication
-if($settings['IIstep'] == TRUE){
+if($settings['IIstep'] == TRUE && !(empty($_SESSION['userid'])) && isset($_SESION['auth_code'])){
 
     if(!($request == 'badlogin' or $request == "banned" or $request == "login")){
 
@@ -101,6 +102,7 @@ if($settings['IIstep'] == TRUE){
     }
 
 }
+*/
 
 //Deal with the last page
 if($request == "last_page"){

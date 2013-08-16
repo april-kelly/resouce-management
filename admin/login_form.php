@@ -1,4 +1,5 @@
-<?php if(!(isset($_SESSION['auth_code']))){?>
+<?php
+ if(!(isset($_SESSION['ref']))){?>
 
         <form action="./admin/login.php" method="post">
            <label>Username:  </label><input type="text" name="username"><br />
@@ -23,7 +24,7 @@
         }
 
 }else{
-var_dump($_SESSION);
+
     //The user needs to enter an Authentication code
     ?>
     <span>Please enter your Authentication Code</span>
@@ -31,6 +32,7 @@ var_dump($_SESSION);
            <label>Code: </label><input type="text" name="auth_code"><br />
            <input type="submit" value="Verify">
     </form>
+    <span class="info">This code has been sent to the phone number we have on file.</span>
 
 <?php
 

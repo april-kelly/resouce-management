@@ -19,17 +19,39 @@ $set = new settings;
 $settings = $set->fetch();
 $salt = $settings['salt'];
 
+//Setup the users class
+$users = new users;
+
+if(isset($_SESSION['ref'])){
+
+
+    //header('location: ../?p=login')
+
+}
+
 if(isset($_REQUEST['auth_code'])){
 
     //Verify the authentication code
-    if(strtoupper($_REQUEST['auth_code']) == $_SESSION['auth_code']){
+    if(strtoupper($_REQUEST['auth_code']) == strtoupper($_SESSION['auth_code'])){
 
         //The user has entered a good code proceed to normal login
         unset($_SESSION['auth_code']);
         if(isset($_SESSION['badcode'])){
             unset($_SESSION['badcode']);
         }
-        header('location: ../?p=login');
+
+        //Look up the user (again)
+        $results = $users->select($_SESSION['ref']);
+
+        $_SESSION['userid'] = $results[0]['index'];
+        $_SESSION['name'] = $results[0]['firstname'];
+        $_SESSION['admin'] = $results[0]['admin'];
+        $_SESSION['security_class'] = $results[0]['security_class'];
+        $_SESSION['colorization'] = $results[0]['colorization'];
+
+        unset($_SESSION['ref']);
+
+        header('location: ../?p=home');
 
     }else{
 
@@ -37,7 +59,10 @@ if(isset($_REQUEST['auth_code'])){
         $_SESSION['badcode'] = true;
         header('location: ../?p=login');
 
+
     }
+
+
 
 }elseif(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 {
@@ -47,7 +72,6 @@ if(isset($_REQUEST['auth_code'])){
     //Make sure both fields are NOT empty
     if(!(empty($_REQUEST['username'])) && !(empty($_REQUEST['password']))){
 
-        $users = new users;
         $results = $users->login($_REQUEST['username'], $_REQUEST['password']);
 
         if(!($results == FALSE)){
@@ -76,13 +100,31 @@ if(isset($_REQUEST['auth_code'])){
 
             }
 
-            //Good login
-            $_SESSION['userid'] = $results[0]['index'];
-            $_SESSION['name'] = $results[0]['firstname'];
-            $_SESSION['admin'] = $results[0]['admin'];
-            $_SESSION['security_class'] = $results[0]['security_class'];
-            $_SESSION['colorization'] = $results[0]['colorization'];
-            header('location: ../');
+            //Deal with Two factor authentication
+            if($settings['IIstep'] == true){
+
+
+                //Good login
+                $_SESSION['ref'] = $results[0]['index'];
+
+                header('location: ../includes/twofactor/test.php');
+
+            }else{
+
+                //Good login
+                $_SESSION['userid'] = $results[0]['index'];
+                $_SESSION['name'] = $results[0]['firstname'];
+                $_SESSION['admin'] = $results[0]['admin'];
+                $_SESSION['security_class'] = $results[0]['security_class'];
+                $_SESSION['colorization'] = $results[0]['colorization'];
+
+                //Redirect to home
+               // header('location: ../?p=home');
+
+            }
+
+
+
 
             //In case of time out
             if(isset($_SESSION['timeout'])){
