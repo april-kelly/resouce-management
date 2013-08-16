@@ -76,7 +76,7 @@
 	<select name="manager" id="manager">
 	  <option>Select One:</option>
 	  <?php
-      foreach($resources as $result){
+      foreach($managers as $result){
 
 
 
@@ -120,8 +120,7 @@ echo "\r\n";
 	  <option value="">Select One:</option>
 	  <?php
         //$result = $dbc->query('SELECT * FROM people');
-		foreach($managers as $result){
-
+		foreach($resources as $result){
 
 
                 if(isset($_SESSION['input']['manager'])){
@@ -146,8 +145,6 @@ echo "\r\n";
 
                 }
 
-
-            echo '<option value="',$result['index'],'">',$result['firstname'],' ',$result['lastname'],'</option>';
 
             echo "\r\n";
         }

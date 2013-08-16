@@ -23,6 +23,7 @@ class views {
         public $weeks = array();
         public $show  = '';
         public $hours;
+        public $temp_hours = array();
 
         function __construct(){
 
@@ -91,10 +92,16 @@ class views {
 
                                     $this->hours = implode(':', $this->add_times($times));
 
-
+                                    //Figure out if we are adding or not
                                     if($this->hours > 0){
 
-                                        $table[$person['index']][$week] = $this->hours;
+                                        //Okay we are adding
+                                        $this->temp_hours[1] = $table[$person['index']][$week];
+                                        $this->temp_hours[2] = $this->hours;
+
+                                        $table[$person['index']][$week] = implode(':', $this->add_times($this->temp_hours));
+
+                                        //$table[$person['index']][$week] = $table[$person['index']][$week] + $this->hours;
 
                                     }else{
 
@@ -113,9 +120,10 @@ class views {
 
                                 }else{
 
+                                    //No Job
                                     if(empty($table[$person['index']][$week])){
 
-                                        $table[$person['index']][$week] = 0;
+                                        $table[$person['index']][$week] = $table[$person['index']][$week] + 0;
 
                                     }
 
@@ -129,7 +137,7 @@ class views {
                             if(empty($table[$person['index']][$week])){
 
                                 //Set hours to 0
-                                $table[$person['index']][$week] = 0;
+                                $table[$person['index']][$week] = $table[$person['index']][$week] + 0;;
 
                             }
 
