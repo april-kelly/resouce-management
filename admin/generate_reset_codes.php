@@ -58,10 +58,10 @@ function create_auth_code(){
     $length = '6';
 
     //Number of possible characters for the reset code
-    $num_chars = '36';
+    $num_chars = '34';
 
-    //Well use the entire alphabet in upper case and digits 0-9
-    $valid_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+    //Well use the entire alphabet in upper case and digits 1-9 (excludes 0 and o)
+    $valid_chars = '123456789abcdefghijklmnpqrstuvwxyz';
 
     for($i = 0; $i < $length; $i++ ){
 
