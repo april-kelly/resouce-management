@@ -92,6 +92,7 @@ if(isset($_SESSION['userid'])){
             <input type="text" name="firstname" value="<?php echo $request[0]['firstname']; ?>" autocomplete="off"/><label>First</label><br />
             <input type="text" name="lastname" value="<?php echo $request[0]['lastname']; ?>" autocomplete="off"/><label>Last</label><br />
             <input type="text" name="email" value="<?php echo $request[0]['email']; ?>" autocomplete="off"/><label>Email</label><br />
+            <input type="text" name="phone_number" value="<?php echo $request[0]['phone_number']; ?>" autocomplete="off"/><label>Phone Number</label><br />
             <select name="type" value="<?php echo $request[0]['type']; ?>">
                 <option value="2" <?php if($request[0]['admin'] =='2'){ echo ' selected '; }?> >Project Resource</option>
                 <option value="1" <?php if($request[0]['admin'] =='1'){ echo ' selected '; }?>>Project Manager</option>
@@ -138,6 +139,7 @@ if(isset($_SESSION['userid'])){
         <input type="text" name="firstname" value="" autocomplete="off" /><label>First</label><br />
         <input type="text" name="lastname" value="" autocomplete="off" /><label>Last</label><br />
         <input type="text" name="email" autocomplete="off" /><label>Email</label><br />
+        <input type="text" name="phone_number" autocomplete="off"/><label>Phone Number</label><br />
         <input type="password" name="password" autocomplete="off"/><label>Password</label><br />
         <select name="type">
             <option value="2">Project Resource</option>

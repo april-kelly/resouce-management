@@ -48,6 +48,7 @@ if(!(isset($_SESSION['userid']))){
         <input type="checkbox" name="month_colors" value="1" <?php if($user[0]["colorization"] == TRUE){ echo "checked"; } ?> />
         <br />
         <label>Email:  </label><?php echo $user[0]["email"] ?><br />
+        <label>Phone Number: </label><input type="text" name="phone_number" autocomplete="off"/><br />
         <label>First:  </label><input type="text" name="firstname" value="<?php echo $user[0]["firstname"] ?>"><br />
         <label>Last:  </label><input type="text" name="lastname" value="<?php echo $user[0]["lastname"] ?>"><br />
         <label>Current Password: </label><input type="password" name="password"><br />
