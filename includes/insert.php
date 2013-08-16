@@ -25,6 +25,7 @@ require_once('../path.php');
 require_once('./data.php');
 require_once('./config/settings.php');
 require_once('./view.php');
+require_once('./config/users.php');
 
 //Fetch Settings
 $set = new settings;
@@ -65,7 +66,7 @@ if(isset($_SESSION['userid'])){
     $requestor = '0';
 }
 
-//...and yes, requestor is spell correctly, I used -or because were dealing with computers
+//...and yes, requestor is spell correctly, I used -or because we're dealing with computers
 
 //Debugging title
 echo '<h1>Debugging info:</h1><hr />';
@@ -200,6 +201,25 @@ if($valid == TRUE){
 		echo "Empty Priority <br />";
 		$fail = true;
 	}
+
+    //Check for a locked user
+    $users = new users;
+    $results = $users->select($resource);
+
+
+    if($results[0]['lock_start'] <= $week_of  or $results[0]['lock_end'] >= $week_of){
+
+        //The user is locked
+        echo "User is locked<br />";
+
+        //Fail unless this is a high priority project
+        if(!($_REQUEST['priority'] == '0')){
+            $fail = true;
+            $location = '../?p=request&r=locked';
+        }
+
+    }
+
         
 }
 

@@ -23,8 +23,6 @@ $people = $dbc->query($query_p);
 
 echo '<br />';
 
-
-
 echo '<div id="people">'."\r\n";
 echo '<b>People:</b><br /><br />'."\r\n";
 

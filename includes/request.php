@@ -169,10 +169,8 @@ echo "\r\n";
 
 
 
-    <input type="text" class="week-picker" id="startDate" name="startDate" <?php if(isset($_SESSION['input']['start_date'])){ echo 'value="'.$_SESSION['input']['start_date'].'" '; }?> autocomplete="off" /><br />
-    <input type="text" id="endDate" />
+    <input type="text" class="start_date" id="start_date" name="start_date" <?php if(isset($_SESSION['input']['start_date'])){ echo 'value="'.$_SESSION['input']['start_date'].'" '; }?> autocomplete="off" /><br />
 
-    <span id="startDate"></span> - <span id="endDate"></span>
 	
 	<p>   
 	<label>Hours:</label><br />
@@ -206,6 +204,7 @@ echo "\r\n";
 	<?php
 	//Echo out errors for improper data:
     if(isset($_SESSION['form'])){
+        echo '<br />';
     switch($_SESSION['form']){
 
 	    //Sales_Status issues
@@ -273,6 +272,11 @@ echo "\r\n";
         case 'sql':
 		    echo '<span style="color: red">You are going to have to try harder than that. ;)</span>';
 	    break;
+
+        //Locked User
+        case 'locked':
+            echo '<span class="error">The resource you selected is locked for the week you specified, please set the priority to very high or select another week.</span>';
+            break;
 
         default:
             //do nothing

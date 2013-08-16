@@ -29,6 +29,7 @@
         search.style.padding = "15px";
         search.style.minHeight = "200px";
     }
+    document.getElementById('search_results').style.backgroundColor = '#000';
 </script>
 
 <form action="./search.php" method="get" class="search">

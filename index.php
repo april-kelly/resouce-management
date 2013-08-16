@@ -375,6 +375,12 @@ switch($request){
 
     break;
 
+    case "505":
+        $page = './includes/errors/505.php';
+        $last_page = 'login';
+        $main_id = 'main';
+    break;
+
     default:
         $page = './includes/errors/404.php';
         $last_page = '';
