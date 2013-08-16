@@ -22,12 +22,7 @@ $salt = $settings['salt'];
 //Setup the users class
 $users = new users;
 
-if(isset($_SESSION['ref'])){
 
-
-    //header('location: ../?p=login')
-
-}
 
 if(isset($_REQUEST['auth_code'])){
 
@@ -119,7 +114,7 @@ if(isset($_REQUEST['auth_code'])){
                 $_SESSION['colorization'] = $results[0]['colorization'];
 
                 //Redirect to home
-               // header('location: ../?p=home');
+                header('location: ../?p=home');
 
             }
 
