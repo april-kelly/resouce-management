@@ -1,5 +1,6 @@
 <?php
- if(!(isset($_SESSION['ref']))){?>
+ if(!(isset($_SESSION['ref']))){
+?>
 
         <form action="./admin/login.php" method="post">
            <label>Username:  </label><input type="text" name="username"><br />

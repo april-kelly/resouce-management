@@ -213,13 +213,15 @@ class users {
         $this->reset_code = $dbc->sanitize($this->reset_code);
         $this->lock_start = $dbc->sanitize($this->lock_start);
         $this->lock_end   = $dbc->sanitize($this->lock_end);
+        $this->phone_number = $dbc->sanitize($this->phone_number);
 
         //define query
-        $query = "INSERT INTO `people` (`index`, `firstname`, `lastname`, `email`, `password`, `profile_pic`, `type`, `admin`, `colorization`, `reset_code`, `lock_start`, `lock_end`)
+        $query = "INSERT INTO `people` (`index`, `firstname`, `lastname`, `email`, `phone_number`, `password`, `profile_pic`, `type`, `admin`, `colorization`, `reset_code`, `lock_start`, `lock_end`)
                 VALUES (NULL,
                  '".$this->firstname."',
                  '".$this->lastname."',
                  '".$this->email."',
+                 '".$this->phone_number."',
                  '".$this->password."',
                  '".$this->profile_pic."',
                  '".$this->type."',
@@ -269,6 +271,7 @@ class users {
         $this->reset_code = $dbc->sanitize($this->reset_code);
         $this->lock_start = $dbc->sanitize($this->lock_start);
         $this->lock_end   = $dbc->sanitize($this->lock_end);
+        $this->phone_number = $dbc->sanitize($this->phone_number);
 
 
         //define query
@@ -276,6 +279,7 @@ class users {
                 `firstname`    = '".$this->firstname."',
                 `lastname`     = '".$this->lastname."',
                 `email`        = '".$this->email."',
+                `phone_number` = '".$this->phone_number."',
                 `password`     = '".$this->password."',
                 `profile_pic`  = '".$this->profile_pic."',
                 `type`         = '".$this->type."',
