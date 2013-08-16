@@ -29,6 +29,10 @@ class settings {
             public $IIstep          = FALSE;                                    //Enables Two Factor Authentication
             public $strict          = FALSE;                                    //Prevents anonymous users
 
+        //Google Voice Account (for two factor authentication) (optional)
+            public $gv_account      = '';                                       //Google account
+            public $gv_password     = '';                                       //Password
+
         //Settings for insert.php
             public $insert_valid    = TRUE;                                     //Make sure all inputs are set
             public $insert_sanitize = TRUE;                                     //Sanitize data before sending to the database
@@ -91,12 +95,14 @@ class settings {
 
         $array = (array) $this;
 
-        //Throw away database creds and the salt
+        //Throw away database creds, the salt, and the google account
         unset($array['db_host']);
         unset($array['db_user']);
         unset($array['db_pass']);
         unset($array['db_database']);
         unset($array['salt']);
+        unset($array['gv_account']);
+        unset($array['gv_password']);
 
         $json = json_encode($array);
 
