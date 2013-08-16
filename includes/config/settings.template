@@ -143,6 +143,8 @@ class settings {
         $array['db_pass'] = $this->db_pass;
         $array['db_database'] = $this->db_database;
         $array['salt'] = $this->salt;
+        $array['gv_account'] = $this->gv_account;
+        $array['gv_password'] = $this->gv_password;
 
         return $array;
 
