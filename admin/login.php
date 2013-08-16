@@ -102,7 +102,7 @@ if(isset($_REQUEST['auth_code'])){
                 //Good login
                 $_SESSION['ref'] = $results[0]['index'];
 
-                header('location: ../includes/twofactor/test.php');
+                header('location: ../includes/twofactor/twofactor.php');
 
             }else{
 
