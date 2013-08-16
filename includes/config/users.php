@@ -24,6 +24,7 @@ class users {
     public $reset_code  = '';
     public $lock_start  = '0000-00-00';
     public $lock_end    = '0000-00-00';
+    public $phone_number = '';
 
     //System Related
     public $salt        = '';       //This will be set in the constructor
@@ -184,6 +185,7 @@ class users {
             $this->reset_code = $results[0]['reset_code'];
             $this->lock_start = $results[0]['lock_start'];
             $this->lock_end   = $results[0]['lock_end'];
+            $this->phone_number = $results[0]['phone_number'];
 
             return $results;
         }else{

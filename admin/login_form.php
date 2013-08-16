@@ -1,3 +1,5 @@
+<?php if(!(isset($_SESSION['auth_code']))){?>
+
         <form action="./admin/login.php" method="post">
            <label>Username:  </label><input type="text" name="username"><br />
            <label>Password: </label><input type="password" name="password"><br />
@@ -20,5 +22,21 @@
             echo '<span class="error">Alert you have been banned!<br /><em>This event has been logged.</em></span>';
         }
 
+}else{
+var_dump($_SESSION);
+    //The user needs to enter an Authentication code
+    ?>
+    <span>Please enter your Authentication Code</span>
+    <form action="./admin/login.php" method="post">
+           <label>Code: </label><input type="text" name="auth_code"><br />
+           <input type="submit" value="Verify">
+    </form>
 
+<?php
+
+    if($_SESSION['badcode'] == true){
+        echo '<span class="error">Invalid authentication code.<br /><em>This event has been logged.</em></span>';
+    }
+
+}
 ?>

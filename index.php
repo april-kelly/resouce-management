@@ -90,6 +90,18 @@ if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta'])) && $sett
 
 }
 
+//Two Step Authentication
+if($settings['IIstep'] == TRUE){
+
+    if(!($request == 'badlogin' or $request == "banned" or $request == "login")){
+
+        //Forward user to Code generation
+        header('location: ./includes/twofactor/test.php');
+
+    }
+
+}
+
 //Deal with the last page
 if($request == "last_page"){
 

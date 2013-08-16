@@ -19,8 +19,27 @@ $set = new settings;
 $settings = $set->fetch();
 $salt = $settings['salt'];
 
-//Make sure both fields exist
-if(isset($_REQUEST['username']) && isset($_REQUEST['password']))
+if(isset($_REQUEST['auth_code'])){
+
+    //Verify the authentication code
+    if(strtoupper($_REQUEST['auth_code']) == $_SESSION['auth_code']){
+
+        //The user has entered a good code proceed to normal login
+        unset($_SESSION['auth_code']);
+        if(isset($_SESSION['badcode'])){
+            unset($_SESSION['badcode']);
+        }
+        header('location: ../?p=login');
+
+    }else{
+
+        //The code is bad
+        $_SESSION['badcode'] = true;
+        header('location: ../?p=login');
+
+    }
+
+}elseif(isset($_REQUEST['username']) && isset($_REQUEST['password']))
 {
 
     error_reporting(E_STRICT);
