@@ -206,19 +206,23 @@ if($valid == TRUE){
     $users = new users;
     $results = $users->select($resource);
 
+    if(!($results[0]['lock_start'] == '0000-00-00')){
 
-    if($results[0]['lock_start'] <= $week_of  or $results[0]['lock_end'] >= $week_of){
+        if($results[0]['lock_start'] <= $week_of or $results[0]['lock_end'] >= $week_of){
 
-        //The user is locked
-        echo "User is locked<br />";
+            //The user is locked
+            echo "User is locked<br />";
 
-        //Fail unless this is a high priority project
-        if(!($_REQUEST['priority'] == '0')){
-            $fail = true;
-            $location = '../?p=request&r=locked';
+            //Fail unless this is a high priority project
+            if(!($_REQUEST['priority'] == '0')){
+                $fail = true;
+                $location = '../?p=request&r=locked';
+            }
+
         }
 
     }
+
 
         
 }
