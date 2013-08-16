@@ -60,6 +60,7 @@ if(isset($_SESSION['userid'])){
             $users->change('firstname', $_REQUEST['firstname']);
             $users->change('lastname', $_REQUEST['lastname']);
             $users->change('email', $_REQUEST['email']);
+            $users->change('phone_number', $_REQUEST['phone_number']);
             $users->change('password', $_REQUEST['password']);
             $users->change('type', $_REQUEST['type']);
             $users->change('admin', $_REQUEST['admin']);
@@ -78,6 +79,7 @@ if(isset($_SESSION['userid'])){
             $users->change('firstname', $_REQUEST['firstname']);
             $users->change('lastname', $_REQUEST['lastname']);
             $users->change('email', $_REQUEST['email']);
+            $users->change('phone_number', $_REQUEST['phone_number']);
             $users->change('password', $users->password);
             $users->change('type', $_REQUEST['type']);
 
