@@ -35,7 +35,7 @@ if(!(empty($projects))){
 
 }else{
 
-    echo "Could not find project.";
+    echo 'Could not find project. Click <a href="./?p=project">here</a> to add a project.';
 
     //Easter eggs
     if($q == 'logo'){

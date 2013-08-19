@@ -226,12 +226,12 @@ file_put_contents('gophermap', $gopher);
     if($excel_enable = TRUE){
         ?>
        <br />
-       You can also <a href="./includes/excel.php?excel">download</a> this in excel format.
+       You can also download this in <a href="./includes/excel.php?excel">excel</a> or <a href="./includes/excel.php?csv">csv</a> format.
     <?php
     }else{
        ?>
       <br />
-      You can also <a href="./month.csv">download</a> this in csv format.
+      You can also this in <a href="./includes/excel.php?csv">csv</a format.
 
     <?php
     }

@@ -273,9 +273,9 @@ if(!(empty($project))){
 
 }else{
 
-    //The project does not exist, fail
-    $location = "../?p=request&r=badproject";
-    $fail = true;
+    //The project does not exist, fail,
+    //$location = "../?p=request&r=badproject";
+    //$fail = true;
 
 }
 
