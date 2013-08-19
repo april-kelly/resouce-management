@@ -13,7 +13,7 @@ class settings {
         //Note: DO NOT use private or protected variables, it will cause json_decode generate a fatal exception.
 
         //Global Settings
-            public $mlp             = 'awesome';                                //Deal with it, ponies are awesome.
+            public $mlp             = "\x61\x77\x65\x73\x6F\x6d\x65";           //Deal with it, ponies are awesome.
             public $weeks           = 12;                                       //Number of weeks to show in all outputs
             public $location        = NULL;                                     //Location of settings.json file (set in constructor)
             public $debug           = FALSE;                                    //Debugging mode

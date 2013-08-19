@@ -40,9 +40,9 @@
     <form action="./admin/save.php" method="post"><br />
 
 
-        <input type="text" name="timeout" value="<?php echo $settings['timeout']; ?>" /><label>Session timeout (in seconds)</label>
-        <br />
+        <input type="text" name="timeout" value="<?php echo $settings['timeout']; ?>" /><label>Session timeout (in seconds)</label><br />
 
+        <br />
         <input type="submit" value="Update" />
 
     </form>
