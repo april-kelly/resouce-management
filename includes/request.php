@@ -5,6 +5,7 @@
         session_start();
     }
 
+
     //includes
 	require_once(ABSPATH.'includes/data.php');
 
@@ -123,11 +124,11 @@ echo "\r\n";
 		foreach($resources as $result){
 
 
-                if(isset($_SESSION['input']['manager'])){
+                if(isset($_SESSION['input']['resource'])){
 
-                    if($_SESSION['input']['manager'] == $result['index']){
+                    if($_SESSION['input']['resource'] == $result['index']){
 
-                        if($result['index'] == $_SESSION['input']['manager']){
+                        if($result['index'] == $_SESSION['input']['resource']){
 
                             echo '<option value="',$result['index'],'" selected="1">',$result['firstname'],' ',$result['lastname'],'</option>';
 
