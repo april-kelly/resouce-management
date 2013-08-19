@@ -24,6 +24,7 @@ $views = new views;
 $table = $views->build_table($page_offset, $page_count);
 $weeks = $views->weeks;
 
+var_dump($table);
 //Make a copy of the table
 $copy = $table;
 
@@ -76,15 +77,15 @@ if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php') && isset($_REQUEST
 }elseif(isset($_REQUEST['csv'])){
 
     $csv = array();
+$i = 1;
+    foreach($excel as $excel_row){
 
-    foreach($excel as $excel){
-
-        $csv = $csv.implode(',', $excel)."\r\n";
+        $csv[$i] = implode(',', $excel_row)."\r\n";
 
     }
 
-    header('Content-disposition: attachment; filename=month.csv');
-    header('Content-type: application/csv');
+    //header('Content-disposition: attachment; filename=month.csv');
+    //header('Content-type: application/csv');
 
     echo $csv;
 

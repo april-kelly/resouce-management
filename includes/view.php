@@ -149,6 +149,10 @@ class views {
 
                                     $table[$person['index']][$week] = $table[$person['index']][$week] + 0;;
 
+                                }else{
+
+                                    $table[$person['index']][$week] = '0';
+
                                 }
 
                             }
