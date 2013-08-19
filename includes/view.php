@@ -96,8 +96,11 @@ class views {
                                     if($this->hours > 0){
 
                                         //Okay we are adding
-                                        $this->temp_hours[1] = $table[$person['index']][$week];
-                                        $this->temp_hours[2] = $this->hours;
+                                        if(isset($table[$person['index']][$week])){
+                                            $this->temp_hours[1] = $table[$person['index']][$week];
+                                            $this->temp_hours[2] = $this->hours;
+                                        }
+
 
                                         $table[$person['index']][$week] = implode(':', $this->add_times($this->temp_hours));
 
@@ -123,7 +126,12 @@ class views {
                                     //No Job
                                     if(empty($table[$person['index']][$week])){
 
-                                        $table[$person['index']][$week] = $table[$person['index']][$week] + 0;
+                                        if(isset($table[$person['index']][$week])){
+
+                                            $table[$person['index']][$week] = $table[$person['index']][$week] + 0;
+
+                                        }
+
 
                                     }
 
@@ -137,7 +145,11 @@ class views {
                             if(empty($table[$person['index']][$week])){
 
                                 //Set hours to 0
-                                $table[$person['index']][$week] = $table[$person['index']][$week] + 0;;
+                                if(isset($table[$person['index']][$week])){
+
+                                    $table[$person['index']][$week] = $table[$person['index']][$week] + 0;;
+
+                                }
 
                             }
 
@@ -149,12 +161,15 @@ class views {
                             //Indefinite locking (e.g the person quit or was fired)
                             if($person['lock_start'] <= $week && $person['lock_end'] == '0000-00-00'){
 
-                                if($table[$person['index']][$week] == '0'){
+                                if(isset($table[$person['index']][$week])){
 
-                                    $table[$person['index']][$week] = '--';
+                                    if($table[$person['index']][$week] == '0'){
+
+                                        $table[$person['index']][$week] = '--';
+
+                                    }
 
                                 }
-
                             }
 
                             if($person['lock_start'] <= $week && $person['lock_end'] >= $week){
