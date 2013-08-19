@@ -194,6 +194,7 @@ if(isset($_REQUEST['userid'])){
         $users->change('firstname', $_REQUEST['firstname']);
         $users->change('lastname', $_REQUEST['lastname']);
         $users->change('colorization', $_REQUEST['month_colors']);
+        $users->change('phone_number', $_REQUEST['phone_number']);
         $users->update();
     }
 
