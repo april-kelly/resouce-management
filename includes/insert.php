@@ -213,11 +213,8 @@ if($valid == TRUE){
             //The user is locked
             echo "User is locked<br />";
 
-            //Fail unless this is a high priority project
-            if(!($_REQUEST['priority'] == '0')){
-                $fail = true;
-                $location = '../?p=request&r=locked';
-            }
+            $fail = true;
+            $location = '../?p=request&r=locked';
 
         }
 
@@ -245,7 +242,12 @@ if(!(empty($project))){
 
             //This project is allowed to be over budget
             echo '<br />The project is over budget, but overage is enabled<br />';
-            $fail = false;
+
+            //Make sure the scrip has not failed yet
+            if(!($fail == TRUE)){
+                $fail = false;
+            }
+
 
         }else{
 
@@ -260,7 +262,11 @@ if(!(empty($project))){
 
         //The requested number of hours does not create overage
         echo "<br />The number of hours is okay<br />";
-        $fail = false;
+
+        //Make sure the scrip has not failed yet
+        if(!($fail == TRUE)){
+            $fail = false;
+        }
     }
 
 
