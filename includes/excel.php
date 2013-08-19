@@ -24,7 +24,6 @@ $views = new views;
 $table = $views->build_table($page_offset, $page_count);
 $weeks = $views->weeks;
 
-var_dump($table);
 //Make a copy of the table
 $copy = $table;
 
@@ -50,8 +49,14 @@ foreach($copy as $copy_row){
 
         if(isset($copy_row[$week])){
 
+            if(preg_match('/h/', $copy_row[$week])){
+                $temp = trim($copy_row[$week], '-');
+            }else{
+                $temp = $copy_row[$week];
+            }
+
             $excel[$i]["name"] = $copy_row["name"];
-            $excel[$i][$w] = $copy_row[$week];
+            $excel[$i][$w] = trim($temp, 'h');
             $w++;
 
         }
@@ -59,6 +64,7 @@ foreach($copy as $copy_row){
 
     $i++;
 }
+
 
 //Excel output:
 if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php') && isset($_REQUEST['excel'])){
@@ -76,18 +82,17 @@ if(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php') && isset($_REQUEST
 
 }elseif(isset($_REQUEST['csv'])){
 
-    $csv = array();
-$i = 1;
+    header('Content-disposition: attachment; filename=month.csv');
+    header('Content-type: application/csv');
+
     foreach($excel as $excel_row){
 
-        $csv[$i] = implode(',', $excel_row)."\r\n";
+       echo implode(',', $excel_row)."\r\n";
 
     }
 
-    //header('Content-disposition: attachment; filename=month.csv');
-    //header('Content-type: application/csv');
 
-    echo $csv;
+
 
 }
 
