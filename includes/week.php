@@ -51,7 +51,7 @@ $person 	 = $dbc->sanitize($_SESSION['person']);
 $project_id  = $dbc->sanitize($_SESSION['project_id']);
 $color_enable= $_SESSION['colorization'];
 
-unset($_SESSION['person']);
+//unset($_SESSION['person']);
 unset($_SESSION['project_id']);
 
 if(!(empty($person))){
@@ -233,7 +233,7 @@ foreach($week as $week){
                 echo '<td>',$status,'</td>';
 
                 if(isset($_SESSION['edit'])){
-                    echo '<td><a href="./?p=week&w='.$_SESSION['person'].'&e=1&d='.$project['index'].'"><img src="./includes/images/x32.png"></a></td>';
+                    echo '<td><a href="./?p=week&w='.$_SESSION['person'].'&e=1&d='.$project['index'].'"><img src="./includes/images/x.jpg"></a></td>';
                 }
 
                 echo '</tr>';
