@@ -49,7 +49,7 @@ if(isset($_REQUEST['dump'])){
 ?>
    </pre>
    <hr />
-   <a href="./?p=admin">Go back</a>
+   <a href="../?p=admin">Go back</a>
 <?php
 
     $save = FALSE; //prevent redirection
