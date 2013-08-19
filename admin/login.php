@@ -43,6 +43,7 @@ if(isset($_REQUEST['auth_code'])){
         $_SESSION['admin'] = $results[0]['admin'];
         $_SESSION['security_class'] = $results[0]['security_class'];
         $_SESSION['colorization'] = $results[0]['colorization'];
+        $_SESSION['beta'] = '';
 
         unset($_SESSION['ref']);
 
