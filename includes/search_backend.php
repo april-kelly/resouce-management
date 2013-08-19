@@ -62,6 +62,7 @@ if(empty($results)){
 
 }
 
+//Credits easter egg.
 if($_REQUEST['q'] == 'credits'){
 
     echo '<br />Written mostly by Liam Kelly, with help from: Jeremey Cerise, Rodney O\'Bryne and Ethan Hinson.'."\r\n";
