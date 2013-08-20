@@ -58,7 +58,10 @@
 
             var test;
 
-            test = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
+            if(!(date === null)){
+                test = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
+            }
+
 
             var dateFormat = "yy-mm-dd";
             if (isNaN(wk)) {
