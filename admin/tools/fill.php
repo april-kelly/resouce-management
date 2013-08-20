@@ -3,6 +3,7 @@
 require_once('path.php');
 require_once(ABSPATH.'includes/data.php');
 require_once(ABSPATH.'includes/config/settings.php');
+require_once(ABSPATH.'includes/view.php');
 
 //fetch the debug status
 $set = new settings;
@@ -17,8 +18,11 @@ $dbc->connect();		//connect using defaults
 $people = $dbc->query('SELECT * FROM people WHERE `type` != 3');
 
 $current = date('Y-m-d');
-$show = 1000;
-$weeks = array();
+$show = 12;
+
+$views = new views;
+$weeks = $views->weeks;
+
 $weeks[1] = $current;
 for($key = 2; $key <= $show; $key++){
 	$weeks[$key] = $current = date('Y-m-d',strtotime($current) + (24*3600*7));
@@ -28,23 +32,15 @@ for($key = 2; $key <= $show; $key++){
 $copy = $weeks;
 
 	
-foreach($people as $people){
+foreach($people as $person){
 
-	foreach($weeks as $weeks){
+	foreach($weeks as $week){
             
-            	$hours = serialize(array( 
-		"sunday"    	=> '0',
-		"monday"   	=> rand('0', '40'),
-		"tuesday"   	=> '0',
-		"wednesday" 	=> '0',
-		"thursday"  	=> '0',
-		"friday"    	=> '0',
-		"saturday"  	=> '0',
-		));
+            	$hours =  rand('0', '40').':00:00';
+
 	
-	
-	$result = $dbc->insert("INSERT INTO `resources`.`jobs` (`index`, `project_id`, `manager`, `resource`, `week_of`, `time`, `priority`, `sales_status`) VALUES (NULL, '88989', '28', '".$people['index']."', '".$weeks."', '".$hours."', '1', '1')");
-	echo $people['name']."   ".$weeks."<br />\r\n";
+	$result = $dbc->insert("INSERT INTO `resources`.`jobs` (`index`, `project_id`, `manager`, `resource`, `requestor`, `week_of`, `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sales_status`, `priority`) VALUES (NULL, '123', '1', '".$person['index']."', '1', '".$week."', '".$hours."', '', '', '', '', '', '', '1', '2');");
+	echo $people['name']."   ".$week."<br />\r\n";
 	//echo "Week: ".$weeks."\r\n";
 	}
 	

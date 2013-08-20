@@ -95,6 +95,7 @@ class views {
                                     //Figure out if we are adding or not
                                     if($this->hours > 0){
 
+                                        unset($this->temp_hours);
                                         //Okay we are adding
                                         if(isset($table[$person['index']][$week])){
                                             $this->temp_hours[1] = $table[$person['index']][$week];
@@ -102,9 +103,9 @@ class views {
                                         }
 
 
-                                        $table[$person['index']][$week] = implode(':', $this->add_times($this->temp_hours));
+                                        //$table[$person['index']][$week] = implode(':', $this->add_times($this->temp_hours));
 
-                                        //$table[$person['index']][$week] = $table[$person['index']][$week] + $this->hours;
+                                        $table[$person['index']][$week] = $table[$person['index']][$week] + $this->hours;
 
                                     }else{
 
@@ -313,6 +314,8 @@ class views {
 
             return $totals;
 
+            unset($totals);
+
         }
 
         public function colors ($table_row){
@@ -321,7 +324,9 @@ class views {
                     $temp = $table_row;
 
                     //Get rid of the :00 (or other numbers) at the end of the time
-                    $table_row = rtrim($table_row, '0123456789');
+                    if(is_array(implode(':', $table_row))){
+                        $table_row = rtrim($table_row, '0123456789');
+                    }
                     $table_row = rtrim($table_row, ':');
 
 

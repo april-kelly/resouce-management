@@ -7,6 +7,7 @@
 
 //includes
 require_once(ABSPATH.'includes/config/settings.php');
+require_once(ABSPATH.'includes/data.php');
 
 //fetch the settings
 $set = new settings;
@@ -23,6 +24,20 @@ if(isset($_SESSION['userid'])){
             </p>
 
         <?php
+
+        //Check database size
+        $dbc = new db;
+        $dbc->connect();
+        $count = $dbc->query("select count(*) from jobs ");
+        $dbc->close();
+
+        if($count[0]["count(*)"] >= 8000000){
+
+
+            echo '<span class="info">Your jobs table contains '.$count[0]["count(*)"].' rows (of a maximum of 8388607 rows), please run the db cleaning tool.</span>';
+
+
+        }
 
     }else{
 
