@@ -91,7 +91,7 @@ if($settings['production_alert'] == TRUE && !(isset($_SESSION['beta'])) && $sett
 }
 
 //Deal with the last page
-if($request == "last_page"){
+if($request == "last_page" && !($request == "logout")){
 
     $request = $_SESSION['last_page'];
 
