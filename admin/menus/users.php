@@ -87,12 +87,12 @@ if(isset($_SESSION['userid'])){
             echo './includes/images/default.jpg';
         }
         ?>" alt="User Profile Image" title="User Profile Image" class="profile_pic"/><br />
-            <input type="hidden" name="userid" value="<?php echo $request[0]['index']; ?>" autocomplete="off" />
-            <input type="text" name="firstname" value="<?php echo $request[0]['firstname']; ?>" autocomplete="off"/><label>First</label><br />
-            <input type="text" name="lastname" value="<?php echo $request[0]['lastname']; ?>" autocomplete="off"/><label>Last</label><br />
-            <input type="text" name="email" value="<?php echo $request[0]['email']; ?>" autocomplete="off"/><label>Email</label><br />
+            <input type="hidden" name="userid" value="<?php echo $request[0]['index']; ?>" />
+            <input type="text" name="firstname" value="<?php echo $request[0]['firstname']; ?>" /><label>First</label><br />
+            <input type="text" name="lastname" value="<?php echo $request[0]['lastname']; ?>" /><label>Last</label><br />
+            <input type="text" name="email" value="<?php echo $request[0]['email']; ?>" /><label>Email</label><br />
             <input type="text" name="phone_number" value="<?php echo $request[0]['phone_number']; ?>" autocomplete="off"/><label>Phone Number</label><br />
-            <select name="type" value="<?php echo $request[0]['type']; ?>">
+            <select name="type">
                 <option value="2" <?php if($request[0]['admin'] =='2'){ echo ' selected '; }?> >Project Resource</option>
                 <option value="1" <?php if($request[0]['admin'] =='1'){ echo ' selected '; }?>>Project Manager</option>
                 <option value="0" <?php if($request[0]['admin'] =='0'){ echo ' selected '; }?>>Both</option>
@@ -104,7 +104,7 @@ if(isset($_SESSION['userid'])){
                 if(!($_SESSION['userid'] == $_SESSION['user_lookup'])){
 
             ?>
-            <select name="admin" value="">
+            <select name="admin">
                 <option value="0" <?php if($request[0]['admin'] =='0'){ echo ' selected '; }?> >Normal</option>
                 <option value="1" <?php if($request[0]['admin'] =='1'){ echo ' selected '; }?> >Administrator</option>
                 <option value="2" <?php if($request[0]['admin'] =='2'){ echo ' selected '; }?> >Debugger</option>
@@ -221,7 +221,7 @@ if(isset($_SESSION['userid'])){
         if($_SESSION['user_lookup']){
 
         ?>
-        <input type="text" class="start-date" name="start-date" id="start-date"/><label for="start_date">Start</label><br />
+        <input type="text" class="start-date" name="start-date" id="start-date"/><label for="start-date">Start</label><br />
         <input type="text" name="end-date" id="end-date" /><label for="end-date">End</label><br /><br />
 
         <input type="submit" value="Lock" /><br />
