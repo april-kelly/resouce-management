@@ -80,7 +80,7 @@ if(isset($_SESSION['userid'])){
             break;
 
             CASE "users":
-                $page = 'admin/menus/users.php';
+                $page = 'admin/menus/new_users.php';
             break;
 
             CASE "debug":

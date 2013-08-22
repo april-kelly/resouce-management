@@ -54,7 +54,7 @@
             {
                 document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
             }
-        }
+        };
         xmlhttp.open("GET","./includes/search_project.php?q="+str,true);
         xmlhttp.send();
     }

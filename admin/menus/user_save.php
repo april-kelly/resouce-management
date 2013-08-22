@@ -74,7 +74,7 @@ if(isset($_SESSION['userid'])){
             echo 'attempted add';
 
             //$found = false;
-           // header('Location: ../../?p=admin&a=users');
+            header('Location: ../../?p=admin&a=users');
         }
 
         //update user

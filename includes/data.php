@@ -95,6 +95,8 @@ class db
 			return false;
 
 		}
+
+        return false;
 		
 	}
 	
@@ -193,4 +195,3 @@ function verify($table, $field, $data)
 	}
 		
 }
-?>

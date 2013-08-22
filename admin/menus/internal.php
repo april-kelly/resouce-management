@@ -76,8 +76,9 @@ if(isset($_SESSION['userid'])){
 
     <?php
         //Make sure that php is running on linux
-        if(php_uname('s') == 'Linux' || php_uname('s') == 'Unix' || php_uname('s') == 'Darwin' ){
-
+        $platform = php_uname('s');
+        if($platform == 'Linux' or $platform == 'Unix' or $platform == 'Darwin' ){
+        //if(1 + 1 == 3){
             //See if the gopher server is online
             echo '<b>Gopher server: </b>';
             if($settings['gopher'] == TRUE){

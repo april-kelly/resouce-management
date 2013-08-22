@@ -8,6 +8,13 @@
 //start the users session
 session_start();
 
+//old junk
+/*
+echo session_id().'<br />';
+session_regenerate_id();
+echo session_id();
+*/
+
 //includes
 require_once('path.php');
 include_once(ABSPATH.'includes/config/settings.php');

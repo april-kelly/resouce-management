@@ -15,13 +15,11 @@
         {// code for IE6, IE5
             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.onreadystatechange=function()
-        {
-            if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            {
-                document.getElementById("search_results").innerHTML=xmlhttp.responseText;
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("search_results").innerHTML = xmlhttp.responseText;
             }
-        }
+        };
         xmlhttp.open("GET","./includes/search_backend.php?q="+str,true);
         xmlhttp.send();
         var search = document.getElementById("search");
