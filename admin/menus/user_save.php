@@ -24,6 +24,9 @@ $settings = $set->fetch();
 //Setup the user abstraction layer
 $users = new users;
 
+//Flags
+$found = true;
+
 //make sure the user is logged in and is admin
 if(isset($_SESSION['userid'])){
 
@@ -41,6 +44,7 @@ if(isset($_SESSION['userid'])){
             $users->update();
             echo 'attemped password reset';
 
+            //$found = false;
             header('Location: ../../?p=admin&a=users&c='.$reset_code);
         }
 
@@ -50,6 +54,7 @@ if(isset($_SESSION['userid'])){
             $users->delete();
             echo 'attempted delete';
 
+            //$found = false;
             header('Location: ../../?p=admin&a=users');
         }
 
@@ -68,6 +73,7 @@ if(isset($_SESSION['userid'])){
             $users->create();
             echo 'attempted add';
 
+            //$found = false;
            // header('Location: ../../?p=admin&a=users');
         }
 
@@ -91,7 +97,26 @@ if(isset($_SESSION['userid'])){
             $users->update();
             echo 'attempted update';
 
+            //$found = false;
             header('Location: ../../?p=admin&a=users');
+
+        }
+
+        if(isset($_REQUEST['lock'])){
+
+            $found = false;
+            header('Location: ../../?p=admin&a=users');
+
+        }
+
+        if($found == true){
+
+            echo '<br />Not found<br />';
+
+            echo '<pre>';
+            var_dump($_REQUEST);
+            echo '</pre>';
+
         }
 
         //Throw out the user_lookup variable

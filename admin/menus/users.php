@@ -45,8 +45,7 @@ if(isset($_SESSION['userid'])){
             <select name='u'>
 
                 <option value="">Select One:</option>
-
-                <?php
+<?php
 
                 foreach($people as $person){
 
@@ -61,8 +60,8 @@ if(isset($_SESSION['userid'])){
                         $selected = '';
                     }
 
-
-                    echo '<option value="',$person['index'],'" '.$selected.' >',$person['firstname'],' ',$person['lastname'],'</option>';
+                    echo '                ';
+                    echo '<option value="',$person['index'],'" '.$selected.' >',$person['firstname'],' ',$person['lastname'],'</option>'."\r\n";
 
                 }
                 ?>
@@ -173,13 +172,13 @@ if(isset($_SESSION['userid'])){
         <b>Select a user:</b><br />
         <select name="index">
 
-            <option value="">Select One:</option>
-
-            <?php
+             <option value="">Select One:</option>
+<?php
 
             foreach($people as $person){
 
-                echo '<option value="',$person['index'],'">',$person['firstname'],' ',$person['lastname'],'</option>';
+                echo '             ';
+                echo '<option value="',$person['index'],'">',$person['firstname'],' ',$person['lastname'],'</option>'."\r\n";
 
             }
             ?>
@@ -188,6 +187,49 @@ if(isset($_SESSION['userid'])){
 
         <input type="submit" value="Delete" name="delete"/><br /><br />
 
+    </form>
+
+</fieldset>
+
+<fieldset>
+
+    <legend>Lock a user:</legend>
+
+    <form action="./admin/menus/user_save.php" method="post">
+
+        <b>Select a user:</b><br />
+        <select name="userid">
+
+             <option value="">Select One:</option>
+<?php
+
+            foreach($people as $person){
+
+                echo '             ';
+                echo '<option value="',$person['index'],'">',$person['firstname'],' ',$person['lastname'],'</option>'."\r\n";
+
+            }
+
+            ?>
+
+        </select>
+        <br />
+
+        <input type="submit" value="Lock" /><br />
+        <?php
+
+        if($_SESSION['user_lookup']){
+
+        ?>
+        <input type="text" class="start-date" name="start-date" id="start-date"/><label for="start_date">Start</label><br />
+        <input type="text" name="end-date" id="end-date" /><label for="end-date">End</label><br /><br />
+
+        <input type="submit" value="Lock" /><br />
+        <span class="info">Note: Leave the end field empty to lock a user indefinitely.</span>
+
+            <?php
+        }
+            ?>
     </form>
 
 </fieldset>
@@ -202,12 +244,12 @@ if(isset($_SESSION['userid'])){
                 <select name="userid">
 
                     <option value="">Select One:</option>
-
-                    <?php
+<?php
 
                     foreach($people as $person){
 
-                        echo '<option value="',$person['index'],'">',$person['firstname'],' ',$person['lastname'],'</option>';
+                        echo '                    ';
+                        echo '<option value="',$person['index'],'">',$person['firstname'],' ',$person['lastname'],'</option>'."\r\n";
 
                     }
                     ?>
@@ -217,11 +259,15 @@ if(isset($_SESSION['userid'])){
                 <input type="submit" value="Reset" name="reset"/><br /><br />
 
                 <?php
+
                 if(isset($_SESSION['reset_code'])){
+
                     echo '<span class="success">The reset code is: '.$_SESSION['reset_code'].'';
                     echo '<br /> The link is: <a href="'.$settings['url'].'?p=reset_code&c='.$_SESSION['reset_code'].'">'.$settings['url'].'?p=reset_code&c='.$_SESSION['reset_code'].'</a></span>';
                     unset($_SESSION['reset_code']);
+
                 }
+
                 ?>
 
             </form>

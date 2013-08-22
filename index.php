@@ -253,6 +253,7 @@ switch($request){
         $page = './admin/menu.php';
         $last_page = 'admin';
         $main_id = 'admin';
+        $extras = TRUE;
 
         //pass the save status (if set)
         if(isset($_REQUEST['s'])){

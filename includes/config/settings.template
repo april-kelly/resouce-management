@@ -25,7 +25,7 @@ class settings {
             public $setupdone       = FALSE;                                    //Lets data.php to throw out any database names
 
         //Security
-            public $logging         = TRUE;                                     //Tells the server to log certain events
+            public $logging         = TRUE;                                     //[Not Implemented]
             public $IIstep          = FALSE;                                    //Enables Two Factor Authentication
             public $strict          = FALSE;                                    //Prevents anonymous users
 

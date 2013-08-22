@@ -23,7 +23,7 @@
 
         <input type="hidden" name="strict" value="FALSE" />
         <input type="checkbox" name="strict" value="TRUE" <?php if($settings['strict'] == TRUE){ echo "checked"; } ?> />
-        <label>Disable Anonymous Users</label><br />
+        <label>Prevent Anonymous Users</label><br />
 
 
         <br />
