@@ -38,7 +38,7 @@ if($settings['IIstep'] == true){
     $user_info = $users->select($_SESSION['ref']);
     $user_info = $user_info[0];
 
-    if(!($user_info == false)){
+    if(!($user_info == false) && !(empty($user_info['phone_number']))){
 
         //Send the text message
         if(!(empty($user_info['phone_number']))){
@@ -49,6 +49,7 @@ if($settings['IIstep'] == true){
     }else{
 
         unset($_SESSION['auth_code']);
+        //unset($_SESSION['ref']);
 
     }
 

@@ -70,6 +70,9 @@ if($_SESSION['admin'] >= 1){
         if(isset($_SESSION['user_lookup'])){
             $users = new users;
             $request = $users->select($_SESSION['user_lookup']);
+
+            if(!($request == false)){
+
             ?>
 
 
@@ -125,11 +128,11 @@ if($_SESSION['admin'] >= 1){
 
                     }
 
-                ?>
 
 
 
-        <?php
+
+              }
         }
         ?>
 

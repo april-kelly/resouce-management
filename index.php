@@ -56,7 +56,7 @@ if(!(file_exists('./includes/config/settings.json'))){
     $request = "config";
 }
 
-//make sure that the database credinitals are defined
+//make sure that the database credentials are defined
 if(!(isset($settings['db_database']))){
     $request = "config";
 }

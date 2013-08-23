@@ -27,6 +27,9 @@
 }else{
 
     //The user needs to enter an Authentication code
+    if(!(isset($_SESSION['auth_code']))){
+        header('location: ./admin/login.php?auth_code=');
+    }
     ?>
     <span>Please enter your Authentication Code</span>
     <form action="./admin/login.php" method="post">
