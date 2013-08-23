@@ -8,9 +8,9 @@ if(!(isset($_SESSION))){
     session_start();
 }
 //includes
-//require_once(ABSPATH.'includes/data.php');
-//require_once(ABSPATH.'includes/config/settings.php');
-//require_once(ABSPATH.'includes/config/users.php');
+require_once(ABSPATH.'includes/data.php');
+require_once(ABSPATH.'includes/config/settings.php');
+require_once(ABSPATH.'includes/config/users.php');
 
 //Fetch values to populate fields
 $set = new settings;
@@ -113,6 +113,19 @@ if($_SESSION['admin'] >= 1){
 
                 ?>
                 <br /><input type="submit" value="Update" name="update"/><input type="submit" value="Reset" name="reset"/><input type="submit" value="Delete" name="delete"/>
+
+                <br />
+                <?php
+
+                    if(isset($_SESSION['reset_code'])){
+
+                        echo '<span class="success">The reset code is: '.$_SESSION['reset_code'].'';
+                        echo '<br /> The link is: <a href="'.$settings['url'].'?p=reset_code&c='.$_SESSION['reset_code'].'">'.$settings['url'].'?p=reset_code&c='.$_SESSION['reset_code'].'</a></span>';
+                        unset($_SESSION['reset_code']);
+
+                    }
+
+                ?>
 
 
 

@@ -34,6 +34,8 @@ if(isset($_SESSION['userid'])){
 
         //User is logged in
 
+        echo '<pre>';
+
         //Reset a user's password
         if(isset($_REQUEST['reset'])){
             $reset_code = insert_reset_code($_REQUEST['userid']);
@@ -42,9 +44,9 @@ if(isset($_SESSION['userid'])){
             //(this forces them to use the rest code and stops anyone else from using their password until they do)
             $users->change('password', '25b57c6a8f9d1a4eb787430006db8d45c2081652b4369cc5cd05917445a7a536ae60fb3d5a75eff167599e1507cceb08b2790b8ea9f6d0ccebf35fde177789c9');
             $users->update();
-            echo 'attemped password reset';
+            echo 'Attemped password reset'."\r\n";
 
-            //$found = false;
+            //Redirect the user
             header('Location: ../../?p=admin&a=users&c='.$reset_code);
         }
 
@@ -52,9 +54,9 @@ if(isset($_SESSION['userid'])){
         if(isset($_REQUEST['delete'])){
             $users->change('index', $_REQUEST['index']);
             $users->delete();
-            echo 'attempted delete';
+            echo 'Attempted delete'."\r\n";
 
-            //$found = false;
+            //Redirect the user
             header('Location: ../../?p=admin&a=users');
         }
 
@@ -71,9 +73,9 @@ if(isset($_SESSION['userid'])){
             $users->change('admin', $_REQUEST['admin']);
 
             $users->create();
-            echo 'attempted add';
+            echo 'Attempted add'."\r\n";
 
-            //$found = false;
+            //Redirect the user
             header('Location: ../../?p=admin&a=users');
         }
 
@@ -95,32 +97,35 @@ if(isset($_SESSION['userid'])){
             }
 
             $users->update();
-            echo 'attempted update';
+            echo 'Attempted update'."\r\n";
 
-            //$found = false;
+            //Redirect the user
             header('Location: ../../?p=admin&a=users');
 
         }
 
+        //For user locking
         if(isset($_REQUEST['lock'])){
 
-            $found = false;
+            echo 'Attempted lock'."\r\n";
+
+            //Redirect the user
             header('Location: ../../?p=admin&a=users');
 
         }
 
-        if($found == true){
+        //For user look ups
+        if(isset($_REQUEST['u']) && isset($_REQUEST['select'])){
 
-            echo '<br />Not found<br />';
+            $_SESSION['user_lookup'] = $_REQUEST['u'];
+            echo 'Attempted lookup'."\r\n";
 
-            echo '<pre>';
-            var_dump($_REQUEST);
-            echo '</pre>';
+            //Redirect the user
+            header('location: ../../?p=admin&a=users');
 
         }
 
-        //Throw out the user_lookup variable
-        unset($_SESSION['user_lookup']);
+        echo '</pre>';
 
     }else{
 
