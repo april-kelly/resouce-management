@@ -6,7 +6,7 @@
 #login label {
     width: 25%;
     /*positions the label text beside the input */
-    text-align: left;
+    text-align: right;
     color: #222;
     font: 81.25% arial, helvetica, sans-serif;
 }

@@ -6,8 +6,19 @@ body{
 
 }
 
-    .sans-serif {
-        font-family: sans-serif;
+    .admin-menu label {
+        color: #222;
+        font: 81.25% arial, helvetica, sans-serif;
+    }
+
+    #admin b {
+        color: #222;
+        font:  arial, helvetica, sans-serif;
+    }
+
+
+.sans-serif {
+        font: arial, helvetica, sans-serif;
     }
 
     #header {
@@ -52,7 +63,25 @@ body{
     }
 
     #admin_head {
-        text-align: center;
+        text-align: center;System Status General Security Internal Users
+General Options:
+
+Overview
+
+ Enable coloration
+ Enable excel output
+ Enable output
+ # of weeks to display
+
+Database
+
+Database Hostname
+
+Database Username
+
+Database Password
+
+
     }
 
     #admin_head a {
@@ -395,7 +424,7 @@ body{
         background-position: 17px 7px;
         /* End code from google */
         height: 30px;
-        width: 50px;
+        min-width: 50px;
         border-radius: 5px;
     }
 

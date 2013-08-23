@@ -430,7 +430,7 @@ if($_SESSION['timeout'] == true){
 </head>
 <body>
 
-    <div id="header">
+    <div id="header" class="sans-serif">
 
         <img src="<?php echo $settings['logo']; ?>" style="center" alt="Bluetent Marketing"/>
 

@@ -25,7 +25,7 @@ if($_SESSION['admin'] >= 1){
 
         <legend>General Options:</legend>
 
-        <form action="./admin/save.php" method="post"><br />
+        <form action="./admin/save.php" method="post" class="button"><br />
 
             <b>Overview </b><br /><br />
 
@@ -51,9 +51,9 @@ if($_SESSION['admin'] >= 1){
 
 
             <b>Database</b><br /><br />
-            <input type="text" name="db_host" value="<?php echo $settings['db_host']; ?>" /><label>Database Hostname</label><br />
-            <input type="text" name="db_user" value="<?php echo $settings['db_user']; ?>" /><label>Database Username</label><br />
-            <input type="password" name="db_pass" value="<?php echo $settings['db_pass']; ?>" /><label>Database Password</label><br />
+            <input type="text" name="db_host" value="<?php echo $settings['db_host']; ?>" /><label>Database Hostname</label><br /><br />
+            <input type="text" name="db_user" value="<?php echo $settings['db_user']; ?>" /><label>Database Username</label><br /><br />
+            <input type="password" name="db_pass" value="<?php echo $settings['db_pass']; ?>" /><label>Database Password</label><br /><br />
             <input type="text" name="db_database" value="<?php echo $settings['db_database']; ?>" /><label>Database Name</label><br />
             <br />
 

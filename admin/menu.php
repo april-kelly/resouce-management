@@ -96,7 +96,7 @@ if(isset($_SESSION['userid'])){
         }
 
         if(isset($id)){
-            echo '<div id="'.$id.'">';
+            echo '<div id="'.$id.'" class="admin-menu">';
         }
         if(!(empty($page))){
             //show the requested page

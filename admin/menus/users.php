@@ -86,12 +86,12 @@ if(isset($_SESSION['userid'])){
         }else{
             echo './includes/images/default.jpg';
         }
-        ?>" alt="User Profile Image" title="User Profile Image" class="profile_pic"/><br />
+        ?>" alt="User Profile Image" title="User Profile Image" class="profile_pic"/><br /><br />
             <input type="hidden" name="userid" value="<?php echo $request[0]['index']; ?>" />
-            <input type="text" name="firstname" value="<?php echo $request[0]['firstname']; ?>" /><label>First</label><br />
-            <input type="text" name="lastname" value="<?php echo $request[0]['lastname']; ?>" /><label>Last</label><br />
-            <input type="text" name="email" value="<?php echo $request[0]['email']; ?>" /><label>Email</label><br />
-            <input type="text" name="phone_number" value="<?php echo $request[0]['phone_number']; ?>" autocomplete="off"/><label>Phone Number</label><br />
+            <input type="text" name="firstname" value="<?php echo $request[0]['firstname']; ?>" /><label>First</label><br /><br />
+            <input type="text" name="lastname" value="<?php echo $request[0]['lastname']; ?>" /><label>Last</label><br /><br />
+            <input type="text" name="email" value="<?php echo $request[0]['email']; ?>" /><label>Email</label><br /><br />
+            <input type="text" name="phone_number" value="<?php echo $request[0]['phone_number']; ?>" autocomplete="off"/><label>Phone Number</label><br /><br />
             <select name="type">
                 <option value="2" <?php if($request[0]['admin'] =='2'){ echo ' selected '; }?> >Project Resource</option>
                 <option value="1" <?php if($request[0]['admin'] =='1'){ echo ' selected '; }?>>Project Manager</option>
@@ -135,17 +135,17 @@ if(isset($_SESSION['userid'])){
 
         <b>Add a user:</b><br />
 
-        <input type="text" name="firstname" value="" autocomplete="off" /><label>First</label><br />
-        <input type="text" name="lastname" value="" autocomplete="off" /><label>Last</label><br />
-        <input type="text" name="email" autocomplete="off" /><label>Email</label><br />
-        <input type="text" name="phone_number" autocomplete="off"/><label>Phone Number</label><br />
-        <input type="password" name="password" autocomplete="off"/><label>Password</label><br />
+        <input type="text" name="firstname" value="" autocomplete="off" /><label>First</label><br /><br />
+        <input type="text" name="lastname" value="" autocomplete="off" /><label>Last</label><br /><br />
+        <input type="text" name="email" autocomplete="off" /><label>Email</label><br /><br />
+        <input type="text" name="phone_number" autocomplete="off"/><label>Phone Number</label><br /><br />
+        <input type="password" name="password" autocomplete="off"/><label>Password</label><br /><br />
         <select name="type">
             <option value="2">Project Resource</option>
             <option value="1">Project Manager</option>
             <option value="0">Both</option>
         </select>
-        <label>Type of resource</label>
+        <label>Type of resource</label><br />
         <br />
         <select name="admin">
             <option value="0">Normal</option>
@@ -153,7 +153,7 @@ if(isset($_SESSION['userid'])){
             <option value="2">Debugger</option>
             <option value="3">Developer</option>
         </select>
-        <label>Type of user</label><br />
+        <label>Type of user</label><br /><br />
 
         <input type="submit" value="Add" name="add" />
 
