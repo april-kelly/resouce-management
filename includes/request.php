@@ -61,7 +61,7 @@
 </script>
 <!-- end from w3schools -->
 
-  <form action="./includes/insert.php" method="post" onsubmit="return validate()" name="form" class="request">
+  <form action="./includes/insert.php" method="post" onsubmit="return validate()" name="form" class="request button">
 	
     <label for="sales_status">Sales Status: </label>
 	
@@ -197,7 +197,7 @@ echo "\r\n";
 	 </table>
 	 <br />
 
-	<input type="submit" value="Request" />
+	<input type="submit" name="submit" value="Request" />
 	
 	<?php
 	//Echo out errors for improper data:

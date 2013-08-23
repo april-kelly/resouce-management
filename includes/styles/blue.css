@@ -6,6 +6,10 @@ body{
 
 }
 
+ option{
+        width: 500px;
+    }
+
     .admin-menu label {
         color: #222;
         font: 81.25% arial, helvetica, sans-serif;
@@ -63,25 +67,7 @@ body{
     }
 
     #admin_head {
-        text-align: center;System Status General Security Internal Users
-General Options:
-
-Overview
-
- Enable coloration
- Enable excel output
- Enable output
- # of weeks to display
-
-Database
-
-Database Hostname
-
-Database Username
-
-Database Password
-
-
+        text-align: center;
     }
 
     #admin_head a {
@@ -406,7 +392,7 @@ Database Password
     }
 
 
-    .button input[name=submit]{
+    .button input[type=submit]{
         /* Code from google.com (look for the .gbqfb class)*/
         background-color: #4d90fe;
 

@@ -25,7 +25,7 @@ if($_SESSION['admin'] >= 1){
 
         <legend>General Options:</legend>
 
-        <form action="./admin/save.php" method="post" class="button"><br />
+        <form action="./admin/save.php" method="post"><br />
 
             <b>Overview </b><br /><br />
 
