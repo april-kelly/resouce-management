@@ -6,4 +6,4 @@
  */
 
 ?>
-<p><i>(C) Copyright Bluetent Marketing 2012-<?php echo date('Y');?><br /> All rights reserved.</i></p>
+<p><span class="info">&copy; Bluetent Marketing <?php echo date('Y');?></span></p>

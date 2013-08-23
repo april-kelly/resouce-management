@@ -3,7 +3,7 @@
 ?>
         <h2>Sign in</h2>
         <form action="./admin/login.php" method="post" class="button">
-           <strong><label>Username:  </label></strong><input type="text" name="username"><br /><br />
+           <strong><label>Username:  </label></strong><input type="text" name="username" autofocus ><br /><br />
            <strong><label>Password: </label></strong><input type="password" name="password"><br />
            <!--<input type="submit" value="login">--><br />
            <input type="submit" name="submit" value="Login">
@@ -31,10 +31,11 @@
     if(!(isset($_SESSION['auth_code']))){
         header('location: ./admin/login.php?auth_code=');
     }
+
     ?>
     <h2>Verify</h2><br/>
     <form action="./admin/login.php" method="post" class="button">
-           <!--<label>Code: </label>--><input type="text" name="auth_code"><br /><br />
+            <input type="text" name="auth_code" autofocus ><br /><br />
             <input type="submit" name="submit" value="Verify">
     </form>
 

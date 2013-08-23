@@ -408,7 +408,11 @@ if($_SESSION['timeout'] == true){
 
     <title>Bluetent Resource Management</title>
 
-    <link rel="stylesheet" href="./includes/styles/styles.css" type="text/css" />
+    <?php
+
+    echo '<link rel="stylesheet" href="./includes/styles/'.$settings['style'].'.css" type="text/css" />';
+
+    ?>
     <link rel="icon" href="./includes/images/btm_favicon.ico" />
 
     <meta charset="UTF-8">

@@ -23,6 +23,7 @@ class settings {
             public $platform        = 'serveros';                               //The server os
             public $timeout         = '1800';                                   //Seconds before the session is timed out
             public $setupdone       = FALSE;                                    //Lets data.php to throw out any database names
+            public $style           = 'blue';                                   //The style sheet to use
 
         //Security
             public $logging         = TRUE;                                     //[Not Implemented]
