@@ -52,7 +52,7 @@ if(isset($_SESSION['userid'])){
 
         //Delete a user
         if(isset($_REQUEST['delete'])){
-            $users->change('index', $_REQUEST['index']);
+            $users->change('index', $_REQUEST['u']);
             $users->delete();
             echo 'Attempted delete'."\r\n";
 
@@ -74,6 +74,8 @@ if(isset($_SESSION['userid'])){
 
             $users->create();
             echo 'Attempted add'."\r\n";
+
+            $_SESSION['success'] = true;
 
             //Redirect the user
             header('Location: ../../?p=admin&a=users');

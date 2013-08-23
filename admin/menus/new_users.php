@@ -64,7 +64,7 @@ if($_SESSION['admin'] >= 1){
             ?>
 
         </select>
-        <input type="submit" value="Select" />
+        <input type="submit" value="Select" name="select"/>
 
         <?php
         if(isset($_SESSION['user_lookup'])){
@@ -170,6 +170,18 @@ if($_SESSION['admin'] >= 1){
         <label>Type of user</label><br />
 
         <input type="submit" value="Add" name="add" />
+
+        <br />
+        <?php
+
+        if(isset($_SESSION['success'])){
+
+            echo '<span class="success">Added user.</span>';
+            unset($_SESSION['success']);
+
+        }
+
+        ?>
 
     </form>
 
