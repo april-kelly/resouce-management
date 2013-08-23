@@ -30,7 +30,7 @@
     document.getElementById('search_results').style.backgroundColor = '#000';
 </script>
 
-<form action="./search.php" method="get" class="search">
+<form action="./search.php" method="get" class="search button">
     <input type="hidden" name="p" value="search" />
     <input type="search"
            name="q"

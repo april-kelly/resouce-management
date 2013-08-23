@@ -288,12 +288,14 @@ switch($request){
         $page = './admin/login_form.php';
         $last_page = 'login';
         $main_id = 'login';
+        $extras = TRUE;
     break;
 
     case "badlogin":
         $page = './admin/login_form.php';
         $last_page = 'badlogin';
         $main_id = 'login';
+        $extras = TRUE;
 
         $_SESSION['bad'] = '';
     break;
@@ -302,6 +304,7 @@ switch($request){
         $page = './admin/login_form.php';
         $last_page = 'badlogin';
         $main_id = 'login';
+        $extras = TRUE;
 
         $_SESSION['banned'] = '';
     break;
@@ -337,6 +340,7 @@ switch($request){
         $page = './admin/login_form.php';
         $last_page = 'logout';
         $main_id = 'login';
+        $extras = TRUE;
 
         //Destroy and recreate the session
         session_destroy();

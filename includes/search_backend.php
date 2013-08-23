@@ -4,6 +4,11 @@
  * Programmer: Liam Kelly
  * Date:       8/6/13
  */
+//Session
+if(!(isset($_SESSION))){
+    session_start();
+}
+
 
 //Includes
 if(!(defined('ABSPATH'))){
@@ -66,6 +71,14 @@ if(empty($results)){
 if($_REQUEST['q'] == 'credits'){
 
     echo '<br />Written mostly by Liam Kelly, with help from: Jeremey Cerise, Rodney O\'Bryne and Ethan Hinson.'."\r\n";
+
+}
+
+//Session Destroy
+if($_REQUEST['q'] == 'destroy'){
+
+    echo '<br />Session Destroyed';
+    session_destroy();
 
 }
 

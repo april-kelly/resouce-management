@@ -73,9 +73,7 @@ if($_SESSION['admin'] >= 1){
 
             if(!($request == false)){
 
-            ?>
-
-
+                ?>
                 <br />Profile Picture <a href="./?p=edit_pic">(edit)</a><br />
                 <img src="<?php
                 if(!(empty($request[0]["profile_pic"]))){
@@ -128,11 +126,8 @@ if($_SESSION['admin'] >= 1){
 
                     }
 
-
-
-
-
               }
+
         }
         ?>
 

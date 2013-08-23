@@ -377,7 +377,7 @@ body{
     }
 
 
-    .search input[name=submit]{
+    .button input[name=submit]{
         /* Code from google.com (look for the .gbqfb class)*/
         background-color: #4d90fe;
 
@@ -393,11 +393,16 @@ body{
         margin: 0 0;
         background-repeat: no-repeat;  /* make the background image appear only once*/
         background-position: 17px 7px;
-        background-image: url("../images/search.png");
         /* End code from google */
         height: 30px;
         width: 50px;
         border-radius: 5px;
+    }
+
+    .search input[name=submit]{
+
+        background-image: url("../images/search.png");
+
     }
 
     .search {

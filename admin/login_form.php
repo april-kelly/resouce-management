@@ -1,11 +1,12 @@
 <?php
  if(!(isset($_SESSION['ref']))){
 ?>
-
-        <form action="./admin/login.php" method="post">
-           <label>Username:  </label><input type="text" name="username"><br />
-           <label>Password: </label><input type="password" name="password"><br />
-           <input type="submit" value="login">
+        <h2>Sign in</h2>
+        <form action="./admin/login.php" method="post" class="button">
+           <strong><label>Username:  </label></strong><input type="text" name="username"><br /><br />
+           <strong><label>Password: </label></strong><input type="password" name="password"><br />
+           <!--<input type="submit" value="login">--><br />
+           <input type="submit" name="submit" value="Login">
         </form>
         <span class="error"><?php if(isset($_SESSION['bad'])){ echo 'Incorrect username or password.'; unset($_SESSION['bad']);} ?></span>
 <?php
@@ -31,17 +32,19 @@
         header('location: ./admin/login.php?auth_code=');
     }
     ?>
-    <span>Please enter your Authentication Code</span>
-    <form action="./admin/login.php" method="post">
-           <label>Code: </label><input type="text" name="auth_code"><br />
-           <input type="submit" value="Verify">
+    <h2>Verify</h2><br/>
+    <form action="./admin/login.php" method="post" class="button">
+           <!--<label>Code: </label>--><input type="text" name="auth_code"><br /><br />
+            <input type="submit" name="submit" value="Verify">
     </form>
-    <span class="info">This code has been sent to the phone number we have on file.</span>
+
 
 <?php
 
     if($_SESSION['badcode'] == true){
         echo '<span class="error">Invalid authentication code.<br /><em>This event has been logged.</em></span>';
+    }else{
+        echo '<br /><span class="info">Please enter the verification code we sent to your phone.</span><br />';
     }
 
 }
