@@ -23,6 +23,7 @@ input[type=email]:focus, input[type=number]:focus, input[type=password]:focus, i
     -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
 }
+
 input[type=text], input[type=password]{
     -webkit-appearance: none;
     appearance: none;
@@ -40,17 +41,21 @@ input[type=text], input[type=password]{
     -moz-border-radius: 1px;
     border-radius: 1px;
 }
+
 input:not([type]), input[type="color"], input[type="email"], input[type="number"], input[type="password"], input[type="tel"], input[type="url"], input[type="text"] {
     padding: 1px 0px;
 }
+
 input:focus, textarea:focus, isindex:focus, keygen:focus, select:focus {
     outline-offset: -2px;
 }
+
 input:-webkit-autofill {
     background-color: rgb(250, 255, 189);
     background-image: none;
     color: rgb(0, 0, 0);
 }
+
 :focus {
     outline: -webkit-focus-ring-color auto 5px;
 }
