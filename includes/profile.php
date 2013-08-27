@@ -30,30 +30,33 @@ if(!(isset($_SESSION['userid']))){
 
     ?>
 
-    <a href="./?p=logout">Log out</a>
+    <form action="./" method="get" class="button">
+        <input type="hidden" name="p" id="p" value="logout" />
+        <input type="submit" value="Logout" />
+    </form>
+
     <h3>Your profile:</h3>
-    <form action="./admin/save.php" method="post">
-        Profile Picture <a href="./?p=edit_pic">(edit)</a><br />
+    <form action="./admin/save.php" method="post" class="button">
+        Profile Picture <br /><a href="./?p=edit_pic">
         <img src="<?php
         if(!(empty($user[0]["profile_pic"]))){
             echo './includes/images/uploads/'.$user[0]["profile_pic"];
         }else{
             echo './includes/images/default.jpg';
         }
-        ?>" alt="User Profile Image" title="User Profile Image" class="profile_pic"/><br />
+        ?>" alt="Click to edit" title="Click to edit" class="profile_pic"/></a><br /><br />
         <input type="hidden" value="<?php echo $user[0]["index"]; ?>" name="userid" />
         <input type="hidden" value="<?php echo $user[0]["email"]; ?>" name="email" />
         <label>Colorize Results</label>
         <input type="hidden" name="month_colors" value="0" />
-        <input type="checkbox" name="month_colors" value="1" <?php if($user[0]["colorization"] == TRUE){ echo "checked"; } ?> />
-        <br />
-        <label>Email:  </label><?php echo $user[0]["email"] ?><br />
-        <label>Phone Number: </label><input type="text" name="phone_number" value="<?php echo $user[0]["phone_number"] ?>" autocomplete="off"/><br />
-        <label>First:  </label><input type="text" name="firstname" value="<?php echo $user[0]["firstname"] ?>"><br />
-        <label>Last:  </label><input type="text" name="lastname" value="<?php echo $user[0]["lastname"] ?>"><br />
-        <label>Current Password: </label><input type="password" name="password"><br />
-        <label>New Password: </label><input type="password" name="new_pass"><br />
-        <label>Retype Password: </label><input type="password" name="new_pass_II"><br />
+        <input type="checkbox" name="month_colors" value="1" <?php if($user[0]["colorization"] == TRUE){ echo "checked"; } ?> /><br /><br />
+        <label>Email:  </label><?php echo $user[0]["email"] ?><br /><br />
+        <label>Phone Number: </label><input type="text" name="phone_number" value="<?php echo $user[0]["phone_number"] ?>" autocomplete="off"/><br /><br />
+        <label>First:  </label><input type="text" name="firstname" value="<?php echo $user[0]["firstname"] ?>"><br /><br />
+        <label>Last:  </label><input type="text" name="lastname" value="<?php echo $user[0]["lastname"] ?>"><br /><br />
+        <label>Current Password: </label><input type="password" name="password"><br /><br />
+        <label>New Password: </label><input type="password" name="new_pass"><br /><br />
+        <label>Retype Password: </label><input type="password" name="new_pass_II"><br /><br />
         <input type="submit" value="Update">
         <br /><span class="info"><i>Please enter your current password, even if you are not changing your password.</i></span>
     </form>

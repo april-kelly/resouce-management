@@ -313,6 +313,8 @@ switch($request){
         $page = './includes/profile.php';
         $last_page = 'user';
         $main_id = 'profile';
+        $extras = TRUE;
+
     break;
 
     case "week":

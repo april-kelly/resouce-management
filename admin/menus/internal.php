@@ -24,7 +24,7 @@ if(isset($_SESSION['userid'])){
 
     <legend>Insert Options:</legend>
 
-    <form action="./admin/save.php" method="post"><br />
+    <form action="./admin/save.php" method="post" class="button"><br />
 
         <b>Insert.php</b><br /><br />
 
@@ -50,10 +50,10 @@ if(isset($_SESSION['userid'])){
 
     <legend>Settings Options:</legend>
 
-    <form action="./admin/save.php" method="post">
-        <b>Core Settings File:</b><br />
-        <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings file from preset defaults</label><br />
-        <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br />
+    <form action="./admin/save.php" method="post" class="button">
+        <b>Core Settings File:</b><br /><br />
+        <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings file from preset defaults</label><br /><br />
+        <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br /><br />
         <input type="submit" value="Download" name="download" /><label>Download the settings file</label><br /><br />
         <b>Core Settings:</b><br />
         <?php if($settings['production'] == FALSE){ ?>

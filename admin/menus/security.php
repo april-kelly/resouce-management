@@ -11,7 +11,7 @@
 
     <legend>Internal System Security:</legend>
 
-    <form action="./admin/save.php" method="post"><br />
+    <form action="./admin/save.php" method="post" class="button"><br />
 
         <input type="hidden" name="logging" value="FALSE" />
         <input type="checkbox" name="logging" value="TRUE" <?php if($settings['logging'] == TRUE){ echo "checked"; } ?> />
@@ -37,7 +37,7 @@
 
     <legend>User Security:</legend>
 
-    <form action="./admin/save.php" method="post"><br />
+    <form action="./admin/save.php" method="post" class="button"><br />
 
 
         <input type="text" name="timeout" value="<?php echo $settings['timeout']; ?>" /><label>Session timeout (in seconds)</label><br />

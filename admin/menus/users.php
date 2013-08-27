@@ -37,7 +37,7 @@ if(isset($_SESSION['userid'])){
 <fieldset>
         <legend>Update a user</legend>
 
-        <form action="./" method="get">
+        <form action="./" method="get" class="button">
 
             <input type="hidden" name="p" value="admin" />
             <input type="hidden" name="a" value="users" />
@@ -78,7 +78,7 @@ if(isset($_SESSION['userid'])){
         $request = $users->select($_SESSION['user_lookup']);
     ?>
 
-    <form action="./admin/menus/user_save.php" method="post">
+    <form action="./admin/menus/user_save.php" method="post" class="button">
         Profile Picture <a href="./?p=edit_pic">(edit)</a><br />
         <img src="<?php
         if(!(empty($request[0]["profile_pic"]))){
