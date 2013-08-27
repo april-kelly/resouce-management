@@ -19,10 +19,14 @@ include_once(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php'); //we include instea
 $page_offset = $_SESSION['page_offset'];
 $page_count  = $_SESSION['page_count'];
 
+
 //Setup the views class
+//Well use output buffering to prevent any astray errors from messing the output up
+ob_start();
 $views = new views;
 $table = $views->build_table($page_offset, $page_count);
 $weeks = $views->weeks;
+ob_end_clean();
 
 //Make a copy of the table
 $copy = $table;
