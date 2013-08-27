@@ -67,7 +67,10 @@ if(isset($_REQUEST['rebuild'])){
 
 if(isset($_REQUEST['download'])){
 
-    header('location: ../includes/config/settings.json');
+    header('Content-disposition: attachment; filename=settings.json');
+    header('Content-type: text/json');
+
+    echo file_get_contents(ABSPATH.'/includes/config/settings.json');
     $save = FALSE;
 }
 
@@ -123,7 +126,6 @@ if(isset($_REQUEST['d'])){
 }
 
     //Administrator user tools
-    echo "<br />Entered user mode<br />";
     $users = new users();
 
     if(isset($_REQUEST['Add'])){

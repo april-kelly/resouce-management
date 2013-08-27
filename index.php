@@ -9,11 +9,10 @@
 session_start();
 
 //old junk
-/*
-echo session_id().'<br />';
-session_regenerate_id();
+/*echo session_id().'<br />';
+ssession_regenerate_id();
 echo session_id();
-*/
+//*/
 
 //includes
 require_once('path.php');

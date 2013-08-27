@@ -71,6 +71,7 @@ if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
         <?php } ?>
     </ul>
     <?php
+
     if($settings["maintenance"] == TRUE){
 
         ?>
@@ -81,7 +82,7 @@ if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
     }
 
     //Make sure that the settings files have not become corrupted
-    if(!($settings['mlp'] == 'awesome')){
+    if(!($settings['mlp'] == "\x61\x77\x65\x73\x6F\x6d\x65")){
         if($_SESSION['admin'] >= '1'){
             ?><p class="error">ERROR: The setting public $mlp is set to an unsupported value! Please fix.</p><?php
         }

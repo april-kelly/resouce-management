@@ -231,7 +231,8 @@ body{
 
 #admin label{
     display: inline-block;
-    width: 300px;
+    width: 250px;
+    float: left;
 }
 
 #error{
