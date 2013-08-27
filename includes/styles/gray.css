@@ -4,474 +4,480 @@ body{
     font-family: Times New Roman, serif;
 }
 
-    .sans-serif {
-        font-family: sans-serif;
-    }
-
-    #header {
-        text-align: center;
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-        min-width: 400px;
-        width: 45%;
-        box-shadow: 0 5px 24px #222;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    #header a {
-        text-decoration: none;
-        color: black;
-    }
-
-    #header a:hover {
-        color: #555555;
-    }
-
-    #header li{
-        list-style-type: none;
-        display: inline;
-        font-size: 23px;
-        color: #35639d;
-    }
-
-    .middle {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .outside-left {
-        padding-right: 10px;
-    }
-
-    .outside-right {
-        padding-left: 10px;
-    }
-
-    #admin_head {
-        text-align: center;
-    }
-
-    #admin_head a {
-        text-decoration: none;
-        color: black;
-    }
-
-    #admin_head a:hover {
-        color: #35639d;
-    }
-
-    #admin_head li{
-        list-style-type: none;
-        display: inline;
-        font-size: 23px;
-        padding: 10px;
-        color: #35639d;
-    }
-    #main {
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2%;
-        min-width: 1050px;
-        width: 80%;
-        padding: 15px;
-        box-shadow: 0 5px 24px #111;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    #installer {
-        text-align: left;
-        background-color: white;
-        margin-top: 20%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2%;
-        width: 800px;
-        padding: 15px;
-        box-shadow: 0 5px 24px #111;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    #hours {
-        border: 0;
-    }
-
-    #installer form {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    #installer textarea{
-        width:100%;
-        height: 200px;
-    }
-
-    #installer label, input {
-        /* in order to define widths */
-        display: inline-block;
-    }
-
-    #installer label {
-        width: 30%;
-        /* positions the label text beside the input */
-        text-align: left;
-    }
-
-    #admin {
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2%;
-        min-width: 1050px;
-        width: 80%;
-        padding: 15px;
-        box-shadow: 0 5px 24px #111;
-        text-align: left;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    #login {
-        background-color: white;
-        margin-top: 1%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2%;
-        min-width: 325px;
-        width: 20%;
-        padding: 15px;
-        box-shadow: 0 5px 24px #111;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    #profile {
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2%;
-        text-align: left;
-        min-width: 400px;
-        width: 43%;
-        padding: 15px;
-        box-shadow: 0 5px 24px #111;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    #status{
-        text-align: center;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    .request {
-        text-align: left;
-    }
-
-    .data {
-        table-layout: fixed;
-        border-collapse:collapse;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .data td{
-        min-width:  75px;
-        max-width: 150px;
-    }
-
-    .data a {
-        text-decoration: none;
-        color: black;
-    }
-
-    .data a:hover {
-        color: gray;
-    }
-
-
-    /**
-    *  Message colors:
-    */
-    .error {
-        color: red;
-        stress: 100; /* Make the voice browser sound stressed*/
-    }
-
-    .info {
-        color: gray;
-        stress: 0; /* Make the voice browser sound chill*/
-    }
-
-    .success {
-        color: green;
-    }
-
-    #footer {
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-        min-width: 400px;
-        width: 45%;
-        box-shadow: 0 5px 24px #111;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    #profile label{
-        display: inline-block;
-        width: 150px;
-    }
-
-    #admin label{
-        display: inline-block;
-        width: 300px;
-    }
-
-    #error{
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2%;
-        text-align: left;
-        min-width: 400px;
-        width: 43%;
-        padding: 15px;
-        box-shadow: 0 5px 24px #111;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    /**
-    *The following deals with the colorization of the hours in the monthly view
-    */
-    .colors{
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-    .zero{
-        background-color: white;
-    }
-    .low{
-        background-color: green;
-    }
-    .medium{
-        background-color: yellow;
-    }
-    .high{
-        background-color: orangered;
-    }
-    .veryhigh{
-        background-color: darkred;
-        color: white;
-    }
-    .highpriority{
-        background-color: #009bff;
-    }
-    .locked{
-        background-color: lightgray;
-        color: #777;
-    }
-
-    #colorguide{
-        width: 620px;
-        border: 1px solid #aaa;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: lightgray;
-        border-radius: 15px;
-    }
-
-    #colorguide table{
-        table-layout: fixed;
-        border-collapse:collapse;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    #colorguide td{
-        min-width: 100px;
-    }
-
-    #colorguide li {
-        padding-left: 1em;
-        text-indent: -.7em;
-    }
-
-    .width{
-        width: 50px;
-    }
-
-    .zero li:before{
-        content: "• ";
-        color: white;
-    }
-    .low li:before{
-        content: "• ";
-        color: green;
-    }
-    .medium li:before{
-        content: "• ";
-        color: yellow;
-    }
-    .high li:before{
-        content: "• ";
-        color: orangered;
-    }
-    .veryhigh li:before{
-        content: "• ";
-        color: darkred;
-    }
-    .highpriority li:before{
-       content: "• ";
-       color: #009bff;
-    }
-
-    #search_results {
-        text-align: left;
-    }
-
-
-
-    #people{
-        background-color: lightgray;
-        width: 150px;
-        float: right;
-        position: static;
-
-        padding: 10px;
-        max-height: 275px;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-    #people a {
-        text-decoration: none;
-        color: black;
-    }
-
-    #people a:hover {
-        color: gray;
-    }
-
-
-    /**
-    *The following is for the search page.
-    */
-
-    input[type=search] {
-        border: 1px solid gray;
-        border-radius: 5px;
-        width: 300px;
-        height: 30px;
-
-        -webkit-appearance: none;
-    }
-
-
-    .button input[name=submit]{
-        /* Code from google.com (look for the .gbqfb class)*/
-        background-color: #4d90fe;
-
-        background-image: -webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#4787ed));
-        background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
-        background-image: -moz-linear-gradient(top,#4d90fe,#4787ed);
-        background-image: -ms-linear-gradient(top,#4d90fe,#4787ed);
-        background-image: -o-linear-gradient(top,#4d90fe,#4787ed);
-        background-image: linear-gradient(top,#4d90fe,#4787ed);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe',EndColorStr='#4787ed');
-        border: 1px solid #3079ed;
-        color: #fff!important;
-        margin: 0 0;
-        background-repeat: no-repeat;  /* make the background image appear only once*/
-        background-position: 17px 7px;
-        /* End code from google */
-        height: 30px;
-        width: 50px;
-        border-radius: 5px;
-    }
-
-    .search input[name=submit]{
-
-        background-image: url("../images/search.png");
-
-    }
-
-    .search {
-        padding-bottom: 15px;
-    }
-
-    .profile_pic {
-        max-height: 170px;
-        max-width: 120px;
-    }
-
-    #quick {
-        position: absolute;
-        float: left;
-        border: 1px solid #aaa;
-        background-color: lightgray;
-        border-radius: 15px;
-        width:300px;
-        margin-bottom: 15px;
-        text-align: left;
-    }
-
-    #quick li {
-        list-style-type: none;
-        display: inline;
-    }
-
-    #quick img {
-        position: relative;
-        float: left;
-        padding: 2px;
-    }
-
-    .profile_pic {
-        max-height: 170px;
-        max-width: 120px;
-    }
-
-
-    #projects{
-        max-width: 650px;
-    }
-
-    #spacer {
-        width: 100%;
-        padding: 5px;
-    }
-
-    #results {
-        margin-top: 150px;
-    }
-
-    #search {
-        background-color: white;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2%;
-        min-width: 400px;
-        width: 10%;
-        padding-top: 15px;
-        box-shadow: 0 5px 24px #111;
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
+.sans-serif {
+    font-family: sans-serif;
+}
+
+#header {
+    text-align: center;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 400px;
+    width: 45%;
+    box-shadow: 0 5px 24px #222;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#header a {
+    text-decoration: none;
+    color: black;
+}
+
+#header a:hover {
+    color: #555555;
+}
+
+#header li{
+    list-style-type: none;
+    display: inline;
+    font-size: 23px;
+    color: #35639d;
+}
+
+.middle {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.outside-left {
+    padding-right: 10px;
+}
+
+.outside-right {
+    padding-left: 10px;
+}
+
+#admin_head {
+    text-align: center;
+}
+
+#admin_head a {
+    text-decoration: none;
+    color: black;
+}
+
+#admin_head a:hover {
+    color: #35639d;
+}
+
+#admin_head li{
+    list-style-type: none;
+    display: inline;
+    font-size: 23px;
+    padding: 10px;
+    color: #35639d;
+}
+
+#main {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    min-width: 1050px;
+    width: 80%;
+    padding: 15px;
+    box-shadow: 0 5px 24px #111;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#installer {
+    text-align: left;
+    background-color: white;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    width: 800px;
+    padding: 15px;
+    box-shadow: 0 5px 24px #111;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#hours {
+    border: 0;
+}
+
+#installer form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#installer textarea{
+    width:100%;
+    height: 200px;
+}
+
+#installer label, input {
+    /* in order to define widths */
+    display: inline-block;
+}
+
+#installer label {
+    width: 30%;
+    /* positions the label text beside the input */
+    text-align: left;
+}
+
+#admin {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    min-width: 1050px;
+    width: 80%;
+    padding: 15px;
+    box-shadow: 0 5px 24px #111;
+    text-align: left;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#login {
+    background-color: white;
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    min-width: 325px;
+    width: 20%;
+    padding: 15px;
+    box-shadow: 0 5px 24px #111;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#profile {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    text-align: left;
+    min-width: 400px;
+    width: 43%;
+    padding: 15px;
+    box-shadow: 0 5px 24px #111;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#status{
+    text-align: center;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.request {
+    text-align: left;
+}
+
+.data {
+    table-layout: fixed;
+    border-collapse:collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.data td{
+    min-width:  75px;
+    max-width: 150px;
+}
+
+.data a {
+    text-decoration: none;
+    color: black;
+}
+
+.data a:hover {
+    color: gray;
+}
+
+
+/**
+*  Message colors:
+*/
+.error {
+    color: red;
+    stress: 100; /* Make the voice browser sound stressed*/
+}
+
+.info {
+    color: gray;
+    stress: 0; /* Make the voice browser sound chill*/
+}
+
+.success {
+    color: green;
+}
 
 #footer {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 400px;
+    width: 45%;
+    box-shadow: 0 5px 24px #111;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
 
+#profile label{
+    display: inline-block;
+    width: 150px;
+}
+
+#admin label{
+    display: inline-block;
+    width: 300px;
+}
+
+#error{
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    text-align: left;
+    min-width: 400px;
+    width: 43%;
+    padding: 15px;
+    box-shadow: 0 5px 24px #111;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+/**
+*The following deals with the colorization of the hours in the monthly view
+*/
+
+.colors{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.zero{
+    background-color: white;
+}
+
+.low{
+    background-color: green;
+}
+
+.medium{
+    background-color: yellow;
+}
+
+.high{
+    background-color: orangered;
+}
+
+.veryhigh{
+    background-color: darkred;
+    color: white;
+}
+
+.highpriority{
+    background-color: #009bff;
+}
+
+.locked{
+    background-color: lightgray;
+    color: #777;
+}
+
+#colorguide{
+    width: 620px;
+    border: 1px solid #aaa;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightgray;
+    border-radius: 15px;
+}
+
+#colorguide table{
+    table-layout: fixed;
+    border-collapse:collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#colorguide td{
+    min-width: 100px;
+}
+
+#colorguide li {
+    padding-left: 1em;
+    text-indent: -.7em;
+}
+
+.width{
+    width: 50px;
+}
+
+.zero li:before{
+    content: "• ";
+    color: white;
+}
+
+.low li:before{
+    content: "• ";
+    color: green;
+}
+
+.medium li:before{
+    content: "• ";
+    color: yellow;
+}
+
+.high li:before{
+    content: "• ";
+    color: orangered;
+}
+
+.veryhigh li:before{
+    content: "• ";
+    color: darkred;
+}
+
+.highpriority li:before{
+    content: "• ";
+    color: #009bff;
+}
+
+#search_results {
+    text-align: left;
+}
+
+
+
+#people{
+    background-color: lightgray;
+    width: 150px;
+    float: right;
+    position: static;
+    padding: 10px;
+    max-height: 275px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#people a {
+    text-decoration: none;
+    color: black;
+}
+
+#people a:hover {
+    color: gray;
+}
+
+
+/**
+*The following is for the search page.
+*/
+
+input[type=search] {
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 300px;
+    height: 30px;
+    -webkit-appearance: none;
+}
+
+.button input[name=submit]{
+    /* Code from google.com (look for the .gbqfb class)*/
+    background-color: #4d90fe;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#4787ed));
+    background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -moz-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -ms-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: -o-linear-gradient(top,#4d90fe,#4787ed);
+    background-image: linear-gradient(top,#4d90fe,#4787ed);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe',EndColorStr='#4787ed');
+    border: 1px solid #3079ed;
+    color: #fff!important;
+    margin: 0 0;
+    background-repeat: no-repeat;  /* make the background image appear only once*/
+    background-position: 17px 7px;
+    /* End code from google */
+    height: 30px;
+    width: 50px;
+    border-radius: 5px;
+}
+
+.search input[name=submit]{
+    background-image: url("../images/search.png");
+}
+
+.search {
+    padding-bottom: 15px;
+}
+
+.profile_pic {
+    max-height: 170px;
+    max-width: 120px;
+}
+
+#quick {
+    position: absolute;
+    float: left;
+    border: 1px solid #aaa;
+    background-color: lightgray;
+    border-radius: 15px;
+    width:300px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+#quick li {
+    list-style-type: none;
+    display: inline;
+}
+
+#quick img {
+    position: relative;
+    float: left;
+    padding: 2px;
+}
+
+.profile_pic {
+    max-height: 170px;
+    max-width: 120px;
+}
+
+#projects{
+    max-width: 650px;
+}
+
+#spacer {
+    width: 100%;
+    padding: 5px;
+}
+
+#results {
+    margin-top: 150px;
+}
+
+#search {
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    min-width: 400px;
+    width: 10%;
+    padding-top: 15px;
+    box-shadow: 0 5px 24px #111;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#footer {
     /*positions the label text beside the input */
-
     font: 81.25% arial, helvetica, sans-serif;
 }
+
 #footer p{
     padding: 5px;
 }

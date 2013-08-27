@@ -1,12 +1,10 @@
 body{
     background-color: #4FABFF;
     text-align: center;
-    speak: normal; /* This will probably never be used..... */
     font-family: Times New Roman, serif;
-
 }
 
- option{
+    option{
         width: 500px;
     }
 
@@ -21,7 +19,7 @@ body{
     }
 
 
-.sans-serif {
+   .sans-serif {
         font: arial, helvetica, sans-serif;
     }
 
