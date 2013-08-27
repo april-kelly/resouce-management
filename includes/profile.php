@@ -30,9 +30,15 @@ if(!(isset($_SESSION['userid']))){
 
     ?>
 
+    <h3>Tasks:</h3>
     <form action="./" method="get" class="button">
         <input type="hidden" name="p" id="p" value="logout" />
         <input type="submit" value="Logout" />
+    </form>
+    <br />
+    <form action="./" method="get" class="button">
+        <input type="hidden" name="p" id="p" value="view_requests" />
+        <input type="submit" value="View Requests" />
     </form>
 
     <h3>Your profile:</h3>

@@ -104,8 +104,10 @@ class views {
 
 
                                         //$table[$person['index']][$week] = implode(':', $this->add_times($this->temp_hours));
+                                        if(isset($table[$person['index']][$week])){
+                                            $table[$person['index']][$week] = $table[$person['index']][$week] + $this->hours;
+                                        }
 
-                                        $table[$person['index']][$week] = $table[$person['index']][$week] + $this->hours;
 
                                     }else{
 

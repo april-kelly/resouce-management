@@ -45,7 +45,7 @@ if($results == FALSE){
 
 }else{
 
-    echo '<table border="1">';
+    echo '<table border="1" class="data">';
 
          echo '<tr>';
              echo '<td>Index:</td>';
