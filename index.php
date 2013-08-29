@@ -380,11 +380,18 @@ switch($request){
         $main_id = 'main';
     break;
 
-    case "recovery":
-        $page = './includes/recovery.php';
+    case "verify":
+        $page = './includes/verify.php';
         $last_page = 'recovery';
         $main_id = 'profile';
     break;
+
+    case "rebuild":
+        $page = './includes/rebuild.php';
+        $last_page = 'recovery';
+        $main_id = 'profile';
+    break;
+
 
     default:
         $page = './includes/errors/404.php';
