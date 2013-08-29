@@ -380,6 +380,12 @@ switch($request){
         $main_id = 'main';
     break;
 
+    case "recovery":
+        $page = './includes/recovery.php';
+        $last_page = 'recovery';
+        $main_id = 'profile';
+    break;
+
     default:
         $page = './includes/errors/404.php';
         $last_page = '';

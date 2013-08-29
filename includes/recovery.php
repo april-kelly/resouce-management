@@ -13,24 +13,29 @@ if(!(isset($_SESSION))){
 //Setup Variables
 $fail = false;
 
-echo "Verifying the file structure...<br /><br />";
+echo '<h3>Recovery Mode:</h3>';
+
+echo '<span class="info">Verifying the file structure...</span><br /><br />';
 
 //Verify includes
-if(!(file_exists('../path.php')))                      { $fail = true; echo 'File ../path.php does not exist!<br />'."\r\n"; }
-if(!(file_exists('./data.php')))                       { $fail = true; echo 'File ./data.php does not exist!<br />'."\r\n"; }
-if(!(file_exists('./config/settings.php')))            { $fail = true; echo 'File ./config/settings.php does not exist!<br />'."\r\n"; }
-if(!(file_exists('./config/settings.json')))           { $fail = true; echo 'File ./config/settings.json does not exist!<br />'."\r\n"; }
-if(!(file_exists('./config/settings.template')))       { $fail = true; echo 'File ./config/settings.template does not exist!<br />'."\r\n"; }
-if(!(file_exists('./excel/ABG_PhpToXls.cls.php')))     { $fail = true; echo 'File ./excel/ABG_PhpToXls.cls.php  does not exist!<br />'."\r\n"; }
-if(!(file_exists('./twofactor/class.googlevoice.php'))){ $fail = true; echo 'File ./twofactor/class.googlevoice.php does not exist!<br />'."\r\n"; }
-if(!(file_exists('./twofactor/twofactor.php')))        { $fail = true; echo 'File ./twofactor/twofactor.php does not exist!<br />'."\r\n"; }
-if(!(file_exists('../admin/generate_reset_codes.php'))){ $fail = true; echo 'File ../admin/generate_reset_codes.php does not exist!<br />'."\r\n"; }
-if(!(file_exists('../admin/save.php')))                { $fail = true; echo 'File ../admin/save.php does not exist!<br />'."\r\n"; }
+echo '<span class="error">';
+if(!(file_exists('../path.php')))                                     { $fail = true; echo 'File ../path.php does not exist!<br />'."\r\n"; }
+include_once('../path.php');
+if(!(file_exists(ABSPATH.'includes/data.php')))                       { $fail = true; echo 'File ./data.php does not exist!<br />'."\r\n"; }
+if(!(file_exists(ABSPATH.'includes/config/settings.php')))            { $fail = true; echo 'File ./config/settings.php does not exist!<br />'."\r\n"; }
+if(!(file_exists(ABSPATH.'includes/config/settings.json')))           { $fail = true; echo 'File ./config/settings.json does not exist!<br />'."\r\n"; }
+if(!(file_exists(ABSPATH.'includes/config/settings.template')))       { $fail = true; echo 'File ./config/settings.template does not exist!<br />'."\r\n"; }
+if(!(file_exists(ABSPATH.'includes/excel/ABG_PhpToXls.cls.php')))     { $fail = true; echo 'File ./excel/ABG_PhpToXls.cls.php  does not exist!<br />'."\r\n"; }
+if(!(file_exists(ABSPATH.'includes/twofactor/class.googlevoice.php'))){ $fail = true; echo 'File ./twofactor/class.googlevoice.php does not exist!<br />'."\r\n"; }
+if(!(file_exists(ABSPATH.'includes/twofactor/twofactor.php')))        { $fail = true; echo 'File ./twofactor/twofactor.php does not exist!<br />'."\r\n"; }
+if(!(file_exists(ABSPATH.'admin/generate_reset_codes.php')))          { $fail = true; echo 'File ../admin/generate_reset_codes.php does not exist!<br />'."\r\n"; }
+if(!(file_exists(ABSPATH.'admin/save.php')))                          { $fail = true; echo 'File ../admin/save.php does not exist!<br />'."\r\n"; }
+echo '</span>';
 
 //State Results
 if($fail == true){
     echo '<span class="error"><br />Core file(s) missing please reinstall!<br /></span>';
-    exit;
+    //exit;
 }else{
     echo '<span class="success">File structure is okay.<br /></span>';
 }
@@ -38,6 +43,7 @@ if($fail == true){
 //Includes
 include_once('../path.php');
 include_once(ABSPATH.'includes/data.php');
+include_once(ABSPATH.'includes/config/settings.php');
 
 //Verifiy Database
 $dbc = new db;
@@ -47,25 +53,50 @@ $test2 = $dbc->query('select count(*) from people');
 $test3 = $dbc->query('select count(*) from projects');
 $dbc->close();
 
-echo '<br />Verifying the Database...<br /><br />'."\r\n";
+echo '<span class="info"><br />Verifying the Database...<br /><br /></span>'."\r\n";
 
-if($test1 == false){ $fail = true; echo 'Table jobs does not exist or could not connect to db.<br />'."\r\n"; }
-    else{ echo 'There are '.$test1[0]['count(*)'].' rows in jobs. Looks good.<br />'."\r\n"; ; }
+if($test1 == false){ $fail = true; echo '<span class="error">Table jobs does not exist or could not connect to db.<br /></span>'."\r\n"; }
+    else{ echo '<span class="info">There are '.$test1[0]['count(*)'].' rows in jobs.</span><span class="success"> Looks good.</span><br />'."\r\n"; ; }
 
-if($test2 == false){ $fail = true; echo 'Table people does not exist or could not connect to db.<br />'."\r\n"; }
-    else{ echo 'There are '.$test2[0]['count(*)'].' rows in people. Looks good.<br />'."\r\n"; ; }
+if($test2 == false){ $fail = true; echo '<span class="error">Table people does not exist or could not connect to db.<br /></span>'."\r\n"; }
+    else{ echo '<span class="info">There are '.$test2[0]['count(*)'].' rows in people.</span><span class="success"> Looks good.</span><br />'."\r\n"; ; }
 
-if($test3 == false){ $fail = true; echo 'Table projects does not exist or could not connect to db.<br />'."\r\n"; }
-    else{ echo 'There are '.$test3[0]['count(*)'].' rows in projects. Looks good.<br />'."\r\n"; }
+if($test3 == false){ $fail = true; echo '<span class="error">Table projects does not exist or could not connect to db.<br /></span>'."\r\n"; }
+    else{ echo '<span class="info">There are '.$test3[0]['count(*)'].' rows in projects.</span><span class="success"> Looks good.</span><br />'."\r\n"; }
 
 //State Results
 if($fail == true){
     echo '<span class="error"><br />Database issues!<br /></span>';
-    exit;
+    //exit;
 }else{
     echo '<span class="success"><br />Database is okay.<br /></span>';
 }
 
+//Verify Settings
+$set = new settings;
+$settings = $set->fetch();
 
+echo '<span class="info"><br />Verifying settings...<br /><br /></span>';
+
+//Check for Parsbrites (eg haters)
+if(!($settings['mlp'] == "\x61\x77\x65\x73\x6F\x6d\x65")){
+    echo '<span class="error">Ponies are awesome, now change it back!</span><span class="info"> (settings.php line 16)</span>';
+    $fail = true;
+}
+
+//State Results
+if($fail == true){
+    echo '<span class="error"><br />Settings issues!<br /></span>';
+    //exit;
+}else{
+    echo '<span class="success"><br />Settings are okay.<br /></span>';
+}
+
+//State Results
+if($fail == true){
+    //exit;
+}else{
+    echo '<span class="success"><br />Everything appears to be working...<br /></span>';
+}
 
 ?>
