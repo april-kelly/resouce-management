@@ -15,6 +15,9 @@ include_once('../path.php');
 include_once(ABSPATH.'includes/data.php');
 include_once(ABSPATH.'includes/config/settings.php');
 
+echo '<h3>Settings Rebuild:</h3>';
+echo '<span class="info">Preparing to rebuild...</span><br />';
+
 //Prepare to rebuild
 
     //Recreate the salt
@@ -52,5 +55,21 @@ include_once(ABSPATH.'includes/config/settings.php');
 
     //Setup the settings class
     $set = new settings;
-    //$set->rebuild($replacements);
-echo 'hello';
+
+    //Rebuilding
+    echo '<span class="info">Rebuilding settings.php...</span><br />';
+    $set->rebuild($replacements);
+
+    echo '<span class="info">Rebuilding settings.json...</span>';
+    $set->create();
+
+    echo '<br />';
+
+    //Echo results
+    if(!($fail == true)){
+        echo '<br /><span class="error">Something went wrong, is /includes/config/ writeable?</span>';
+    }else{
+        echo '<br /><span class="success">Settings files rebuilt!</span>';
+    }
+
+
