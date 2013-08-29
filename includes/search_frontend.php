@@ -39,6 +39,6 @@
            onkeyup="showHint(this.value)"
            autocomplete="off"
         />
-    <input type="button" name="submit" value=" " />
+    <input type="submit" name="submit" value=" " />
 </form>
 <div id="search_results" ><!--This is where the search results will be populated--></div>

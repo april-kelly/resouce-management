@@ -41,7 +41,13 @@ $dbc->close();
 
 if($results == FALSE){
 
-    echo '<b>No requests found!</b>';
+    if(isset($_SESSION['user_id'])){
+        echo '<b>No requests found!</b>';
+    }else{
+        echo '<b>Please Login in to view your requests.</b>';
+    }
+
+
 
 }else{
 

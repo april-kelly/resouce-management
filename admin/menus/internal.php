@@ -52,9 +52,10 @@ if(isset($_SESSION['userid'])){
 
     <form action="./admin/save.php" method="post" class="button">
         <b>Core Settings File:</b><br /><br />
-        <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings file from preset defaults</label><br /><br />
-        <input type="submit" value="Dump" name="dump" /><label>Dump the contents of the settings file</label><br /><br />
-        <input type="submit" value="Download" name="download" /><label>Download the settings file</label><br /><br />
+        <input type="submit" value="Rewrite" name="rewrite" /><label>Rewrite the settings files from preset defaults</label><br /><br />
+        <input type="submit" value="Rebuild" name="rebuild" /><label>Rebuild the settings.json file from preset defaults</label><br /><br />
+        <input type="submit" value="Dump" name="dump" /><label>Dump the contents of settings.json</label><br /><br />
+        <input type="submit" value="Download" name="download" /><label>Download the settings.json file</label><br /><br />
         <b>Core Settings:</b><br />
         <?php if($settings['production'] == FALSE){ ?>
         <input type="hidden" name="production_alert" value="FALSE" />

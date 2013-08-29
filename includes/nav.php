@@ -67,7 +67,7 @@ if($settings['maintenance'] == FALSE or $_SESSION['admin'] > 0){
         <?php if(!(isset($_SESSION['name']))){ ?>
         <li class="outside-right"><a href="./?p=login">Login</a></li>
         <?php }else{ ?>
-        <li class="outside-right"><a href="./?p=user">Hi, <?php echo $_SESSION['name']; ?></a></li>
+        <li class="outside-right"><a href="./?p=user">Hi, <?php echo $_SESSION['name']; ?></a></b></li>
         <?php } ?>
     </ul>
     <?php

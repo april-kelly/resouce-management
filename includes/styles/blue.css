@@ -7,6 +7,9 @@ body{
 option{
     width: 500px;
 }
+a:visited {
+    color: blue;
+}
 
 .admin-menu label {
     color: #222;
@@ -36,7 +39,7 @@ option{
 
 #header a {
     text-decoration: none;
-    color: black;
+    color: #222;
 }
 
 #header a:hover {
@@ -46,7 +49,7 @@ option{
 #header li{
     list-style-type: none;
     display: inline;
-    font-size: 23px;
+    font: 23px times, serif;
     color: #35639d;
 }
 
