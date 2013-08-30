@@ -66,7 +66,7 @@ if($test3 == false){ $fail = true; echo '<span class="error">Table projects does
 
 //State Results
 if($fail == true){
-    echo '<span class="error"><br />Database issues!<br /></span>';
+    echo '<span class="error"><br />Database issues! (please verify database creds and/or reinstall). <br /></span>';
     //exit;
 }else{
     echo '<span class="success"><br />Database is okay.<br /></span>';
@@ -86,7 +86,7 @@ if(!($settings['mlp'] == "\x61\x77\x65\x73\x6F\x6d\x65")){
 
 //State Results
 if($fail == true){
-    echo '<span class="error"><br />Settings issues!<br /></span>';
+    echo '<br /><span class="error"><br />Settings issues!<br /></span>';
     //exit;
 }else{
     echo '<span class="success"><br />Settings are okay.<br /></span>';

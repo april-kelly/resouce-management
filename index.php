@@ -420,7 +420,7 @@ if($_SESSION['timeout'] == true){
 <html>
 <head>
 
-    <title>Bluetent Resource Management</title>
+    <title><?php echo $settings['title']; ?></title>
 
     <?php
 

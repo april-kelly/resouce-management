@@ -151,6 +151,16 @@ class settings {
 
     }
 
+
+    //Fetches a current copy of the settings in the object
+    public function live()
+    {
+
+        //Return the contents of $this
+        return (array) $this;
+
+    }
+
     //Creates new settings
     public function add($key, $value, $comment){
 
