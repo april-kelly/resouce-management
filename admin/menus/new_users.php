@@ -100,10 +100,59 @@ if($_SESSION['admin'] >= 1){
 
                     ?>
                     <select name="admin">
-                        <option value="0" <?php if($request[0]['admin'] =='0'){ echo ' selected '; }?> >Normal</option>
-                        <option value="1" <?php if($request[0]['admin'] =='1'){ echo ' selected '; }?> >Administrator</option>
-                        <option value="2" <?php if($request[0]['admin'] =='2'){ echo ' selected '; }?> >Debugger</option>
-                        <option value="3" <?php if($request[0]['admin'] =='3'){ echo ' selected '; }?> >Developer</option>
+
+                        <?php
+
+                            if($_SESSION['admin'] >= '0'){
+
+                                echo '<option value="0"';
+
+                                if($request[0]['admin'] =='0'){
+                                    echo ' selected ';
+                                }
+
+                                echo '>Normal</option>';
+
+                            }
+
+                            if($_SESSION['admin'] >= '1'){
+
+                                echo '<option value="1"';
+
+                                    if($request[0]['admin'] =='1'){
+                                        echo ' selected ';
+                                    }
+
+                                    echo '>Administrator</option>';
+
+                             }
+
+                            if($_SESSION['admin'] >= '2'){
+
+                                echo '<option value="2"';
+
+                                    if($request[0]['admin'] =='2'){
+                                        echo ' selected ';
+                                    }
+
+                                    echo '>Debugger</option>';
+
+                            }
+
+                            if($_SESSION['admin'] >= '3'){
+
+                                echo '<option value="3"';
+
+                                    if($request[0]['admin'] =='3'){
+                                        echo ' selected ';
+                                    }
+
+                                    echo '>Developer</option>';
+
+                            }
+
+
+                        ?>
                     </select>
                     <label>Type of user</label><br />
                 <?php
@@ -160,10 +209,58 @@ if($_SESSION['admin'] >= 1){
         <label>Type of resource</label>
         <br /><br />
         <select name="admin">
-            <option value="0">Normal</option>
-            <option value="1">Administrator</option>
-            <option value="2">Debugger</option>
-            <option value="3">Developer</option>
+            <?php
+
+            if($_SESSION['admin'] >= '0'){
+
+                echo '<option value="0"';
+
+                if($request[0]['admin'] =='0'){
+                    echo ' selected ';
+                }
+
+                echo '>Normal</option>';
+
+            }
+
+            if($_SESSION['admin'] >= '1'){
+
+                echo '<option value="1"';
+
+                if($request[0]['admin'] =='1'){
+                    echo ' selected ';
+                }
+
+                echo '>Administrator</option>';
+
+            }
+
+            if($_SESSION['admin'] >= '2'){
+
+                echo '<option value="2"';
+
+                if($request[0]['admin'] =='2'){
+                    echo ' selected ';
+                }
+
+                echo '>Debugger</option>';
+
+            }
+
+            if($_SESSION['admin'] >= '3'){
+
+                echo '<option value="3"';
+
+                if($request[0]['admin'] =='3'){
+                    echo ' selected ';
+                }
+
+                echo '>Developer</option>';
+
+            }
+
+
+            ?>
         </select>
         <label>Type of user</label><br /><br />
 

@@ -70,7 +70,14 @@ if(isset($_SESSION['userid'])){
             $users->change('phone_number', $_REQUEST['phone_number']);
             $users->change('password', $_REQUEST['password']);
             $users->change('type', $_REQUEST['type']);
-            $users->change('admin', $_REQUEST['admin']);
+
+            //Prevent administrators from escalating permissions
+            if($_REQUEST['admin'] > $_SESSION['admin']){
+                $users->change('admin', $_REQUEST['admin']);
+            }else{
+                $users->change('admin', $_SESSION['admin']);
+            }
+
 
             $users->create();
             echo 'Attempted add'."\r\n";
@@ -95,7 +102,14 @@ if(isset($_SESSION['userid'])){
 
             //Make sure the user is not editing themselves
             if(!($_SESSION['userid'] == $_SESSION['user_lookup'])){
-                $users->change('admin', $_REQUEST['admin']);
+                
+                //Prevent administrators from escalating permissions
+                if($_REQUEST['admin'] > $_SESSION['admin']){
+                    $users->change('admin', $_REQUEST['admin']);
+                }else{
+                    $users->change('admin', $_SESSION['admin']);
+                }
+
             }
 
             $users->update();
