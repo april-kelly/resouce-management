@@ -72,7 +72,7 @@ if(isset($_SESSION['userid'])){
             $users->change('type', $_REQUEST['type']);
 
             //Prevent administrators from escalating permissions
-            if($_REQUEST['admin'] > $_SESSION['admin']){
+            if(!($_REQUEST['admin'] > $_SESSION['admin'])){
                 $users->change('admin', $_REQUEST['admin']);
             }else{
                 $users->change('admin', $_SESSION['admin']);
@@ -102,9 +102,9 @@ if(isset($_SESSION['userid'])){
 
             //Make sure the user is not editing themselves
             if(!($_SESSION['userid'] == $_SESSION['user_lookup'])){
-                
+
                 //Prevent administrators from escalating permissions
-                if($_REQUEST['admin'] > $_SESSION['admin']){
+                if(!($_REQUEST['admin'] > $_SESSION['admin'])){
                     $users->change('admin', $_REQUEST['admin']);
                 }else{
                     $users->change('admin', $_SESSION['admin']);
