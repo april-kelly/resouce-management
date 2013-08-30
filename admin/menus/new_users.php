@@ -96,7 +96,7 @@ if($_SESSION['admin'] >= 1){
                 <br /><br />
                 <?php
 
-                if(!($_SESSION['userid'] == $_SESSION['user_lookup'])){
+                if(!($_SESSION['userid'] == $_SESSION['user_lookup']) && !($_SESSION['admin'] < $request[0]['admin'])){
 
                     ?>
                     <select name="admin">
@@ -158,7 +158,9 @@ if($_SESSION['admin'] >= 1){
                 <?php
 
                 }else{
-                    echo '<span class="info">You cannot change your own admin class</span><br />';
+
+                        echo '<span class="info">You cannot edit this person\'s admin class.</span><br />';
+
                 }
 
                 ?>
