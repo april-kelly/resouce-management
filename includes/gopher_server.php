@@ -81,7 +81,7 @@ fclose($client);
 goto a;
 
 b:
-//Let the rest the application know the server is running
+//Let the rest the application know the server is stopped
 $set = new settings;
 $settings = $set->fetch();
 $settings['gopher'] = FALSE;

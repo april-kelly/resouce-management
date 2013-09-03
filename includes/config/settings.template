@@ -65,7 +65,7 @@ class settings {
             public $salt            = 'serversalt';
 
         //Gopher Server (Experimental)
-            public $gopher          = FALSE;                                     //Enables/Disables Gopher server
+            public $gopher          = FALSE;                                     //The status of the gopher sever (should only be changed by gopher_server.php)
             public $gopher_port     = '70';                                      //Port to run gopher on
 
         //User Created Settings
