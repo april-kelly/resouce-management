@@ -4,7 +4,8 @@
 
     <title>Debugging information - insert.php</title>
 
-    <link rel="stylesheet" href="./styles/styles.css" type="text/css" />
+    <!--<link rel="stylesheet" href="./styles/styles.css" type="text/css" />-->
+
     <link rel="icon" href="./images/btm_favicon.ico" />
 
 </head>
