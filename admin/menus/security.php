@@ -26,7 +26,7 @@ if(isset($_SESSION['userid'])){
 
         <input type="hidden" name="IIstep" value="FALSE" />
         <input type="checkbox" name="IIstep" value="TRUE" <?php if($settings['IIstep'] == TRUE){ echo "checked"; } ?> />
-        <label>Enable Two Factor Authentication</label><br />
+        <label>Enable Two Factor Authentication*</label><br />
 
         <input type="hidden" name="strict" value="FALSE" />
         <input type="checkbox" name="strict" value="TRUE" <?php if($settings['strict'] == TRUE){ echo "checked"; } ?> />
@@ -35,6 +35,10 @@ if(isset($_SESSION['userid'])){
 
         <br />
         <input type="submit" value="Update" />
+        <br />
+        <br />
+
+        <span class="info">* Please not that this only applies to users who have defined phone numbers in the database. </span>
 
     </form>
 
