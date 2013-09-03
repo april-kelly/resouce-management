@@ -36,7 +36,6 @@ if(isset($_SESSION['userid'])){
         <br />
         <input type="submit" value="Update" />
         <br />
-        <br />
 
         <span class="info">* Please not that this only applies to users who have defined phone numbers in the database. </span>
 
