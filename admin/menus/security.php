@@ -5,6 +5,12 @@
  * Date:       8/15/13
  */
 
+//make sure the user is logged in and is admin
+if(isset($_SESSION['userid'])){
+    if($_SESSION['admin'] >= 2){
+
+        //User is logged in
+        ?>
 ?>
 
 <fieldset>
@@ -57,3 +63,18 @@
 
 </fieldset>
 -->
+
+<?php
+}else{
+
+    //User is not admin or not a high enough admin
+    ?><span class="error">You must be a class 2 administrator to access this page.</span><?php
+
+}
+
+}else{
+
+    //User is not logged in
+    ?><span class="error">You are not logged in, please login to access this page.</span><?php
+
+}
