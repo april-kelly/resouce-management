@@ -47,6 +47,13 @@ class users {
         //sanitize user inputs
         $code = $dbc->sanitize($code);
 
+        //Prevent empty codes
+        if(empty($code)){
+
+            return false;
+
+        }
+
         //search for user
         $query = "SELECT * FROM people WHERE reset_code='".$code."' ";
         $results = $dbc->query($query);
