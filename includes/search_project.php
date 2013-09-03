@@ -13,7 +13,7 @@ $settings = $set->fetch();
 $dbc = new db;
 $dbc->connect();
 $q = $dbc->sanitize($_GET['q']);
-$projects = $dbc->query("SELECT * FROM projects WHERE project_id LIKE '%".$q."%'");
+$projects = $dbc->query("SELECT * FROM projects WHERE project_id LIKE '%".$q."%' LIMIT 0,3");
 
 //Stuff to send with every request
 echo '<br />';
