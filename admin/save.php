@@ -172,33 +172,36 @@ if(isset($_REQUEST['userid'])){
 
     $users = new users();
 
+    //Pull up the user
     $status = $users->login($_REQUEST['email'], $_REQUEST['password']);
-
-
 
     //make sure the users info checked out
     if(!($status == false)){
 
-    //password change
-    if(isset($_REQUEST['new_pass']) && !(empty($_REQUEST['new_pass']))){
-        if(isset($_REQUEST['new_pass_II'])  && !(empty($_REQUEST['new_pass']))){
-            if($_REQUEST['new_pass'] == $_REQUEST['new_pass_II']){
-                echo '<br />Changeing password <br />';
-                $users->change('password', hash('SHA512', $_REQUEST['new_pass'].$settings['salt']));
-                $users->update();
-            }
-        }
-    }
+        //password change
+        if(isset($_REQUEST['new_pass']) && !(empty($_REQUEST['new_pass']))){
 
-    //name change
-    if(isset($_REQUEST['firstname']) && isset($_REQUEST['lastname'])){
-        echo '<br />Changing name <br />';
-        $users->change('firstname', $_REQUEST['firstname']);
-        $users->change('lastname', $_REQUEST['lastname']);
-        $users->change('colorization', $_REQUEST['month_colors']);
-        $users->change('phone_number', $_REQUEST['phone_number']);
-        $users->update();
-    }
+            if(isset($_REQUEST['new_pass_II'])  && !(empty($_REQUEST['new_pass']))){
+
+                if($_REQUEST['new_pass'] == $_REQUEST['new_pass_II']){
+                    echo '<br />Changeing password <br />';
+                    $users->change('password', hash('SHA512', $_REQUEST['new_pass'].$settings['salt']));
+                    $users->update();
+                }
+
+            }
+
+        }
+
+        //name change
+        if(isset($_REQUEST['firstname']) && isset($_REQUEST['lastname'])){
+            echo '<br />Changing name <br />';
+            $users->change('firstname', $_REQUEST['firstname']);
+            $users->change('lastname', $_REQUEST['lastname']);
+            $users->change('colorization', $_REQUEST['month_colors']);
+            $users->change('phone_number', $_REQUEST['phone_number']);
+            $users->update();
+        }
 
 
     }else{
@@ -235,37 +238,4 @@ if(isset($_REQUEST['reset_code'])){
     }
 
     header('location: ../?p=login');
-}
-
-//Change the salt
-if(isset($_REQUEST['salt'])){
-
-    //Change the salt
-    $fp = fopen('/dev/urandom', 'r');
-    $set = new settings;
-    $settings = $set->fetch();
-    $settings['salt'] = hash('SHA512', fread($fp, 256));
-    $set->update($settings);
-
-    //Reset everyone in the database's password
-    $dbc = new db;
-    $dbc->connect();
-    $people = $dbc->query('SELECT * FROM people');
-    $dbc->close();
-
-    foreach($people as $person){
-
-        $code = insert_reset_code($person['index']);
-
-        if($person['index'] == $_SESSION['userid']){
-            $_SESSION['reset_code'] = $code;
-        }
-
-    }
-
-    //Redirect the current user to the password reset script
-    header('location: ../?p=reset');
-
-    //Prevent anything from being save on accident
-    $save = FALSE;
 }
