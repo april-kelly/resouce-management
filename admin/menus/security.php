@@ -10,8 +10,9 @@ if(isset($_SESSION['userid'])){
     if($_SESSION['admin'] >= 2){
 
         //User is logged in
-        ?>
+        
 ?>
+
 
 <fieldset>
 
