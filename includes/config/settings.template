@@ -117,6 +117,15 @@ class settings {
     public function update($array)
     {
 
+        //Throw away database creds, the salt, and the google account
+        unset($array['db_host']);
+        unset($array['db_user']);
+        unset($array['db_pass']);
+        unset($array['db_database']);
+        unset($array['salt']);
+        unset($array['gv_account']);
+        unset($array['gv_password']);
+
         $json = json_encode($array);
 
         file_put_contents($this->location, $json);

@@ -15,13 +15,16 @@ if(!(defined('ABSPATH'))){
 }
 
 include_once(ABSPATH.'includes/data.php');
+include_once(ABSPATH.'includes/view.php');
 
 $dbc = new db;
 $dbc->connect();
 
-$query = "SELECT * FROM jobs WHERE `requestor` = ".$user_id;
+$views = new views;
+
+$query = "SELECT * FROM jobs WHERE `requestor` = ".$user_id." && week_of BETWEEN '". $views->weeks[1]."' AND '". $views->weeks[count($views->weeks)]."' ";
 $results = $dbc->query($query);
-$people = $dbc->query('SELECT `index`,`firstname`,`lastname` FROM people');
+$people = $dbc->query("SELECT `index`,`firstname`,`lastname` FROM people");
 
 
 
@@ -41,33 +44,24 @@ $dbc->close();
 
 if($results == FALSE){
 
-    if(isset($_SESSION['user_id'])){
+    if(isset($_SESSION['userid'])){
         echo '<b>No requests found!</b>';
     }else{
         echo '<b>Please Login in to view your requests.</b>';
     }
-
-
 
 }else{
 
     echo '<table border="1" class="data">';
 
          echo '<tr>';
-             echo '<td>Index:</td>';
+             echo '<td>Week of:</td>';
              echo '<td>Resource:</td>';
-             echo '<td>Manager</td>';
-             echo '<td>Requestor</td>';
+             echo '<td>Manager:</td>';
              echo '<td>Project id:</td>';
-             echo '<td>Priority</td>';
-             /*echo '<td>Sunday</td>';
-             echo '<td>Monday</td>';
-             echo '<td>Tuesday</td>';
-             echo '<td>Wednesday</td>';
-             echo '<td>Thursday</td>';
-             echo '<td>Friday</td>';
-             echo '<td>Saturday</td>';*/
-             echo '<td>Sales Status</td>';
+             echo '<td>Hours:</td>';
+             echo '<td>Priority:</td>';
+             echo '<td>Sales Status:</td>';
          echo '</tr>';
 
     foreach($results as $result){
@@ -90,20 +84,26 @@ if($results == FALSE){
             $priority = "Low";
         }
 
+        $times = array(
+            "sunday"    => $result['sunday'],
+            "monday"    => $result['monday'],
+            "tuesday"   => $result['tuesday'],
+            "wednesday" => $result['wednesday'],
+            "thursday"  => $result['thursday'],
+            "friday"    => $result['friday'],
+            "saturday"  => $result['saturday']
+        );
+
+        $hours = $views->add_times($times);
+        $hours = $hours[0].':'.$hours[1];
+
         echo '<tr>';
-        echo '<td>'.$result['index'].'</td>';
-        echo '<td>'.$people[$result['resource']]['name'].'</td>';
-        echo '<td>'.$people[$result['manager']]['name'].'</td>';
-        echo '<td>'.$people[$result['requestor']]['name'].'</td>';
+        echo '<td>'.$result['week_of'].'</td>';
+        echo '<td><a href="./?p=week&amp;w='.$result['resource'].'">'.$people[$result['resource']]['name'].'</a></td>';
+        echo '<td><a href="./?p=week&amp;w='.$result['manager'].'">'.$people[$result['manager']]['name'].'</a></td>';
         echo '<td>'.$result['project_id'].'</td>';
+        echo '<td>'.$hours.'</td>';
         echo '<td>'.$priority.'</td>';
-      /*echo '<td>'.$result['sunday'].'</td>';
-        echo '<td>'.$result['monday'].'</td>';
-        echo '<td>'.$result['tuesday'].'</td>';
-        echo '<td>'.$result['wednesday'].'</td>';
-        echo '<td>'.$result['thursday'].'</td>';
-        echo '<td>'.$result['friday'].'</td>';
-        echo '<td>'.$result['saturday'].'</td>';*/
         echo '<td>'.$status.'</td>';
         echo '</tr>';
 
@@ -111,3 +111,11 @@ if($results == FALSE){
     echo '</table>';
 
 }
+?>
+<br />
+<form action="./" method="get" class="button">
+
+    <input type="hidden" name="p" value="user" />
+    <input type="submit" value="Go back" />
+
+</form>
