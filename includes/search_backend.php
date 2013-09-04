@@ -75,7 +75,7 @@ if($_REQUEST['q'] == 'credits'){
 }
 
 //Session Destroy
-if($_REQUEST['q'] == 'destroy'){
+if($_REQUEST['q'] == 'Destroythesession.'){
 
     echo '<br />Session Destroyed';
     session_destroy();

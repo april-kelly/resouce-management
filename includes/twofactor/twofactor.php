@@ -42,8 +42,20 @@ if($settings['IIstep'] == true){
 
         //Send the text message
         if(!(empty($user_info['phone_number']))){
-            $gv = new GoogleVoice($settings['gv_account'], $settings['gv_password']);
-            $gv->sms($user_info['phone_number'], $message);
+
+            //Make sure the google voice account creds exist
+            if(!(empty($settings['gv_account'])) && !(empty($settings['gv_password']))){
+
+                $gv = new GoogleVoice($settings['gv_account'], $settings['gv_password']);
+                $gv->sms($user_info['phone_number'], $message);
+
+            }else{
+
+                echo 'Unable to connect to Google Voice (Please define account creds in settings.php)';
+                header('location: ../../admin/login.php?auth_code='.$_SESSION['auth_code']);
+
+            }
+
         }
 
     }else{
@@ -54,7 +66,7 @@ if($settings['IIstep'] == true){
     }
 
     //Send the user to the login form
-    header('location: ../../?p=login');
+    //header('location: ../../?p=login');
 
 }else{
 

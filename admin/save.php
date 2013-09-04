@@ -31,138 +31,137 @@ if(isset($_SESSION['userid'])){
 //Begin administrator ONLY section
 if($_SESSION['admin'] >= '1' && !(isset($_REQUEST['userid']))){
 
-//output debugging info on request
-if(isset($_REQUEST['dump'])){
-?>
-    <h1>Settings Debugging information</h1>
-    <hr />
-    <b>JSON:</b>
-    <pre>
-<?php
-    echo file_get_contents($set->location);
-?>
-   </pre>
-   <b>Associative Array:</b>
-   <pre>
-<?php
-    var_dump($set->fetch());
-?>
-   </pre>
-   <hr />
-   <a href="../?p=admin">Go back</a>
-<?php
+    //output debugging info on request
+    if(isset($_REQUEST['dump'])){
+    ?>
+        <h1>Settings Debugging information</h1>
+        <hr />
+        <b>JSON:</b>
+        <pre>
+    <?php
+        echo file_get_contents($set->location);
+    ?>
+       </pre>
+       <b>Associative Array:</b>
+       <pre>
+    <?php
+        var_dump($set->fetch());
+    ?>
+       </pre>
+       <hr />
+       <a href="../?p=admin">Go back</a>
+    <?php
 
-    $save = FALSE; //prevent redirection
-}
+        $save = FALSE; //prevent redirection
+    }
 
-//Rest the settings file to defaults on request
-if(isset($_REQUEST['rebuild'])){
+    //Rest the settings file to defaults on request
+    if(isset($_REQUEST['rebuild'])){
 
-    $set->create();
+        $set->create();
 
-    header('location: ../?p=admin');
+        header('location: ../?p=admin');
 
-    $save = FALSE;
-}
+        $save = FALSE;
+    }
 
-if(isset($_REQUEST['download'])){
+    if(isset($_REQUEST['download'])){
 
-    header('Content-disposition: attachment; filename=settings.json');
-    header('Content-type: text/json');
+        header('Content-disposition: attachment; filename=settings.json');
+        header('Content-type: text/json');
 
-    echo file_get_contents(ABSPATH.'/includes/config/settings.json');
-    $save = FALSE;
-}
+        echo file_get_contents(ABSPATH.'/includes/config/settings.json');
+        $save = FALSE;
+    }
 
-//update each of the settings
-foreach($_REQUEST as $key => $value){
+    //update each of the settings
+    foreach($_REQUEST as $key => $value){
 
-    if(isset($settings[$key])){
+        if(isset($settings[$key])){
 
-        switch($value){
+            switch($value){
 
-            CASE 'TRUE':
+                CASE 'TRUE':
 
-                $settings[$key] = TRUE; //this ensures a boolean is saved
+                    $settings[$key] = TRUE; //this ensures a boolean is saved
 
-            break;
+                break;
 
-            CASE 'FALSE':
+                CASE 'FALSE':
 
-                $settings[$key] = FALSE; //this ensures a boolean is saved
+                    $settings[$key] = FALSE; //this ensures a boolean is saved
 
-            break;
+                break;
 
-            DEFAULT:
+                DEFAULT:
 
-                $settings[$key] = $value; //normal method (for strings)
+                    $settings[$key] = $value; //normal method (for strings)
 
-            break;
+                break;
+            }
+
         }
 
     }
 
-}
+    //Debug mode enable/disable
+    if(isset($_REQUEST['d'])){
 
-//Debug mode enable/disable
-if(isset($_REQUEST['d'])){
+        if($_REQUEST['d'] == '1'){
 
-    if($_REQUEST['d'] == '1'){
+            //Enable debug mode
+            $settings['debug'] = TRUE;
+            $set->update($settings);
 
-        //Enable debug mode
-        $settings['debug'] = TRUE;
-        $set->update($settings);
+        }
 
+        if($_REQUEST['d'] == '0'){
+
+            //Disable debug mode
+            $settings['debug'] = FALSE;
+            $set->update($settings);
+
+
+        }
     }
 
-    if($_REQUEST['d'] == '0'){
+        //Administrator user tools
+        $users = new users();
 
-        //Disable debug mode
-        $settings['debug'] = FALSE;
-        $set->update($settings);
+        if(isset($_REQUEST['Add'])){
 
+            $users->change('firstname', $_REQUEST['firstname']);
+            $users->change('lastname', $_REQUEST['lastname']);
 
+            $users->change('name', $_REQUEST['email']);
+            $users->change('name', sha1($_REQUEST['password']));
+
+            $users->change('name', $_REQUEST['type']);
+            $users->change('name', $_REQUEST['admin']);
+
+            var_dump($users);
+            //$users->create();
+
+            $save =false;
+
+        }
+
+    if($save == TRUE){ //prevent unnecessary updates
+
+        //update the settings
+        $fail = $set->update($settings);
+
+        //Redirect the user back to the settings menu
+        if($fail == TRUE){
+            header('location: ../?p=admin');
+        }else{
+            header('location: ../?p=admin');
+        }
     }
-}
-
-    //Administrator user tools
-    $users = new users();
-
-    if(isset($_REQUEST['Add'])){
-
-        $users->change('firstname', $_REQUEST['firstname']);
-        $users->change('lastname', $_REQUEST['lastname']);
-
-        $users->change('name', $_REQUEST['email']);
-        $users->change('name', sha1($_REQUEST['password']));
-
-        $users->change('name', $_REQUEST['type']);
-        $users->change('name', $_REQUEST['admin']);
-
-        var_dump($users);
-        //$users->create();
-
-        $save =false;
-
-    }
-
-if($save == TRUE){ //prevent unnecessary updates
-
-    //update the settings
-    $fail = $set->update($settings);
-
-    //Redirect the user back to the settings menu
-    if($fail == TRUE){
-        header('location: ../?p=admin');
-    }else{
-        header('location: ../?p=admin');
-    }
-}
 
 
 //end administrator only section
 }
-
 
 //Begin user section
 
