@@ -46,7 +46,6 @@ if(isset($_SESSION['reset_code'])){
 
         <form action="./admin/save.php" method="post">
             <b>Password Reset: </b><br />
-            <?php var_dump($results); ?>
             <input type="hidden" value="<?php echo $_SESSION['reset_code']; ?>" name="reset_code" />
             <label>New Password: </label><input type="password" name="new_pass"><br />
             <label>Retype Password: </label><input type="password" name="new_pass_II"><br />

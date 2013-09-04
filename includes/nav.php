@@ -8,7 +8,6 @@ require_once(ABSPATH.'includes/config/users.php');
 $set = new settings;
 $settings = $set->fetch();
 
-
 //Refresh Settings (allows changes to take effect on next page load)
 $users = new users;
 $users->select($_SESSION['userid']);
