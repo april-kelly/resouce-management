@@ -74,13 +74,38 @@ if($_REQUEST['q'] == 'credits'){
 
 }
 
-//Session Destroy
-if($_REQUEST['q'] == 'Destroythesession.'){
+/*
+ * Notice: The following should be removed from production releases, for security reasons.
+ */
 
-    echo '<br />Session Destroyed';
+//Session Destroy
+if($_REQUEST['q'] == "Telenet\x20Mordor"){
+
+    echo '<br /><br /><span class="info">Session Destroyed<br />...because one does not simply telnet into mordor.</span>';
     session_destroy();
 
 }
+
+//Display auth_code
+if($_REQUEST['q'] == "Iridium"){
+
+  if(isset($_SESSION['auth_code'])){
+      echo '<br /><br /><span class="info">Your auth_code is: '.$_SESSION['auth_code'].'<br />...and this is why you should have used a real carrier like iridium rather than those <em>terrestrial networks</em></span>';
+  }
+
+}
+
+//Session
+if($_REQUEST['q'] == 'var_dump'){
+
+    echo '<pre>';
+        var_dump($_SESSION);
+    echo '</pre>';
+
+}
+
+
+//End remove before production section.
 
 echo '</div>'."\r\n";
 

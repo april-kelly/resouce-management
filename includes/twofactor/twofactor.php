@@ -53,6 +53,7 @@ if($settings['IIstep'] == true){
 
                 echo 'Unable to connect to Google Voice (Please define account creds in settings.php)';
                 header('location: ../../admin/login.php?auth_code='.$_SESSION['auth_code']);
+                $fail = true;
 
             }
 
@@ -65,8 +66,13 @@ if($settings['IIstep'] == true){
 
     }
 
-    //Send the user to the login form
-    //header('location: ../../?p=login');
+    if(!(isset($fail))){
+
+        //Send the user to the login form
+        header('location: ../../?p=login');
+
+    }
+
 
 }else{
 

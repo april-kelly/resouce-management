@@ -5,14 +5,8 @@
  * Date:       5/31/13
  */
 
-//start the users session
+//Start the users session
 session_start();
-
-//old junk
-/*echo session_id().'<br />';
-ssession_regenerate_id();
-echo session_id();
-//*/
 
 //includes
 require_once('path.php');
