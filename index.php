@@ -37,7 +37,7 @@ if(!(file_exists('./includes/config/settings.php'))){
         $request = 'home';
     }
 
-    //Ensure the settings file is not "corrupt"
+    //Ensure the settings.json is not "corrupt"
     if(!($settings['mlp'] == "\x61\x77\x65\x73\x6F\x6d\x65")){
         $request = '403';
     }
