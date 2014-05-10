@@ -5,7 +5,7 @@
 
     <title>Bluetent Resource Management</title>
 
-    <link rel="stylesheet" href="../styles/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/blue.css" type="text/css" />
     <link rel="icon" href="../images/btm_favicon.ico" />
 
 
