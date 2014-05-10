@@ -6,4 +6,4 @@
  */
 
 ?>
-<p><span class="info">&copy; Bluetent Marketing <?php echo date('Y');?></span></p>
+<p><span class="info">&copy; Liam Kelly<?php echo ' 2012 - '.date('Y');?></span></p>
